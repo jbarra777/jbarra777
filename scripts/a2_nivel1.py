@@ -116,7 +116,7 @@ hole = [(XB0, Y4b), (X1 := ESC["x"][1], Y4b), (X1, Y5a), (XB0, Y5a)]
 js = msp.add_hatch(dxfattribs={"layer": "A-JARDIN"})
 js.paths.add_polyline_path([P(*q) for q in JS], flags=1)
 js.paths.add_polyline_path([P(*q) for q in hole], flags=16)
-js.set_pattern_fill("GRAVEL", scale=0.35)
+js.set_pattern_fill("GRAVEL", scale=0.12)
 for lab_y in (12.6, 22.0):
     pl.mtext(msp, "JARDÍN SECO\\P(NO CONSTRUIDO)", 3.0 if lab_y < 20 else 4.5, lab_y, 0.17,
              3.5, "A-ESPACIOS")
@@ -168,7 +168,7 @@ pl.text(msp, "PATIO P2 (ABIERTO A CIELO)", 8.67, P2["y"][0] + 0.1, 0.085, "A-TXT
 pl.mtext(msp, "PATIO POSTERIOR - JARDÍN SECO\\PTANQUE SÉPTICO Y DRENAJE (POR DISEÑAR)",
          4.5, 26.85, 0.13, 6.5, "A-ESPACIOS")
 pl.text(msp, "CALLE PÚBLICA", 4.5, -2.15, 0.22, "A-ESPACIOS", rot=90)
-pl.text(msp, "RETIRO FRONTAL", 7.0, 1.55, 0.12, "A-ESPACIOS", rot=90)
+pl.text(msp, "RETIRO FRONTAL", 6.4, 1.05, 0.12, "A-ESPACIOS", rot=90)
 pl.text(msp, "PORTÓN ABATIBLE 4 HOJAS", 5.2, 1.35, 0.10, "A-TXT-50", rot=90)
 pl.text(msp, "ACCESO PEATONAL", 0.70, 0.95, 0.08, "A-TXT-50", rot=90)
 pl.mtext(msp, "COLINDANCIA - FACHADA CIEGA", 0.0 - 0.35, 14.0, 0.10, 6.0, "A-TXT-50")
@@ -291,7 +291,7 @@ extra = [
     "ALINEADA CON LA ESCALERA; C6 AL RAS DE LA FACHADA POSTERIOR). SIN COLUMNA EN C1 PARA NO "
     "OBSTRUIR EL ACCESO VEHICULAR. SECCIONES Y REFUERZO SEGÚN PLANOS ESTRUCTURALES.",
     "LAS ÁREAS NO INDICADAS COMO ESTACIONAMIENTO, PASILLO O GRADAS SON JARDÍN SECO NO "
-    "CONSTRUIDO (BAJO LOS NIVELES 2 Y 3, PATIOS Y PATIO POSTERIOR).",
+    "CONSTRUIDO: BAJO LOS NIVELES 2 Y 3, EN LOS PATIOS P1 Y P2 Y EN EL PATIO POSTERIOR.",
     "NPT ±0.00 = NIVEL DE ACERA (TERRENO PLANO). PENDIENTES Y DESAGÜES SEGÚN LÁMINAS "
     "SANITARIAS.",
 ]

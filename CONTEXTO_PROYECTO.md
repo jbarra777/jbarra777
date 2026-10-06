@@ -1,7 +1,7 @@
 # CONTEXTO DEL PROYECTO: Vivienda unifamiliar de 3 niveles, San Rafael de Heredia
 
 > Archivo de traspaso. Si se abre una sesión nueva de Claude, leer este archivo primero.
-> Última actualización: 06-10-2026. Lámina en curso: **A2 rev0 (en revisión)**. A1 en rev1 (cambios pedidos aplicados; el ingeniero indicó continuar).
+> Última actualización: 06-10-2026. Lámina en curso: **A2 rev1 (en revisión)**. A1 en rev1 (cambios pedidos aplicados; el ingeniero indicó continuar).
 
 ## 1. Encargo vigente (sustituye al de anteproyecto del 05-10-2026)
 - Juego completo de planos constructivos para el CFIA de una **vivienda unifamiliar de 3 niveles**. Solo uso unifamiliar: sin apartamentos ni notas de conversión.
@@ -70,14 +70,18 @@
 | Lámina | Contenido | Estado |
 |---|---|---|
 | A1 | Lote: ubicación, poligonal, retiros y huella, derrotero, coordenadas, áreas, notas | rev1 (cambios aplicados; se indicó continuar) |
-| A2 | Planta nivel 1 (1:50): parqueos, acceso, escalera, derrotero, áreas, cobertura, notas | rev0 entregada, en revisión |
+| A2 | Planta nivel 1 (1:50): parqueos, acceso, gradas, jardín seco, derrotero, áreas, cobertura, notas | rev1 entregada, en revisión |
 
-### Nivel 1 propuesto (A2 rev0)
-- 6 espacios de 2.50 × 5.00 (E-1 a E-3 independientes, E-4 a E-6 en tándem) entre x 1.35 y 8.85, y 2.21 y 12.21.
-- Pasillo peatonal de 1.20 al oeste, separado de los carros por un bordillo. Fachada: peatonal 1.11, pilastra en el eje B (x 1.26–1.56), portón de 7.29.
-- Bodega 7.38 × 4.50 (y 12.33–16.83), uso por definir. Espacio cubierto posterior 8.70 × 5.40, uso por definir.
-- Ejes: A 0.075 · B 1.41 · C 4.75 · D 8.925 / 1 2.135 · 2 7.685 · 3 10.335 · 4 16.905 · 5 19.555 · 6 25.105.
-- Marco de las plantas (`planta.py`): X = fondo y local (calle a la izquierda), Y = x local. En la A1 el marco tiene el norte arriba.
+### Nivel 1 (A2 rev1, según indicaciones del 06-10-2026)
+- **Solo 3 estacionamientos** E-1 a E-3 (2.50 × 5.00) en x 1.35–8.85, y 2.21–7.21. Pasillo peatonal de 1.20 al oeste hasta y 19.48. Gradas en U.
+- **Todo lo demás del nivel 1 es JARDÍN SECO NO CONSTRUIDO**: bajo los niveles 2 y 3, en los patios y en el patio posterior. No hay bodega ni espacio posterior.
+- Área construida del nivel 1: estacionamientos 37.50 + pasillo 20.72 + gradas 8.35 = **66.57 m²**. El cuadro de áreas de la A2 muestra solo eso.
+- **Portón vehicular abatible**: 4 hojas plegables de 1.82 m que abren hacia el retiro frontal. Claro libre de 7.29 m. Pilastra en el eje B (x 1.26–1.56). Acceso peatonal de 1.00 m.
+- **Columnas sobre el eje C (x 4.84)** en los ejes 2, 3, 4, 5 y 6. Sección preliminar de 0.30 × 0.30, con la cara oeste en x 4.69. C6 queda al ras de la fachada posterior. **No hay columna en C1**, porque obstruiría el portón y el espacio E-2.
+- Limpieza del tanque séptico: el ingeniero indicó que no es problema.
+- Cobertura: se mantiene en 70.13 % (proyección de los niveles 2 y 3).
+- Ejes: A 0.075 · B 1.41 · C 4.84 · D 8.925 / 1 2.135 · 2 7.685 · 3 10.335 · 4 16.905 · 5 19.555 · 6 25.105.
+- Marco de las plantas (`planta.py`): X = fondo y local (calle a la izquierda), Y = x local.
 - Escalera en U: tramo 1 en y 16.98–18.08 que sube hacia el este hasta x 3.59; descanso en x 3.59–4.69; tramo 2 en y 18.38–19.48 de regreso al oeste.
 
 ## 9. Herramientas

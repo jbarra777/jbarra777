@@ -153,7 +153,17 @@
 - **Criterio de ventanas: todas ventilan.** **Ventila abatible hacia afuera** (bisagra superior), que abierta sirve de alero cuando llueve. Donde la apertura hacia afuera interfiera con un pasillo, **corrediza de dos paños móvil-móvil**. [U]
 - **Baños de la fachada principal:** vidrio arenado (sandblast). [U]
 - **Ventanas hacia P1** desfasadas entre ambos lados del patio, para reducir las visuales cruzadas. [A3][A4]
-- **Puertas:** acceso a las suites y a la sala 0.90; baño y walk-in 0.80. Tipos y cuadros en las láminas A7–A9, **PENDIENTE**.
+- **Puertas (nomenclatura de la referencia):** [U 06-10-2026]
+  - P-01 acceso principal 1.00 × 2.10, madera, **en el vestíbulo de escalera del N1** (única puerta principal);
+  - P-02 habitaciones 0.90 × 2.10, madera (accesos a las suites);
+  - P-03 baños 0.80 × 2.10, madera;
+  - P-04 walk-in 0.80 × 2.10, madera (tipo propio);
+  - P-05 puerta peatonal y P-06 portón vehicular, ambos metálicos (acero).
+  - **Sin puerta en la cocina ni en la sala.** Se quita el muro del eje B entre la cocina y el pasillo (zona abierta). Abertura a la sala de 1.20 (x 0.15–1.35) en el muro del eje 5, hasta el cielo.
+- **Vestíbulo de escalera cerrado en el N1:** paredes Steel Tech de 0.12 en los ejes 4, C y 5 alrededor de las gradas; P-01 en el pasillo sobre la línea del eje 4. [U]
+- **Ventanas:** todas de aluminio y vidrio. [U]
+- **Acabados (como la referencia):** paredes Pd-A interiores, Pd-B baños, Pd-C salpicadero, Pd-D exteriores; **un mismo piso (PI-A) en interiores y baños**; **"ACABADO EN CIELOS": cielo raso tipo gypsum**. [U]
+- **Láminas de puertas, ventanas y acabados: una sola, la A7**, con las tres plantas. Las A8 y A9 no se hacen. [U]
 - **Fachada posterior (N2 y N3): patrón común 0.70–2.90 / 3.85–4.60 / 6.40–8.20**, alineado entre niveles. La ventana angosta libra C6 (0.09 m hasta su cara). **Antepecho común de 0.90 m** y dintel a 2.20 m. [U][A3 rev1][A4 rev1][A5 rev1]
   - El antepecho de 0.90 aplica también al baño de la suite 3 (vidrio arenado). [U]
   - **Fachada posterior: operable en toda su área** (ventilas), ya que el antepecho da la protección. [U]

@@ -20,14 +20,14 @@
 | A3 | Planta nivel 2 | Suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A3_nivel2/SR-A3_NIVEL2_rev2.*` | rev2 (patrón posterior y notas de ventilas). Visto bueno del 06-10-2026. La galería a P1 queda con vidrio fijo. |
 | A4 | Planta nivel 3 | Suites 1, 2 y 3, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A4_nivel3/SR-A4_NIVEL3_rev2.*` | rev2 (C6 corregido, patrón posterior y notas de ventilas). Visto bueno del 06-10-2026. |
 | A5 | Fachadas | Principal 1:50, posterior 1:75, laterales 1:100, cubierta a dos aguas, notas | APROBADA | `planos/A5_fachadas/SR-A5_FACHADAS_rev3.*` | rev3. "Lámina aprobada, continuar" (06-10-2026). |
-| A6 | Cortes | Corte A-A (x = 3.00) y corte B-B (y = 18.25) a 1:75, niveles, cielos, entrepiso metálico, cubierta al 13 %, escalera, tapia posterior, notas | EN REVISIÓN | `planos/A6_cortes/SR-A6_CORTES_rev2.*` | La rev1 agrega el sistema constructivo. La **rev2** agrega el portón cortado y el lindero frontal, zacate block en el retiro frontal, paredes interiores Steel Tech de 0.12, cercha del fondo completa en el A-A y confirma las medidas. |
+| A6 | Cortes | Corte A-A (x = 3.00) y corte B-B (y = 18.25) a 1:75, niveles, cielos, entrepiso metálico, cubierta al 13 %, escalera, tapia posterior, notas | APROBADA | `planos/A6_cortes/SR-A6_CORTES_rev2.*` | La rev1 agrega el sistema constructivo. La **rev2** agrega el portón cortado y el lindero frontal, zacate block en el retiro frontal, paredes interiores Steel Tech de 0.12, cercha del fondo completa en el A-A y confirma las medidas. |
+| A7 | Puertas, ventanas y acabados | Plantas N1–N3 a 1:100 con etiquetas, cuadros de puertas y ventanas, acabados de paredes, pisos y cielos, detalles de puertas y ventanas, notas | EN REVISIÓN | `planos/A7_puertas_ventanas/SR-A7_PUERTAS_VENTANAS_rev0.*` | Lámina única (las A8 y A9 no se hacen). Usa las plantas A2 rev3 y A3 rev3, que todavía falta entregar. |
 
 ## B) Láminas previstas o necesarias del proyecto actual
 Las justifica una referencia cruzada desde las láminas ya desarrolladas o un requisito propio de esta vivienda. **El código, el nombre definitivo y la posible combinación están por confirmar.**
 
 | Código tentativo | Lámina | Por qué se necesita en este proyecto | Estado |
 |---|---|---|---|
-| A7–A9 (o combinadas) | Puertas, ventanas y acabados por nivel | Las A3 y A4 remiten a A8 y A9, y la A5 a A7–A9. Hacen falta los cuadros de puertas y ventanas y los acabados. Se puede evaluar combinar los niveles. | PENDIENTE |
 | A10 (o combinada con A5) | Acabados de fachada | La A5 remite a la A10. Depende del diseño moderno de la fachada principal. | PENDIENTE |
 | A11 | Escalera y detalles (barandas, pasamanos) | Las plantas remiten a la A11 para las barandas. Escalera en U de 3 niveles. | PENDIENTE |
 | Estructural (número por definir) | Cimentación, entrepisos de N2 y N3, cubierta, pórticos o detalles, especificaciones | Requisito de trámite. Contenido según el sistema estructural, **PENDIENTE DE DEFINIR**. | PENDIENTE |

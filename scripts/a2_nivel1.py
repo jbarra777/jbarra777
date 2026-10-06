@@ -12,7 +12,7 @@ import cadlib as cl
 import planta as pl
 from planta import P
 
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "A2_nivel1"
 NAME = f"SR-A2_NIVEL1_{REV}"
 
@@ -143,12 +143,16 @@ for k in range(0, 8):
     pl.line(msp, (x, yB0), (x, yB1), "A-PROYECCION", pl.LT_DASH)
 pl.line(msp, (X_DES - 7 * TH, yB0), (X_DES, yB0), "A-PROYECCION", pl.LT_DASH)
 pl.line(msp, (X_DES, yA0), (X_DES, yB1), "A-PROYECCION", pl.LT_DASH)
-# barandas perimetrales de la escalera
-for (xa, ya), (xb, yb) in (((X0, yA0), (X1, yA0)), ((X1, yA0), (X1, yB1)), ((X0, yB1), (X1, yB1))):
-    pl.line(msp, (xa, ya), (xb, yb), "A-ESCALERA")
-pl.poly(msp, [(X0, yA0 + 0.05), (X1 - 0.05, yA0 + 0.05), (X1 - 0.05, yB1 - 0.05),
-              (X0, yB1 - 0.05)], "A-ESCALERA", close=False)
-pl.text(msp, "BARANDA (VER A11)", X1 - 0.12, 18.2, 0.085, "A-TXT-50", "MIDDLE_CENTER", rot=90)
+# rev3: vestíbulo de escalera cerrado (paredes Steel Tech 0.12) y puerta principal P-01
+TV = 0.12
+D_P01 = (0.25, 1.25)                                  # puerta principal 1.00 en el pasillo
+pl.wall(msp, E, D_P01[0], Y4b - TV, Y4b)
+pl.wall(msp, D_P01[1], XC1, Y4b - TV, Y4b)            # eje 4
+pl.wall(msp, XC0, XC1, Y4b, Y5a)                      # eje C
+pl.wall(msp, E, XC1, Y5a, Y5a + TV)                   # eje 5
+pl.door(msp, (D_P01[0], Y4b), 1.00, (1, 0), (0, 1))
+pl.text(msp, "VESTÍBULO", 0.40, 18.20, 0.12, "A-ESPACIOS")
+pl.text(msp, "PUERTA PRINCIPAL (VER A7)", 0.75, Y4b - 0.40, 0.085, "A-TXT-50", "MIDDLE_RIGHT")
 # flecha "SUBE"
 a = P(X0 + 0.15, (yA0 + yA1) / 2)
 b = P(CUT - 0.15, (yA0 + yA1) / 2)
@@ -298,6 +302,8 @@ extra = [
     "LOS MUROS DE COLINDANCIA DE LA VIVIENDA SON LA DIVISIÓN CON LOS PREDIOS VECINOS. EN EL "
     "NIVEL 1 SON MUROS CONTINUOS HASTA EL NIVEL DE ENTREPISO (+3.00). NO SE CONSTRUYEN TAPIAS "
     "LATERALES EN LOS RETIROS.",
+    "VESTÍBULO DE ESCALERA CERRADO CON PAREDES STEEL TECH DE 0.12 m EN LOS EJES 4, C Y 5; "
+    "PUERTA PRINCIPAL P-01 DE MADERA EN EL PASILLO. PUERTAS, VENTANAS Y ACABADOS EN LÁMINA A7.",
 ]
 cl.notes_block(psp, X3, y - 6, cl.notas(extra), 2.1, 250)
 
@@ -314,10 +320,10 @@ vals = {
     "CONT_3": "CUADRO DE ÁREAS.", "CONT_4": "PORCENTAJE DE COBERTURA.", "CONT_5": "NOTAS.",
     "CONT_6": "",
     "ESCALAS": "1:50 / INDICADAS",
-    "REV0_N": "0", "REV0_F": "06-10-2026", "REV0_D": "VERSIÓN DE TRABAJO PARA REVISIÓN",
-    "REV1_N": "1", "REV1_F": "06-10-2026",
-    "REV1_D": "3 PARQUEOS, JARDÍN SECO, PORTÓN, COLUMNAS EJE C",
-    "REV2_N": "2", "REV2_F": "06-10-2026", "REV2_D": "SIN TAPIAS LATERALES; MUROS DE COLINDANCIA N1",
+    "REV0_N": "1", "REV0_F": "06-10-2026",
+    "REV0_D": "3 PARQUEOS, JARDÍN SECO, PORTÓN, COLUMNAS EJE C",
+    "REV1_N": "2", "REV1_F": "06-10-2026", "REV1_D": "SIN TAPIAS LATERALES; MUROS DE COLINDANCIA N1",
+    "REV2_N": "3", "REV2_F": "06-10-2026", "REV2_D": "VESTÍBULO DE ESCALERA Y PUERTA PRINCIPAL",
     "ESTADO_1": "VERSIÓN DE TRABAJO", "ESTADO_2": "NO APTA PARA CONSTRUCCIÓN NI TRÁMITE",
     "LUGAR": "COSTA RICA", "LAMINA": "A2", "FECHA": prj["fecha"], "TOTAL": prj["total_laminas"],
 }

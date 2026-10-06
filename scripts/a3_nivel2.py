@@ -11,7 +11,7 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "A3_nivel2"
 NAME = f"SR-A3_NIVEL2_{REV}"
 E, I, W = H.E, H.I, H.W
@@ -65,14 +65,14 @@ D_COC = (15.55, 16.45)
 pl.window_x(msp, Y2b + 0.10, Y3a - 0.10, XB0, XB1)
 pl.wall(msp, XB0, XB1, Y2b, Y2b + 0.10, hatch=True)
 pl.wall(msp, XB0, XB1, Y3a - 0.10, Y3b, hatch=True)
-wall_with_openings("y", XB0, XB1, Y3b, Y4a, [D_COC])
+# rev3: sin muro entre cocina y pasillo (zona abierta) y sin puerta de cocina
 # eje 4: cocina / escalera-P2 (ventana sobre fregadero)
 wall_with_openings("x", Y4a, Y4b, XB0, W - E, [], [(5.40, 8.20)])
 # eje C: escalera / P2
 pl.wall(msp, XC0, XC1, Y4b, Y5a)
 # eje 5: escalera-P2 / sala (puerta de sala al final del pasillo)
 D_SAL = (0.25, 1.15)
-wall_with_openings("x", Y5a, Y5b, E, W - E, [D_SAL], [(5.40, 8.40)])
+wall_with_openings("x", Y5a, Y5b, E, W - E, [(E, XB0)], [(5.40, 8.40)])   # rev3: vano 1.20 a la sala
 
 # ---------------------------------------------------------------- suite 1
 XBA0, XBA1 = 3.72, 5.27            # baño libre 1.55
@@ -90,8 +90,6 @@ wall_with_openings("x", YWI1, YWI1 + I, XWI0, W - E, [D_WI])   # muro sur walk-i
 pl.door(msp, (D_SUI[1], Y2a), 0.90, (-1, 0), (0, -1))          # suite (abre hacia adentro)
 pl.door(msp, (D_BA[0], YBA1 + I), 0.80, (1, 0), (0, 1))        # baño (abre al dormitorio)
 pl.door(msp, (D_WI[0], YWI1), 0.80, (1, 0), (0, -1))           # walk-in
-pl.door(msp, (XB1, D_COC[1]), 0.90, (0, -1), (1, 0))           # cocina-comedor
-pl.door(msp, (D_SAL[1], Y5b), 0.90, (-1, 0), (0, 1))           # sala familiar
 
 # mobiliario suite
 pl.bed(msp, E, 2.70, E + 2.00, 4.30, head="x0")
@@ -218,8 +216,9 @@ for xa, xb in ((XBA0 - I, XBA0), (XBA0, XBA1), (XBA1, XWI0), (XWI0, W - E)):
     pl.dim(msp, (xa, YF1), (xb, YF1), (0, 5.02), True)
 pl.dim(msp, (XBA0, YF1), (XBA0, YBA1), (XBA0 + 0.30, 0), False)
 pl.dim(msp, (6.10, YF1), (6.10, YWI1), (6.10, 0), False)
-for xa, xb in ((E, XB0), (XB0, XB1), (XB1, W - E)):
+for xa, xb in ((E, XB0), (XB0, W - E)):
     pl.dim(msp, (xa, 13.65), (xb, 13.65), (0, 13.65), True)
+pl.dim(msp, (E, Y5b), (XB0, Y5b), (0, Y5b + 0.35), True)        # vano a la sala 1.20
 pl.dim(msp, (X0, Y5b), (X1, Y5b), (0, Y5b + 0.35), True)
 pl.dim(msp, (XC1, Y4b), (W - E, Y4b), (0, Y4b + 0.45), True)
 pl.dim(msp, (E, YR0), (W - E, YR0), (0, YR0 - 0.40), True)
@@ -268,8 +267,9 @@ extra = [
     "SUITE: BAÑO DE 1.55 x 2.20 m CON DUCHA, INODORO Y LAVATORIO EN LÍNEA Y PUERTA DE 0.80 m "
     "ABATIBLE HACIA EL DORMITORIO; WALK-IN CLOSET CON MUEBLES DE 0.60 m. SOLO EL BAÑO Y EL "
     "WALK-IN SON RECINTOS CERRADOS.",
-    "PASILLO DE 1.20 m CERRADO HACIA EL PATIO P1 CON VIDRIO FIJO (GALERÍA). ACCESOS A LA SUITE "
-    "Y A LA SALA FAMILIAR EN LOS EXTREMOS DEL PASILLO (EJES 2 Y 5).",
+    "PASILLO DE 1.20 m CERRADO HACIA EL PATIO P1 CON VIDRIO FIJO (GALERÍA). ACCESO A LA SUITE AL "
+    "EXTREMO DEL PASILLO (EJE 2). COCINA-COMEDOR ABIERTA AL PASILLO (SIN MURO NI PUERTA EN EL "
+    "EJE B) Y SALA FAMILIAR ABIERTA CON VANO DE 1.20 m EN EL EJE 5.",
     "COCINA EN L CON ISLA; FREGADERO BAJO VENTANA HACIA EL PATIO P2. LA COCINA-COMEDOR Y LA "
     "SALA FAMILIAR NO LLEVAN BAÑO.",
     "VENTANAS HACIA P1 DESFASADAS ENTRE SUITE Y COCINA-COMEDOR PARA REDUCIR VISUALES CRUZADAS.",
@@ -281,7 +281,7 @@ extra = [
     "ALINEADAS ENTRE LOS NIVELES 2 Y 3 Y OPERABLES EN TODA SU ÁREA (VER A5).",
     "TODAS LAS VENTANAS SON DE VENTILACIÓN: VENTILA ABATIBLE HACIA AFUERA (BISAGRA "
     "SUPERIOR); DONDE INTERFIERA CON UN PASILLO, CORREDIZA DE DOS PAÑOS MÓVIL-MÓVIL.",
-    "DIMENSIONES Y TIPOS DE PUERTAS Y VENTANAS EN LÁMINA A8.",
+    "DIMENSIONES Y TIPOS DE PUERTAS Y VENTANAS Y ACABADOS EN LÁMINA A7.",
 ]
 y = cl.notes_block(psp, X3, y - 6, cl.notas(extra), 2.1, 250)
 H.extractor_detail(psp, X3, min(y - 6, 165.0))
@@ -289,9 +289,9 @@ H.extractor_detail(psp, X3, min(y - 6, 165.0))
 H.titleblock(doc, psp, "A3", "PLANTA NIVEL 2",
              ["SUITE 1, COCINA-COMEDOR, SALA.", "DERROTERO.", "CUADRO DE ÁREAS.",
               "PORCENTAJE DE COBERTURA.", "DETALLE EXTRACTOR DE AIRE.", "NOTAS."],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "VENTANAS POSTERIORES ALINEADAS"),
-              ("2", "06-10-2026", "VENTANAS DE VENTILACIÓN (VENTILAS)")])
+             [("1", "06-10-2026", "VENTANAS POSTERIORES ALINEADAS"),
+              ("2", "06-10-2026", "VENTANAS DE VENTILACIÓN (VENTILAS)"),
+              ("3", "06-10-2026", "COCINA Y SALA ABIERTAS AL PASILLO")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

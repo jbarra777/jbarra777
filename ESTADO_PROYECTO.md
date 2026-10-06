@@ -14,13 +14,15 @@
 | Lámina | Estado | Motivo |
 |---|---|---|
 | A1 | APROBADA | rev1, "A1 aprobada" |
-| A2 | APROBADA | rev2 |
-| A3 | APROBADA | rev2 |
+| A2 | APROBADA | rev2 (rev3 preparada: vestíbulo y P-01, pendiente de entrega) |
+| A3 | APROBADA | rev2 (rev3 preparada: cocina y sala abiertas, pendiente de entrega) |
 | A4 | APROBADA | rev2 |
 | A5 | APROBADA | rev3 |
-| A6 | EN REVISIÓN | rev2: portón, zacate block y cercha completa |
+| A6 | APROBADA | rev2 (falta rev3: vestíbulo N1, vano de la sala y referencia A7) |
+| A7 | EN REVISIÓN | rev0: puertas, ventanas y acabados |
 
-- **Última entrega:** A6 Cortes rev2.
+- **Última entrega:** A7 rev0.
+- **Siguiente paso:** visto bueno de la A7. Después entregar, una a la vez, A2 rev3, A3 rev3, A4 rev3 (referencia A7), A5 rev4 (referencia A7) y A6 rev3 (vestíbulo N1, vano de la sala y referencia A7).
 - **Siguiente paso:** visto bueno de la A6 y de sus supuestos PD. Luego, la siguiente lámina que indique el usuario (por evaluar: A7–A9 puertas, ventanas y acabados, o A11 escalera). Debe incluir la cubierta al 13 %, la cumbrera +10.50, la tapia posterior a +9.00, las ventilas con triángulo invertido y la galería con vidrio fijo.
 
 ## Decisiones que necesitan respuesta del usuario

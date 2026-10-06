@@ -73,3 +73,8 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - Paredes interiores: sin definir → **Steel Tech 0.12**.
   - Cercha en el A-A: interrumpida en patios y gradas → **completa (cercha del fondo en vista)**.
   - Frente N1: el corte pasa por el portón; ahora se dibuja la hoja cortada y la línea del lindero frontal.
+- **06-10-2026 — A6 aprobada; cambios de distribución por la A7.**
+  - **Acceso principal:** no había puerta principal → **vestíbulo de escalera cerrado en el N1 con P-01 de madera** (paredes Steel Tech 0.12).
+  - **Nivel 2:** se quitan las puertas de la cocina y de la sala y el muro de la cocina hacia el pasillo. La sala se abre 1.20 hacia el pasillo.
+  - **Puertas, ventanas y acabados:** previstos en A7–A9 → **una sola lámina A7**.
+  - **Láminas aprobadas afectadas:** A2, A3 y A6 (geometría); A4, A5 y A6 (referencia a "A7–A9").

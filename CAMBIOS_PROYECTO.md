@@ -83,3 +83,7 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - Entrepisos: C03 (nivel 2) y C04 (nivel 3) → **una sola C03, "PLANTA DE ENTREPISO 1 Y 2"** (entrepiso 1 = nivel 2; entrepiso 2 = nivel 3; armado idéntico). Solo cambia la leyenda (C03 rev1).
   - Numeración (usuario): **C04 techo, C05–C06 pórticos, C07 especificaciones**. Las referencias "C08" de C01–C03 se corrigen al terminar los estructurales.
 - **06-10-2026 — C04 aprobada (opción a).** Niveles de la lámina: +9,00 alero / +10,50 cumbrera → **+9,20 / +10,70**, por el peralte de la cercha y el clavador. **Láminas aprobadas afectadas: A5 y A6** (se corrigen al terminar los estructurales).
+- **06-10-2026 — Pórticos (C05 rev1).**
+  - C05 + C06 → una sola **C05**; C2 y A1 eliminados.
+  - **"Sin columna en el eje C del eje 1" → columna C1 en N2–N3 sobre la viga de transferencia VT-1 (diseño especial); sigue sin columna en el N1.**
+  - **Láminas aprobadas afectadas:** C03, C04, A3 y A4 (corregir); A5 y A7 (revisar). Se corrigen al terminar los estructurales.

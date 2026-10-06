@@ -221,3 +221,7 @@
   - **La cercha del eje C pasa continua sobre el patio P1.**
   - **El detalle de canoa va en la lámina pluvial**, no en la C04. [U]
 - **Niveles de la lámina de cubierta (C04 aprobada, opción a): +9,20 en el alero y +10,70 en la cumbrera.** Cordón inferior y cara superior de la V1 de corona: +9,00. Sustituye a +9,00/+10,50 de la A5/A6, que se corregirán al final. [U]
+- **Pórticos (06-10-2026):**
+  - **C05 y C06 se unifican en una sola lámina C05**, a 1:100. [U]
+  - **Se eliminan C2 (columna 4x4") y A1 (arriostre 4x4") de la referencia:** no se usan. [U]
+  - **Eje C en el eje 1:** lleva **columna C1 en los niveles 2 y 3**, apoyada en una **viga de transferencia VT-1** en el eje 1 a nivel del entrepiso 1 (N2), de **diseño especial** según el cálculo. **Sin columna en el nivel 1** (portón). [U]

@@ -18,11 +18,12 @@
 | A3 | APROBADA | rev3 |
 | A4 | APROBADA | rev3 |
 | A5 | APROBADA | rev4 |
-| A6 | EN REVISIÓN | rev3: vestíbulo N1, vano de la sala y referencia a la A7 |
+| A6 | APROBADA | rev3 |
 | A7 | APROBADA | rev1 |
+| A11 | EN REVISIÓN | rev0: escalera |
 
-- **Última entrega:** A6 rev3.
-- **Siguiente paso:** visto bueno de la A6 rev3. Con eso, todas las láminas A1–A7 quedan coordinadas. La siguiente lámina nueva la indica el usuario (por ejemplo, A11 escalera y detalles, que incluye el acabado de las gradas).
+- **Última entrega:** A11 rev0 (escalera).
+- **Siguiente paso:** visto bueno de la A11 y respuestas: acabado y material de las gradas, marcas comerciales [PR]. Luego, la siguiente lámina que indique el usuario (por ejemplo, la A10 de acabados de fachada o las estructurales).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

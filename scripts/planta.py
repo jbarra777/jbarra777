@@ -201,3 +201,132 @@ def section_mark(msp, label, sheet, a, b, look):
                 0.12, "A-CORTES", "MIDDLE_CENTER")
     e = msp.add_line(pa, pb, dxfattribs={"layer": "A-CORTES", "linetype": "PHANTOM"})
     e.dxf.ltscale = 0.05
+
+
+# ---------------------------------------------------------------- mobiliario (marco de diseño)
+def rect(msp, x0, y0, x1, y1, layer="A-MOBILIARIO"):
+    return poly(msp, [(x0, y0), (x1, y0), (x1, y1), (x0, y1)], layer)
+
+
+def bed(msp, x0, y0, x1, y1, head="x0"):
+    """Cama en el rectángulo dado; head indica el lado de la cabecera."""
+    rect(msp, x0, y0, x1, y1)
+    if head in ("x0", "x1"):
+        hx = x0 + 0.08 if head == "x0" else x1 - 0.08
+        px = x0 + 0.55 if head == "x0" else x1 - 0.55
+        rect(msp, min(hx, px), y0 + 0.08, max(hx, px), (y0 + y1) / 2 - 0.04)
+        rect(msp, min(hx, px), (y0 + y1) / 2 + 0.04, max(hx, px), y1 - 0.08)
+        fx = x0 + 0.75 if head == "x0" else x1 - 0.75
+        line(msp, (fx, y0), (fx, y1), "A-MOBILIARIO")
+    else:
+        hy = y0 + 0.08 if head == "y0" else y1 - 0.08
+        py = y0 + 0.55 if head == "y0" else y1 - 0.55
+        rect(msp, x0 + 0.08, min(hy, py), (x0 + x1) / 2 - 0.04, max(hy, py))
+        rect(msp, (x0 + x1) / 2 + 0.04, min(hy, py), x1 - 0.08, max(hy, py))
+        fy = y0 + 0.75 if head == "y0" else y1 - 0.75
+        line(msp, (x0, fy), (x1, fy), "A-MOBILIARIO")
+
+
+def wc(msp, x, y, facing):
+    """Inodoro con tanque contra el muro; (x, y) = centro del tanque; facing = (dx, dy)."""
+    f = Vec2(facing)
+    s = Vec2(-f.y, f.x)
+    c = Vec2(x, y)
+    tank = [c - s * 0.22, c + s * 0.22, c + s * 0.22 + f * 0.20, c - s * 0.22 + f * 0.20]
+    poly(msp, tank, "A-MOBILIARIO")
+    center = c + f * 0.45
+    msp.add_ellipse(P(*center), major_axis=P(*(f * 0.25)) - P(0, 0), ratio=0.70,
+                    dxfattribs={"layer": "A-MOBILIARIO"})
+
+
+def lav(msp, x0, y0, x1, y1):
+    rect(msp, x0, y0, x1, y1)
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    msp.add_ellipse(P(cx, cy), major_axis=Vec2(0.0, min(x1 - x0, y1 - y0) * 0.35) if False
+                    else P(min(x1 - x0, y1 - y0) * 0.30, 0) - P(0, 0), ratio=0.75,
+                    dxfattribs={"layer": "A-MOBILIARIO"})
+
+
+def shower(msp, x0, y0, x1, y1):
+    rect(msp, x0, y0, x1, y1)
+    line(msp, (x0, y0), (x1, y1), "A-MOBILIARIO")
+    line(msp, (x1, y0), (x0, y1), "A-MOBILIARIO")
+    msp.add_circle(P((x0 + x1) / 2, (y0 + y1) / 2), 0.04, dxfattribs={"layer": "A-MOBILIARIO"})
+
+
+def counter(msp, x0, y0, x1, y1):
+    rect(msp, x0, y0, x1, y1)
+
+
+def stove(msp, x0, y0, x1, y1):
+    rect(msp, x0, y0, x1, y1)
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    for dx in (-0.14, 0.14):
+        for dy in (-0.14, 0.14):
+            msp.add_circle(P(cx + dx, cy + dy), 0.08, dxfattribs={"layer": "A-MOBILIARIO"})
+
+
+def sink(msp, x0, y0, x1, y1):
+    rect(msp, x0, y0, x1, y1)
+    rect(msp, x0 + 0.06, y0 + 0.06, x1 - 0.06, y1 - 0.06)
+
+
+def chair(msp, x, y, facing):
+    f = Vec2(facing)
+    s = Vec2(-f.y, f.x)
+    c = Vec2(x, y)
+    pts = [c - s * 0.21 - f * 0.21, c + s * 0.21 - f * 0.21, c + s * 0.21 + f * 0.21,
+           c - s * 0.21 + f * 0.21]
+    poly(msp, pts, "A-MOBILIARIO")
+    back = [c - s * 0.21 - f * 0.21, c + s * 0.21 - f * 0.21, c + s * 0.21 - f * 0.15,
+            c - s * 0.21 - f * 0.15]
+    poly(msp, back, "A-MOBILIARIO")
+
+
+def sofa(msp, x0, y0, x1, y1, back="x1"):
+    rect(msp, x0, y0, x1, y1)
+    d = 0.20
+    if back == "x1":
+        rect(msp, x1 - d, y0, x1, y1)
+        rect(msp, x0, y0, x1 - d, y0 + d)
+        rect(msp, x0, y1 - d, x1 - d, y1)
+    elif back == "x0":
+        rect(msp, x0, y0, x0 + d, y1)
+        rect(msp, x0 + d, y0, x1, y0 + d)
+        rect(msp, x0 + d, y1 - d, x1, y1)
+    elif back == "y1":
+        rect(msp, x0, y1 - d, x1, y1)
+        rect(msp, x0, y0, x0 + d, y1 - d)
+        rect(msp, x1 - d, y0, x1, y1 - d)
+    else:
+        rect(msp, x0, y0, x1, y0 + d)
+        rect(msp, x0, y0 + d, x0 + d, y1)
+        rect(msp, x1 - d, y0 + d, x1, y1)
+
+
+def closet(msp, x0, y0, x1, y1, along="y"):
+    """Mueble de closet (0.60) con barra de colgar."""
+    rect(msp, x0, y0, x1, y1)
+    if along == "y":
+        xm = (x0 + x1) / 2
+        line(msp, (xm, y0 + 0.05), (xm, y1 - 0.05), "A-MOBILIARIO")
+    else:
+        ym = (y0 + y1) / 2
+        line(msp, (x0 + 0.05, ym), (x1 - 0.05, ym), "A-MOBILIARIO")
+
+
+def round_table(msp, x, y, r, n_chairs):
+    msp.add_circle(P(x, y), r, dxfattribs={"layer": "A-MOBILIARIO"})
+    for i in range(n_chairs):
+        a = 2 * math.pi * i / n_chairs + math.pi / 4
+        d = Vec2(math.cos(a), math.sin(a))
+        chair(msp, x + d.x * (r + 0.25), y + d.y * (r + 0.25), (-d.x, -d.y))
+
+
+def room_label(msp, name, x, y, dims=None, area=None, h=0.16):
+    s = name
+    if dims:
+        s += "\\P" + dims
+    if area is not None:
+        s += f"\\P{area:.2f} m²".replace(".", ",")
+    return mtext(msp, s, x, y, h, 4.0, "A-ESPACIOS")

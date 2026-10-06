@@ -25,10 +25,11 @@
 | C02 | APROBADA | rev0 (detalles F1/F2, pedestal y pletina [PR]) |
 | C03 | APROBADA | rev1 (entrepiso 1 y 2 en una sola lámina) |
 | C04 | APROBADA | rev0 (techo; niveles de lámina +9,20/+10,70, opción a) |
-| C05 | EN REVISIÓN | rev1 (pórticos longitudinales y transversales en una sola lámina; C1 C-1 en N2–N3 sobre VT-1) |
+| C06 | EN REVISIÓN | rev0 (especificaciones constructivas [PR]) |
+| C05 | APROBADA | rev1 (pórticos longitudinales y transversales en una sola lámina; C1 C-1 en N2–N3 sobre VT-1) |
 
-- **Última entrega:** C05 rev1 (pórticos unificados).
-- **Siguiente paso:** visto bueno de C05 rev1 y número de la lámina de especificaciones (C06 libre). Luego especificaciones. **Al terminar los estructurales:** corregir en C01–C03 las referencias "C08" → "C07", y en la A5 y la A6 los niveles de la lámina (+9,00/+10,50 → **+9,20 alero / +10,70 cumbrera**), por indicación del usuario. **Columna C1 del eje C en el eje 1 en N2–N3 sobre la VT-1:** corregir C03, C04, A3, A4 y revisar A5 y A7.
+- **Última entrega:** C06 rev0 (especificaciones).
+- **Siguiente paso:** visto bueno de C06. Después, las correcciones pendientes en las láminas aprobadas (abajo) y las láminas eléctricas, sanitarias y pluviales. **Al terminar los estructurales:** corregir en C01–C05 las referencias a la lámina de especificaciones ("C08"/"C07" → **"C06"**), y en la A5 y la A6 los niveles de la lámina (+9,00/+10,50 → **+9,20 alero / +10,70 cumbrera**), por indicación del usuario. **Columna C1 del eje C en el eje 1 en N2–N3 sobre la VT-1:** corregir C03, C04, A3, A4 y revisar A5 y A7.
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

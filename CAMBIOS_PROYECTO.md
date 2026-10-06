@@ -87,3 +87,4 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - C05 + C06 → una sola **C05**; C2 y A1 eliminados.
   - **"Sin columna en el eje C del eje 1" → columna C1 en N2–N3 sobre la viga de transferencia VT-1 (diseño especial); sigue sin columna en el N1.**
   - **Láminas aprobadas afectadas:** C03, C04, A3 y A4 (corregir); A5 y A7 (revisar). Se corrigen al terminar los estructurales.
+- **06-10-2026 — C05 aprobada.** Especificaciones: C07 → **C06** (usuario). Las referencias "C08"/"C07" de C01–C05 se corrigen al final.

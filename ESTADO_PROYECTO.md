@@ -32,9 +32,10 @@
 | C04 | APROBADA | rev1 |
 | C05 | APROBADA | rev2 |
 | C06 | APROBADA | rev1 |
+| S01 | EN REVISIÓN | rev0 entregada el 06-10-2026 |
 
-- **Última entrega:** E05 rev0, aprobada (juego eléctrico E01–E05 completo).
-- **Siguiente paso:** láminas sanitarias y pluviales (definir alcance y datos con el usuario).
+- **Última entrega:** S01 rev0 (agua potable), en revisión del usuario.
+- **Siguiente paso:** esperar la aprobación de la S01. Después, S02 aguas residuales y S03 pluviales (alcance en DECISIONES §16).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

@@ -241,3 +241,12 @@
   - medidor según la empresa distribuidora (PD);
   - **la salida de la secadora (240 V) no se dibuja ni se menciona en la planta del N1.** [U]
 
+## 16. Instalación sanitaria y pluvial (06-10-2026)
+- **Láminas:**
+  - **S01:** agua potable N1–N3, plantas a 1:100, isométrico y detalles.
+  - **S02:** aguas residuales N1–N3, plantas a 1:100, tanque séptico, drenaje y detalles.
+  - **S03:** aguas pluviales: planta, canoas, bajantes, salida a la cuneta y **detalle de canoa**. [U]
+- **Tanque séptico y drenaje:** esquema y dimensiones de la referencia **[PR]**, sujetos a la prueba de infiltración y al cálculo. [U]
+- **Agua caliente: solo en las duchas**, con el calentador de paso de cada baño. Lavatorios y fregadero solo con agua fría. [U]
+- **Agua potable:** conexión directa a la ESPH, **sin tanque ni bomba**. Diámetros, materiales, medidor y llaves **según la referencia [PR]**. [U]
+

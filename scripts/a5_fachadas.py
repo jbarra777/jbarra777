@@ -14,7 +14,7 @@ Model Space en metros: cada fachada en su propio origen (H horizontal, V = altur
 import cadlib as cl
 import hoja as H
 
-REV = "rev4"
+REV = "rev5"
 OUT = cl.ROOT / "planos" / "A5_fachadas"
 NAME = f"SR-A5_FACHADAS_{REV}"
 
@@ -120,6 +120,19 @@ class Elev:
             ht.paths.add_polyline_path([self.p(h0 + 0.05, v0 + 0.05), self.p(h1 - 0.05, v0 + 0.05),
                                         self.p(h1 - 0.05, v1 - 0.05), self.p(h0 + 0.05, v1 - 0.05)])
             ht.set_pattern_fill("DOTS", scale=0.95 * self.k)
+
+    def tag(self, code, h, v, target=None):
+        """Etiqueta de acabado de fachada (rev5: integra la lámina A10)."""
+        w, hh = 9.0 * self.k, 3.6 * self.k
+        x, y = self.p(h, v)
+        msp.add_lwpolyline([(x - w / 2, y - hh / 2), (x + w / 2, y - hh / 2), (x + w / 2, y + hh / 2),
+                            (x - w / 2, y + hh / 2)], close=True, dxfattribs={"layer": "F-TXT"})
+        cl.text(msp, code, (x, y), 1.8 * self.k, "F-TXT", "MIDDLE_CENTER")
+        if target:
+            tx, ty = self.p(*target)
+            sy = y - hh / 2 if ty < y else y + hh / 2
+            msp.add_line((x, sy), (tx, ty), dxfattribs={"layer": "F-TXT"})
+            msp.add_circle((tx, ty), 0.5 * self.k, dxfattribs={"layer": "F-TXT"})
 
     def text(self, s, h, v, size_mm=2.2, align="MIDDLE_CENTER", rot=0, layer="F-TXT"):
         return cl.text(msp, s, self.p(h, v), size_mm * self.k, layer, align, rot)
@@ -327,6 +340,21 @@ def lateral(ox, east_side):
 LE = lateral(60.0, True)
 LO = lateral(100.0, False)
 
+# ---------------------------------------------------------------- acabados de fachada (rev5)
+F.tag("Pd-D", 1.6, NIV["N3"] + 2.55)
+F.tag("Pd-D", 7.8, 2.70)
+F.tag("AL-1", 7.2, NIV["N3"] + 2.55, (7.2, NIV["N3"] + HEAD))
+F.tag("M-1", 1.6, 1.80)
+F.tag("M-1", 8.3, 0.50)
+F.tag("L-1", 1.6, NIV["CUB"] + 0.85)
+PO.tag("Pd-D", 5.5, NIV["N3"] + 2.55)
+PO.tag("AL-1", 1.8, NIV["N3"] + 2.55, (1.8, NIV["N3"] + HEAD))
+PO.tag("L-1", 1.6, NIV["CUB"] + 0.85)
+PO.tag("M-1", 1.4, 0.80, (0.24, 0.80))
+for L, east in ((LE, True), (LO, False)):
+    hm = ((Y_LP - Y_CUM) if east else Y_CUM)
+    L.tag("Pd-D", hm, 7.3)
+
 # ================================================================ hoja
 psp = doc.layouts.new("A5-FACHADAS")
 psp.page_setup(size=(cl.A1_W, cl.A1_H), margins=(0, 0, 0, 0), units="mm")
@@ -391,7 +419,7 @@ notas = [
     "HAY TAPIAS LATERALES EN LOS RETIROS. LA TAPIA DEL LINDERO POSTERIOR LLEGA HASTA LA VIGA "
     "CORONA DEL ÚLTIMO NIVEL (+9.00), SEGÚN NOTA 2.",
     "PORTÓN VEHICULAR Y PUERTA PEATONAL DE 2.40 m DE ALTURA. TIPOS DE VENTANAS Y PUERTAS EN "
-    "LÁMINA A7; ACABADOS DE FACHADA EN LÁMINA A10.",
+    "LÁMINA A7. ACABADOS DE FACHADA SEGÚN CUADRO DE ESTA LÁMINA (INTEGRA LA A10).",
 ]
 y = cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)]
                    + [cl.NOTA_PR], 2.1, 218)
@@ -421,12 +449,23 @@ for kind, lab in (("awn", "VENTILA ABATIBLE HACIA AFUERA (BISAGRA SUPERIOR)"),
     cl.text(psp, lab, (X3 + 18, y), 2.3, "A-TEXTO", "MIDDLE_LEFT")
     y -= 9
 
+y -= 2
+cl.text(psp, "ACABADOS DE FACHADA:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
+rows = [["CÓDIGO", "ELEMENTO", "ACABADO", "COLOR"],
+        ["Pd-D", "PAREDES EXTERNAS Y MUROS DE COLINDANCIA", "REPELLO GRUESO, ACABADO ESTUCO PULIDO",
+         "GRIS CONCRETO"],
+        ["AL-1", "VENTANAS (MARCOS)", "ALUMINIO Y VIDRIO (ARENADO EN BAÑOS Y V-05)", "NEGRO"],
+        ["M-1", "PORTÓN, PUERTA PEATONAL, CANOAS Y BAJANTES", "METAL (ACERO)", "NEGRO"],
+        ["L-1", "CUBIERTA", "LÁMINA ESTRUCTURAL CAL. 26", "NATURAL GALVANIZADA"]]
+cl.table(psp, X3, y - 7, [16, 76, 82, 40], rows, row_h=5.5, h=1.8,
+         aligns=["MIDDLE_CENTER", "MIDDLE_LEFT", "MIDDLE_LEFT", "MIDDLE_CENTER"])
+
 H.titleblock(doc, psp, "A5", "FACHADAS",
              ["FACHADA PRINCIPAL (NORTE).", "FACHADA POSTERIOR (SUR).", "FACHADA LATERAL ESTE.",
-              "FACHADA LATERAL OESTE.", "NOTAS.", ""],
-             [("2", "06-10-2026", "VENTILAS ABATIBLES; TAPIA POSTERIOR"),
-              ("3", "06-10-2026", "SÍMBOLO DE VENTILA INVERTIDO"),
-              ("4", "06-10-2026", "V-05 SALA ARENADO; REFERENCIA A7")])
+              "FACHADA LATERAL OESTE.", "NOTAS.", "ACABADOS DE FACHADA."],
+             [("3", "06-10-2026", "SÍMBOLO DE VENTILA INVERTIDO"),
+              ("4", "06-10-2026", "V-05 SALA ARENADO; REFERENCIA A7"),
+              ("5", "06-10-2026", "ACABADOS DE FACHADA (INTEGRA A10)")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

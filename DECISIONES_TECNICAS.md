@@ -196,3 +196,9 @@
   - La A5 (fachadas) usa su propia lista de notas: 1 medidas [PR], 2 tapia, 3 extractor, más 4–12 propias de las fachadas (rev1), igual que la referencia, que en fachadas lleva menos notas.
 - **Capas:** muros, puertas, ventanas, mobiliario, cotas, textos, ejes, tramas, estructura, etc. Cajetín como bloque con atributos. Cotas como entidades DIMENSION.
 - **Decimales:** cotas con punto (5.70); áreas y porcentajes con coma (179,53 m²), como la referencia.
+
+## 14. Decisiones del 06-10-2026 (A5 rev5 y estructurales)
+- **La A10 se integra en la A5:** no habrá lámina A10. [U]
+- **Acabados de fachada:** Pd-D (estuco pulido, gris concreto) en paredes externas y muros de colindancia; ventanas de aluminio negro; **portón, puerta peatonal, canoas y bajantes metálicos en negro**; **lámina cal. 26 natural galvanizada**. [U]
+- **Estructurales:** **usar las mismas secciones de los planos de referencia** (perfiles de columnas, vigas, cimentaciones, especificaciones), por indicación expresa del usuario, que es el ingeniero responsable. Se marcan **[PR]**. [U]
+- **Columnas en los ejes A y D, en los ejes 1 a 6** (marcos transversales A-C-D; sin columna en C1). [U]

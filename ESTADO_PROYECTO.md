@@ -17,7 +17,7 @@
 | A2 | APROBADA | rev3 |
 | A3 | APROBADA | rev3 |
 | A4 | APROBADA | rev3 |
-| A5 | APROBADA | rev4 |
+| A5 | EN REVISIÓN | rev5: acabados de fachada (integra la A10) |
 | A6 | APROBADA | rev3 |
 | A7 | APROBADA | rev1 |
 | A11 | APROBADA | rev1 |

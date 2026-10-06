@@ -3,7 +3,10 @@
 Criterio acordado: fachadas sencillas; en la principal las ventanas van de piso a
 2.20 m sobre NPT, alineadas entre niveles, con paño fijo inferior hasta 0.90 m (franja
 opaca entre ventana y losa). Posterior: antepecho común 0.90 m, patrón alineado que libra
-C6. Walk-in con vidrios fijos. Baños con vidrio arenado (sandblast).
+C6. Baños con vidrio arenado (sandblast).
+rev2: todas las ventanas ventilan: ventila abatible hacia afuera (bisagra superior); solo
+los paños inferiores de seguridad del frente son fijos; posterior operable en toda su área.
+Tapia del lindero posterior hasta la viga corona (+9.00), con flecha y nota.
 rev1: cubierta de lámina estructural cal. 26 a dos aguas (frente y fondo), pendiente 13 %,
 canoas frontal y posterior con 2 bajantes cada una; sin pretil ni tapias laterales.
 Model Space en metros: cada fachada en su propio origen (H horizontal, V = altura).
@@ -11,7 +14,7 @@ Model Space en metros: cada fachada en su propio origen (H horizontal, V = altur
 import cadlib as cl
 import hoja as H
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "A5_fachadas"
 NAME = f"SR-A5_FACHADAS_{REV}"
 
@@ -88,21 +91,34 @@ class Elev:
             self.line((h0, vh), (h0, v_bot), "F-OCULTO", 0.08)
             self.line((h1, vh), (h1, v_bot), "F-OCULTO", 0.08)
 
+    def awning(self, h0, h1, v0, v1):
+        """Ventila abatible hacia afuera (bisagra superior): trazos de las esquinas
+        inferiores al centro del lado superior."""
+        hc = (h0 + h1) / 2
+        self.line((h0 + 0.05, v0 + 0.05), (hc, v1 - 0.05), "F-OCULTO", 0.5 * self.k)
+        self.line((h1 - 0.05, v0 + 0.05), (hc, v1 - 0.05), "F-OCULTO", 0.5 * self.k)
+
     def window(self, h0, h1, v0, v1, mullions=0, transom=None, sand=False):
+        """Ventana: bajo el travesaño (transom) paño fijo de seguridad; el resto son
+        ventilas abatibles hacia afuera, una por cada paño entre parales."""
         self.rect(h0, v0, h1, v1)
         self.rect(h0 + 0.05, v0 + 0.05, h1 - 0.05, v1 - 0.05, "F-VIDRIO")
-        for i in range(1, mullions + 1):
-            hm = h0 + (h1 - h0) * i / (mullions + 1)
+        hs = [h0 + (h1 - h0) * i / (mullions + 1) for i in range(mullions + 2)]
+        for hm in hs[1:-1]:
             self.line((hm, v0), (hm, v1), "F-VANOS")
+        va = v0
         if transom:
-            self.line((h0, v0 + transom), (h1, v0 + transom), "F-VANOS")
+            va = v0 + transom
+            self.line((h0, va), (h1, va), "F-VANOS")
+            for a, b in zip(hs[:-1], hs[1:]):
+                self.text("F", (a + b) / 2, (v0 + va) / 2, 2.0)
+        for a, b in zip(hs[:-1], hs[1:]):
+            self.awning(a, b, va, v1)
         if sand:
             ht = msp.add_hatch(dxfattribs={"layer": "F-TRAMA"})
             ht.paths.add_polyline_path([self.p(h0 + 0.05, v0 + 0.05), self.p(h1 - 0.05, v0 + 0.05),
                                         self.p(h1 - 0.05, v1 - 0.05), self.p(h0 + 0.05, v1 - 0.05)])
             ht.set_pattern_fill("DOTS", scale=0.95 * self.k)
-        else:
-            self.glass(h0, v0, h1, v1)
 
     def text(self, s, h, v, size_mm=2.2, align="MIDDLE_CENTER", rot=0, layer="F-TXT"):
         return cl.text(msp, s, self.p(h, v), size_mm * self.k, layer, align, rot)
@@ -189,9 +205,7 @@ for lv in ("N2", "N3"):
     for (xa, xb), lab, mul, sand in VENT:
         F.window(hx(xb), hx(xa), v0, v0 + HEAD, mullions=mul, transom=PANO, sand=sand)
     F.line((0.15, v0 + HEAD + 0.0), (8.85, v0 + HEAD), "F-LINEAS")   # inicio franja opaca
-    F.text("VIDRIO ARENADO", hx(4.45), v0 + 1.55, 1.6, rot=90)
-    F.mtext("VIDRIO\\PFIJO", hx(7.75), v0 + 1.75, 1.6, 14)
-    F.mtext("PAÑO FIJO\\PINFERIOR", hx(2.35), v0 + 0.45, 1.6, 18)
+    F.text("VIDRIO ARENADO", hx(3.95) + 0.20, v0 + 1.10, 1.5, rot=90)
 # bajantes frontales: tramo en N1 oculto (portón y acceso peatonal), ver lámina pluvial
 for b0, b1 in BAJ:
     F.downspout(hx(b1), hx(b0), NIV["CUB"], 0.0, v_hidden=POR_H)
@@ -236,7 +250,6 @@ for lv in ("N2", "N3"):
     PO.window(*VPOST[0], v0 + SILL_R, v0 + HEAD, mullions=1)
     PO.window(*VPOST[1], v0 + SILL_R, v0 + HEAD, sand=(lv == "N3"))
     PO.window(*VPOST[2], v0 + SILL_R, v0 + HEAD, mullions=1)
-PO.text("VIDRIO FIJO", 7.30, NIV["N3"] + 2.45, 1.8)
 PO.text("SALA FAMILIAR", 4.5, NIV["N2"] + 0.45, 1.8)
 PO.text("SUITE 3", 4.5, NIV["N3"] + 0.45, 1.8)
 for b0, b1 in BAJ:
@@ -278,8 +291,25 @@ def lateral(ox, east_side):
         ang = math.degrees(math.atan2(PEND * (1 if h1 > h0 else -1), 1 if h1 > h0 else -1))
         ang = ang if -90 <= ang <= 90 else ang - 180 if ang > 0 else ang + 180
         L.text("PENDIENTE 13 %", hm, vm, 2.0, rot=ang)
-    for ya, yb in ((0.0, EY0), (EY1, Y_LP)):
-        L.mtext("RETIRO\\P(SIN TAPIA)", (hy(ya) + hy(yb)) / 2, 1.0, 1.8, 18)
+    L.mtext("RETIRO\\P(SIN TAPIA)", (hy(0.0) + hy(EY0)) / 2, 1.0, 1.8, 18)
+    L.mtext("RETIRO\\PPOSTERIOR", (hy(EY1) + hy(Y_LP)) / 2, 1.0, 1.8, 18)
+    # tapia del lindero posterior (vista de canto) hasta la viga corona
+    t0, t1 = sorted((hy(Y_LP - 0.15), hy(Y_LP)))
+    L.rect(t0, 0.0, t1, NIV["CUB"], "F-CONTORNO")
+    tip = (t1 if east_side else t0, 7.6)
+    tx = (hy(EY1) + hy(Y_LP)) / 2
+    for i, t in enumerate(("TAPIA LINDERO", "POSTERIOR HASTA", "VIGA CORONA DEL",
+                           "ÚLTIMO NIVEL", "(+9.00, VER NOTA 2)")):
+        L.text(t, tx, 6.0 - i * 0.32, 1.7)
+    a = L.p(tx, 6.25)
+    b = L.p(*tip)
+    msp.add_line(a, b, dxfattribs={"layer": "F-TXT"})
+    import math
+    d = math.atan2(b[1] - a[1], b[0] - a[0])
+    al, aw = 2.2 * L.k, 0.7 * L.k
+    msp.add_solid([b, (b[0] - al * math.cos(d) + aw * math.sin(d), b[1] - al * math.sin(d) - aw * math.cos(d)),
+                   (b[0] - al * math.cos(d) - aw * math.sin(d), b[1] - al * math.sin(d) + aw * math.cos(d))],
+                  dxfattribs={"layer": "F-TXT"})
     L.text("FRENTE", hy(0.0), -0.6, 2.2)
     L.text("FONDO", hy(Y_LP), -0.6, 2.2)
     for lv, lab in (("N1", "±0.00"), ("N2", "+3.00"), ("N3", "+6.00"), ("CUB", "+9.00"),
@@ -341,17 +371,24 @@ notas = [
     "TECHO SEGÚN PLANOS ESTRUCTURALES.",
     "AGUAS PLUVIALES: CANOA FRONTAL Y CANOA POSTERIOR, CADA UNA CON 2 BAJANTES (UNO EN CADA "
     "EXTREMO), CONDUCIDOS HACIA LA CUNETA DEL FRENTE. DIÁMETROS, UBICACIÓN DEFINITIVA Y "
-    "TRAZADO SEGÚN LÁMINA PLUVIAL.",
+    "TRAZADO SEGÚN LÁMINA PLUVIAL. CANOAS TAMBIÉN EN LOS BORDES DE CUBIERTA HACIA LOS PATIOS P1 "
+    "Y P2 DONDE SE REQUIERA.",
     "FACHADA PRINCIPAL: VENTANAS DE PISO A 2.20 m SOBRE NPT, ALINEADAS ENTRE NIVELES, CON "
-    "PAÑO FIJO INFERIOR HASTA 0.90 m Y FRANJA OPACA HASTA LA LOSA SUPERIOR (VIGAS).",
-    "VENTANAS DE LOS WALK-IN: VIDRIOS FIJOS.",
+    "PAÑO FIJO INFERIOR DE SEGURIDAD HASTA 0.90 m (F) Y FRANJA OPACA HASTA LA LOSA SUPERIOR "
+    "(VIGAS). SOBRE EL PAÑO FIJO, VENTILAS ABATIBLES HACIA AFUERA.",
+    "TODAS LAS VENTANAS SON DE VENTILACIÓN: VENTILA ABATIBLE HACIA AFUERA (BISAGRA SUPERIOR), "
+    "QUE ABIERTA FUNCIONA COMO ALERO ANTE LA LLUVIA. DONDE LA APERTURA HACIA AFUERA INTERFIERA "
+    "CON UN PASILLO SE USARÁ VENTANA CORREDIZA DE DOS PAÑOS MÓVIL-MÓVIL. SOLO SON FIJOS LOS "
+    "PAÑOS INFERIORES DE SEGURIDAD DE LA FACHADA PRINCIPAL.",
     "BAÑOS: VIDRIO ARENADO (SANDBLAST). EN LA ZONA DE DUCHA EL VIDRIO DEBE QUEDAR SELLADO Y "
     "CON ANTEPECHO IMPERMEABLE O PANEL OPACO INTERIOR (POR DEFINIR).",
     "FACHADA POSTERIOR: ANTEPECHO COMÚN DE 0.90 m Y DINTEL A 2.20 m SOBRE NPT, VENTANAS "
-    "ALINEADAS ENTRE LOS NIVELES 2 Y 3. LA VENTANA ANGOSTA (3.85 A 4.60) LIBRA LA COLUMNA C6.",
+    "ALINEADAS ENTRE LOS NIVELES 2 Y 3, OPERABLES EN TODA SU ÁREA (EL ANTEPECHO DA LA PROTECCIÓN). "
+    "LA VENTANA ANGOSTA (3.85 A 4.60) LIBRA LA COLUMNA C6.",
     "FACHADAS LATERALES: MUROS DE COLINDANCIA CIEGOS, CONTINUOS DESDE EL NIVEL 1 (EN EL NIVEL "
     "1 HASTA EL ENTREPISO +3.00), CON REMATE SUPERIOR SEGÚN LA PENDIENTE DE LA CUBIERTA. NO "
-    "HAY TAPIAS LATERALES EN LOS RETIROS.",
+    "HAY TAPIAS LATERALES EN LOS RETIROS. LA TAPIA DEL LINDERO POSTERIOR LLEGA HASTA LA VIGA "
+    "CORONA DEL ÚLTIMO NIVEL (+9.00), SEGÚN NOTA 2.",
     "PORTÓN VEHICULAR Y PUERTA PEATONAL DE 2.40 m DE ALTURA. TIPOS DE VENTANAS Y PUERTAS EN "
     "LÁMINAS A7 A A9; ACABADOS DE FACHADA EN LÁMINA A10.",
 ]
@@ -360,12 +397,18 @@ y = cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)
 y -= 4
 cl.text(psp, "SIMBOLOGÍA:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 y -= 10
-for kind, lab in (("glass", "VIDRIO CLARO"), ("sand", "VIDRIO ARENADO (SANDBLAST)"),
+for kind, lab in (("awn", "VENTILA ABATIBLE HACIA AFUERA (BISAGRA SUPERIOR)"),
+                  ("fix", "F = PAÑO FIJO DE SEGURIDAD"),
+                  ("sand", "VIDRIO ARENADO (SANDBLAST)"),
                   ("hid", "LÍNEA OCULTA (LOSA / NIVEL)")):
-    if kind == "glass":
+    if kind == "awn":
         cl.rect(psp, X3, y - 3, X3 + 14, y + 3, "F-VANOS")
-        psp.add_line((X3 + 5, y - 1.5), (X3 + 8, y + 1.5), dxfattribs={"layer": "F-VIDRIO"})
-        psp.add_line((X3 + 7, y - 1.5), (X3 + 10, y + 1.5), dxfattribs={"layer": "F-VIDRIO"})
+        for xa in (X3 + 0.5, X3 + 13.5):
+            e = psp.add_line((xa, y - 2.5), (X3 + 7, y + 2.5), dxfattribs={"layer": "F-OCULTO"})
+            e.dxf.ltscale = 0.5
+    elif kind == "fix":
+        cl.rect(psp, X3, y - 3, X3 + 14, y + 3, "F-VANOS")
+        cl.text(psp, "F", (X3 + 7, y), 2.0, "F-TXT", "MIDDLE_CENTER")
     elif kind == "sand":
         cl.rect(psp, X3, y - 3, X3 + 14, y + 3, "F-VANOS")
         hh = psp.add_hatch(dxfattribs={"layer": "F-TRAMA"})
@@ -381,7 +424,8 @@ H.titleblock(doc, psp, "A5", "FACHADAS",
              ["FACHADA PRINCIPAL (NORTE).", "FACHADA POSTERIOR (SUR).", "FACHADA LATERAL ESTE.",
               "FACHADA LATERAL OESTE.", "NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "CUBIERTA, VENTANAS POSTERIORES, SIN TAPIAS")])
+              ("1", "06-10-2026", "CUBIERTA, VENTANAS POSTERIORES, SIN TAPIAS"),
+              ("2", "06-10-2026", "VENTILAS ABATIBLES; TAPIA POSTERIOR")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

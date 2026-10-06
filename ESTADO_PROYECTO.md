@@ -14,23 +14,17 @@
 | Lámina | Estado | Motivo |
 |---|---|---|
 | A1 | APROBADA | "A1 aprobada" (06-10-2026) |
-| A2 | EN REVISIÓN | rev2: sin tapias laterales, nota de los muros de colindancia del N1 |
-| A3 | EN REVISIÓN | rev1: patrón de ventanas posteriores |
-| A4 | EN REVISIÓN | rev1: corrige el conflicto con C6 y aplica el patrón posterior |
-| A5 | EN REVISIÓN | rev1: cubierta a dos aguas 13 %, canoas, bajantes, ventanas posteriores, sin tapias |
+| A2 | EN REVISIÓN | rev2: sin tapias laterales, muros de colindancia del N1 |
+| A3 | EN REVISIÓN | rev2: notas de ventanas (todas ventilan) |
+| A4 | EN REVISIÓN | rev2: C6 corregido (rev1) y notas de ventanas |
+| A5 | EN REVISIÓN | rev2: ventilas abatibles, tapia posterior con flecha y nota |
 
-- **Última entrega:** A2 rev2, A3 rev1, A4 rev1 y A5 rev1, que aplican las decisiones del usuario del 06-10-2026.
-- **Siguiente paso:** esperar el visto bueno de esas cuatro revisiones y las respuestas de abajo.
-- **Siguiente lámina nueva**, cuando el usuario lo indique: A6 Cortes. Debe incluir la cubierta al 13 % y la cumbrera +10.50.
+- **Última entrega:** A3 rev2, A4 rev2 y A5 rev2 (la A2 sigue en rev2).
+- **Siguiente paso:** esperar el visto bueno de A2 rev2, A3 rev2, A4 rev2 y A5 rev2.
+- **Siguiente lámina nueva**, cuando el usuario lo indique: A6 Cortes. Debe incluir la cubierta al 13 %, la cumbrera +10.50, la tapia posterior a +9.00 y las ventilas.
 
 ## Decisiones que necesitan respuesta del usuario
-1. **Bajantes:** "2 bajantes a cada lado" se interpretó como 2 por canoa (frontal y posterior), uno en cada extremo. ¿Es correcto?
-2. **Bajantes frontales en el N1:** chocan con el portón (eje D) y con el acceso peatonal (eje A). En la A5 se dibujaron ocultos. ¿Van empotrados o se desplazan, por ejemplo a la pilastra B?
-3. **Bordes del techo hacia los patios P1 y P2:** el agua cae a los patios. ¿Se ponen canoas internas y cómo se conducen?
-4. **Cumbrera al centro** (y = 13.62, +10.50), con faldones iguales: supuesto.
-5. **Antepecho de 0.90 también en el baño de la suite 3** (fondo): supuesto.
-6. **Remate de los muros de colindancia** según la pendiente del techo, sin pretil: supuesto.
-7. **Tapia del lindero posterior:** ¿existe? ¿Con qué altura? (se mantiene la de la A2).
+1. **Galería del pasillo hacia P1** (rotulada "vidrio fijo" en A3/A4): ¿debe ser operable? ¿Ventila hacia el patio o corrediza móvil-móvil?
 
 ## Otros pendientes
 - **Lista y número definitivo de láminas.** Evaluar las combinaciones y si las aguas pluviales llevan lámina propia.

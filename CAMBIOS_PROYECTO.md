@@ -50,3 +50,9 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - **A1:** EN REVISIÓN → **APROBADA.**
   - **Láminas afectadas:** A2 (aprobada) → rev2; A3 (aprobada) → rev1; A4 → rev1; A5 → rev1. Todas quedan EN REVISIÓN.
   - **Corrección menor de presentación:** la marca de corte A del fondo tapaba la cota 3.43 en A2–A4 y se movió.
+- **06-10-2026 — Ventanas de ventilación y tapia posterior.**
+  - **Walk-in:** "vidrios fijos" (rev1) → **Vigente:** todas las ventanas ventilan. Solo son fijos los paños inferiores de seguridad del frente; arriba van **ventilas abatibles hacia afuera** (alero cuando llueve). Donde interfiera un pasillo, corrediza móvil-móvil.
+  - **Fachada posterior:** totalmente operable.
+  - **Tapia posterior:** confirmada, hasta la viga corona del último nivel (+9.00); flecha y nota en las fachadas.
+  - **Supuestos de la A5 rev1 confirmados:** 2 bajantes por canoa, ocultos en el N1 al frente; cumbrera al centro; antepecho de 0.90 en el baño de la suite 3; remate sin pretil. Canoas hacia los patios donde se requiera.
+  - **Láminas afectadas:** A3 → rev2 y A4 → rev2 (solo notas); A5 → rev2.

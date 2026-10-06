@@ -74,8 +74,8 @@
 - **Espesores:** muros exteriores 0.15 m e interiores 0.12 m. [U]
 - **Muros de colindancia** este y oeste a lo largo de toda la envolvente, ciegos. [U]
   - **Las paredes de la vivienda son la división en el lindero. No hay tapias laterales en los retiros.** En el N1 el muro de colindancia es continuo hasta el nivel de entrepiso (+3.00). [U 06-10-2026][A2 rev2]
-  - Remate superior según la pendiente de la cubierta (hastial), sin pretil. Supuesto, por confirmar. [A5 rev1]
-  - Tapia del lindero posterior: se mantiene la de la A2; existencia y altura por confirmar. [A2 rev2]
+  - Remate superior según la pendiente de la cubierta (hastial), sin pretil. [U]
+  - **Tapia del lindero posterior: existe y llega hasta la viga corona del último nivel (+9.00)** (nota general 2). En las fachadas laterales va con flecha y nota. [U][A5 rev2]
 - **Nota de tapia**, tomada de la referencia por indicación del usuario: "La tapia colindante de mampostería deberá prolongarse hasta el nivel de la viga corona del último nivel…". Es la nota general 2. [U]
 - **Columnas sobre el eje C**, en los ejes 2, 3, 4, 5 y 6 ("cada ~5 m ajustado a ejes"). [U]
   - Sección **0.30 × 0.30 PD**, con la cara oeste en x 4.69 para no invadir el descanso de la escalera. C6 queda al ras de la fachada posterior. [A2 rev1]
@@ -137,25 +137,30 @@
 ## 10. Ventanas y puertas
 - **Fachada principal, niveles 2 y 3: ventanas de piso a 2.20 m sobre el NPT**, alineadas entre niveles, con franja opaca hasta la losa. [U]
   - Posiciones en x local: dormitorio 0.70–2.90, baño 3.95–4.95, walk-in 6.40–8.20. [A3][A4][A5]
-  - **Protección: opción a, paño fijo inferior hasta 0.90 m** (incluido el baño). **No indicar nada sobre vidrio de seguridad en los planos.** [U]
-- **Walk-in: vidrios fijos** (frente y fondo). [U]
+  - **Protección: opción a, paño fijo inferior de seguridad hasta 0.90 m** (incluido el baño). **No indicar nada sobre vidrio de seguridad en los planos.** [U]
+  - **Solo los paños inferiores son fijos.** Los superiores son ventilas abatibles hacia afuera, también en los walk-in (reemplaza "walk-in con vidrios fijos"). [U]
+- **Criterio de ventanas: todas ventilan.** **Ventila abatible hacia afuera** (bisagra superior), que abierta sirve de alero cuando llueve. Donde la apertura hacia afuera interfiera con un pasillo, **corrediza de dos paños móvil-móvil**. [U]
 - **Baños de la fachada principal:** vidrio arenado (sandblast). [U]
 - **Ventanas hacia P1** desfasadas entre ambos lados del patio, para reducir las visuales cruzadas. [A3][A4]
 - **Puertas:** acceso a las suites y a la sala 0.90; baño y walk-in 0.80. Tipos y cuadros en las láminas A7–A9, **PENDIENTE**.
 - **Fachada posterior (N2 y N3): patrón común 0.70–2.90 / 3.85–4.60 / 6.40–8.20**, alineado entre niveles. La ventana angosta libra C6 (0.09 m hasta su cara). **Antepecho común de 0.90 m** y dintel a 2.20 m. [U][A3 rev1][A4 rev1][A5 rev1]
-  - Supuesto: el antepecho de 0.90 aplica también al baño de la suite 3 (vidrio arenado sobre la ducha). Por confirmar.
+  - El antepecho de 0.90 aplica también al baño de la suite 3 (vidrio arenado). [U]
+  - **Fachada posterior: operable en toda su área** (ventilas), ya que el antepecho da la protección. [U]
+  - PENDIENTE: ¿la galería del pasillo hacia P1 (hoy "vidrio fijo") debe ser operable?
 - **Portón vehicular y puerta peatonal: altura 2.40 m (confirmada).** [U]
 
 ## 11. Instalaciones (todo lo no indicado está PENDIENTE DE DEFINIR)
 - **Agua potable:** red pública de la **ESPH**, conexión directa desde la calle. [U]
 - **Aguas residuales:** **no hay alcantarillado**; tanque séptico y drenaje en el patio posterior. [U] Dimensionamiento y prueba de infiltración: PENDIENTE.
 - **Aguas pluviales:** a la **cuneta pública**. [U]
-  - **Canoas** en los bordes frontal y posterior de la cubierta, **2 bajantes en cada una** (interpretado como uno en cada extremo, 4 en total; por confirmar), conducidos hacia la **cuneta del frente**. [U]
-  - PENDIENTE: posición en el N1 de los bajantes frontales (chocan con el portón y el acceso peatonal); canoas internas en los bordes del techo hacia P1/P2; tubería de los bajantes posteriores bajo el N1.
+  - **Canoas** en los bordes frontal y posterior de la cubierta, **2 bajantes en cada una** (uno en cada extremo, 4 en total), conducidos hacia la **cuneta del frente**. [U]
+  - **Bajantes frontales ocultos en el N1** (portón y acceso peatonal). [U]
+  - **Canoas en los bordes de la cubierta hacia los patios P1 y P2 donde se requiera.** [U]
+  - PENDIENTE (lámina pluvial): diámetros, trazado y tubería de los bajantes posteriores bajo el N1.
 - **Electricidad y voz/datos:** PENDIENTE DE DEFINIR. No copiar circuitos ni tableros de la referencia.
 
 ## 12. Cubierta, acabados y detalles
-- **Techo: lámina estructural calibre 26, a dos aguas** (hacia el frente y hacia el fondo), **pendiente 13 %**. [U] Cumbrera al centro de la envolvente (y = 13.62): supuesto, por confirmar. Estructura de techo según los planos estructurales (PENDIENTE).
+- **Techo: lámina estructural calibre 26, a dos aguas** (hacia el frente y hacia el fondo), **pendiente 13 %**. [U] **Cumbrera al centro de la envolvente (y = 13.62, +10.50).** [U] Estructura de techo según los planos estructurales (PENDIENTE).
 - **Acabados de pisos, paredes y fachadas:** PENDIENTE DE DEFINIR (láminas A7–A10).
 - **Tapias laterales en los retiros: no hay.** [U]
 

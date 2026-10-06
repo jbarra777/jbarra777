@@ -20,7 +20,7 @@ import math
 import cadlib as cl
 import hoja as H
 
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "A6_cortes"
 NAME = f"SR-A6_CORTES_{REV}"
 
@@ -295,6 +295,9 @@ for v in (3.00, 6.00):
             A.wall_window(kind, ya, yb, v, top)
         else:
             A.wall(kind, ya, v, yb, top)
+# rev3: vestíbulo de escalera del N1 (paredes Steel Tech 0.12 en los ejes 4 y 5, cortadas)
+for ya, yb in ((ESC["y"][0] - 0.12, ESC["y"][0]), (ESC["y"][1], ESC["y"][1] + 0.12)):
+    A.steeltech(ya, 0.0, yb, 3.00 - LOSA)
 # tapia del lindero posterior (mampostería) hasta la viga corona
 A.masonry(Y_LP - E, -GRAVA, Y_LP, CUB)
 # columnas del eje C continuas N1-N3 (en vista, a plomo)
@@ -338,7 +341,7 @@ for v in (0.0, 3.00):
     A.rect(yA0, v + 9 * R - 0.15, yB1, v + 9 * R)
 # rótulos de recintos
 for txt, h, v in ((["ESTACIONAMIENTO"], 4.70, 1.40), (["JARDÍN SECO"], 9.01, 1.40),
-                  (["JARDÍN SECO"], 13.6, 1.40), (["GRADAS"], 18.23, 0.40),
+                  (["JARDÍN SECO"], 13.6, 1.40), (["VESTÍBULO Y GRADAS"], 18.23, 0.40),
                   (["JARDÍN SECO"], 22.3, 1.40), (["RETIRO", "FRONTAL"], 1.03, 1.40),
                   (["RETIRO", "POSTERIOR"], 26.85, 1.40),
                   (["SUITE 1"], 4.90, 4.40), (["PATIO P1"], 9.01, 4.40),
@@ -405,6 +408,9 @@ B.masonry(hx(0.0), -GRAVA, hx(E), RB)
 B.masonry(hx(W - E), -GRAVA, hx(W), RB)
 # columna C5 (en vista, continua) y entrepisos
 B.rect(hx(4.99), 0.0, hx(4.69), CUB)
+# rev3: vestíbulo del N1: pared del eje C cortada y pared del eje 5 en vista
+B.steeltech(hx(XC1), 0.0, hx(XC0), 3.00 - LOSA)
+B.rect(hx(XC1), 0.0, hx(E), 3.00 - LOSA - VIGA)
 for v in (3.00, 6.00):
     deck(B, hx(E), hx(X0), v)
     beam(B, hx(X0 - 0.075), v)
@@ -439,11 +445,15 @@ B.cielo(hx(E), hx(X0), 3.00 + CIELO)
 B.cielo(hx(E), hx(XC0), 6.00 + CIELO)
 # en vista: muro del eje 5 (puerta y ventana hacia P2) y viga del eje 5
 for v in (3.00, 6.00):
-    B.rect(hx(1.15), v, hx(0.25), v + PUERTA)
+    if v == 3.00:
+        B.rect(hx(X0), v, hx(E), v + CIELO)                       # vano 1.20 a la sala (rev3)
+        B.label(["VANO 1.20", "A SALA"], hx(0.75), v + 1.60, 1.6)
+    else:
+        B.rect(hx(1.15), v, hx(0.25), v + PUERTA)
     B.rect(hx(8.40), v + SILL, hx(5.40), v + HEAD)
     B.line((hx(6.90), v + SILL), (hx(6.90), v + HEAD))
     B.rect(hx(W - E), v - LOSA - VIGA, hx(X0), v)
-for txt, h, v in ((["PASILLO"], hx(0.75), 1.40), (["GRADAS"], hx(2.60), 0.40),
+for txt, h, v in ((["VESTÍBULO"], hx(0.75), 1.40), (["GRADAS"], hx(2.60), 0.40),
                   (["PATIO P2", "(JARDÍN SECO)"], hx(6.83), 1.40),
                   (["PASILLO"], hx(0.75), 5.45), (["GRADAS"], hx(2.60), 4.40),
                   (["PATIO P2", "(ABIERTO)"], hx(6.83), 3.60),
@@ -523,7 +533,7 @@ notas = [
     "ESCALERA EN U: 17 CONTRAHUELLAS DE 0.176 m Y HUELLA DE 0.28 m POR NIVEL; DESCANSOS A "
     "+1.59 Y +4.59. BARANDAS Y PASAMANOS EN LÁMINA A11.",
     "ALTURAS: PUERTAS 2.10 m; VENTANAS HACIA LOS PATIOS CON ANTEPECHO 0.90 m "
-    "Y DINTEL 2.20 m. TIPOS EN LÁMINAS A7 A A9.",
+    "Y DINTEL 2.20 m. TIPOS EN LÁMINA A7.",
     "CIMENTACIÓN SEGÚN PLANOS ESTRUCTURALES (NO SE DIBUJA EN ESTA LÁMINA).",
     "TRAZO DE LOS CORTES SEGÚN LÁMINAS A2 A A4.",
 ]
@@ -565,9 +575,9 @@ for i, (kind, lab) in enumerate(items):
     cl.text(psp, lab, (xx + 18, yy), 2.2, "A-TEXTO", "MIDDLE_LEFT")
 
 H.titleblock(doc, psp, "A6", "CORTES", ["CORTE A-A.", "CORTE B-B.", "NOTAS.", "SIMBOLOGÍA.", "", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "SISTEMA CONSTRUCTIVO, CERCHAS, MATERIALES"),
-              ("2", "06-10-2026", "PORTÓN, ZACATE BLOCK, CERCHA COMPLETA")], escalas="1:75")
+             [("1", "06-10-2026", "SISTEMA CONSTRUCTIVO, CERCHAS, MATERIALES"),
+              ("2", "06-10-2026", "PORTÓN, ZACATE BLOCK, CERCHA COMPLETA"),
+              ("3", "06-10-2026", "VESTÍBULO N1, VANO SALA, REFERENCIA A7")], escalas="1:75")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

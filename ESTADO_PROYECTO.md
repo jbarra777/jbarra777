@@ -15,21 +15,21 @@
 |---|---|---|
 | A1 | APROBADA | rev1, "A1 aprobada" |
 | A2 | APROBADA | rev3 |
-| A3 | EN REVISIÓN | rev4 (corrección: columna C1 eje C-1 y V-03 de 0,90) |
-| A4 | EN REVISIÓN | rev4 (corrección: columna C1 eje C-1 y V-03 de 0,90) |
-| A5 | EN REVISIÓN | rev6 (corrección: cubierta +9,20/+10,70 y V-03 de 0,90) |
-| A6 | EN REVISIÓN | rev4 (corrección: cubierta +9,20/+10,70) |
-| A7 | EN REVISIÓN | rev2 (corrección: V-03 de 0,90) |
+| A3 | APROBADA | rev4 |
+| A4 | APROBADA | rev4 |
+| A5 | APROBADA | rev6 |
+| A6 | APROBADA | rev4 |
+| A7 | APROBADA | rev2 |
 | A11 | APROBADA | rev1 |
-| C01 | EN REVISIÓN | rev1 (corrección: referencia C06; nota VT-1) |
-| C02 | EN REVISIÓN | rev1 (corrección: referencia C06) |
-| C03 | EN REVISIÓN | rev2 (corrección: C1 eje C-1 y VT-1; referencia C06) |
-| C04 | EN REVISIÓN | rev1 (corrección: C1 eje C-1; referencia C06) |
-| C05 | EN REVISIÓN | rev2 (corrección: referencia C06) |
-| C06 | EN REVISIÓN | rev1 (C06 aprobada; se eliminan las notas de materiales 8 y 9) |
+| C01 | APROBADA | rev1 |
+| C02 | APROBADA | rev1 |
+| C03 | APROBADA | rev2 |
+| C04 | APROBADA | rev1 |
+| C05 | APROBADA | rev2 |
+| C06 | APROBADA | rev1 |
 
-- **Última entrega:** correcciones pedidas por el usuario sobre láminas aprobadas: A3 rev4, A4 rev4, A5 rev6, A6 rev4, A7 rev2, C01 rev1, C02 rev1, C03 rev2, C04 rev1, C05 rev2 y C06 rev1.
-- **Siguiente paso:** visto bueno de las correcciones. Luego, láminas eléctricas, sanitarias y pluviales (incluido el detalle de canoa).
+- **Última entrega:** correcciones aprobadas (A3–A7, C01–C06).
+- **Siguiente paso:** láminas eléctricas (E). Luego sanitarias y pluviales (incluido el detalle de canoa).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

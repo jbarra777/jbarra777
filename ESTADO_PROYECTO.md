@@ -13,18 +13,17 @@
 ## Situación actual
 | Lámina | Estado | Motivo |
 |---|---|---|
-| A1 | APROBADA | "A1 aprobada" (06-10-2026) |
-| A2 | EN REVISIÓN | rev2: sin tapias laterales, muros de colindancia del N1 |
-| A3 | EN REVISIÓN | rev2: notas de ventanas (todas ventilan) |
-| A4 | EN REVISIÓN | rev2: C6 corregido (rev1) y notas de ventanas |
-| A5 | EN REVISIÓN | rev2: ventilas abatibles, tapia posterior con flecha y nota |
+| A1 | APROBADA | rev1, "A1 aprobada" |
+| A2 | APROBADA | rev2 |
+| A3 | APROBADA | rev2 |
+| A4 | APROBADA | rev2 |
+| A5 | EN REVISIÓN | rev3: símbolo de ventila invertido |
 
-- **Última entrega:** A3 rev2, A4 rev2 y A5 rev2 (la A2 sigue en rev2).
-- **Siguiente paso:** esperar el visto bueno de A2 rev2, A3 rev2, A4 rev2 y A5 rev2.
-- **Siguiente lámina nueva**, cuando el usuario lo indique: A6 Cortes. Debe incluir la cubierta al 13 %, la cumbrera +10.50, la tapia posterior a +9.00 y las ventilas.
+- **Última entrega:** A5 rev3.
+- **Siguiente paso:** visto bueno de la A5 rev3. Después, la **A6 Cortes** cuando el usuario lo indique. Debe incluir la cubierta al 13 %, la cumbrera +10.50, la tapia posterior a +9.00, las ventilas con triángulo invertido y la galería con vidrio fijo.
 
 ## Decisiones que necesitan respuesta del usuario
-1. **Galería del pasillo hacia P1** (rotulada "vidrio fijo" en A3/A4): ¿debe ser operable? ¿Ventila hacia el patio o corrediza móvil-móvil?
+- Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).
 
 ## Otros pendientes
 - **Lista y número definitivo de láminas.** Evaluar las combinaciones y si las aguas pluviales llevan lámina propia.

@@ -139,6 +139,7 @@
   - Posiciones en x local: dormitorio 0.70–2.90, baño 3.95–4.95, walk-in 6.40–8.20. [A3][A4][A5]
   - **Protección: opción a, paño fijo inferior de seguridad hasta 0.90 m** (incluido el baño). **No indicar nada sobre vidrio de seguridad en los planos.** [U]
   - **Solo los paños inferiores son fijos.** Los superiores son ventilas abatibles hacia afuera, también en los walk-in (reemplaza "walk-in con vidrios fijos"). [U]
+- **Simbología de ventila en elevación:** con la bisagra arriba, el **triángulo va invertido** (trazos de las esquinas superiores al centro inferior). [U][A5 rev3]
 - **Criterio de ventanas: todas ventilan.** **Ventila abatible hacia afuera** (bisagra superior), que abierta sirve de alero cuando llueve. Donde la apertura hacia afuera interfiera con un pasillo, **corrediza de dos paños móvil-móvil**. [U]
 - **Baños de la fachada principal:** vidrio arenado (sandblast). [U]
 - **Ventanas hacia P1** desfasadas entre ambos lados del patio, para reducir las visuales cruzadas. [A3][A4]
@@ -146,7 +147,7 @@
 - **Fachada posterior (N2 y N3): patrón común 0.70–2.90 / 3.85–4.60 / 6.40–8.20**, alineado entre niveles. La ventana angosta libra C6 (0.09 m hasta su cara). **Antepecho común de 0.90 m** y dintel a 2.20 m. [U][A3 rev1][A4 rev1][A5 rev1]
   - El antepecho de 0.90 aplica también al baño de la suite 3 (vidrio arenado). [U]
   - **Fachada posterior: operable en toda su área** (ventilas), ya que el antepecho da la protección. [U]
-  - PENDIENTE: ¿la galería del pasillo hacia P1 (hoy "vidrio fijo") debe ser operable?
+  - **El cerramiento del pasillo hacia P1 (galería) se mantiene en vidrio fijo.** [U]
 - **Portón vehicular y puerta peatonal: altura 2.40 m (confirmada).** [U]
 
 ## 11. Instalaciones (todo lo no indicado está PENDIENTE DE DEFINIR)

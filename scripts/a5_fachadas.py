@@ -14,7 +14,7 @@ Model Space en metros: cada fachada en su propio origen (H horizontal, V = altur
 import cadlib as cl
 import hoja as H
 
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "A5_fachadas"
 NAME = f"SR-A5_FACHADAS_{REV}"
 
@@ -92,11 +92,12 @@ class Elev:
             self.line((h1, vh), (h1, v_bot), "F-OCULTO", 0.08)
 
     def awning(self, h0, h1, v0, v1):
-        """Ventila abatible hacia afuera (bisagra superior): trazos de las esquinas
-        inferiores al centro del lado superior."""
+        """Ventila abatible hacia afuera (bisagra superior): triángulo invertido, trazos
+        de las esquinas superiores (lado de la bisagra) al centro del lado inferior
+        (convención indicada por el usuario, rev3)."""
         hc = (h0 + h1) / 2
-        self.line((h0 + 0.05, v0 + 0.05), (hc, v1 - 0.05), "F-OCULTO", 0.5 * self.k)
-        self.line((h1 - 0.05, v0 + 0.05), (hc, v1 - 0.05), "F-OCULTO", 0.5 * self.k)
+        self.line((h0 + 0.05, v1 - 0.05), (hc, v0 + 0.05), "F-OCULTO", 0.5 * self.k)
+        self.line((h1 - 0.05, v1 - 0.05), (hc, v0 + 0.05), "F-OCULTO", 0.5 * self.k)
 
     def window(self, h0, h1, v0, v1, mullions=0, transom=None, sand=False):
         """Ventana: bajo el travesaño (transom) paño fijo de seguridad; el resto son
@@ -404,7 +405,7 @@ for kind, lab in (("awn", "VENTILA ABATIBLE HACIA AFUERA (BISAGRA SUPERIOR)"),
     if kind == "awn":
         cl.rect(psp, X3, y - 3, X3 + 14, y + 3, "F-VANOS")
         for xa in (X3 + 0.5, X3 + 13.5):
-            e = psp.add_line((xa, y - 2.5), (X3 + 7, y + 2.5), dxfattribs={"layer": "F-OCULTO"})
+            e = psp.add_line((xa, y + 2.5), (X3 + 7, y - 2.5), dxfattribs={"layer": "F-OCULTO"})
             e.dxf.ltscale = 0.5
     elif kind == "fix":
         cl.rect(psp, X3, y - 3, X3 + 14, y + 3, "F-VANOS")
@@ -423,9 +424,9 @@ for kind, lab in (("awn", "VENTILA ABATIBLE HACIA AFUERA (BISAGRA SUPERIOR)"),
 H.titleblock(doc, psp, "A5", "FACHADAS",
              ["FACHADA PRINCIPAL (NORTE).", "FACHADA POSTERIOR (SUR).", "FACHADA LATERAL ESTE.",
               "FACHADA LATERAL OESTE.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "CUBIERTA, VENTANAS POSTERIORES, SIN TAPIAS"),
-              ("2", "06-10-2026", "VENTILAS ABATIBLES; TAPIA POSTERIOR")])
+             [("1", "06-10-2026", "CUBIERTA, VENTANAS POSTERIORES, SIN TAPIAS"),
+              ("2", "06-10-2026", "VENTILAS ABATIBLES; TAPIA POSTERIOR"),
+              ("3", "06-10-2026", "SÍMBOLO DE VENTILA INVERTIDO")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

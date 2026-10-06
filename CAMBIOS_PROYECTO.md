@@ -56,3 +56,7 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - **Tapia posterior:** confirmada, hasta la viga corona del último nivel (+9.00); flecha y nota en las fachadas.
   - **Supuestos de la A5 rev1 confirmados:** 2 bajantes por canoa, ocultos en el N1 al frente; cumbrera al centro; antepecho de 0.90 en el baño de la suite 3; remate sin pretil. Canoas hacia los patios donde se requiera.
   - **Láminas afectadas:** A3 → rev2 y A4 → rev2 (solo notas); A5 → rev2.
+- **06-10-2026 — Símbolo de ventila y aprobaciones.**
+  - **Símbolo de ventila:** Claude lo dibujó con el vértice arriba (rev2). → **Vigente:** con la bisagra arriba el triángulo va **invertido** (A5 rev3). **No repetir** en cortes ni en los cuadros de ventanas.
+  - **Galería del pasillo hacia P1:** se mantiene en vidrio fijo.
+  - **Aprobadas:** A2 rev2, A3 rev2 y A4 rev2.

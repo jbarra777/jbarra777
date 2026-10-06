@@ -162,7 +162,8 @@
   - **Sin puerta en la cocina ni en la sala.** Se quita el muro del eje B entre la cocina y el pasillo (zona abierta). Abertura a la sala de 1.20 (x 0.15–1.35) en el muro del eje 5, hasta el cielo.
 - **Vestíbulo de escalera cerrado en el N1:** paredes Steel Tech de 0.12 en los ejes 4, C y 5 alrededor de las gradas; P-01 en el pasillo sobre la línea del eje 4. [U]
 - **Ventanas:** todas de aluminio y vidrio. **Vidrio arenado en V-03, V-05 (baño y sala) y V-11.** Galería V-13 con vidrio fijo de piso a cielo (2.30 × 2.70). V-10 de la cocina con antepecho de 0.90. [U]
-- **Vestíbulo del N1:** piso PI-B (contrapiso) y paredes Pd-A. **Acabado de las gradas: se define en la A11.** [U]
+- **Vestíbulo del N1:** piso PI-B (contrapiso) y paredes Pd-A. **Gradas y descansos: porcelanato PI-A antideslizante con nariz; losa de escalera de concreto armado (según estructural).** [U]
+- **Barandas y pasamanos (A11):** acero inoxidable SS 304 "o similar", sin marcas comerciales; **sin citas normativas en los planos**. [U]
 - **Acabados (como la referencia):** paredes Pd-A interiores, Pd-B baños, Pd-C salpicadero, Pd-D exteriores; **un mismo piso (PI-A) en interiores y baños**; **"ACABADO EN CIELOS": cielo raso tipo gypsum**. [U]
 - **Láminas de puertas, ventanas y acabados: una sola, la A7**, con las tres plantas. Las A8 y A9 no se hacen. [U]
 - **Fachada posterior (N2 y N3): patrón común 0.70–2.90 / 3.85–4.60 / 6.40–8.20**, alineado entre niveles. La ventana angosta libra C6 (0.09 m hasta su cara). **Antepecho común de 0.90 m** y dintel a 2.20 m. [U][A3 rev1][A4 rev1][A5 rev1]

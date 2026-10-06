@@ -22,7 +22,7 @@
 | A5 | Fachadas | Principal 1:50, posterior 1:75, laterales 1:100, cubierta a dos aguas, notas | APROBADA | `planos/A5_fachadas/SR-A5_FACHADAS_rev4.*` | rev4 aprobada (06-10-2026). |
 | A6 | Cortes | Corte A-A (x = 3.00) y corte B-B (y = 18.25) a 1:75, sistema constructivo, cerchas, materiales, vestíbulo del N1, notas | APROBADA | `planos/A6_cortes/SR-A6_CORTES_rev3.*` | rev3: vestíbulo del N1, vano de la sala y referencia a la A7. Aprobada (06-10-2026). |
 | A7 | Puertas, ventanas y acabados | Plantas N1–N3 a 1:100 con etiquetas, cuadros de puertas y ventanas, acabados de paredes, pisos y cielos, detalles de puertas y ventanas, notas | APROBADA | `planos/A7_puertas_ventanas/SR-A7_PUERTAS_VENTANAS_rev1.*` | rev1 aprobada (06-10-2026). Lámina única; las A8 y A9 no se hacen. |
-| A11 | Escalera | Planta 1:25, corte 1:25 con barandas, detalle de escalón, anclaje y detalle de baranda y pasamanos, notas | EN REVISIÓN | `planos/A11_escalera/SR-A11_ESCALERA_rev0.*` | Organización y textos de la ARQ_11 de la referencia [PR], por indicación del usuario. Pendientes: acabado y material de las gradas, marcas comerciales. |
+| A11 | Escalera | Planta 1:25, corte 1:25 con barandas, detalle de escalón, anclaje y detalle de baranda y pasamanos, notas | EN REVISIÓN | `planos/A11_escalera/SR-A11_ESCALERA_rev1.*` | rev1: gradas con PI-A antideslizante, sin citas normativas ni marcas (o similar). Falta el visto bueno. |
 
 ## B) Láminas previstas o necesarias del proyecto actual
 Las justifica una referencia cruzada desde las láminas ya desarrolladas o un requisito propio de esta vivienda. **El código, el nombre definitivo y la posible combinación están por confirmar.**

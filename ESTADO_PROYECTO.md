@@ -20,10 +20,10 @@
 | A5 | APROBADA | rev4 |
 | A6 | APROBADA | rev3 |
 | A7 | APROBADA | rev1 |
-| A11 | EN REVISIÓN | rev0: escalera |
+| A11 | EN REVISIÓN | rev1: acabado de gradas, sin citas ni marcas |
 
-- **Última entrega:** A11 rev0 (escalera).
-- **Siguiente paso:** visto bueno de la A11 y respuestas: acabado y material de las gradas, marcas comerciales [PR]. Luego, la siguiente lámina que indique el usuario (por ejemplo, la A10 de acabados de fachada o las estructurales).
+- **Última entrega:** A11 rev1.
+- **Siguiente paso:** visto bueno de la A11 rev1 y decidir si se hace la A7 rev2 (quitar "gradas" de PI-B). Luego, la siguiente lámina que indique el usuario (por ejemplo, la A10 de acabados de fachada o las estructurales).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

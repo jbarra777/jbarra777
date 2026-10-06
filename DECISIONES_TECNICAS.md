@@ -202,3 +202,7 @@
 - **Acabados de fachada:** Pd-D (estuco pulido, gris concreto) en paredes externas y muros de colindancia; ventanas de aluminio negro; **portón, puerta peatonal, canoas y bajantes metálicos en negro**; **lámina cal. 26 natural galvanizada**. [U]
 - **Estructurales:** **usar las mismas secciones de los planos de referencia** (perfiles de columnas, vigas, cimentaciones, especificaciones), por indicación expresa del usuario, que es el ingeniero responsable. Se marcan **[PR]**. [U]
 - **Columnas en los ejes A y D, en los ejes 1 a 6** (marcos transversales A-C-D; sin columna en C1). [U]
+- **Secciones de la referencia [PR] (C03 / C02 de RIVERGRAND):** columna **C1 = tubo de acero 6×6" (150 × 150) en 3,17 mm**; C2 = 4×4" en 3,17 mm; viga **V1 = 4×8" en 3,17 mm**; arriostre **A1 = 4×4" en 3,17 mm**; pedestal 0,30 × 0,30 con 4 #4 y estribos #3 @10 cm; pletina de 270 × 270 mm; placas **F1 (centrada) y F2 (excéntrica, en lindero) de 1,65 × 1,65 × 0,25** con malla #4 @20 cm; viga riostra **VA1 de 0,20 × 0,40 con 6 #4 y aros #3 @20 cm**. [U][PR]
+- **Columnas del eje C:** tubo C1 de 0.15 **forrado a 0.30 × 0.30** (las plantas aprobadas no cambian). [U]
+- **Capacidad del suelo: qadm = 12 t/m² (valor de la referencia) [PR], a verificar con un estudio de suelos.** [U]
+- **Juego estructural:** C01 cimentaciones, C02 detalles de cimentación, C03–C04 entrepisos, C05 techo, C06–C07 pórticos, C08 especificaciones. [U]

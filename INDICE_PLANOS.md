@@ -29,7 +29,7 @@ Las justifica una referencia cruzada desde las láminas ya desarrolladas o un re
 
 | Código tentativo | Lámina | Por qué se necesita en este proyecto | Estado |
 |---|---|---|---|
-| Estructural (número por definir) | Cimentación, entrepisos de N2 y N3, cubierta, pórticos o detalles, especificaciones | Requisito de trámite. Contenido según el sistema estructural, **PENDIENTE DE DEFINIR**. | PENDIENTE |
+| C01–C08 | Estructurales: C01 cimentaciones, C02 detalles de cimentación, C03–C04 entrepisos N2 y N3, C05 techo, C06–C07 pórticos, C08 especificaciones | Juego aprobado por el usuario. Secciones de la referencia [PR] por su indicación. | C01 rev0 EN REVISIÓN (`planos/C01_cimentaciones/SR-C01_CIMENTACIONES_rev0.*`); C02–C08 PENDIENTES |
 | Eléctrica (número por definir) | Iluminación, tomacorrientes, diagrama unifilar, tableros, simbología y notas | Requisito de trámite. El N1 es reducido, así que se puede evaluar combinar. | PENDIENTE |
 | Sanitaria: agua potable (número por definir) | Acometida de la ESPH y distribución por nivel | Requisito de trámite. | PENDIENTE |
 | Sanitaria: aguas residuales (número por definir) | Distribución por nivel, ductos de las suites 2 y 3, tanque séptico y drenaje | No hay alcantarillado. Hay ductos pendientes. | PENDIENTE |

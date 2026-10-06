@@ -21,9 +21,10 @@
 | A6 | APROBADA | rev3 |
 | A7 | APROBADA | rev1 |
 | A11 | APROBADA | rev1 |
+| C01 | EN REVISIÓN | rev0: cimentaciones (secciones de la referencia [PR]) |
 
-- **Última entrega:** A11 rev1 (aprobada). La A7 se deja como está (el usuario no quiere rev2 por la mención de las gradas en PI-B).
-- **Siguiente paso:** la siguiente lámina la indica el usuario. Luego, la siguiente lámina que indique el usuario (por ejemplo, la A10 de acabados de fachada o las estructurales).
+- **Última entrega:** A5 rev5 (acabados de fachada, integra la A10) y C01 rev0 (cimentaciones).
+- **Siguiente paso:** visto bueno de A5 rev5 y C01. Luego C02 (detalles de cimentación), C03–C04 (entrepisos), C05 (techo), C06–C07 (pórticos) y C08 (especificaciones).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

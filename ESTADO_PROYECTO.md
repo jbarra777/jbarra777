@@ -15,21 +15,21 @@
 |---|---|---|
 | A1 | APROBADA | rev1, "A1 aprobada" |
 | A2 | APROBADA | rev3 |
-| A3 | APROBADA | rev3 |
-| A4 | APROBADA | rev3 |
-| A5 | APROBADA | rev5 |
-| A6 | APROBADA | rev3 |
-| A7 | APROBADA | rev1 |
+| A3 | EN REVISIÓN | rev4 (corrección: columna C1 eje C-1 y V-03 de 0,90) |
+| A4 | EN REVISIÓN | rev4 (corrección: columna C1 eje C-1 y V-03 de 0,90) |
+| A5 | EN REVISIÓN | rev6 (corrección: cubierta +9,20/+10,70 y V-03 de 0,90) |
+| A6 | EN REVISIÓN | rev4 (corrección: cubierta +9,20/+10,70) |
+| A7 | EN REVISIÓN | rev2 (corrección: V-03 de 0,90) |
 | A11 | APROBADA | rev1 |
-| C01 | APROBADA | rev0 (VA1 bajo la tapia posterior y F2 hacia los retiros: aprobados) |
-| C02 | APROBADA | rev0 (detalles F1/F2, pedestal y pletina [PR]) |
-| C03 | APROBADA | rev1 (entrepiso 1 y 2 en una sola lámina) |
-| C04 | APROBADA | rev0 (techo; niveles de lámina +9,20/+10,70, opción a) |
-| C06 | EN REVISIÓN | rev0 (especificaciones constructivas [PR]) |
-| C05 | APROBADA | rev1 (pórticos longitudinales y transversales en una sola lámina; C1 C-1 en N2–N3 sobre VT-1) |
+| C01 | EN REVISIÓN | rev1 (corrección: referencia C06; nota VT-1) |
+| C02 | EN REVISIÓN | rev1 (corrección: referencia C06) |
+| C03 | EN REVISIÓN | rev2 (corrección: C1 eje C-1 y VT-1; referencia C06) |
+| C04 | EN REVISIÓN | rev1 (corrección: C1 eje C-1; referencia C06) |
+| C05 | EN REVISIÓN | rev2 (corrección: referencia C06) |
+| C06 | EN REVISIÓN | rev1 (C06 aprobada; se eliminan las notas de materiales 8 y 9) |
 
-- **Última entrega:** C06 rev0 (especificaciones).
-- **Siguiente paso:** visto bueno de C06. Después, las correcciones pendientes en las láminas aprobadas (abajo) y las láminas eléctricas, sanitarias y pluviales. **Al terminar los estructurales:** corregir en C01–C05 las referencias a la lámina de especificaciones ("C08"/"C07" → **"C06"**), y en la A5 y la A6 los niveles de la lámina (+9,00/+10,50 → **+9,20 alero / +10,70 cumbrera**), por indicación del usuario. **Columna C1 del eje C en el eje 1 en N2–N3 sobre la VT-1:** corregir C03, C04, A3, A4 y revisar A5 y A7.
+- **Última entrega:** correcciones pedidas por el usuario sobre láminas aprobadas: A3 rev4, A4 rev4, A5 rev6, A6 rev4, A7 rev2, C01 rev1, C02 rev1, C03 rev2, C04 rev1, C05 rev2 y C06 rev1.
+- **Siguiente paso:** visto bueno de las correcciones. Luego, láminas eléctricas, sanitarias y pluviales (incluido el detalle de canoa).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

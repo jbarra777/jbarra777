@@ -20,7 +20,7 @@ import math
 import cadlib as cl
 import hoja as H
 
-REV = "rev3"
+REV = "rev4"
 OUT = cl.ROOT / "planos" / "A6_cortes"
 NAME = f"SR-A6_CORTES_{REV}"
 
@@ -36,8 +36,9 @@ CONTRA, GRAVA = 0.10, 0.25                      # contrapiso (usuario) / espesor
 CIELO = 2.70
 PEND = 0.13
 Y_CUM = (EY0 + EY1) / 2
-CUB, CUM = 9.00, 9.00 + PEND * (Y_CUM - EY0)
-CLAV = 0.08                                     # clavador (representación)
+CUB, ALE = 9.00, 9.20                           # viga corona / lámina en el alero (C04)
+CUM = ALE + PEND * (Y_CUM - EY0)                # 10.70
+CLAV = 0.10                                     # clavador (representación)
 SILL, HEAD, PUERTA = 0.90, 2.20, 2.10           # usuario
 XA = 3.0                                        # trazo corte A-A
 YB = 18.25                                      # trazo corte B-B
@@ -46,7 +47,7 @@ K = 0.075                                       # m de modelo por mm de papel (1
 
 
 def roof_h(y):
-    return CUB + PEND * ((y - EY0) if y <= Y_CUM else (EY1 - y))
+    return ALE + PEND * ((y - EY0) if y <= Y_CUM else (EY1 - y))
 
 
 doc = cl.new_doc()
@@ -313,10 +314,10 @@ for ya, yb in ((EY0, P1["y"][0]), (P1["y"][1], EY1)):
     else:
         purlins(A, ya, yb)
 truss_elev(A, EY0, EY1)                     # cercha del fondo en vista, completa (usuario)
-A.canoa(EY0, CUB, -1)
-A.canoa(EY1, CUB, +1)
+A.canoa(EY0, ALE, -1)
+A.canoa(EY1, ALE, +1)
 A.canoa(P1["y"][1], roof_h(P1["y"][1]), -1)
-A.poly([(EY0, CUB), (Y_CUM, CUM), (EY1, CUB)], "S-OCULTO")       # remate muro de lindero
+A.poly([(EY0, ALE), (Y_CUM, CUM), (EY1, ALE)], "S-OCULTO")       # remate muro de lindero
 # cielos de gypsum (N2 y N3)
 for v in (3.00, 6.00):
     segs = [(EY0 + E, P1["y"][0] - E), (P1["y"][1] + E, ESC["y"][0] - E),
@@ -369,7 +370,7 @@ A.label(["CANOA HACIA P1"], P1["y"][1] - 0.15, roof_h(P1["y"][1]) + 0.55, 1.6)
 # niveles
 for v, lab in ((0.0, "NPT ±0.00"), (3.00, "NPT +3.00"), (5.70, "CIELO +5.70"),
                (6.00, "NPT +6.00"), (8.70, "CIELO +8.70"), (CUB, "VIGA CORONA +9.00"),
-               (CUM, "CUMBRERA +10.50")):
+               (CUM, "CUMBRERA +10.70")):
     A.level(Y_LP + 0.6, v, lab)
 # cotas
 cv = [0.0, 3.00 - LOSA - VIGA, 3.00, 3.00 + CIELO, 6.00, 6.00 + CIELO, CUB, CUM]
@@ -524,7 +525,7 @@ notas = [
     "TAPIA POSTERIOR Y FRENTE DEL NIVEL 1 (PORTÓN) EN MAMPOSTERÍA. PAREDES INTERIORES STEEL TECH "
     "DE 0.12 m.",
     "CUBIERTA: LÁMINA ESTRUCTURAL CAL. 26 SOBRE CLAVADORES Y CERCHAS METÁLICAS EN LA DIRECCIÓN "
-    "DE LA PENDIENTE (13 %), CORDÓN INFERIOR A +9.00 Y CUMBRERA +10.50. EN EL CORTE A-A SE "
+    "DE LA PENDIENTE (13 %), CORDÓN INFERIOR A +9.00 Y CUMBRERA +10.70 (LÁMINA +9.20 EN EL ALERO, VER C04). EN EL CORTE A-A SE "
     "DIBUJA LA CERCHA DEL FONDO EN VISTA, COMPLETA. GEOMETRÍA Y PERFILES DE CERCHAS Y CLAVADORES "
     "SEGÚN PLANOS ESTRUCTURALES (PD). CANOAS EN FRENTE, FONDO Y BORDES HACIA "
     "LOS PATIOS DONDE SE REQUIERA.",
@@ -575,9 +576,9 @@ for i, (kind, lab) in enumerate(items):
     cl.text(psp, lab, (xx + 18, yy), 2.2, "A-TEXTO", "MIDDLE_LEFT")
 
 H.titleblock(doc, psp, "A6", "CORTES", ["CORTE A-A.", "CORTE B-B.", "NOTAS.", "SIMBOLOGÍA.", "", ""],
-             [("1", "06-10-2026", "SISTEMA CONSTRUCTIVO, CERCHAS, MATERIALES"),
-              ("2", "06-10-2026", "PORTÓN, ZACATE BLOCK, CERCHA COMPLETA"),
-              ("3", "06-10-2026", "VESTÍBULO N1, VANO SALA, REFERENCIA A7")], escalas="1:75")
+             [("2", "06-10-2026", "PORTÓN, ZACATE BLOCK, CERCHA COMPLETA"),
+              ("3", "06-10-2026", "VESTÍBULO N1, VANO SALA, REFERENCIA A7"),
+              ("4", "06-10-2026", "LÁMINA +9.20 ALERO / +10.70 CUMBRERA (C04)")], escalas="1:75")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

@@ -88,3 +88,9 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - **"Sin columna en el eje C del eje 1" → columna C1 en N2–N3 sobre la viga de transferencia VT-1 (diseño especial); sigue sin columna en el N1.**
   - **Láminas aprobadas afectadas:** C03, C04, A3 y A4 (corregir); A5 y A7 (revisar). Se corrigen al terminar los estructurales.
 - **06-10-2026 — C05 aprobada.** Especificaciones: C07 → **C06** (usuario). Las referencias "C08"/"C07" de C01–C05 se corrigen al final.
+- **06-10-2026 — Correcciones sobre láminas aprobadas (pedidas por el usuario).**
+  - Referencias a especificaciones: "C08"/"C07" → **C06** (C01–C05).
+  - Cubierta: +9,00/+10,50 → **+9,20 alero / +10,70 cumbrera** (A5 rev6, A6 rev4).
+  - C1 del eje C en el eje 1 (N2–N3, sobre VT-1): C03 rev2, C04 rev1, A3 rev4, A4 rev4.
+  - **V-03: 1,00 → 0,90** (x 3,76–4,66) en A3, A4, A5 y A7 rev2.
+  - C06 rev1: notas de materiales 8 y 9 eliminadas.

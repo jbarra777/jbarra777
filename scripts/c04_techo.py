@@ -14,7 +14,7 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "C04_techo"
 NAME = f"SR-C04_TECHO_{REV}"
 LAYOUT = "C04-TECHO"
@@ -67,7 +67,7 @@ for (x0, x1), (y0, y1), lab in ((P1x, P1y, "PATIO P1 (ABIERTO, SIN CUBIERTA)"),
 
 # ---------------------------------------------------------------- columnas C1 y vigas de corona V1
 COLS = [(XA, y) for y in YA.values()] + [(XD, y) for y in YA.values()] + \
-       [(XC, y) for y in H.COLS.values()]
+       [(XC, y) for y in H.COLS.values()] + [(XC, EY0 + 0.15)]      # C-1: N2-N3 sobre VT-1
 for x, y in COLS:
     pts = [P(x - TUBO / 2, y - TUBO / 2), P(x + TUBO / 2, y - TUBO / 2),
            P(x + TUBO / 2, y + TUBO / 2), P(x - TUBO / 2, y + TUBO / 2)]
@@ -340,14 +340,15 @@ notas = [
     "NIVELES DE LÁMINA RESULTANTES DE LA CERCHA: +9,20 EN EL ALERO Y +10,70 EN LA CUMBRERA "
     "(A5 Y A6 INDICAN +9,00 Y +10,50). PENDIENTE DE CONFIRMAR (PD).",
     "UNIONES SOLDADAS Y VERIFICACIÓN DE PERFILES SEGÚN MEMORIA DE CÁLCULO (PD).",
-    "MATERIALES, PROTECCIÓN ANTICORROSIVA Y ESPECIFICACIONES SEGÚN LÁMINA C07.",
+    "MATERIALES, PROTECCIÓN ANTICORROSIVA Y ESPECIFICACIONES SEGÚN LÁMINA C06.",
 ]
 cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.0, 148)
 
 H.titleblock(doc, psp, "C04", "TECHO",
              ["PLANTA DE TECHO.", "CERCHA TÍPICA CE-1.", "SECCIÓN TÍPICA DE CUBIERTA.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="1:50 / INDICADAS")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "06-10-2026", "C1 EJE C-1 HASTA CORONA; REFERENCIA A C06")], escalas="1:50 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

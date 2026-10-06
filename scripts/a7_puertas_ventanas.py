@@ -3,7 +3,7 @@
 Contenido según la referencia (ARQ_07 a 09): plantas con etiquetas de puertas (P-),
 ventanas (V-), acabados de paredes (Pd-) y pisos (PI-); cuadro de puertas; cuadro de
 ventanas; acabados en paredes, pisos y cielos; detalle de puertas y de ventanas; notas.
-Las plantas se toman de los DXF vigentes (A2 rev3, A3 rev3, A4 rev2) sin mobiliario ni cotas.
+Las plantas se toman de los DXF vigentes (A2 rev3, A3 rev4, A4 rev4) sin mobiliario ni cotas.
 Indicaciones del usuario: P-01 acceso principal (vestíbulo N1) de madera; habitaciones,
 baños y walk-in de madera; puerta peatonal y portón metálicos; ventanas de aluminio y
 vidrio; acabados de paredes de la referencia (interiores, baños, salpicadero, exteriores);
@@ -17,12 +17,12 @@ import cadlib as cl
 import hoja as H
 from planta import P
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "A7_puertas_ventanas"
 NAME = f"SR-A7_PUERTAS_VENTANAS_{REV}"
 SRC = {"N1": cl.ROOT / "planos/A2_nivel1/SR-A2_NIVEL1_rev3.dxf",
-       "N2": cl.ROOT / "planos/A3_nivel2/SR-A3_NIVEL2_rev3.dxf",
-       "N3": cl.ROOT / "planos/A4_nivel3/SR-A4_NIVEL3_rev2.dxf"}
+       "N2": cl.ROOT / "planos/A3_nivel2/SR-A3_NIVEL2_rev4.dxf",
+       "N3": cl.ROOT / "planos/A4_nivel3/SR-A4_NIVEL3_rev4.dxf"}
 OFF = {"N1": 0.0, "N2": -20.0, "N3": -40.0}          # desplazamiento en Y del marco de planta
 KEEP = {"A-MURO", "A-MURO-TRAMA", "A-PUERTA", "A-VENTANA", "A-ESCALERA", "A-ESPACIOS",
         "E-COLUMNA", "A-EJES", "A-EJES-TXT", "T-LINDERO", "A-PROYECCION"}
@@ -108,7 +108,7 @@ tag_finish("N1", 3.75, 18.23, "Pd-A", (4.69, 18.23))
 # ---------------------------------------------------------------- niveles 2 y 3 (comunes)
 for lv in ("N2", "N3"):
     tag_window(lv, 1.80, 1.45, "V-01")
-    tag_window(lv, 4.45, 1.45, "V-03")
+    tag_window(lv, 4.21, 1.45, "V-03")
     tag_window(lv, 7.30, 1.45, "V-02")
     tag_window(lv, 1.80, 25.80, "V-04")
     tag_window(lv, 4.22, 25.80, "V-05")
@@ -264,7 +264,7 @@ def vdim(a, b, base, horizontal):
 # código, ancho, alto, paños, travesaño fijo inferior, fija, arenado
 WINDOWS = [("V-01", 2.20, 2.20, 2, 0.90, False, False),
            ("V-02", 1.80, 2.20, 2, 0.90, False, False),
-           ("V-03", 1.00, 2.20, 1, 0.90, False, True),
+           ("V-03", 0.90, 2.20, 1, 0.90, False, True),
            ("V-04", 2.20, 1.30, 2, None, False, False),
            ("V-05", 0.75, 1.30, 1, None, False, True),
            ("V-06", 1.80, 1.30, 2, None, False, False),
@@ -395,7 +395,7 @@ VEN = "VENTILA ABATIBLE"
 rows = [["VENTANA", "ANCHO", "ALTO", "TIPO", "CANT", "UBICACIÓN", "MATERIAL"],
         ["V-01", "2,20", "2,20", "FIJA INF. + " + VEN, "2", "DORMITORIO SUITE 1, FACHADA PRINCIPAL (N2 Y N3)", "ALUMINIO Y VIDRIO"],
         ["V-02", "1,80", "2,20", "FIJA INF. + " + VEN, "2", "WALK-IN SUITE 1, FACHADA PRINCIPAL (N2 Y N3)", "ALUMINIO Y VIDRIO"],
-        ["V-03", "1,00", "2,20", "FIJA INF. + " + VEN, "2", "BAÑO SUITE 1, FACHADA PRINCIPAL (VIDRIO ARENADO)", "ALUMINIO Y VIDRIO"],
+        ["V-03", "0,90", "2,20", "FIJA INF. + " + VEN, "2", "BAÑO SUITE 1, FACHADA PRINCIPAL (VIDRIO ARENADO)", "ALUMINIO Y VIDRIO"],
         ["V-04", "2,20", "1,30", VEN, "3", "SALA Y SUITE 3, FACHADA POSTERIOR; COCINA A P1 (N2)", "ALUMINIO Y VIDRIO"],
         ["V-05", "0,75", "1,30", VEN, "2", "FACHADA POSTERIOR: SALA (N2) Y BAÑO SUITE 3 (VIDRIO ARENADO)", "ALUMINIO Y VIDRIO"],
         ["V-06", "1,80", "1,30", VEN, "3", "FACHADA POSTERIOR (N2 Y N3); WALK-IN SUITE 2 A P1", "ALUMINIO Y VIDRIO"],
@@ -470,7 +470,8 @@ H.titleblock(doc, psp, "A7", "PUERTAS Y VENTANAS",
              ["PLANTAS NIVELES 1, 2 Y 3.", "CUADROS DE PUERTAS Y VENTANAS.",
               "ACABADOS EN PAREDES, PISOS Y CIELOS.", "DETALLE DE PUERTAS Y VENTANAS.", "NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "V-05 CON VIDRIO ARENADO")],
+              ("1", "06-10-2026", "V-05 CON VIDRIO ARENADO"),
+              ("2", "06-10-2026", "V-03 DE 0,90 (COLUMNA EJE C-1)")],
              escalas="1:100 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)

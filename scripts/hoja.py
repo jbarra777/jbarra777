@@ -45,8 +45,11 @@ def lot(msp):
         pl.text(msp, str(k), off[0], off[1], 0.18, "T-VERTICE")
 
 
-def columns(msp, label=True):
-    for k, yc in COLS.items():
+COLS_SUP = {"1": EY0 + 0.15, **COLS}      # niveles 2 y 3: C1 del eje C en el eje 1 (sobre VT-1)
+
+
+def columns(msp, label=True, upper=False):
+    for k, yc in (COLS_SUP if upper else COLS).items():
         pts = [P(XC - 0.15, yc - 0.15), P(XC + 0.15, yc - 0.15), P(XC + 0.15, yc + 0.15),
                P(XC - 0.15, yc + 0.15)]
         msp.add_lwpolyline(pts, close=True, dxfattribs={"layer": "E-COLUMNA"})

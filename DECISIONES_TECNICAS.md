@@ -225,3 +225,5 @@
   - **C05 y C06 se unifican en una sola lámina C05**, a 1:100. [U]
   - **Se eliminan C2 (columna 4x4") y A1 (arriostre 4x4") de la referencia:** no se usan. [U]
   - **Eje C en el eje 1:** lleva **columna C1 en los niveles 2 y 3**, apoyada en una **viga de transferencia VT-1** en el eje 1 a nivel del entrepiso 1 (N2), de **diseño especial** según el cálculo. **Sin columna en el nivel 1** (portón). [U]
+- **C06 especificaciones aprobada; se eliminan las notas de materiales 8 y 9 (prefabricados).** [U]
+- **Ventana V-03 (baño de la suite frontal, N2 y N3): 0,90 × 2,20 en x 3,76–4,66**, para librar la columna C1 del eje C en el eje 1 (x 4,69–4,99, al ras de la fachada frontal). [U]

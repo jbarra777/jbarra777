@@ -8,7 +8,7 @@ estudio de suelos), sin madera estructural ni obras de retención (no se usan en
 import cadlib as cl
 import hoja as H
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "C06_especificaciones"
 NAME = f"SR-C06_ESPECIFICACIONES_{REV}"
 LAYOUT = "C06-ESPECIFICACIONES"
@@ -155,11 +155,7 @@ y = notes(X3, y, [
     "HILTI O SIMILAR, PREVIA APROBACIÓN DE LA INSPECCIÓN. PREVIO A LA COLOCACIÓN DEL EPÓXICO, "
     "LAS PERFORACIONES DEBEN ESTAR LIMPIAS Y LIBRES DE SUCIEDAD O POLVO. LA INYECCIÓN DEL "
     "MATERIAL EPÓXICO DEBE HACERSE CON EL EQUIPO ESPECIAL INDICADO POR EL FABRICANTE Y "
-    "APROBADO POR LA INSPECCIÓN.",
-    "8.- EL ESPESOR MÍNIMO DE SOBRELOSA PARA LOS DIFERENTES SISTEMAS DE CONTRAPISO "
-    "PREFABRICADO ES DE 70 mm.",
-    "9.- LA CONTRAFLECHA MÁXIMA PERMITIDA PARA LOS ELEMENTOS PREFABRICADOS DEL SISTEMA DE "
-    "ENTREPISO ES DE -0 mm / +25 mm."], W3)
+    "APROBADO POR LA INSPECCIÓN."], W3)
 y = head(X3, y - 2.0, "CIMENTACIONES", 3.5)
 y = notes(X3, y, [
     "LAS FUNDACIONES SE COLOCARÁN SOBRE UNA PRIMERA CAPA DE MATERIAL SELECTO COMPACTADO AL 95 % "
@@ -228,7 +224,8 @@ cl.notes_block(psp, X4, 70.0, [
 H.titleblock(doc, psp, "C06", "ESPECIFICACIONES",
              ["CONSTRUCTIVAS.", "NOTAS ESTRUCTURALES.", "GANCHOS, TRASLAPES Y RECUBRIMIENTOS.",
               "MATERIALES.", "", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="S/E")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "06-10-2026", "SE ELIMINAN NOTAS DE MATERIALES 8 Y 9")], escalas="S/E")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

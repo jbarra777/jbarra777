@@ -11,7 +11,7 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev3"
+REV = "rev4"
 OUT = cl.ROOT / "planos" / "A3_nivel2"
 NAME = f"SR-A3_NIVEL2_{REV}"
 E, I, W = H.E, H.I, H.W
@@ -52,7 +52,7 @@ def wall_with_openings(axis, c0, c1, a, b, openings, windows=()):
 pl.wall(msp, 0.0, E, YF0, YR1)                       # colindancia oeste (ciega)
 pl.wall(msp, W - E, W, YF0, YR1)                     # colindancia este (ciega)
 # fachada frontal: dormitorio / baño / walk-in
-wall_with_openings("x", YF0, YF1, E, W - E, [], [(0.70, 2.90), (3.95, 4.95), (6.40, 8.20)])
+wall_with_openings("x", YF0, YF1, E, W - E, [], [(0.70, 2.90), (3.76, 4.66), (6.40, 8.20)])
 # fachada posterior: sala familiar
 wall_with_openings("x", YR0, YR1, E, W - E, [], [(0.70, 2.90), (3.85, 4.60), (6.40, 8.20)])
 # eje 2: suite / pasillo-P1 (puerta de suite al final del pasillo)
@@ -174,7 +174,7 @@ arrow(X0 + 0.15, CUT - 0.15, (yA0 + yA1) / 2, "SUBE")
 arrow(X0 + 0.45, X_DES - 0.15, (yB0 + yB1) / 2, "BAJA")
 
 # ---------------------------------------------------------------- columnas y proyecciones
-H.columns(msp)
+H.columns(msp, upper=True)
 for PP in (P1, P2):
     (xa, xb), (ya, yb) = PP["x"], PP["y"]
     pl.line(msp, (xa, ya), (xb, yb), "A-PROYECCION", pl.LT_DASH)
@@ -273,7 +273,8 @@ extra = [
     "COCINA EN L CON ISLA; FREGADERO BAJO VENTANA HACIA EL PATIO P2. LA COCINA-COMEDOR Y LA "
     "SALA FAMILIAR NO LLEVAN BAÑO.",
     "VENTANAS HACIA P1 DESFASADAS ENTRE SUITE Y COCINA-COMEDOR PARA REDUCIR VISUALES CRUZADAS.",
-    "COLUMNAS SOBRE EL EJE C SEGÚN LÁMINA A2; SECCIONES Y REFUERZO SEGÚN PLANOS ESTRUCTURALES.",
+    "COLUMNAS SOBRE EL EJE C SEGÚN LÁMINA A2, MÁS LA C1 DEL EJE C EN EL EJE 1 (NIVELES 2 Y 3, "
+    "SOBRE VIGA DE TRANSFERENCIA, VER C05); SECCIONES Y REFUERZO SEGÚN PLANOS ESTRUCTURALES.",
     "FACHADA FRONTAL: VENTANAS DE PISO A 2.20 m CON PAÑO FIJO INFERIOR DE SEGURIDAD HASTA "
     "0.90 m Y VENTILAS ABATIBLES HACIA AFUERA EN LA PARTE SUPERIOR; BAÑO CON VIDRIO "
     "ARENADO (VER A5).",
@@ -289,9 +290,9 @@ H.extractor_detail(psp, X3, min(y - 6, 165.0))
 H.titleblock(doc, psp, "A3", "PLANTA NIVEL 2",
              ["SUITE 1, COCINA-COMEDOR, SALA.", "DERROTERO.", "CUADRO DE ÁREAS.",
               "PORCENTAJE DE COBERTURA.", "DETALLE EXTRACTOR DE AIRE.", "NOTAS."],
-             [("1", "06-10-2026", "VENTANAS POSTERIORES ALINEADAS"),
-              ("2", "06-10-2026", "VENTANAS DE VENTILACIÓN (VENTILAS)"),
-              ("3", "06-10-2026", "COCINA Y SALA ABIERTAS AL PASILLO")])
+             [("2", "06-10-2026", "VENTANAS DE VENTILACIÓN (VENTILAS)"),
+              ("3", "06-10-2026", "COCINA Y SALA ABIERTAS AL PASILLO"),
+              ("4", "06-10-2026", "COLUMNA C1 EJE C-1; VENTANA BAÑO 0,90")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

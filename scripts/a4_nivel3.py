@@ -13,7 +13,7 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev3"
+REV = "rev4"
 OUT = cl.ROOT / "planos" / "A4_nivel3"
 NAME = f"SR-A4_NIVEL3_{REV}"
 E, I, W = H.E, H.I, H.W
@@ -49,7 +49,7 @@ def wall_with_openings(axis, c0, c1, a, b, openings, windows=()):
 # ---------------------------------------------------------------- muros perimetrales
 pl.wall(msp, 0.0, E, YF0, YR1)
 pl.wall(msp, W - E, W, YF0, YR1)
-wall_with_openings("x", YF0, YF1, E, W - E, [], [(0.70, 2.90), (3.95, 4.95), (6.40, 8.20)])
+wall_with_openings("x", YF0, YF1, E, W - E, [], [(0.70, 2.90), (3.76, 4.66), (6.40, 8.20)])
 wall_with_openings("x", YR0, YR1, E, W - E, [], [(0.70, 2.90), (3.85, 4.60), (6.40, 8.20)])
 D_S1 = (0.25, 1.15)
 wall_with_openings("x", Y2a, Y2b, E, W - E, [D_S1], [(2.00, 4.40), (5.60, 8.20)])
@@ -163,7 +163,7 @@ msp.add_solid([b, b - d * 0.20 + n * 0.12, b - d * 0.20 - n * 0.12],
 pl.text(msp, "BAJA", (X_DES - 7 * TH + X_DES) / 2, (yB0 + yB1) / 2 + 0.18, 0.12, "A-ESCALERA")
 
 # ---------------------------------------------------------------- columnas y patios
-H.columns(msp)
+H.columns(msp, upper=True)
 for PP in (P1, P2):
     (xa, xb), (ya, yb) = PP["x"], PP["y"]
     pl.line(msp, (xa, ya), (xb, yb), "A-PROYECCION", pl.LT_DASH)
@@ -274,7 +274,8 @@ extra = [
     "PASILLO DE 1.20 m CERRADO HACIA EL PATIO P1 CON VIDRIO FIJO (GALERÍA). BARANDA EN EL "
     "BORDE DE LA ESCALERA (VER A11). ACCESOS A LAS SUITES DESDE EL PASILLO (EJES 2, B Y 5).",
     "VENTANAS HACIA P1 DESFASADAS ENTRE SUITES PARA REDUCIR VISUALES CRUZADAS.",
-    "COLUMNAS SOBRE EL EJE C SEGÚN LÁMINA A2; SECCIONES Y REFUERZO SEGÚN PLANOS ESTRUCTURALES.",
+    "COLUMNAS SOBRE EL EJE C SEGÚN LÁMINA A2, MÁS LA C1 DEL EJE C EN EL EJE 1 (NIVELES 2 Y 3, "
+    "SOBRE VIGA DE TRANSFERENCIA, VER C05); SECCIONES Y REFUERZO SEGÚN PLANOS ESTRUCTURALES.",
     "FACHADA FRONTAL: VENTANAS DE PISO A 2.20 m CON PAÑO FIJO INFERIOR DE SEGURIDAD HASTA "
     "0.90 m Y VENTILAS ABATIBLES HACIA AFUERA EN LA PARTE SUPERIOR; BAÑO CON VIDRIO "
     "ARENADO (VER A5).",
@@ -290,9 +291,9 @@ H.extractor_detail(psp, X3, min(y - 6, 165.0))
 H.titleblock(doc, psp, "A4", "PLANTA NIVEL 3",
              ["SUITES 1, 2 Y 3.", "DERROTERO.", "CUADRO DE ÁREAS.",
               "PORCENTAJE DE COBERTURA.", "DETALLE EXTRACTOR DE AIRE.", "NOTAS."],
-             [("1", "06-10-2026", "VENTANAS POSTERIORES; BAÑO S3 LIBRA C6"),
-              ("2", "06-10-2026", "VENTANAS DE VENTILACIÓN (VENTILAS)"),
-              ("3", "06-10-2026", "REFERENCIA A LÁMINA A7")])
+             [("2", "06-10-2026", "VENTANAS DE VENTILACIÓN (VENTILAS)"),
+              ("3", "06-10-2026", "REFERENCIA A LÁMINA A7"),
+              ("4", "06-10-2026", "COLUMNA C1 EJE C-1; VENTANA BAÑO 0,90")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

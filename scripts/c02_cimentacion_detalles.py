@@ -10,12 +10,12 @@ import math
 import cadlib as cl
 import hoja as H
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "C02_cimentacion_detalles"
 NAME = f"SR-C02_CIMENTACION_DETALLES_{REV}"
 
 FB, TP, PED, HP, TUBO, PLT = 1.65, 0.25, 0.30, 0.80, 0.15, 0.27
-RC = 0.05                                       # recubrimiento placa (C08 ref.: 50 mm)
+RC = 0.05                                       # recubrimiento placa (C06: 50 mm)
 RB = 0.0064                                     # radio varilla #4 (12,7 mm)
 
 doc = cl.new_doc()
@@ -219,7 +219,7 @@ notas = [
     "COLUMNA: TUBO ESTRUCTURAL DE 150 x 150 mm EN 3,17 mm SOLDADO A PLETINA DE 270 x 270 mm ANCLADA "
     "AL PEDESTAL. PERNOS Y SOLDADURA SEGÚN CÁLCULO (PD). [PR]",
     "CAPACIDAD SOPORTANTE CONSIDERADA qadm = 12 t/m² [PR]; VERIFICAR CON ESTUDIO DE SUELOS.",
-    "MATERIALES Y ESPECIFICACIONES SEGÚN LÁMINA C08. LAS SECCIONES SON LAS DEL PROYECTO DE "
+    "MATERIALES Y ESPECIFICACIONES SEGÚN LÁMINA C06. LAS SECCIONES SON LAS DEL PROYECTO DE "
     "REFERENCIA, POR INDICACIÓN DEL INGENIERO RESPONSABLE; NO SUSTITUYEN LA MEMORIA DE CÁLCULO.",
 ]
 cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.0, 190)
@@ -227,7 +227,8 @@ cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + 
 H.titleblock(doc, psp, "C02", "FUNDACIONES",
              ["DETALLES.", "CORTE Y PLANTA F1 Y F2.", "SECCIÓN DE PEDESTAL.", "PLETINA DE UNIÓN.",
               "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="INDICADAS")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "06-10-2026", "REFERENCIA A LÁMINA C06")], escalas="INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

@@ -14,7 +14,7 @@ Model Space en metros: cada fachada en su propio origen (H horizontal, V = altur
 import cadlib as cl
 import hoja as H
 
-REV = "rev5"
+REV = "rev6"
 OUT = cl.ROOT / "planos" / "A5_fachadas"
 NAME = f"SR-A5_FACHADAS_{REV}"
 
@@ -22,8 +22,8 @@ W = 9.0
 EY0, EY1, Y_LP = H.EY0, H.EY1, H.Y_LP
 PEND = 0.13                                     # pendiente de cubierta (usuario)
 Y_CUM = (EY0 + EY1) / 2                         # cumbrera al centro de la envolvente
-NIV = {"N1": 0.0, "N2": 3.00, "N3": 6.00, "CUB": 9.00}
-NIV["CUM"] = NIV["CUB"] + PEND * (Y_CUM - EY0)  # 10.50
+NIV = {"N1": 0.0, "N2": 3.00, "N3": 6.00, "CUB": 9.00, "ALE": 9.20}   # ALE: lámina en el alero (C04)
+NIV["CUM"] = NIV["ALE"] + PEND * (Y_CUM - EY0)  # 10.70
 CAN = 0.20                                      # canoa (representación esquemática)
 HEAD = 2.20                                     # dintel de ventanas sobre NPT
 SILL_R = 0.90                                   # antepecho común fachada posterior
@@ -72,9 +72,10 @@ class Elev:
     def roof(self, h0, h1):
         """Vista frontal/posterior de la cubierta: canoa, faldón hasta la cumbrera y
         remates de los muros de colindancia."""
-        cb, cm = NIV["CUB"], NIV["CUM"]
-        self.rect(0.0, cb, 0.15, cm, "F-CONTORNO")
-        self.rect(W - 0.15, cb, W, cm, "F-CONTORNO")
+        cb, cm = NIV["ALE"], NIV["CUM"]
+        self.rect(0.0, NIV["CUB"], 0.15, cm, "F-CONTORNO")
+        self.rect(W - 0.15, NIV["CUB"], W, cm, "F-CONTORNO")
+        self.rect(0.15, NIV["CUB"], W - 0.15, cb, "F-LINEAS")           # frente de cercha
         self.line((0.15, cm), (W - 0.15, cm), "F-CONTORNO")              # cumbrera
         self.rect(0.15, cb, W - 0.15, cb + CAN, "F-VANOS")               # canoa
         n = int((W - 0.30) / 0.30)
@@ -212,17 +213,17 @@ F.mtext("PORTÓN ABATIBLE\\P4 HOJAS (PLEGABLES)", (PV[0] + PV[1]) / 2, 1.2, 2.2,
 F.mtext("ACCESO\\PPEATONAL", (PP[0] + PP[1]) / 2, 1.8, 1.8, 18)
 F.mtext("VIGA / FASCIA\\P(PERALTE SEGÚN ESTRUCTURAL)", 3.8, 2.70, 1.8, 50)
 # Niveles 2 y 3: ventanas de piso a 2.20 m, alineadas, paño fijo inferior hasta 0.90 m
-VENT = [((0.70, 2.90), "DORM.", 1, False), ((3.95, 4.95), "BAÑO", 0, True),
+VENT = [((0.70, 2.90), "DORM.", 1, False), ((3.76, 4.66), "BAÑO", 0, True),
         ((6.40, 8.20), "WALK-IN", 1, False)]
 for lv in ("N2", "N3"):
     v0 = NIV[lv]
     for (xa, xb), lab, mul, sand in VENT:
         F.window(hx(xb), hx(xa), v0, v0 + HEAD, mullions=mul, transom=PANO, sand=sand)
     F.line((0.15, v0 + HEAD + 0.0), (8.85, v0 + HEAD), "F-LINEAS")   # inicio franja opaca
-    F.text("VIDRIO ARENADO", hx(3.95) + 0.20, v0 + 1.10, 1.5, rot=90)
+    F.text("VIDRIO ARENADO", hx(3.76) + 0.20, v0 + 1.10, 1.5, rot=90)
 # bajantes frontales: tramo en N1 oculto (portón y acceso peatonal), ver lámina pluvial
 for b0, b1 in BAJ:
-    F.downspout(hx(b1), hx(b0), NIV["CUB"], 0.0, v_hidden=POR_H)
+    F.downspout(hx(b1), hx(b0), NIV["ALE"], 0.0, v_hidden=POR_H)
 F.mtext("BAJANTE PLUVIAL (TRAMO EN NIVEL 1\\PSEGÚN LÁMINA PLUVIAL)", hx(0.24) - 0.25, 5.55,
         1.6, 30, attach=6)
 F.line((hx(0.24) - 0.22, 5.55), (hx(0.28), 5.55), "F-TXT")
@@ -232,7 +233,7 @@ F.mtext("CUBIERTA DE LÁMINA ESTRUCTURAL CAL. 26 - PENDIENTE 13 %", 4.5,
         (NIV["CUB"] + CAN + NIV["CUM"]) / 2, 1.8, 95)
 # cotas
 for lv, lab in (("N1", "NPT ±0.00 (ACERA)"), ("N2", "NPT +3.00"), ("N3", "NPT +6.00"),
-                ("CUB", "VIGA CORONA +9.00"), ("CUM", "CUMBRERA +10.50")):
+                ("CUB", "VIGA CORONA +9.00"), ("CUM", "CUMBRERA +10.70")):
     F.level(W + 0.6, NIV[lv], lab)
 chain_v = [0.0, POR_H, 3.00, 3.00 + PANO, 3.00 + HEAD, 6.00, 6.00 + PANO, 6.00 + HEAD,
            NIV["CUB"], NIV["CUM"]]
@@ -267,10 +268,10 @@ for lv in ("N2", "N3"):
 PO.text("SALA FAMILIAR", 4.5, NIV["N2"] + 0.45, 1.8)
 PO.text("SUITE 3", 4.5, NIV["N3"] + 0.45, 1.8)
 for b0, b1 in BAJ:
-    PO.downspout(b0, b1, NIV["CUB"], 0.0)
+    PO.downspout(b0, b1, NIV["ALE"], 0.0)
 PO.mtext("BAJANTE PLUVIAL", 0.40, 1.95, 1.6, 22, attach=4)
 for lv, lab in (("N1", "±0.00"), ("N2", "+3.00"), ("N3", "+6.00"), ("CUB", "+9.00"),
-                ("CUM", "+10.50")):
+                ("CUM", "+10.70")):
     PO.level(W + 0.6, NIV[lv], lab)
 cv = [0.0, 2.60, 3.00, 3.00 + SILL_R, 3.00 + HEAD, 6.00, 6.00 + SILL_R, 6.00 + HEAD,
       NIV["CUB"], NIV["CUM"]]
@@ -288,7 +289,7 @@ def lateral(ox, east_side):
     L = Elev(ox, 100)
     hy = (lambda y: Y_LP - y) if east_side else (lambda y: y)
     L.line((hy(0.0), 0), (hy(Y_LP), 0), "F-TERRENO")
-    cb, cm = NIV["CUB"], NIV["CUM"]
+    cb, cm = NIV["ALE"], NIV["CUM"]
     pts = [(hy(EY0), 0), (hy(EY1), 0), (hy(EY1), cb), (hy(Y_CUM), cm), (hy(EY0), cb)]
     msp.add_lwpolyline([L.p(*q) for q in pts], close=True, dxfattribs={"layer": "F-CONTORNO"})
     a, b = sorted((hy(EY0), hy(EY1)))
@@ -327,7 +328,7 @@ def lateral(ox, east_side):
     L.text("FRENTE", hy(0.0), -0.6, 2.2)
     L.text("FONDO", hy(Y_LP), -0.6, 2.2)
     for lv, lab in (("N1", "±0.00"), ("N2", "+3.00"), ("N3", "+6.00"), ("CUB", "+9.00"),
-                    ("CUM", "+10.50")):
+                    ("CUM", "+10.70")):
         L.level(max(hy(0.0), hy(Y_LP)) + 0.6, NIV[lv], lab)
     ys = [0.0, EY0, Y_CUM, EY1, Y_LP]
     for ya, yb in zip(ys[:-1], ys[1:]):
@@ -393,10 +394,10 @@ notas = [
     "DEL ÚLTIMO NIVEL, GARANTIZANDO EL APANTALLAMIENTO VISUAL PERMANENTE HACIA LA PROPIEDAD "
     "COLINDANTE.",
     "LOS BAÑOS CONTARÁN CON EXTRACTOR MECÁNICO DE AIRE.",
-    "NIVELES: NPT N1 ±0.00 (ACERA), N2 +3.00, N3 +6.00; VIGA CORONA Y ARRANQUE DE CUBIERTA "
-    "+9.00.",
+    "NIVELES: NPT N1 ±0.00 (ACERA), N2 +3.00, N3 +6.00; VIGA CORONA +9.00; LÁMINA DE CUBIERTA "
+    "+9.20 EN EL ALERO (VER C04).",
     "CUBIERTA DE LÁMINA ESTRUCTURAL CALIBRE 26 A DOS AGUAS (HACIA EL FRENTE Y HACIA EL FONDO), "
-    "PENDIENTE 13 %, CUMBRERA AL CENTRO DE LA VIVIENDA A +10.50 (REFERENCIAL). ESTRUCTURA DE "
+    "PENDIENTE 13 %, CUMBRERA AL CENTRO DE LA VIVIENDA A +10.70. ESTRUCTURA DE "
     "TECHO SEGÚN PLANOS ESTRUCTURALES.",
     "AGUAS PLUVIALES: CANOA FRONTAL Y CANOA POSTERIOR, CADA UNA CON 2 BAJANTES (UNO EN CADA "
     "EXTREMO), CONDUCIDOS HACIA LA CUNETA DEL FRENTE. DIÁMETROS, UBICACIÓN DEFINITIVA Y "
@@ -463,9 +464,9 @@ cl.table(psp, X3, y - 7, [16, 76, 82, 40], rows, row_h=5.5, h=1.8,
 H.titleblock(doc, psp, "A5", "FACHADAS",
              ["FACHADA PRINCIPAL (NORTE).", "FACHADA POSTERIOR (SUR).", "FACHADA LATERAL ESTE.",
               "FACHADA LATERAL OESTE.", "NOTAS.", "ACABADOS DE FACHADA."],
-             [("3", "06-10-2026", "SÍMBOLO DE VENTILA INVERTIDO"),
-              ("4", "06-10-2026", "V-05 SALA ARENADO; REFERENCIA A7"),
-              ("5", "06-10-2026", "ACABADOS DE FACHADA (INTEGRA A10)")])
+             [("4", "06-10-2026", "V-05 SALA ARENADO; REFERENCIA A7"),
+              ("5", "06-10-2026", "ACABADOS DE FACHADA (INTEGRA A10)"),
+              ("6", "06-10-2026", "CUBIERTA +9.20/+10.70; V-03 DE 0,90")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

@@ -18,7 +18,7 @@ from planta import P
 
 SHEET = "C03"
 NIVEL = "ENTREPISO 1: NIVEL 2 (NPT +3.00) / ENTREPISO 2: NIVEL 3 (NPT +6.00)"
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "C03_entrepiso_n2"
 NAME = f"SR-{SHEET}_ENTREPISOS_{REV}"
 LAYOUT = f"{SHEET}-ENTREPISO"
@@ -70,7 +70,7 @@ for (x0, y0, x1, y1), lab in VOIDS:
 
 # ---------------------------------------------------------------- columnas C1
 COLS = [(XA, y) for y in YA.values()] + [(XD, y) for y in YA.values()] + \
-       [(XC, y) for y in H.COLS.values()]
+       [(XC, y) for y in H.COLS.values()] + [(XC, EY0 + 0.15)]      # C-1: N2-N3 sobre VT-1
 for x, y in COLS:
     pts = [P(x - TUBO / 2, y - TUBO / 2), P(x + TUBO / 2, y - TUBO / 2),
            P(x + TUBO / 2, y + TUBO / 2), P(x - TUBO / 2, y + TUBO / 2)]
@@ -113,7 +113,7 @@ pl.text(msp, "V1", XB + 0.30, (YA["2"] + YA["3"]) / 2, 0.13, "E-TXT")
 pl.text(msp, "V1", XB - 0.30, (YA["4"] + YA["5"]) / 2 + 0.95, 0.13, "E-TXT")
 for k, y in YA.items():
     pl.text(msp, "V1", 7.70, y + (0.24 if k != "6" else -0.24), 0.13, "E-TXT")
-pl.text(msp, "SIN COLUMNA EN EL EJE C", XC + 1.20, YA["1"] + 0.42, 0.11, "E-TXT")
+pl.text(msp, "V1 / VT-1 EN ENTREPISO 1 (VER C05)", XC / 2, YA["1"] + 0.25, 0.11, "E-TXT", rot=90)
 
 # ---------------------------------------------------------------- viguetas 2x6" @0,60 (en x)
 def joists(xa, xb, ya, yb):
@@ -252,6 +252,7 @@ cl.text(psp, "SIMBOLOGÍA ELEMENTOS PORTANTES", (35.0, y), 3.5, "A-TITULOS", "TO
 rows = [["C1", "COLUMNA - TUBO DE ACERO 6x6\" EN 3,17 mm [PR]"],
         ["", "(EJE C FORRADA A 0,30 x 0,30)"],
         ["V1", "VIGA - TUBO DE ACERO 4x8\" EN 3,17 mm [PR]"],
+        ["VT-1", "VIGA DE TRANSFERENCIA EJE 1, ENTREPISO 1 (PD)"],
         ["VG", "VIGUETA - TUBO 2x6\" EN 2,38 mm @0,60 m [PR]"],
         ["", "VACÍO (PATIO O ESCALERA)"]]
 yb = cl.table(psp, 35.0, y - 6.0, [18, 140], rows, row_h=6.5, h=2.2,
@@ -318,9 +319,11 @@ notas = [
     "COMO BORDE DE LOS VACÍOS DEL PATIO P1 Y DE LA ESCALERA. [PR]",
     "PAQUETE DE ENTREPISO 0,30 m = VIGA 0,20 + LOSA 0,10 (VER A6). LAS VIGUETAS QUEDAN A RAS DEL "
     "BORDE SUPERIOR DE LAS VIGAS.",
-    "COLUMNAS C1 CONTINUAS DEL NIVEL 1 AL NIVEL 3 (VER C01). SIN COLUMNA EN EL EJE C DEL EJE 1.",
+    "COLUMNAS C1 CONTINUAS DEL NIVEL 1 AL NIVEL 3 (VER C01 Y C05). EN EL EJE C DEL EJE 1 LA C1 "
+    "ARRANCA EN EL NIVEL 2 SOBRE LA VIGA DE TRANSFERENCIA VT-1 DEL ENTREPISO 1 (DISEÑO ESPECIAL, "
+    "PD); SIN COLUMNA EN EL NIVEL 1 (PORTÓN).",
     "UNIONES SOLDADAS, PERFILES DEFINITIVOS Y SEPARACIÓN DE LA MALLA SEGÚN MEMORIA DE CÁLCULO (PD).",
-    "MATERIALES, PROTECCIÓN ANTICORROSIVA Y ESPECIFICACIONES SEGÚN LÁMINA C08. [PR]",
+    "MATERIALES, PROTECCIÓN ANTICORROSIVA Y ESPECIFICACIONES SEGÚN LÁMINA C06. [PR]",
     "LAS SECCIONES DE ESTA LÁMINA SON LAS DEL PROYECTO DE REFERENCIA, POR INDICACIÓN DEL "
     "INGENIERO RESPONSABLE; NO SUSTITUYEN LA MEMORIA DE CÁLCULO.",
 ]
@@ -330,7 +333,8 @@ H.titleblock(doc, psp, SHEET, "ENTREPISO",
              ["PLANTA DE ENTREPISO 1 Y 2.", "DETALLE DE ENTREPISO.", "SECCIÓN A-A.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "ENTREPISOS 1 Y 2 EN UNA SOLA LÁMINA")], escalas="1:50 / INDICADAS")
+              ("1", "06-10-2026", "ENTREPISOS 1 Y 2 EN UNA SOLA LÁMINA"),
+              ("2", "06-10-2026", "C1 EJE C-1 SOBRE VT-1; REFERENCIA A C06")], escalas="1:50 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

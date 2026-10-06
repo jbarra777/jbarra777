@@ -48,6 +48,23 @@ LAYERS = {
     "A-HUELLA-TRAMA": (8, 9, "Continuous", True),
     "A-PATIO": (7, 25, "Continuous", True),
     "A-RETIRO": (8, 18, "DASHED2", True),
+    # Plantas arquitectónicas (modelo)
+    "A-MURO": (7, 50, "Continuous", True),
+    "A-MURO-TRAMA": (8, 9, "Continuous", True),
+    "A-PUERTA": (7, 25, "Continuous", True),
+    "A-VENTANA": (7, 25, "Continuous", True),
+    "A-ESCALERA": (7, 25, "Continuous", True),
+    "A-VEHICULO": (8, 18, "Continuous", True),
+    "A-MOBILIARIO": (8, 18, "Continuous", True),
+    "A-DEMARCACION": (8, 18, "DASHED", True),
+    "A-PROYECCION": (8, 18, "DASHED", True),
+    "A-EJES": (8, 13, "CENTER", True),
+    "A-EJES-TXT": (7, 25, "Continuous", True),
+    "A-COTA-50": (7, 18, "Continuous", True),
+    "A-TXT-50": (7, 18, "Continuous", True),
+    "A-ESPACIOS": (7, 25, "Continuous", True),
+    "A-NIVELES": (7, 18, "Continuous", True),
+    "A-CORTES": (7, 35, "Continuous", True),
 }
 
 
@@ -66,6 +83,7 @@ def new_doc():
     for name, (col, lw, lt, plot) in LAYERS.items():
         lay = doc.layers.add(name, color=col, linetype=lt, lineweight=lw)
         lay.dxf.plot = 1 if plot else 0
+    _dimstyle(doc, "COTA-50", 50)
     _dimstyle(doc, "COTA-100", 100)
     _dimstyle(doc, "COTA-200", 200)
     return doc
@@ -379,3 +397,58 @@ def dms(az):
 
 def azimuth(p, q):
     return math.degrees(math.atan2(q[0] - p[0], q[1] - p[1])) % 360.0
+
+
+NOTAS_GENERALES = [
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
+    "LA TAPIA COLINDANTE DE MAMPOSTERÍA DEBERÁ PROLONGARSE HASTA EL NIVEL DE LA VIGA "
+    "CORONA DEL ÚLTIMO NIVEL, GARANTIZANDO EL APANTALLAMIENTO VISUAL PERMANENTE HACIA LA "
+    "PROPIEDAD COLINDANTE.",
+    "LOS DATOS DEL LOTE (VÉRTICES, DERROTERO Y ÁREA) SE TOMARON DEL PLANO CATASTRADO "
+    "4-57389-2023, SISTEMA CRTM05. NO SUSTITUYEN UN LEVANTAMIENTO TOPOGRÁFICO.",
+    "RETIROS DE DISEÑO: FRONTAL 2.00 m MEDIDO DESDE EL VÉRTICE 3; POSTERIOR MÍNIMO "
+    "3.00 m; LATERALES 0.00 m. CONFIRMAR CON ALINEAMIENTO Y USO DE SUELO MUNICIPAL.",
+    "LAS FACHADAS LATERALES SE UBICAN SOBRE COLINDANCIA Y SERÁN CIEGAS "
+    "(SIN VENTANAS NI VANOS).",
+    "LOS BAÑOS CONTARÁN CON EXTRACTOR MECÁNICO DE AIRE.",
+    "LAS CANOAS TENDRÁN MALLA PROTECTORA PARA EVITAR EL ACCESO DE BASURA. [PR]",
+    "EL AGUA POTABLE PROVIENE DEL SISTEMA PÚBLICO (ESPH), DIRECTAMENTE DE LA "
+    "CONEXIÓN DE LA CALLE.",
+    "LAS AGUAS PLUVIALES SE DIRIGEN HACIA LA CUNETA PÚBLICA.",
+    "LAS AGUAS RESIDUALES SE TRATARÁN MEDIANTE TANQUE SÉPTICO Y DRENAJE EN EL "
+    "PATIO POSTERIOR; DISEÑO Y UBICACIÓN EN LÁMINAS SANITARIAS.",
+    "LA COBERTURA SE CALCULA SOBRE EL ÁREA SEGÚN CATASTRO (256 m²). LOS PATIOS P1 "
+    "Y P2 SON ABIERTOS DESDE EL NIVEL 1 HASTA EL CIELO Y NO SE CONTABILIZAN EN LA HUELLA.",
+    "PATIOS DE LUZ P1 Y P2 DE 2.50 m DE LADO MÍNIMO, DIMENSIÓN ACEPTADA POR LA "
+    "MUNICIPALIDAD (ALTURA MEDIDA DESDE EL NIVEL 1).",
+]
+NOTA_PR = "[PR] = NOTA TOMADA DEL PROYECTO DE REFERENCIA, PENDIENTE DE REVISIÓN."
+
+
+def notas(extra=()):
+    lst = NOTAS_GENERALES + list(extra)
+    out = [f"{i}.- {t}" for i, t in enumerate(lst, 1)]
+    out.append(NOTA_PR)
+    return out
+
+
+def derrotero_rows(V):
+    rows = [["LÍNEA", "ACIMUT", None, "DISTANCIA", None],
+            ["", "°", "'", "m", "cm"]]
+    for a, b in ((1, 2), (2, 3), (3, 4), (4, 5), (5, 1)):
+        az = azimuth(V[a], V[b])
+        dd, mm, ss = dms(az + 30 / 3600)  # redondeo al minuto
+        dist = math.dist(V[a], V[b])
+        m_ = int(dist)
+        cm = int(round((dist - m_) * 100))
+        if cm == 100:
+            m_, cm = m_ + 1, 0
+        rows.append([f"{a} - {b}", f"{dd}", f"{mm:02d}", f"{m_}", f"{cm:02d}"])
+    rows += [["AMARRE", "ACIMUT", None, "DISTANCIA", None],
+             ["", "°", "'", "m", "cm"],
+             ["3 - P.I.", "101", "22", "75", "71"]]
+    return rows
+
+
+def m2(v):
+    return f"{v:,.2f} m²".replace(",", " ").replace(".", ",")

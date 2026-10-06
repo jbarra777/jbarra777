@@ -18,7 +18,7 @@ from ezdxf.math import Vec2
 
 import cadlib as cl
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "A1_lote"
 NAME = f"SR-A1_LOTE_{REV}"
 
@@ -205,11 +205,6 @@ cl.text(msp, "COLINDANCIA - FACHADA CIEGA", loc(-0.35, 14.0), 0.22, "T-TXT-100",
         "MIDDLE_CENTER", rot=90)
 cl.text(msp, "COLINDANCIA - FACHADA CIEGA", loc(9.35, 14.0), 0.22, "T-TXT-100",
         "MIDDLE_CENTER", rot=90)
-# marcas de verificación pendiente en patios
-for P in (P1, P2):
-    t = cl.text(msp, "VER NOTA 11", loc(P["x"][0] + 0.15, P["y"][1] - 0.15), 0.20,
-                "T-TXT-100", "BOTTOM_LEFT")
-    t.dxf.color = 1
 # Se borró el mtext duplicado de colindancia (usar textos girados)
 for e in list(msp.query("MTEXT")):
     if e.text.startswith("COLINDANCIA"):
@@ -271,20 +266,7 @@ WC = 222.0
 y = 576.0
 cl.text(psp, "D E R R O T E R O", (X3 + WC / 2, y), 6.0, "A-TITULOS", "TOP_CENTER")
 y -= 10
-rows = [["LÍNEA", "ACIMUT", None, "DISTANCIA", None],
-        ["", "°", "'", "m", "cm"]]
-for a, b in ((1, 2), (2, 3), (3, 4), (4, 5), (5, 1)):
-    az = cl.azimuth(V[a], V[b])
-    dd, mm, ss = cl.dms(az + 30 / 3600)  # redondeo al minuto
-    dist = math.dist(V[a], V[b])
-    m_ = int(dist)
-    cm = int(round((dist - m_) * 100))
-    if cm == 100:
-        m_, cm = m_ + 1, 0
-    rows.append([f"{a} - {b}", f"{dd}", f"{mm:02d}", f"{m_}", f"{cm:02d}"])
-rows += [["AMARRE", "ACIMUT", None, "DISTANCIA", None],
-         ["", "°", "'", "m", "cm"],
-         ["3 - P.I.", "101", "22", "75", "71"]]
+rows = cl.derrotero_rows(V)
 y = cl.table(psp, X3, y, [44.4] * 5, rows, row_h=7.0, h=2.8)
 cl.mtext(psp, "Acimutes y distancias calculados con las coordenadas CRTM05 del plano "
          "catastrado 4-57389-2023 (redondeo al minuto y al centímetro). Amarre al punto "
@@ -324,29 +306,9 @@ cl.text(psp, f"CÁLCULO: HUELLA / ÁREA SEGÚN CATASTRO x 100 = ({A_huella:.2f} 
 y -= 10
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 y -= 6
-notas = [
-    "1.- TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
-    "2.- LOS DATOS DEL LOTE (VÉRTICES, DERROTERO Y ÁREA) SE TOMARON DEL PLANO CATASTRADO "
-    "4-57389-2023, SISTEMA CRTM05. NO SUSTITUYEN UN LEVANTAMIENTO TOPOGRÁFICO.",
-    "3.- RETIROS DE DISEÑO: FRONTAL 2.00 m MEDIDO DESDE EL VÉRTICE 3; POSTERIOR MÍNIMO "
-    "3.00 m; LATERALES 0.00 m. CONFIRMAR CON ALINEAMIENTO Y USO DE SUELO MUNICIPAL.",
-    "4.- LAS FACHADAS LATERALES SE UBICAN SOBRE COLINDANCIA Y SERÁN CIEGAS "
-    "(SIN VENTANAS NI VANOS).",
-    "5.- LOS BAÑOS CONTARÁN CON EXTRACTOR MECÁNICO DE AIRE.",
-    "6.- LAS CANOAS TENDRÁN MALLA PROTECTORA PARA EVITAR EL ACCESO DE BASURA. [PR]",
-    "7.- EL AGUA POTABLE PROVIENE DEL SISTEMA PÚBLICO (ESPH), DIRECTAMENTE DE LA "
-    "CONEXIÓN DE LA CALLE.",
-    "8.- LAS AGUAS PLUVIALES SE DIRIGEN HACIA LA CUNETA PÚBLICA.",
-    "9.- LAS AGUAS RESIDUALES SE TRATARÁN MEDIANTE TANQUE SÉPTICO Y DRENAJE EN EL "
-    "PATIO POSTERIOR; DISEÑO Y UBICACIÓN EN LÁMINAS SANITARIAS.",
-    "10.- LA COBERTURA SE CALCULA SOBRE EL ÁREA SEGÚN CATASTRO (256 m²). LOS PATIOS P1 "
-    "Y P2 SON ABIERTOS DESDE EL NIVEL 1 HASTA EL CIELO Y NO SE CONTABILIZAN EN LA HUELLA.",
-    "11.- VERIFICACIÓN PENDIENTE: DIMENSIÓN MÍNIMA DE LOS PATIOS DE LUZ P1 Y P2 (2.50 m) "
-    "CON ALTURA MEDIDA DESDE EL NIVEL 1 (9.50 m), SEGÚN REGLAMENTO VIGENTE.",
-    "[PR] = NOTA TOMADA DEL PROYECTO DE REFERENCIA, PENDIENTE DE REVISIÓN.",
-]
+notas = cl.notas()
 m = cl.mtext(psp, "\\P".join(notas), (X3, y), 2.3, WC, attach=1, spacing=1.0)
-y -= 74
+y -= 80
 # Simbología
 cl.text(psp, "SIMBOLOGÍA:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 y -= 9
@@ -406,7 +368,7 @@ vals = {
     "CONT_6": "NOTAS.",
     "ESCALAS": "INDICADAS",
     "REV0_N": "0", "REV0_F": "06-10-2026", "REV0_D": "VERSIÓN DE TRABAJO PARA REVISIÓN",
-    "REV1_N": "", "REV1_F": "", "REV1_D": "",
+    "REV1_N": "1", "REV1_F": "06-10-2026", "REV1_D": "NOTA 2 TAPIA; PATIOS ACEPTADOS (NOTA 12)",
     "REV2_N": "", "REV2_F": "", "REV2_D": "",
     "ESTADO_1": "VERSIÓN DE TRABAJO",
     "ESTADO_2": "NO APTA PARA CONSTRUCCIÓN NI TRÁMITE",

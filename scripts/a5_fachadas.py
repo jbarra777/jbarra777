@@ -14,7 +14,7 @@ Model Space en metros: cada fachada en su propio origen (H horizontal, V = altur
 import cadlib as cl
 import hoja as H
 
-REV = "rev3"
+REV = "rev4"
 OUT = cl.ROOT / "planos" / "A5_fachadas"
 NAME = f"SR-A5_FACHADAS_{REV}"
 
@@ -249,7 +249,7 @@ PO.line((0, NIV["N3"]), (W, NIV["N3"]), "F-OCULTO", 0.08)
 for lv in ("N2", "N3"):
     v0 = NIV[lv]
     PO.window(*VPOST[0], v0 + SILL_R, v0 + HEAD, mullions=1)
-    PO.window(*VPOST[1], v0 + SILL_R, v0 + HEAD, sand=(lv == "N3"))
+    PO.window(*VPOST[1], v0 + SILL_R, v0 + HEAD, sand=True)               # V-05: arenado en sala y baño (usuario)
     PO.window(*VPOST[2], v0 + SILL_R, v0 + HEAD, mullions=1)
 PO.text("SALA FAMILIAR", 4.5, NIV["N2"] + 0.45, 1.8)
 PO.text("SUITE 3", 4.5, NIV["N3"] + 0.45, 1.8)
@@ -381,7 +381,7 @@ notas = [
     "QUE ABIERTA FUNCIONA COMO ALERO ANTE LA LLUVIA. DONDE LA APERTURA HACIA AFUERA INTERFIERA "
     "CON UN PASILLO SE USARÁ VENTANA CORREDIZA DE DOS PAÑOS MÓVIL-MÓVIL. SOLO SON FIJOS LOS "
     "PAÑOS INFERIORES DE SEGURIDAD DE LA FACHADA PRINCIPAL.",
-    "BAÑOS: VIDRIO ARENADO (SANDBLAST). EN LA ZONA DE DUCHA EL VIDRIO DEBE QUEDAR SELLADO Y "
+    "BAÑOS Y VENTANA V-05 DE LA SALA: VIDRIO ARENADO (SANDBLAST). EN LA ZONA DE DUCHA EL VIDRIO DEBE QUEDAR SELLADO Y "
     "CON ANTEPECHO IMPERMEABLE O PANEL OPACO INTERIOR (POR DEFINIR).",
     "FACHADA POSTERIOR: ANTEPECHO COMÚN DE 0.90 m Y DINTEL A 2.20 m SOBRE NPT, VENTANAS "
     "ALINEADAS ENTRE LOS NIVELES 2 Y 3, OPERABLES EN TODA SU ÁREA (EL ANTEPECHO DA LA PROTECCIÓN). "
@@ -391,7 +391,7 @@ notas = [
     "HAY TAPIAS LATERALES EN LOS RETIROS. LA TAPIA DEL LINDERO POSTERIOR LLEGA HASTA LA VIGA "
     "CORONA DEL ÚLTIMO NIVEL (+9.00), SEGÚN NOTA 2.",
     "PORTÓN VEHICULAR Y PUERTA PEATONAL DE 2.40 m DE ALTURA. TIPOS DE VENTANAS Y PUERTAS EN "
-    "LÁMINAS A7 A A9; ACABADOS DE FACHADA EN LÁMINA A10.",
+    "LÁMINA A7; ACABADOS DE FACHADA EN LÁMINA A10.",
 ]
 y = cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)]
                    + [cl.NOTA_PR], 2.1, 218)
@@ -424,9 +424,9 @@ for kind, lab in (("awn", "VENTILA ABATIBLE HACIA AFUERA (BISAGRA SUPERIOR)"),
 H.titleblock(doc, psp, "A5", "FACHADAS",
              ["FACHADA PRINCIPAL (NORTE).", "FACHADA POSTERIOR (SUR).", "FACHADA LATERAL ESTE.",
               "FACHADA LATERAL OESTE.", "NOTAS.", ""],
-             [("1", "06-10-2026", "CUBIERTA, VENTANAS POSTERIORES, SIN TAPIAS"),
-              ("2", "06-10-2026", "VENTILAS ABATIBLES; TAPIA POSTERIOR"),
-              ("3", "06-10-2026", "SÍMBOLO DE VENTILA INVERTIDO")])
+             [("2", "06-10-2026", "VENTILAS ABATIBLES; TAPIA POSTERIOR"),
+              ("3", "06-10-2026", "SÍMBOLO DE VENTILA INVERTIDO"),
+              ("4", "06-10-2026", "V-05 SALA ARENADO; REFERENCIA A7")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

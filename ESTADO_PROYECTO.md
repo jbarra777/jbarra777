@@ -16,13 +16,13 @@
 | A1 | APROBADA | rev1, "A1 aprobada" |
 | A2 | APROBADA | rev3 |
 | A3 | APROBADA | rev3 |
-| A4 | EN REVISIÓN | rev3: referencia a la A7 |
-| A5 | APROBADA | rev3 |
+| A4 | APROBADA | rev3 |
+| A5 | EN REVISIÓN | rev4: V-05 de la sala con vidrio arenado y referencia a la A7 |
 | A6 | APROBADA | rev2 (falta rev3: vestíbulo N1, vano de la sala y referencia A7) |
 | A7 | APROBADA | rev1 |
 
-- **Última entrega:** A4 rev3.
-- **Siguiente paso:** visto bueno de la A4 rev3. Después entregar, una a la vez, A5 rev4 (referencia A7 y V-05 de la sala con vidrio arenado) y A6 rev3 (vestíbulo N1, vano de la sala y referencia A7).
+- **Última entrega:** A5 rev4.
+- **Siguiente paso:** visto bueno de la A5 rev4. Después entregar A6 rev3 (vestíbulo N1, vano de la sala y referencia A7).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

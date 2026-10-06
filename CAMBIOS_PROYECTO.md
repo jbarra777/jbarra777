@@ -67,3 +67,9 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - Nivel 1: "contrapiso según estructural" → **contrapiso solo en estacionamientos, pasillo y gradas; grava en el resto**.
   - Cielos: gypsum en N2/N3; acero expuesto en el N1.
   - Láminas aprobadas: **no se modifican** (indicación del usuario).
+- **06-10-2026 — A6 rev2.**
+  - Viga de entrepiso "0.30" → **0.30 es el paquete total** (viga 0.20 + sobrelosa 0.10); el cielo sigue a 2.70.
+  - Retiro frontal: grava → **zacate block (permeable)**.
+  - Paredes interiores: sin definir → **Steel Tech 0.12**.
+  - Cercha en el A-A: interrumpida en patios y gradas → **completa (cercha del fondo en vista)**.
+  - Frente N1: el corte pasa por el portón; ahora se dibuja la hoja cortada y la línea del lindero frontal.

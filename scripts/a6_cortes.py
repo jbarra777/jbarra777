@@ -10,8 +10,9 @@ en N2 y N3, acero expuesto en N1; forro del edificio en paredes livianas Steel T
 contrapiso en estacionamientos, pasillo y gradas, el resto en grava; cubierta de lámina cal. 26
 al 13 % sobre clavadores y cerchas metálicas en la dirección de la pendiente (cordón inferior
 +9.00). Sin cimentación dibujada (según estructural).
-PD: peralte de vigas 0.20, espesor de contrapiso 0.10, puertas 2.10, ventanas a patios
-0.90-2.20, geometría de cerchas y clavadores.
+rev2 (usuario): paquete de entrepiso 0.30 = viga 0.20 + sobrelosa 0.10; contrapiso 0.10;
+puertas 2.10; ventanas a patios 0.90-2.20; retiro frontal en zacate block; paredes interiores
+Steel Tech 0.12; cercha del fondo completa en el A-A. PD: geometría de cerchas y clavadores.
 Model Space en metros: cada corte en su propio origen (H horizontal, V = altura).
 """
 import math
@@ -19,7 +20,7 @@ import math
 import cadlib as cl
 import hoja as H
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "A6_cortes"
 NAME = f"SR-A6_CORTES_{REV}"
 
@@ -30,14 +31,14 @@ R = 3.00 / 17                                   # contrahuella
 TH = 0.28                                       # huella
 X0, X1 = ESC["x"]                               # 1.35 / 4.69
 X_DES = X0 + 8 * TH                             # inicio del descanso 3.59
-LOSA, VIGA = 0.10, 0.20                         # sobrelosa (usuario) / peralte viga (PD)
-CONTRA, GRAVA = 0.10, 0.25                      # contrapiso (PD) / espesor gráfico de grava
+LOSA, VIGA = 0.10, 0.20                         # sobrelosa / viga (usuario: total 0.30)
+CONTRA, GRAVA = 0.10, 0.25                      # contrapiso (usuario) / espesor gráfico de grava
 CIELO = 2.70
 PEND = 0.13
 Y_CUM = (EY0 + EY1) / 2
 CUB, CUM = 9.00, 9.00 + PEND * (Y_CUM - EY0)
 CLAV = 0.08                                     # clavador (representación)
-SILL, HEAD, PUERTA = 0.90, 2.20, 2.10           # PD
+SILL, HEAD, PUERTA = 0.90, 2.20, 2.10           # usuario
 XA = 3.0                                        # trazo corte A-A
 YB = 18.25                                      # trazo corte B-B
 X_CERCHAS = (0.30, H.EJES_X["B"], H.EJES_X["C"], W - 0.30)   # cerchas en la pendiente (PD)
@@ -135,6 +136,11 @@ class Sec:
         self._fill(h0, -GRAVA, h1, 0.0, "GRAVEL", 0.045)
         self.line((h0, 0.0), (h1, 0.0), "S-TERRENO")
         self.line((h0, -GRAVA), (h1, -GRAVA), "S-VISTA")
+
+    def grass_block(self, h0, h1):
+        """Zacate block (adoquín ecológico permeable)."""
+        self._fill(h0, -CONTRA, h1, 0.0, "BOX", 0.012)
+        self.rect(h0, -CONTRA, h1, 0.0, "S-CORTE")
 
     def slab_on_grade(self, h0, h1):
         self.concrete(h0, -CONTRA, h1, 0.0)
@@ -252,7 +258,8 @@ Y_EST1 = EY0 + E + 5.0                                          # fin de estacio
 # nivel 1: contrapiso (estacionamiento y gradas) y grava (jardín seco y retiros)
 A.slab_on_grade(EY0, Y_EST1)
 A.slab_on_grade(ESC["y"][0], ESC["y"][1])
-for a, b in ((0.0, EY0), (Y_EST1, ESC["y"][0]), (ESC["y"][1], Y_LP - E)):
+A.grass_block(0.0, EY0)                                          # retiro frontal permeable
+for a, b in ((Y_EST1, ESC["y"][0]), (ESC["y"][1], Y_LP - E)):
     A.gravel(a, b)
 A.line((-2.0, 0.0), (0.0, 0.0), "S-TERRENO")
 A.line((Y_LP, 0.0), (Y_LP + 1.0, 0.0), "S-TERRENO")
@@ -267,11 +274,15 @@ for v in (3.00, 6.00):
         beam(A, yc, v)
 # frente del N1 sobre el portón (mampostería) y portón
 A.masonry(EY0, 2.40, EY0 + E, 3.00 - LOSA)
-A.rect(EY0 - 0.03, 0.0, EY0 + 0.03, 2.40, "S-CORTE")
+A.steel(EY0 - 0.025, 0.0, EY0 + 0.025, 2.40)                     # hoja del portón (corte)
+A.steel(EY0 - 0.06, 2.34, EY0 + 0.06, 2.40)                      # marco superior
+# lindero frontal (línea de propiedad)
+e = A.line((0.0, -0.45), (0.0, 3.30), "A-EJES")
+e.dxf.ltscale = 0.05
 # muros N2 y N3: fachadas y muros a patio = forro Steel Tech; ejes 4 y 5 = interiores
 WALLS = [(EY0, EY0 + E, "s", False), (P1["y"][0] - E, P1["y"][0], "s", True),
-         (P1["y"][1], P1["y"][1] + E, "s", True), (ESC["y"][0] - E, ESC["y"][0], "i", False),
-         (ESC["y"][1], ESC["y"][1] + E, "i", False), (EY1 - E, EY1, "s", False)]
+         (P1["y"][1], P1["y"][1] + E, "s", True), (ESC["y"][0] - E, ESC["y"][0], "s", False),
+         (ESC["y"][1], ESC["y"][1] + E, "s", False), (EY1 - E, EY1, "s", False)]
 for v in (3.00, 6.00):
     for ya, yb, kind, win in WALLS:
         if v == 3.00:
@@ -298,8 +309,7 @@ for ya, yb in ((EY0, P1["y"][0]), (P1["y"][1], EY1)):
         purlins(A, Y_CUM, yb)
     else:
         purlins(A, ya, yb)
-for ya, yb in ((EY0, P1["y"][0]), (P1["y"][1], ESC["y"][0]), (ESC["y"][1], EY1)):
-    truss_elev(A, ya, yb)
+truss_elev(A, EY0, EY1)                     # cercha del fondo en vista, completa (usuario)
 A.canoa(EY0, CUB, -1)
 A.canoa(EY1, CUB, +1)
 A.canoa(P1["y"][1], roof_h(P1["y"][1]), -1)
@@ -336,14 +346,16 @@ for txt, h, v in ((["ESTACIONAMIENTO"], 4.70, 1.40), (["JARDÍN SECO"], 9.01, 1.
                   (["SUITE 1"], 4.90, 7.40), (["PATIO P1"], 9.01, 7.40),
                   (["SUITE 2"], 13.6, 7.40), (["SUITE 3"], 22.3, 7.40)):
     A.label(txt, h, v)
-A.label(["PORTÓN"], EY0 - 0.55, 2.05, 1.7)
+A.label(["PORTÓN", "(CORTE)"], EY0 - 0.55, 2.15, 1.7)
+A.label(["LINDERO", "FRONTAL"], -0.45, 3.70, 1.6)
+A.callout(["ZACATE BLOCK", "(PERMEABLE)"], 0.35, 0.80, (0.6, -0.05), align="MIDDLE_LEFT")
 # rótulos de sistemas (con línea guía)
 A.callout(["LÁMINA ESTRUCTURAL CAL. 26 SOBRE CLAVADORES"], 14.4, CUM + 0.75, (13.0, roof_h(13.0)))
-A.callout(["CERCHA METÁLICA EJE C (EN VISTA, PD)"], 17.6, 10.55, (17.0, CUB + 0.30))
+A.callout(["CERCHA METÁLICA EN VISTA (PD)"], 17.6, 10.55, (17.0, CUB + 0.30))
 A.callout(["CIELO GYPSUM REGULAR PLANO +8.70"], 20.0, 8.45, (19.9, 8.70))
 A.callout(["FORRO STEEL", "TECH 0.15"], 1.75, 6.0 + 1.55, (EY0 + 0.075, 6.0 + 1.30), align="MIDDLE_RIGHT")
 A.callout(["SOBRELOSA 0.10 / LÁMINA COLABORANTE"], 11.2, 6.0 - 0.55, (10.9, 6.0 - 0.05))
-A.callout(["VIGA DE ACERO (PD)"], 11.2, 3.0 - 0.75, (H.EJES_Y["3"] + 0.08, 3.0 - 0.20))
+A.callout(["VIGA DE ACERO 0.20"], 11.2, 3.0 - 0.75, (H.EJES_Y["3"] + 0.08, 3.0 - 0.20))
 A.callout(["COLUMNA DE ACERO EJE C", "CONTINUA N1-N3"], 7.10, 2.10, (H.COLS["2"] - 0.15, 2.0), align="MIDDLE_RIGHT")
 A.callout(["ACERO EXPUESTO (SIN CIELO)"], 11.2, 1.90, (11.0, 2.70))
 A.callout(["CONTRAPISO"], 4.2, 0.55, (4.0, -0.05))
@@ -418,9 +430,9 @@ for v in (0.0, 3.00):
 B.poly([(hx(E), RB), (hx(XC1), RB)], "S-CUBIERTA", width=0.025)
 B.line((hx(E), RB - CLAV), (hx(XC1), RB - CLAV))
 for xc in X_CERCHAS[:3]:
-    B.steel(hx(xc) - 0.05, RB - CLAV - 0.08, hx(xc) + 0.05, RB - CLAV)
-    B.steel(hx(xc) - 0.05, CUB, hx(xc) + 0.05, CUB + 0.08)
-    B.line((hx(xc), CUB + 0.08), (hx(xc), RB - CLAV - 0.08))
+    B.steel(hx(xc) - 0.07, RB - CLAV - 0.10, hx(xc) + 0.07, RB - CLAV)   # cordón superior
+    B.steel(hx(xc) - 0.07, CUB, hx(xc) + 0.07, CUB + 0.10)               # cordón inferior
+    B.rect(hx(xc) - 0.02, CUB + 0.10, hx(xc) + 0.02, RB - CLAV - 0.10)    # montante en vista
 B.line((hx(XC1), roof_h(P2["y"][1])), (hx(W - E), roof_h(P2["y"][1])))
 # cielos de gypsum
 B.cielo(hx(E), hx(X0), 3.00 + CIELO)
@@ -494,21 +506,23 @@ notas = [
     "ESTRUCTURA PRINCIPAL: MARCOS RÍGIDOS DE ACERO. COLUMNAS DEL EJE C CONTINUAS Y A PLOMO DEL "
     "NIVEL 1 AL NIVEL 3. COLUMNAS DE LOS EJES A Y D, PERFILES, SECCIONES Y CONEXIONES SEGÚN "
     "PLANOS ESTRUCTURALES.",
-    "ENTREPISOS: SOBRELOSA DE 0.10 m SOBRE LÁMINA COLABORANTE Y VIGAS DE ACERO (PERALTE 0.20 m "
-    "PRELIMINAR, PD).",
+    "ENTREPISOS: PAQUETE DE 0.30 m = SOBRELOSA DE 0.10 m SOBRE LÁMINA COLABORANTE + VIGAS DE "
+    "ACERO DE 0.20 m. PERFILES Y REFUERZO SEGÚN PLANOS ESTRUCTURALES.",
     "CIELOS: GYPSUM REGULAR PLANO SUSPENDIDO A 2.70 m SOBRE NPT EN LOS NIVELES 2 Y 3. NIVEL 1 "
     "(ESTACIONAMIENTOS) CON ESTRUCTURA DE ACERO EXPUESTA.",
     "CERRAMIENTOS: FORRO DEL EDIFICIO EN PAREDES LIVIANAS STEEL TECH (0.15 m). MUROS DE LINDERO, "
-    "TAPIA POSTERIOR Y FRENTE DEL NIVEL 1 (PORTÓN) EN MAMPOSTERÍA. PAREDES INTERIORES 0.12 m.",
+    "TAPIA POSTERIOR Y FRENTE DEL NIVEL 1 (PORTÓN) EN MAMPOSTERÍA. PAREDES INTERIORES STEEL TECH "
+    "DE 0.12 m.",
     "CUBIERTA: LÁMINA ESTRUCTURAL CAL. 26 SOBRE CLAVADORES Y CERCHAS METÁLICAS EN LA DIRECCIÓN "
-    "DE LA PENDIENTE (13 %), CORDÓN INFERIOR A +9.00 Y CUMBRERA +10.50. GEOMETRÍA Y PERFILES DE "
-    "CERCHAS Y CLAVADORES SEGÚN PLANOS ESTRUCTURALES (PD). CANOAS EN FRENTE, FONDO Y BORDES HACIA "
+    "DE LA PENDIENTE (13 %), CORDÓN INFERIOR A +9.00 Y CUMBRERA +10.50. EN EL CORTE A-A SE "
+    "DIBUJA LA CERCHA DEL FONDO EN VISTA, COMPLETA. GEOMETRÍA Y PERFILES DE CERCHAS Y CLAVADORES "
+    "SEGÚN PLANOS ESTRUCTURALES (PD). CANOAS EN FRENTE, FONDO Y BORDES HACIA "
     "LOS PATIOS DONDE SE REQUIERA.",
-    "NIVEL 1: CONTRAPISO EN ESTACIONAMIENTOS, PASILLO Y GRADAS (ESPESOR SEGÚN ESTRUCTURAL); EL "
-    "RESTO EN GRAVA (JARDÍN SECO).",
+    "NIVEL 1: CONTRAPISO DE 0.10 m EN ESTACIONAMIENTOS, PASILLO Y GRADAS; RETIRO FRONTAL EN "
+    "ZACATE BLOCK (PERMEABLE); EL RESTO EN GRAVA (JARDÍN SECO).",
     "ESCALERA EN U: 17 CONTRAHUELLAS DE 0.176 m Y HUELLA DE 0.28 m POR NIVEL; DESCANSOS A "
     "+1.59 Y +4.59. BARANDAS Y PASAMANOS EN LÁMINA A11.",
-    "ALTURAS PRELIMINARES (PD): PUERTAS 2.10 m; VENTANAS HACIA LOS PATIOS CON ANTEPECHO 0.90 m "
+    "ALTURAS: PUERTAS 2.10 m; VENTANAS HACIA LOS PATIOS CON ANTEPECHO 0.90 m "
     "Y DINTEL 2.20 m. TIPOS EN LÁMINAS A7 A A9.",
     "CIMENTACIÓN SEGÚN PLANOS ESTRUCTURALES (NO SE DIBUJA EN ESTA LÁMINA).",
     "TRAZO DE LOS CORTES SEGÚN LÁMINAS A2 A A4.",
@@ -523,8 +537,8 @@ y -= 9
 items = [("steel", "ACERO CORTADO (COLUMNAS, VIGAS, CERCHAS, CLAVADORES)"),
          ("conc", "CONCRETO CORTADO (SOBRELOSA, CONTRAPISO, GRADAS)"),
          ("mamp", "MAMPOSTERÍA (MUROS DE LINDERO, TAPIA, FRENTE N1)"),
-         ("st", "FORRO STEEL TECH"),
-         ("int", "PARED INTERIOR"),
+         ("st", "PAREDES STEEL TECH (FORRO 0.15 / INTERIORES 0.12)"),
+         ("zb", "ZACATE BLOCK (PERMEABLE)"),
          ("grav", "GRAVA (JARDÍN SECO)"),
          ("cielo", "CIELO GYPSUM REGULAR PLANO")]
 col_w = 185
@@ -540,11 +554,11 @@ for i, (kind, lab) in enumerate(items):
         if kind in ("steel", "conc"):
             hh = psp.add_hatch(color=7 if kind == "steel" else 8, dxfattribs={"layer": "S-CORTE"})
             hh.paths.add_polyline_path(pts)
-        elif kind in ("mamp", "grav"):
+        elif kind in ("mamp", "grav", "zb"):
             hh = psp.add_hatch(dxfattribs={"layer": "S-TRAMA"})
             hh.paths.add_polyline_path(pts)
-            hh.set_pattern_fill("ANSI31" if kind == "mamp" else "GRAVEL",
-                                scale=0.35 if kind == "mamp" else 1.3)
+            hh.set_pattern_fill({"mamp": "ANSI31", "grav": "GRAVEL", "zb": "BOX"}[kind],
+                                scale={"mamp": 0.35, "grav": 1.3, "zb": 0.16}[kind])
         elif kind == "st":
             e = psp.add_line((xx + 1, yy), (xx + 13, yy), dxfattribs={"layer": "S-OCULTO"})
             e.dxf.ltscale = 0.3
@@ -552,7 +566,8 @@ for i, (kind, lab) in enumerate(items):
 
 H.titleblock(doc, psp, "A6", "CORTES", ["CORTE A-A.", "CORTE B-B.", "NOTAS.", "SIMBOLOGÍA.", "", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "SISTEMA CONSTRUCTIVO, CERCHAS, MATERIALES")], escalas="1:75")
+              ("1", "06-10-2026", "SISTEMA CONSTRUCTIVO, CERCHAS, MATERIALES"),
+              ("2", "06-10-2026", "PORTÓN, ZACATE BLOCK, CERCHA COMPLETA")], escalas="1:75")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

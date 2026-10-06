@@ -12,7 +12,7 @@ import cadlib as cl
 import planta as pl
 from planta import P
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "A2_nivel1"
 NAME = f"SR-A2_NIVEL1_{REV}"
 
@@ -52,13 +52,13 @@ for k, (x, y) in LOC.items():
     pl.text(msp, str(k), off[0], off[1], 0.18, "T-VERTICE")
 
 # ---------------------------------------------------------------- muros / tapias
+# rev2: los muros de colindancia de la vivienda son la división en lindero (N1 incluido,
+# hasta el entrepiso +3.00). Sin tapias laterales en los retiros.
 pl.wall(msp, 0.0, E, ey0, ey1)                       # colindancia oeste
 pl.wall(msp, W - E, W, ey0, ey1)                     # colindancia este
 pl.wall(msp, X_PIL0, X_PIL1, ey0, Y_ROW)             # pilastra frontal (eje B)
 Y_LP = LOC[5][1]                                      # lindero posterior (~28.51)
-pl.wall(msp, 0.0, E, ey1, Y_LP)                      # tapias del patio posterior
-pl.wall(msp, W - E, W, ey1, Y_LP)
-pl.wall(msp, E, W - E, Y_LP - E, Y_LP)
+pl.wall(msp, 0.0, W, Y_LP - E, Y_LP)                 # tapia posterior (se mantiene de rev1)
 
 # ---------------------------------------------------------------- columnas eje C
 XC = 4.84                                             # eje C = centro de columnas
@@ -111,7 +111,8 @@ for k in range(3):
     pl.text(msp, f"E-{k + 1}", xc, Y_ROW + 2.3, 0.20, "A-ESPACIOS")
 
 # ---------------------------------------------------------------- jardín seco
-JS = [(XB0, Y_E), (W - E, Y_E), (W - E, Y_LP - E), (E, Y_LP - E), (E, Y5a), (XB0, Y5a)]
+JS = [(XB0, Y_E), (W - E, Y_E), (W - E, ey1), (W, ey1), (W, Y_LP - E), (0.0, Y_LP - E),
+      (0.0, ey1), (E, ey1), (E, Y5a), (XB0, Y5a)]
 hole = [(XB0, Y4b), (X1 := ESC["x"][1], Y4b), (X1, Y5a), (XB0, Y5a)]
 js = msp.add_hatch(dxfattribs={"layer": "A-JARDIN"})
 js.paths.add_polyline_path([P(*q) for q in JS], flags=1)
@@ -212,7 +213,7 @@ for xa, xb in zip(xs[:-1], xs[1:]):
     pl.dim(msp, (xa, ey1), (xb, ey1), (0, 29.25), True)
 
 # cortes
-pl.section_mark(msp, "A", "A6", (3.0, -1.6), (3.0, 29.4), (1, 0))
+pl.section_mark(msp, "A", "A6", (3.0, -1.6), (3.0, 30.2), (1, 0))
 pl.section_mark(msp, "B", "A6", (-2.0, 18.25), (11.05, 18.25), (0, 1))
 
 # ---------------------------------------------------------------- hoja
@@ -294,8 +295,11 @@ extra = [
     "CONSTRUIDO: BAJO LOS NIVELES 2 Y 3, EN LOS PATIOS P1 Y P2 Y EN EL PATIO POSTERIOR.",
     "NPT ±0.00 = NIVEL DE ACERA (TERRENO PLANO). PENDIENTES Y DESAGÜES SEGÚN LÁMINAS "
     "SANITARIAS.",
+    "LOS MUROS DE COLINDANCIA DE LA VIVIENDA SON LA DIVISIÓN CON LOS PREDIOS VECINOS. EN EL "
+    "NIVEL 1 SON MUROS CONTINUOS HASTA EL NIVEL DE ENTREPISO (+3.00). NO SE CONSTRUYEN TAPIAS "
+    "LATERALES EN LOS RETIROS.",
 ]
-cl.mtext(psp, "\\P".join(cl.notas(extra)), (X3, y - 6), 2.2, 250, attach=1)
+cl.notes_block(psp, X3, y - 6, cl.notas(extra), 2.1, 250)
 
 # cajetín
 vals = {
@@ -312,7 +316,8 @@ vals = {
     "ESCALAS": "1:50 / INDICADAS",
     "REV0_N": "0", "REV0_F": "06-10-2026", "REV0_D": "VERSIÓN DE TRABAJO PARA REVISIÓN",
     "REV1_N": "1", "REV1_F": "06-10-2026",
-    "REV1_D": "3 PARQUEOS, JARDÍN SECO, PORTÓN, COLUMNAS EJE C", "REV2_N": "", "REV2_F": "", "REV2_D": "",
+    "REV1_D": "3 PARQUEOS, JARDÍN SECO, PORTÓN, COLUMNAS EJE C",
+    "REV2_N": "2", "REV2_F": "06-10-2026", "REV2_D": "SIN TAPIAS LATERALES; MUROS DE COLINDANCIA N1",
     "ESTADO_1": "VERSIÓN DE TRABAJO", "ESTADO_2": "NO APTA PARA CONSTRUCCIÓN NI TRÁMITE",
     "LUGAR": "COSTA RICA", "LAMINA": "A2", "FECHA": prj["fecha"], "TOTAL": prj["total_laminas"],
 }

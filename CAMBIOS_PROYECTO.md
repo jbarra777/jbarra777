@@ -29,7 +29,7 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
 
 ### Lámina A5 (fachadas) — en revisión
 - **Ventanas frontales.** → Por indicación del usuario: **de piso a 2.20**, alineadas, con vidrio arenado en los baños.
-- **Ventanas posteriores.** Claude las copió de cada planta y quedaron desalineadas entre N2 y N3. Además, la ventana del baño de la suite 3 **choca con C6**. → **Sin decisión todavía** (ver ESTADO). **No repetir:** comprobar las columnas antes de ubicar ventanas en fachada.
+- **Ventanas posteriores.** Claude las copió de cada planta y quedaron desalineadas entre N2 y N3. Además, la ventana del baño de la suite 3 **choca con C6**. → Resuelto el 06-10-2026 (ver el registro). **No repetir:** comprobar las columnas antes de ubicar ventanas en fachada.
 
 ### Lecciones de proceso (para no repetir errores)
 - "Render" se refería a generar el PDF; el usuario aclaró que **no se hacen renders 3D**.
@@ -41,3 +41,12 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
 
 - **06-10-2026 — Criterio del índice de láminas.** Al crear la memoria se había propuesto una lista de 38 láminas basada en la referencia. → **El usuario indicó** que la referencia no define el número de láminas. → **Vigente:** índice en tres partes (A desarrolladas, B previstas, C referencia por evaluar); el número definitivo queda pendiente.
 - **06-10-2026 — Estados de las láminas.** A1 y A4 figuraban como APROBADAS. → Por indicación del usuario ("ante duda, EN REVISIÓN") → **Vigente:** A1 EN REVISIÓN (falta confirmar la rev1) y A4 EN REVISIÓN (conflicto con C6).
+- **06-10-2026 — Decisiones de fachada, techo y linderos** (respuesta del usuario a las decisiones pendientes de la A5).
+  - **Ventanas posteriores:** las de rev0 estaban desalineadas y una chocaba con C6. → **Vigente:** patrón 0.70–2.90 / 3.85–4.60 / 6.40–8.20 en N2 y N3, con antepecho común de 0.90.
+  - **Protección de las ventanas desde el piso:** había dos opciones. → **Vigente:** opción a (paño fijo inferior hasta 0.90), **sin mencionar el vidrio de seguridad** en los planos. Walk-in con vidrios fijos.
+  - **Techo:** se había supuesto losa o lámina con pretil a +9.60. → **Vigente:** lámina estructural cal. 26, a dos aguas (frente y fondo), al 13 %, con canoas, 2 bajantes por lado y conducción a la cuneta del frente. Sin pretil y sin restricción de altura.
+  - **Portón:** 2.40 PD → **2.40 confirmado.**
+  - **Tapias:** había tapias laterales en el retiro posterior (A2 rev1) y en la A5 aparecían "por confirmar". → **Vigente:** **no hay tapias laterales**; las paredes de la vivienda son la división en el lindero y en el N1 el muro llega hasta el entrepiso.
+  - **A1:** EN REVISIÓN → **APROBADA.**
+  - **Láminas afectadas:** A2 (aprobada) → rev2; A3 (aprobada) → rev1; A4 → rev1; A5 → rev1. Todas quedan EN REVISIÓN.
+  - **Corrección menor de presentación:** la marca de corte A del fondo tapaba la cota 3.43 en A2–A4 y se movió.

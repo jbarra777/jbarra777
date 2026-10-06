@@ -15,11 +15,11 @@
 ## A) Láminas del proyecto actual ya desarrolladas
 | Código | Nombre | Contenido principal | Estado | Archivo vigente | Observaciones |
 |---|---|---|---|---|---|
-| A1 | Lote de terreno | Ubicación geográfica (imagen del catastro), poligonal 1:200, retiros y huella 1:100, derrotero, coordenadas CRTM05, áreas y cobertura, notas | EN REVISIÓN | `planos/A1_lote/SR-A1_LOTE_rev1.*` | El usuario pidió 3 cambios y "continuar con la lámina 2". La rev1 los aplica, pero **no hubo confirmación explícita de la rev1**. Falta la relación rev1 (solo existe la rev0). |
-| A2 | Planta nivel 1 | 3 parqueos, pasillo, gradas, jardín seco, columnas en el eje C, portón abatible, derrotero, áreas y cobertura, notas | APROBADA | `planos/A2_nivel1/SR-A2_NIVEL1_rev1.*` | Aprobación expresa de la rev1: "De acuerdo, continuar con la siguiente". |
-| A3 | Planta nivel 2 | Suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A3_nivel2/SR-A3_NIVEL2_rev0.*` | "Está perfecto". **Aviso:** si se realinean las ventanas posteriores (pendiente A5), cambiaría la sala y habría que hacer una rev1, con aprobación. |
-| A4 | Planta nivel 3 | Suites 1, 2 y 3, áreas, cobertura, detalle del extractor, notas | EN REVISIÓN | `planos/A4_nivel3/SR-A4_NIVEL3_rev0.*` | El usuario la aceptó ("ok… pasar con siguiente lámina"), pero después se detectó un **error pendiente de corregir**: la ventana posterior del baño de la suite 3 choca con la columna C6. |
-| A5 | Fachadas | Principal 1:50, posterior 1:75, laterales 1:100, notas | EN REVISIÓN | `planos/A5_fachadas/SR-A5_FACHADAS_rev0.*` | Pendiente: ventanas posteriores, conflicto con C6 y supuestos PD (ver ESTADO). |
+| A1 | Lote de terreno | Ubicación geográfica (imagen del catastro), poligonal 1:200, retiros y huella 1:100, derrotero, coordenadas CRTM05, áreas y cobertura, notas | APROBADA | `planos/A1_lote/SR-A1_LOTE_rev1.*` | Aprobada expresamente: "A1 aprobada" (06-10-2026). Falta la relación rev1 (solo existe la rev0). |
+| A2 | Planta nivel 1 | 3 parqueos, pasillo, gradas, jardín seco, columnas en el eje C, portón abatible, derrotero, áreas y cobertura, notas | EN REVISIÓN | `planos/A2_nivel1/SR-A2_NIVEL1_rev2.*` | La rev1 estaba aprobada. La **rev2** quita las tapias laterales y agrega la nota de los muros de colindancia del N1 (indicación del 06-10-2026). Espera el visto bueno, incluida la tapia posterior. |
+| A3 | Planta nivel 2 | Suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle del extractor, notas | EN REVISIÓN | `planos/A3_nivel2/SR-A3_NIVEL2_rev1.*` | La rev0 estaba aprobada. La **rev1** aplica el patrón de ventanas posteriores aprobado y las notas de ventanas. Espera el visto bueno. |
+| A4 | Planta nivel 3 | Suites 1, 2 y 3, áreas, cobertura, detalle del extractor, notas | EN REVISIÓN | `planos/A4_nivel3/SR-A4_NIVEL3_rev1.*` | La **rev1** corrige el conflicto con C6 (ventana del baño de la suite 3 en 3.85–4.60) y aplica el patrón posterior. Espera el visto bueno. |
+| A5 | Fachadas | Principal 1:50, posterior 1:75, laterales 1:100, cubierta a dos aguas, notas | EN REVISIÓN | `planos/A5_fachadas/SR-A5_FACHADAS_rev1.*` | La **rev1** incluye la cubierta de lámina al 13 %, las canoas y bajantes, las ventanas posteriores y la eliminación de tapias. Tiene supuestos por confirmar (ver la relación rev1). |
 
 ## B) Láminas previstas o necesarias del proyecto actual
 Las justifica una referencia cruzada desde las láminas ya desarrolladas o un requisito propio de esta vivienda. **El código, el nombre definitivo y la posible combinación están por confirmar.**
@@ -51,7 +51,7 @@ Esta lista es solo un inventario de lo que contiene la referencia para comparar 
 | CIVIL_01 y 02 Fundaciones y detalles | Planta y detalles | Por evaluar según el sistema estructural |
 | CIVIL_03 Entrepiso PB | Entrepiso de planta baja | Por evaluar: el N1 está sobre el terreno, quizá solo haga falta un contrapiso |
 | CIVIL_04 y 05 Entrepisos N2 y N3 | Plantas y detalles | Por evaluar según el sistema |
-| CIVIL_06 y 07 Techos | Planta de techo, losa, caja pluvial | Por evaluar: el tipo de techo está pendiente |
+| CIVIL_06 y 07 Techos | Planta de techo, losa, caja pluvial | Por evaluar. Techo definido: lámina cal. 26 a dos aguas al 13 % con canoas. Probablemente haga falta una planta de techos (canoas, bajantes y bordes hacia los patios). |
 | CIVIL_08 y 09 Pórticos | Ejes longitudinales y transversales | Por evaluar según el sistema |
 | CIVIL_10 Especificaciones | Especificaciones constructivas | Por evaluar; no copiar su contenido |
 | ELECT_01 a 06 Iluminación y tomas por nivel | 6 plantas | Por evaluar: combinar en el N1 u otras combinaciones |

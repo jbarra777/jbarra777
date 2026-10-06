@@ -13,40 +13,33 @@
 ## Situación actual
 | Lámina | Estado | Motivo |
 |---|---|---|
-| A1 | EN REVISIÓN | La rev1 no se confirmó explícitamente |
-| A2 | APROBADA | |
-| A3 | APROBADA | |
-| A4 | EN REVISIÓN | Conflicto entre la ventana y la columna C6 |
-| A5 | EN REVISIÓN | |
+| A1 | APROBADA | "A1 aprobada" (06-10-2026) |
+| A2 | EN REVISIÓN | rev2: sin tapias laterales, nota de los muros de colindancia del N1 |
+| A3 | EN REVISIÓN | rev1: patrón de ventanas posteriores |
+| A4 | EN REVISIÓN | rev1: corrige el conflicto con C6 y aplica el patrón posterior |
+| A5 | EN REVISIÓN | rev1: cubierta a dos aguas 13 %, canoas, bajantes, ventanas posteriores, sin tapias |
 
-- **Última lámina trabajada:** A5 Fachadas rev0.
-- **Siguiente paso:** **no empezar la A6 todavía.** Primero:
-  - obtener las decisiones de abajo;
-  - generar A5 rev1 y A4 rev1, y A3 rev1 si cambia la sala;
-  - pedir al usuario que confirme la A1 rev1.
-- **Siguiente lámina nueva**, cuando el usuario lo indique: A6 Cortes.
+- **Última entrega:** A2 rev2, A3 rev1, A4 rev1 y A5 rev1, que aplican las decisiones del usuario del 06-10-2026.
+- **Siguiente paso:** esperar el visto bueno de esas cuatro revisiones y las respuestas de abajo.
+- **Siguiente lámina nueva**, cuando el usuario lo indique: A6 Cortes. Debe incluir la cubierta al 13 % y la cumbrera +10.50.
 
 ## Decisiones que necesitan respuesta del usuario
-1. **Conflicto detectado:** la ventana posterior del baño de la suite 3 (N3, x 3.95–4.95) choca con la columna C6 (x 4.69–4.99). Afecta a la A4 y la A5.
-2. **Ventanas posteriores no alineadas entre el N2 (sala) y el N3 (suite 3).** Claude propuso un patrón común, **aún no aprobado**:
-   - 0.70–2.90;
-   - una ventana angosta de unos 3.85–4.60 que libra C6;
-   - 6.40–8.20.
-
-   Falta decidir si van de piso a 2.20 o con un antepecho común.
-3. **Protección de las ventanas desde el piso** en N2/N3: paño fijo laminado de 0.90 o baranda interior. También falta el tipo de vidrio de seguridad y el tratamiento del walk-in.
-4. **Techo:** losa plana o lámina con pretil. Cubierta (+9.00) y pretil (+9.60) están como PD, y la altura máxima municipal no está verificada.
-5. **Altura del portón y de la puerta peatonal:** 2.40 está como PD.
-6. **Altura de las tapias** en los retiros.
-7. **Confirmar la A1 rev1** (nota 2 de la tapia, nota 12 de patios aceptados, empresa).
+1. **Bajantes:** "2 bajantes a cada lado" se interpretó como 2 por canoa (frontal y posterior), uno en cada extremo. ¿Es correcto?
+2. **Bajantes frontales en el N1:** chocan con el portón (eje D) y con el acceso peatonal (eje A). En la A5 se dibujaron ocultos. ¿Van empotrados o se desplazan, por ejemplo a la pilastra B?
+3. **Bordes del techo hacia los patios P1 y P2:** el agua cae a los patios. ¿Se ponen canoas internas y cómo se conducen?
+4. **Cumbrera al centro** (y = 13.62, +10.50), con faldones iguales: supuesto.
+5. **Antepecho de 0.90 también en el baño de la suite 3** (fondo): supuesto.
+6. **Remate de los muros de colindancia** según la pendiente del techo, sin pretil: supuesto.
+7. **Tapia del lindero posterior:** ¿existe? ¿Con qué altura? (se mantiene la de la A2).
 
 ## Otros pendientes
 - **Lista y número definitivo de láminas.** Evaluar las combinaciones y si las aguas pluviales llevan lámina propia.
-- **Notas [PR]** 1 (medidas) y 7 (canoas): esperan la revisión del usuario.
+- **Notas [PR]** 1 (medidas) y 7 (canoas con malla): esperan la revisión del usuario. Ya hay canoas confirmadas.
 - **Estructura:** sistema estructural, cimentación, entrepisos, secciones (las columnas de 0.30 son PD) y la viga del eje 1 sin C1.
 - **Sanitarios:** tanque séptico (prueba de infiltración), ductos de las suites 2 y 3 y modelo del extractor.
 - **Eléctricos:** sin datos todavía.
 - **Acabados.**
+- **Relación de la A1 rev1** (solo existe la rev0): pendiente de redactar.
 - **Confirmaciones municipales:** retiros con alineamiento y uso de suelo; normativa vigente no verificada.
 - **Lavandería:** pospuesta.
 - **Privacidad del repositorio:** `jbarra777/jbarra777` es **público** y contiene el folio real, las coordenadas y los profesionales. Sin respuesta del usuario.

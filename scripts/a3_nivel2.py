@@ -11,7 +11,7 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "A3_nivel2"
 NAME = f"SR-A3_NIVEL2_{REV}"
 E, I, W = H.E, H.I, H.W
@@ -54,7 +54,7 @@ pl.wall(msp, W - E, W, YF0, YR1)                     # colindancia este (ciega)
 # fachada frontal: dormitorio / baño / walk-in
 wall_with_openings("x", YF0, YF1, E, W - E, [], [(0.70, 2.90), (3.95, 4.95), (6.40, 8.20)])
 # fachada posterior: sala familiar
-wall_with_openings("x", YR0, YR1, E, W - E, [], [(0.90, 3.90), (5.00, 8.00)])
+wall_with_openings("x", YR0, YR1, E, W - E, [], [(0.70, 2.90), (3.85, 4.60), (6.40, 8.20)])
 # eje 2: suite / pasillo-P1 (puerta de suite al final del pasillo)
 D_SUI = (0.25, 1.15)
 wall_with_openings("x", Y2a, Y2b, E, W - E, [D_SUI], [(2.00, 4.40), (5.60, 8.20)])
@@ -205,7 +205,7 @@ pl.text(msp, "GRADAS EN U: 17 CH = 0.176 / H = 0.28", 0.75, Y4b + 0.05, 0.085, "
 pl.text(msp, "CALLE PÚBLICA", 4.5, -2.15, 0.22, "A-ESPACIOS", rot=90)
 pl.mtext(msp, "COLINDANCIA - FACHADA CIEGA", -0.35, 14.0, 0.10, 6.0, "A-TXT-50")
 pl.mtext(msp, "COLINDANCIA - FACHADA CIEGA", W + 0.35, 14.0, 0.10, 6.0, "A-TXT-50")
-for (x, y) in ((2.6, 2.8), (0.45, 11.0), (5.6, 13.7), (5.2, 24.4)):
+for (x, y) in ((2.6, 2.8), (0.45, 11.0), (5.6, 13.7), (5.3, 22.3)):
     pl.level(msp, x, y, NPT)
 
 # ---------------------------------------------------------------- ejes y cotas
@@ -223,6 +223,9 @@ for xa, xb in ((E, XB0), (XB0, XB1), (XB1, W - E)):
 pl.dim(msp, (X0, Y5b), (X1, Y5b), (0, Y5b + 0.35), True)
 pl.dim(msp, (XC1, Y4b), (W - E, Y4b), (0, Y4b + 0.45), True)
 pl.dim(msp, (E, YR0), (W - E, YR0), (0, YR0 - 0.40), True)
+RW = [E, 0.70, 2.90, 3.85, 4.60, 6.40, 8.20, W - E]
+for xa, xb in zip(RW[:-1], RW[1:]):                 # ventanas fachada posterior
+    pl.dim(msp, (xa, YR1), (xb, YR1), (0, YR1 + 0.55), True)
 H.sections(msp)
 
 # ---------------------------------------------------------------- hoja
@@ -261,7 +264,7 @@ X3 = 455.0
 y = 262.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 extra = [
-    "NIVEL 2: NPT +3.00 (ALTURA PISO A PISO 3.00 m, PROVISIONAL).",
+    "NIVEL 2: NPT +3.00 (ALTURA PISO A PISO 3.00 m).",
     "SUITE: BAÑO DE 1.55 x 2.20 m CON DUCHA, INODORO Y LAVATORIO EN LÍNEA Y PUERTA DE 0.80 m "
     "ABATIBLE HACIA EL DORMITORIO; WALK-IN CLOSET CON MUEBLES DE 0.60 m. SOLO EL BAÑO Y EL "
     "WALK-IN SON RECINTOS CERRADOS.",
@@ -271,6 +274,10 @@ extra = [
     "SALA FAMILIAR NO LLEVAN BAÑO.",
     "VENTANAS HACIA P1 DESFASADAS ENTRE SUITE Y COCINA-COMEDOR PARA REDUCIR VISUALES CRUZADAS.",
     "COLUMNAS SOBRE EL EJE C SEGÚN LÁMINA A2; SECCIONES Y REFUERZO SEGÚN PLANOS ESTRUCTURALES.",
+    "FACHADA FRONTAL: VENTANAS DE PISO A 2.20 m CON PAÑO FIJO INFERIOR HASTA 0.90 m; "
+    "WALK-IN CON VIDRIOS FIJOS; BAÑO CON VIDRIO ARENADO (VER A5).",
+    "FACHADA POSTERIOR: VENTANAS CON ANTEPECHO COMÚN DE 0.90 m Y DINTEL A 2.20 m, "
+    "ALINEADAS ENTRE LOS NIVELES 2 Y 3 (VER A5).",
     "DIMENSIONES Y TIPOS DE PUERTAS Y VENTANAS EN LÁMINA A8.",
 ]
 y = cl.notes_block(psp, X3, y - 6, cl.notas(extra), 2.1, 250)
@@ -279,7 +286,8 @@ H.extractor_detail(psp, X3, min(y - 6, 165.0))
 H.titleblock(doc, psp, "A3", "PLANTA NIVEL 2",
              ["SUITE 1, COCINA-COMEDOR, SALA.", "DERROTERO.", "CUADRO DE ÁREAS.",
               "PORCENTAJE DE COBERTURA.", "DETALLE EXTRACTOR DE AIRE.", "NOTAS."],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")])
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "06-10-2026", "VENTANAS POSTERIORES ALINEADAS")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

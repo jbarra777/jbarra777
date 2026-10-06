@@ -77,7 +77,7 @@ def general_dims(msp):
 
 
 def sections(msp):
-    pl.section_mark(msp, "A", "A6", (3.0, -1.6), (3.0, 29.4), (1, 0))
+    pl.section_mark(msp, "A", "A6", (3.0, -1.6), (3.0, 30.2), (1, 0))
     pl.section_mark(msp, "B", "A6", (-2.0, 18.25), (11.05, 18.25), (0, 1))
 
 

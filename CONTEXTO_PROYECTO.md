@@ -1,7 +1,7 @@
 # CONTEXTO DEL PROYECTO: Vivienda unifamiliar de 3 niveles, San Rafael de Heredia
 
 > Archivo de traspaso. Si se abre una sesión nueva de Claude, leer este archivo primero.
-> Última actualización: 06-10-2026. Lámina en curso: **A4 rev0 (en revisión)**. A3 rev0 aprobada ("Está perfecto"); altura de piso a piso de 3.00 m confirmada. A2 rev1 aprobada ("De acuerdo, continuar con la siguiente"). A1 en rev1 (cambios pedidos aplicados; el ingeniero indicó continuar).
+> Última actualización: 06-10-2026. Lámina en curso: **A5 rev0 (en revisión)**. A4 rev0 aprobada; el ducto de la suite 3 se ubica en las láminas sanitarias. A3 rev0 aprobada ("Está perfecto"); altura de piso a piso de 3.00 m confirmada. A2 rev1 aprobada ("De acuerdo, continuar con la siguiente"). A1 en rev1 (cambios pedidos aplicados; el ingeniero indicó continuar).
 
 ## 1. Encargo vigente (sustituye al de anteproyecto del 05-10-2026)
 - Juego completo de planos constructivos para el CFIA de una **vivienda unifamiliar de 3 niveles**. Solo uso unifamiliar: sin apartamentos ni notas de conversión.
@@ -72,7 +72,14 @@
 | A1 | Lote: ubicación, poligonal, retiros y huella, derrotero, coordenadas, áreas, notas | rev1 (cambios aplicados; se indicó continuar) |
 | A2 | Planta nivel 1 (1:50): parqueos, acceso, gradas, jardín seco, derrotero, áreas, cobertura, notas | **rev1 aprobada** |
 | A3 | Planta nivel 2 (1:50): suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle extractor, notas | **rev0 aprobada** |
-| A4 | Planta nivel 3 (1:50): suites 1, 2 y 3, áreas, cobertura, detalle extractor, notas | rev0 entregada, en revisión |
+| A4 | Planta nivel 3 (1:50): suites 1, 2 y 3, áreas, cobertura, detalle extractor, notas | **rev0 aprobada** |
+| A5 | Fachadas: principal 1:50, posterior 1:75, laterales 1:100 | rev0 entregada, en revisión |
+
+### Fachadas (A5 rev0)
+- **Criterio del ingeniero:** fachadas sencillas. En la principal, ventanas de piso a 2.20 m (dormitorio, baño y walk-in), alineadas entre niveles, para modelar después una fachada moderna. Baños con vidrio arenado (sandblast).
+- Ventanas del frente (x local): dormitorio 0.70–2.90, baño 3.95–4.95, walk-in 6.40–8.20. Portón de 2.40 m de alto (supuesto).
+- Cubierta +9.00 y pretil +9.60: por definir con el diseño de techos y la altura municipal.
+- Fachada posterior: antepecho 0.90 (sala y dormitorio) y 1.60 (baño y walk-in).
 
 ### Nivel 3 (A4 rev0)
 - Las suites 1 y 3 son iguales a la suite del nivel 2 (la 3 en espejo, con el baño contra la fachada posterior).
@@ -100,7 +107,7 @@
 
 ## 9. Herramientas
 - `scripts/cadlib.py`: capas, estilos de cota, cajetín, tablas, escala gráfica, render a PDF (ezdxf + PyMuPDF).
-- `scripts/a1_lote.py`, `a2_nivel1.py`, `a3_nivel2.py`: generan las láminas. `hoja.py` reúne las partes comunes de las láminas de planta (A3 en adelante). Requieren `pip install ezdxf pymupdf pillow`.
+- `scripts/a1_lote.py`, `a2_nivel1.py`, `a3_nivel2.py`, `a4_nivel3.py`, `a5_fachadas.py`: generan las láminas. `hoja.py` reúne las partes comunes de las láminas de planta (A3 en adelante). Requieren `pip install ezdxf pymupdf pillow`.
 - `scripts/planta.py`: muros, puertas, ventanas, ejes, niveles, cortes y vehículos en el marco de planta.
 - Notas generales y derrotero comunes en `cadlib.NOTAS_GENERALES` / `cadlib.derrotero_rows`.
 - Datos en `datos/lote_catastro.json` y `datos/proyecto.json`.

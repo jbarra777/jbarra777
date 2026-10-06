@@ -124,7 +124,7 @@ def cobertura(psp, x, y):
     return y - 6
 
 
-def titleblock(doc, psp, lamina, cont_tit, cont, revs):
+def titleblock(doc, psp, lamina, cont_tit, cont, revs, escalas="1:50 / INDICADAS"):
     vals = {
         "EMPRESA": prj["empresa"], "EMPRESA_CED": prj["empresa_ced"],
         "PROF_1": prj["profesionales"][0], "PROF_2": prj["profesionales"][1],
@@ -132,7 +132,7 @@ def titleblock(doc, psp, lamina, cont_tit, cont, revs):
         "PROYECTO": prj["proyecto"], "UBIC_1": prj["ubicacion"][0],
         "UBIC_2": prj["ubicacion"][1], "UBIC_3": "",
         "REG_1": prj["registro"][0], "REG_2": prj["registro"][1], "REG_3": prj["registro"][2],
-        "CONT_TIT": cont_tit, "ESCALAS": "1:50 / INDICADAS",
+        "CONT_TIT": cont_tit, "ESCALAS": escalas,
         "ESTADO_1": "VERSIÓN DE TRABAJO", "ESTADO_2": "NO APTA PARA CONSTRUCCIÓN NI TRÁMITE",
         "LUGAR": "COSTA RICA", "LAMINA": lamina, "FECHA": prj["fecha"],
         "TOTAL": prj["total_laminas"],

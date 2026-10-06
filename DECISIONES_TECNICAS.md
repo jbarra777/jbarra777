@@ -69,6 +69,10 @@
 - **NPT:** N1 ±0.00 (= acera), N2 +3.00, N3 +6.00. [U][A2–A4]
 - **Viga corona y arranque de cubierta: +9.00.** **Cumbrera: +10.50** (9.00 + 0.13 × 11.56), valor de referencia. **Sin pretil.** [U][A5 rev1]
 - **Sin restricción de altura máxima** (indicado por el usuario). [U]
+- **Cielo raso a 2.70 m sobre NPT en N2 y N3**; N1 sin cielo raso. [U][A6]
+- **Entrepisos de estructura metálica**: vigas de acero y lámina colaborante con sobrelosa. Espesores dibujados de 0.10 + 0.20: PD. [U][A6]
+- **Cortes a 1:75.** [U]
+- Puertas de 2.10 y ventanas hacia los patios 0.90/2.20: PD. [A6]
 
 ## 6. Muros y estructura arquitectónica
 - **Espesores:** muros exteriores 0.15 m e interiores 0.12 m. [U]

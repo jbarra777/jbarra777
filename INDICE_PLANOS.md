@@ -19,14 +19,14 @@
 | A2 | Planta nivel 1 | 3 parqueos, pasillo, gradas, jardín seco, columnas en el eje C, portón abatible, derrotero, áreas y cobertura, notas | APROBADA | `planos/A2_nivel1/SR-A2_NIVEL1_rev2.*` | rev2 (sin tapias laterales, muros de colindancia del N1). Visto bueno del 06-10-2026. |
 | A3 | Planta nivel 2 | Suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A3_nivel2/SR-A3_NIVEL2_rev2.*` | rev2 (patrón posterior y notas de ventilas). Visto bueno del 06-10-2026. La galería a P1 queda con vidrio fijo. |
 | A4 | Planta nivel 3 | Suites 1, 2 y 3, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A4_nivel3/SR-A4_NIVEL3_rev2.*` | rev2 (C6 corregido, patrón posterior y notas de ventilas). Visto bueno del 06-10-2026. |
-| A5 | Fachadas | Principal 1:50, posterior 1:75, laterales 1:100, cubierta a dos aguas, notas | EN REVISIÓN | `planos/A5_fachadas/SR-A5_FACHADAS_rev3.*` | La rev2 trae las ventilas y la tapia posterior; la **rev3** invierte el triángulo de las ventilas (bisagra arriba). Espera el visto bueno. |
+| A5 | Fachadas | Principal 1:50, posterior 1:75, laterales 1:100, cubierta a dos aguas, notas | APROBADA | `planos/A5_fachadas/SR-A5_FACHADAS_rev3.*` | rev3. "Lámina aprobada, continuar" (06-10-2026). |
+| A6 | Cortes | Corte A-A (x = 3.00) y corte B-B (y = 18.25) a 1:75, niveles, cielos, entrepiso metálico, cubierta al 13 %, escalera, tapia posterior, notas | EN REVISIÓN | `planos/A6_cortes/SR-A6_CORTES_rev0.*` | rev0 entregada. Supuestos PD: espesores del entrepiso, puertas de 2.10 y ventanas a patios 0.90/2.20. |
 
 ## B) Láminas previstas o necesarias del proyecto actual
 Las justifica una referencia cruzada desde las láminas ya desarrolladas o un requisito propio de esta vivienda. **El código, el nombre definitivo y la posible combinación están por confirmar.**
 
 | Código tentativo | Lámina | Por qué se necesita en este proyecto | Estado |
 |---|---|---|---|
-| A6 | Cortes A-A y B-B | Las plantas A2–A4 ya remiten a la "A6". El trazo está definido: A-A en x = 3.0 y B-B en y = 18.25. | PENDIENTE |
 | A7–A9 (o combinadas) | Puertas, ventanas y acabados por nivel | Las A3 y A4 remiten a A8 y A9, y la A5 a A7–A9. Hacen falta los cuadros de puertas y ventanas y los acabados. Se puede evaluar combinar los niveles. | PENDIENTE |
 | A10 (o combinada con A5) | Acabados de fachada | La A5 remite a la A10. Depende del diseño moderno de la fachada principal. | PENDIENTE |
 | A11 | Escalera y detalles (barandas, pasamanos) | Las plantas remiten a la A11 para las barandas. Escalera en U de 3 niveles. | PENDIENTE |

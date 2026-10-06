@@ -206,3 +206,9 @@
 - **Columnas del eje C:** tubo C1 de 0.15 **forrado a 0.30 × 0.30** (las plantas aprobadas no cambian). [U]
 - **Capacidad del suelo: qadm = 12 t/m² (valor de la referencia) [PR], a verificar con un estudio de suelos.** [U]
 - **Juego estructural:** C01 cimentaciones, C02 detalles de cimentación, C03–C04 entrepisos, C05 techo, C06–C07 pórticos, C08 especificaciones. [U]
+- **Entrepisos (C03 aprobada):**
+  - viguetas 2x6" en 2,38 mm @0,60 m (máx.), en sentido transversal;
+  - V1 en los ejes 1 a 6, A, C y D, y en el eje B como borde de vacíos;
+  - losa de 0,10 con malla #3 electrosoldada sobre lámina ondulada galvanizada.
+  - **Una sola lámina para los entrepisos 1 (nivel 2) y 2 (nivel 3).** [U][PR]
+  - A verificar en el cálculo: la V1 del eje 1 (8,85 m, sin columna en C) y las luces de las viguetas (4,77 / 4,09 m).

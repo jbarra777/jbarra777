@@ -1,6 +1,6 @@
-"""Láminas C03 / C04 - PLANTA DE ENTREPISO (nivel 2 / nivel 3) y detalle de entrepiso.
+"""Lámina C03 - PLANTA DE ENTREPISO 1 Y 2 (nivel 2 y nivel 3, armado idéntico) y detalle.
 
-Uso: python c03_entrepisos.py N2   -> C03      python c03_entrepisos.py N3   -> C04
+rev1 (usuario): una sola lámina para ambos entrepisos; solo cambia la leyenda.
 
 Secciones de la referencia (RIVERGRAND C03-C05) por indicación expresa del usuario [PR]:
 viguetas de tubo rectangular 2x6" en 2,38 mm @0,60 m, lámina ondulada de hierro galvanizado,
@@ -10,19 +10,17 @@ A, C y D, bordes de vacío en el eje B; vacíos de patios P1 y P2 y de escalera 
 Paquete de entrepiso 0,30 = V1 0,20 + losa 0,10 (A6). Marco de planta de planta.py.
 """
 import math
-import sys
 
 import cadlib as cl
 import hoja as H
 import planta as pl
 from planta import P
 
-LEVEL = sys.argv[1] if len(sys.argv) > 1 else "N2"
-SHEET = {"N2": "C03", "N3": "C04"}[LEVEL]
-NIVEL = {"N2": "NIVEL 2 (NPT +3.00)", "N3": "NIVEL 3 (NPT +6.00)"}[LEVEL]
-REV = "rev0"
-OUT = cl.ROOT / "planos" / f"{SHEET}_entrepiso_{LEVEL.lower()}"
-NAME = f"SR-{SHEET}_ENTREPISO_{LEVEL}_{REV}"
+SHEET = "C03"
+NIVEL = "ENTREPISO 1: NIVEL 2 (NPT +3.00) / ENTREPISO 2: NIVEL 3 (NPT +6.00)"
+REV = "rev1"
+OUT = cl.ROOT / "planos" / "C03_entrepiso_n2"
+NAME = f"SR-{SHEET}_ENTREPISOS_{REV}"
 LAYOUT = f"{SHEET}-ENTREPISO"
 
 W = H.W
@@ -246,7 +244,7 @@ ddim((D2X, D2Y - VIGA), (D2X + BV, D2Y - VIGA), D2Y - VIGA - 0.06, True)
 # ================================================================ hoja
 psp = H.sheet(doc, LAYOUT, "PLANTA DE ENTREPISO", "")
 H.north(psp, north_ang)
-cl.view_title(psp, 35.0, 262.0, "PLANTA DE ENTREPISO", NIVEL, "Esc. 1:50", 150)
+cl.view_title(psp, 35.0, 262.0, "PLANTA DE ENTREPISO 1 Y 2", NIVEL, "Esc. 1:50", 165)
 cl.scale_bar(psp, 35.0, 236.0, 50, 5, 1)
 
 y = 214.0
@@ -329,9 +327,10 @@ notas = [
 cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.1, 222)
 
 H.titleblock(doc, psp, SHEET, "ENTREPISO",
-             [f"PLANTA DE ENTREPISO NIVEL {LEVEL[1]}.", "DETALLE DE ENTREPISO.", "SECCIÓN A-A.",
+             ["PLANTA DE ENTREPISO 1 Y 2.", "DETALLE DE ENTREPISO.", "SECCIÓN A-A.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="1:50 / INDICADAS")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "06-10-2026", "ENTREPISOS 1 Y 2 EN UNA SOLA LÁMINA")], escalas="1:50 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

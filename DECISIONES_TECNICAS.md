@@ -212,3 +212,11 @@
   - losa de 0,10 con malla #3 electrosoldada sobre lámina ondulada galvanizada.
   - **Una sola lámina para los entrepisos 1 (nivel 2) y 2 (nivel 3).** [U][PR]
   - A verificar en el cálculo: la V1 del eje 1 (8,85 m, sin columna en C) y las luces de las viguetas (4,77 / 4,09 m).
+- **Techo (C04), aceptado por el usuario el 06-10-2026:**
+  - **Clavadores:** tubo RT 2x4" en 1,50 mm @0,90 m como máximo (luz máxima de 3,86 m entre cerchas).
+  - **Cerchas:**
+    - cordones de tubo 2x6" en 2,38 mm; diagonales y montantes de tubo 2x2" en 1,50 mm;
+    - peralte variable de 0,10 en el alero a ≈1,60 en la cumbrera, con montantes @≈1,0 m.
+  - **Vigas de corona:** V1 4x8" a +9,00 en los ejes 1 a 6 y en A, C y D, igual que en los entrepisos y sobre las C1. Las cerchas apoyan en esas vigas.
+  - **La cercha del eje C pasa continua sobre el patio P1.**
+  - **El detalle de canoa va en la lámina pluvial**, no en la C04. [U]

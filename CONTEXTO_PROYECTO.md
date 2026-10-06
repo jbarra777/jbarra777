@@ -1,7 +1,7 @@
 # CONTEXTO DEL PROYECTO: Vivienda unifamiliar de 3 niveles, San Rafael de Heredia
 
 > Archivo de traspaso. Si se abre una sesión nueva de Claude, leer este archivo primero.
-> Última actualización: 06-10-2026. Lámina en curso: **A3 rev0 (en revisión)**. A2 rev1 aprobada ("De acuerdo, continuar con la siguiente"). A1 en rev1 (cambios pedidos aplicados; el ingeniero indicó continuar).
+> Última actualización: 06-10-2026. Lámina en curso: **A4 rev0 (en revisión)**. A3 rev0 aprobada ("Está perfecto"); altura de piso a piso de 3.00 m confirmada. A2 rev1 aprobada ("De acuerdo, continuar con la siguiente"). A1 en rev1 (cambios pedidos aplicados; el ingeniero indicó continuar).
 
 ## 1. Encargo vigente (sustituye al de anteproyecto del 05-10-2026)
 - Juego completo de planos constructivos para el CFIA de una **vivienda unifamiliar de 3 niveles**. Solo uso unifamiliar: sin apartamentos ni notas de conversión.
@@ -27,7 +27,7 @@
 ## 4. Decisiones aprobadas
 | Tema | Decisión |
 |---|---|
-| Altura de piso a piso | 3.00 m en los 3 niveles (provisional) |
+| Altura de piso a piso | 3.00 m en los 3 niveles (**confirmada**) |
 | Terreno | Plano, a nivel de acera |
 | Retiros | Frontal 2.00 m desde el vértice 3 (2.06 en el vértice 1); posterior ≥ 3.00 m (resulta 3.33); laterales 0 con fachadas ciegas |
 | Muros | Exteriores 0.15 m, interiores 0.12 m |
@@ -71,7 +71,14 @@
 |---|---|---|
 | A1 | Lote: ubicación, poligonal, retiros y huella, derrotero, coordenadas, áreas, notas | rev1 (cambios aplicados; se indicó continuar) |
 | A2 | Planta nivel 1 (1:50): parqueos, acceso, gradas, jardín seco, derrotero, áreas, cobertura, notas | **rev1 aprobada** |
-| A3 | Planta nivel 2 (1:50): suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle extractor, notas | rev0 entregada, en revisión |
+| A3 | Planta nivel 2 (1:50): suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle extractor, notas | **rev0 aprobada** |
+| A4 | Planta nivel 3 (1:50): suites 1, 2 y 3, áreas, cobertura, detalle extractor, notas | rev0 entregada, en revisión |
+
+### Nivel 3 (A4 rev0)
+- Las suites 1 y 3 son iguales a la suite del nivel 2 (la 3 en espejo, con el baño contra la fachada posterior).
+- Suite 2 (módulo central, 7.38 × 6.42): baño en x 7.30–8.85, y 14.63–16.83, sobre la zona húmeda de la cocina del nivel 2. Walk-in de 2.75 × 4.10 junto a P1 (x 6.10–8.85, y 10.41–14.51). Acceso desde el muro B en y 15.55–16.45.
+- La suite 3 necesita un ducto sanitario a través de la sala familiar del nivel 2 (pendiente en las láminas IS).
+- Altura de piso a piso: **3.00 m (confirmada)**. NPT: N1 ±0.00, N2 +3.00, N3 +6.00.
 
 ### Nivel 2 (A3 rev0)
 - Suite 1 en el módulo frontal (8.70 × 5.40): baño en x 3.72–5.27, y 2.21–4.41 (1.55 × 2.20, piezas en línea, puerta de 0.80 hacia el dormitorio) y walk-in en x 5.39–8.85, y 2.21–5.46.

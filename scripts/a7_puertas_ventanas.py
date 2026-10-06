@@ -17,7 +17,7 @@ import cadlib as cl
 import hoja as H
 from planta import P
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "A7_puertas_ventanas"
 NAME = f"SR-A7_PUERTAS_VENTANAS_{REV}"
 SRC = {"N1": cl.ROOT / "planos/A2_nivel1/SR-A2_NIVEL1_rev3.dxf",
@@ -266,7 +266,7 @@ WINDOWS = [("V-01", 2.20, 2.20, 2, 0.90, False, False),
            ("V-02", 1.80, 2.20, 2, 0.90, False, False),
            ("V-03", 1.00, 2.20, 1, 0.90, False, True),
            ("V-04", 2.20, 1.30, 2, None, False, False),
-           ("V-05", 0.75, 1.30, 1, None, False, False),
+           ("V-05", 0.75, 1.30, 1, None, False, True),
            ("V-06", 1.80, 1.30, 2, None, False, False),
            ("V-07", 2.40, 1.30, 2, None, False, False),
            ("V-08", 2.60, 1.30, 2, None, False, False),
@@ -397,7 +397,7 @@ rows = [["VENTANA", "ANCHO", "ALTO", "TIPO", "CANT", "UBICACIÓN", "MATERIAL"],
         ["V-02", "1,80", "2,20", "FIJA INF. + " + VEN, "2", "WALK-IN SUITE 1, FACHADA PRINCIPAL (N2 Y N3)", "ALUMINIO Y VIDRIO"],
         ["V-03", "1,00", "2,20", "FIJA INF. + " + VEN, "2", "BAÑO SUITE 1, FACHADA PRINCIPAL (VIDRIO ARENADO)", "ALUMINIO Y VIDRIO"],
         ["V-04", "2,20", "1,30", VEN, "3", "SALA Y SUITE 3, FACHADA POSTERIOR; COCINA A P1 (N2)", "ALUMINIO Y VIDRIO"],
-        ["V-05", "0,75", "1,30", VEN, "2", "FACHADA POSTERIOR: SALA (N2) Y BAÑO SUITE 3 (ARENADO)", "ALUMINIO Y VIDRIO"],
+        ["V-05", "0,75", "1,30", VEN, "2", "FACHADA POSTERIOR: SALA (N2) Y BAÑO SUITE 3 (VIDRIO ARENADO)", "ALUMINIO Y VIDRIO"],
         ["V-06", "1,80", "1,30", VEN, "3", "FACHADA POSTERIOR (N2 Y N3); WALK-IN SUITE 2 A P1", "ALUMINIO Y VIDRIO"],
         ["V-07", "2,40", "1,30", VEN, "2", "SUITE 1 HACIA PATIO P1 (N2 Y N3)", "ALUMINIO Y VIDRIO"],
         ["V-08", "2,60", "1,30", VEN, "2", "WALK-IN SUITE 1 HACIA PATIO P1 (N2 Y N3)", "ALUMINIO Y VIDRIO"],
@@ -469,7 +469,8 @@ y = cl.notes_block(psp, XR, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)
 H.titleblock(doc, psp, "A7", "PUERTAS Y VENTANAS",
              ["PLANTAS NIVELES 1, 2 Y 3.", "CUADROS DE PUERTAS Y VENTANAS.",
               "ACABADOS EN PAREDES, PISOS Y CIELOS.", "DETALLE DE PUERTAS Y VENTANAS.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")],
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "06-10-2026", "V-05 CON VIDRIO ARENADO")],
              escalas="1:100 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)

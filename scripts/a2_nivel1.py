@@ -151,7 +151,7 @@ pl.wall(msp, D_P01[1], XC1, Y4b - TV, Y4b)            # eje 4
 pl.wall(msp, XC0, XC1, Y4b, Y5a)                      # eje C
 pl.wall(msp, E, XC1, Y5a, Y5a + TV)                   # eje 5
 pl.door(msp, (D_P01[0], Y4b), 1.00, (1, 0), (0, 1))
-pl.text(msp, "VESTÍBULO", 0.40, 18.20, 0.12, "A-ESPACIOS")
+pl.text(msp, "VESTÍBULO", 0.45, 18.60, 0.12, "A-ESPACIOS")
 pl.text(msp, "PUERTA PRINCIPAL (VER A7)", 0.75, Y4b - 0.40, 0.085, "A-TXT-50", "MIDDLE_RIGHT")
 # flecha "SUBE"
 a = P(X0 + 0.15, (yA0 + yA1) / 2)
@@ -160,7 +160,7 @@ msp.add_line(a, b, dxfattribs={"layer": "A-ESCALERA"})
 msp.add_solid([b + Vec2(0.0, 0.0), b + Vec2(-0.12, -0.20), b + Vec2(0.12, -0.20)],
               dxfattribs={"layer": "A-ESCALERA"})
 pl.text(msp, "SUBE", X0 + 0.55, (yA0 + yA1) / 2 + 0.18, 0.13, "A-ESCALERA")
-pl.text(msp, "GRADAS EN U: 17 CH = 0.176 / H = 0.28", 0.75, Y4b + 0.05, 0.085, "A-TXT-50",
+pl.text(msp, "GRADAS EN U: 17 CH = 0.176 / H = 0.28", 5.10, Y4b + 0.05, 0.085, "A-TXT-50",
         "MIDDLE_LEFT")
 
 # ---------------------------------------------------------------- textos

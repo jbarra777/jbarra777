@@ -1,0 +1,16 @@
+{
+  "fuente": "Plano catastrado 4-57389-2023 (presentación 2023-16774-C), sistema CRTM05",
+  "folio_real": "4-041200-000",
+  "identificador_predial": "40503004120000",
+  "area_catastro_m2": 256.0,
+  "ubicacion": "Santiago (03), San Rafael (05), Heredia (04)",
+  "vertices_crtm05": {
+    "1": [489351.38, 1106442.25],
+    "2": [489356.04, 1106442.46],
+    "3": [489360.38, 1106442.62],
+    "4": [489361.72, 1106414.19],
+    "5": [489352.73, 1106413.77]
+  },
+  "amarre": {"desde": "3", "hasta": "P.I.", "acimut": "101°22'", "distancia_m": 75.71},
+  "colindantes": {"norte": "Calle pública", "este": "ID predial 40503004120000", "sur": "ID predial 40503004120000", "oeste": "ID predial 40503004120000"}
+}

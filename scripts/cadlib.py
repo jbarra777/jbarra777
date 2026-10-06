@@ -65,6 +65,8 @@ LAYERS = {
     "A-ESPACIOS": (7, 25, "Continuous", True),
     "A-NIVELES": (7, 18, "Continuous", True),
     "A-CORTES": (7, 35, "Continuous", True),
+    "A-JARDIN": (8, 9, "Continuous", True),
+    "E-COLUMNA": (7, 35, "Continuous", True),
 }
 
 

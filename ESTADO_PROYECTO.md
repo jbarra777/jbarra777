@@ -25,7 +25,7 @@
 | E02 | APROBADA | rev0 |
 | E03 | APROBADA | rev0 |
 | E04 | APROBADA | rev0 |
-| E05 | EN REVISIÓN | rev0 (detalles eléctricos [PR]) |
+| E05 | APROBADA | rev0 |
 | C01 | APROBADA | rev1 |
 | C02 | APROBADA | rev1 |
 | C03 | APROBADA | rev2 |
@@ -33,8 +33,8 @@
 | C05 | APROBADA | rev2 |
 | C06 | APROBADA | rev1 |
 
-- **Última entrega:** E05 rev0 (detalles eléctricos).
-- **Siguiente paso:** visto bueno de E05. Después, láminas sanitarias (agua potable, aguas servidas) y pluviales (incluido el detalle de canoa).
+- **Última entrega:** E05 rev0, aprobada (juego eléctrico E01–E05 completo).
+- **Siguiente paso:** láminas sanitarias y pluviales (definir alcance y datos con el usuario).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

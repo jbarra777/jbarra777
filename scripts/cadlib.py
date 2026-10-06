@@ -454,3 +454,18 @@ def derrotero_rows(V):
 
 def m2(v):
     return f"{v:,.2f} m²".replace(",", " ").replace(".", ",")
+
+
+def notes_block(space, x, y_top, lines, h=2.1, width=250.0, gap=0.55):
+    """Cada nota como MTEXT independiente (evita uniones de párrafos en el PDF).
+
+    Estima la altura con un ancho medio de carácter de 0.80*h. Devuelve y inferior.
+    """
+    import math as _m
+    y = y_top
+    cpl = max(10, int(width / (0.80 * h)))
+    for s in lines:
+        n = max(1, _m.ceil(len(s) / cpl))
+        mtext(space, s, (x, y), h, width, attach=1, spacing=1.0)
+        y -= n * h * 1.45 + gap * h
+    return y

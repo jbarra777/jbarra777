@@ -148,35 +148,46 @@ def titleblock(doc, psp, lamina, cont_tit, cont, revs):
 def extractor_detail(psp, x, y):
     """Detalle esquemático (S/E) de extractor mecánico en baño. Unidades: mm de papel."""
     cl.text(psp, "DETALLE EXTRACTOR DE AIRE", (x, y), 4.5, "A-TITULOS", "TOP_LEFT")
-    cl.text(psp, "BAÑOS - ESQUEMÁTICO, Esc. S/E", (x, y - 7), 2.5, "A-TEXTO", "TOP_LEFT")
-    y0 = y - 70
+    cl.text(psp, "BAÑOS - CORTE ESQUEMÁTICO, Esc. S/E", (x, y - 7), 2.5, "A-TEXTO", "TOP_LEFT")
+    y0 = y - 85
     L = "A-TEXTO"
-    # losa / cielo
-    cl.rect(psp, x, y0 + 40, x + 110, y0 + 46, "A-MURO")
-    h = psp.add_hatch(dxfattribs={"layer": "A-MURO-TRAMA"})
-    h.paths.add_polyline_path([(x, y0 + 40), (x + 110, y0 + 40), (x + 110, y0 + 46),
-                               (x, y0 + 46)])
-    h.set_pattern_fill("ANSI31", scale=0.5)
-    psp.add_line((x, y0 + 34), (x + 96, y0 + 34), dxfattribs={"layer": L})        # cielo
-    # muro exterior
-    cl.rect(psp, x + 96, y0, x + 102, y0 + 40, "A-MURO")
-    h = psp.add_hatch(dxfattribs={"layer": "A-MURO-TRAMA"})
-    h.paths.add_polyline_path([(x + 96, y0), (x + 102, y0), (x + 102, y0 + 40), (x + 96, y0 + 40)])
-    h.set_pattern_fill("ANSI31", scale=0.5)
-    # extractor en cielo + ducto al exterior
-    cl.rect(psp, x + 30, y0 + 30, x + 42, y0 + 34, "A-MOBILIARIO")
-    psp.add_line((x + 33, y0 + 36), (x + 104, y0 + 36), dxfattribs={"layer": L})
-    psp.add_line((x + 39, y0 + 38.5), (x + 104, y0 + 38.5), dxfattribs={"layer": L})
-    psp.add_line((x + 33, y0 + 34), (x + 33, y0 + 36), dxfattribs={"layer": L})
-    psp.add_line((x + 39, y0 + 34), (x + 39, y0 + 38.5), dxfattribs={"layer": L})
-    cl.rect(psp, x + 104, y0 + 34.5, x + 106, y0 + 40, "A-MOBILIARIO")        # rejilla
-    for i in range(4):
-        psp.add_line((x + 50 + i * 8, y0 + 37.25), (x + 55 + i * 8, y0 + 37.25),
-                     dxfattribs={"layer": L})
-    cl.mtext(psp, "EXTRACTOR MECÁNICO EN CIELO\\PCAUDAL Y MODELO POR DEFINIR [PR]",
-             (x + 2, y0 + 28), 2.0, 50, attach=7)
-    cl.mtext(psp, "DUCTO AL EXTERIOR CON\\PREJILLA Y COMPUERTA ANTIRRETORNO", (x + 45, y0 + 52),
-             2.0, 60, attach=7)
-    cl.mtext(psp, "ENCENDIDO CON LA LUZ DEL BAÑO\\PO TEMPORIZADOR (VER ELÉCTRICOS)",
-             (x + 2, y0 + 20), 2.0, 60, attach=7)
+
+    def hatched(x0, y0_, x1, y1):
+        cl.rect(psp, x0, y0_, x1, y1, "A-MURO")
+        h = psp.add_hatch(dxfattribs={"layer": "A-MURO-TRAMA"})
+        h.paths.add_polyline_path([(x0, y0_), (x1, y0_), (x1, y1), (x0, y1)])
+        h.set_pattern_fill("ANSI31", scale=0.5)
+
+    def leader(p_txt, p_obj):
+        psp.add_line(p_txt, p_obj, dxfattribs={"layer": L})
+        psp.add_circle(p_obj, 0.6, dxfattribs={"layer": L})
+
+    hatched(x, y0 + 50, x + 120, y0 + 56)                       # losa
+    hatched(x + 110, y0 + 4, x + 116, y0 + 39)                  # muro (bajo el ducto)
+    hatched(x + 110, y0 + 45, x + 116, y0 + 50)                 # muro (sobre el ducto)
+    psp.add_line((x, y0 + 38), (x + 110, y0 + 38), dxfattribs={"layer": "A-MURO"})  # cielo
+    cl.rect(psp, x + 30, y0 + 35, x + 44, y0 + 38, "A-MOBILIARIO")   # rejilla interior
+    cl.rect(psp, x + 31, y0 + 38, x + 43, y0 + 45, "A-MOBILIARIO")   # cuerpo extractor
+    psp.add_line((x + 43, y0 + 40), (x + 118, y0 + 40), dxfattribs={"layer": L})   # ducto
+    psp.add_line((x + 43, y0 + 44), (x + 118, y0 + 44), dxfattribs={"layer": L})
+    cl.rect(psp, x + 118, y0 + 38.5, x + 120, y0 + 45.5, "A-MOBILIARIO")  # rejilla ext.
+    for i in range(5):                                             # flujo
+        xa = x + 52 + i * 11
+        psp.add_line((xa, y0 + 42), (xa + 6, y0 + 42), dxfattribs={"layer": L})
+        psp.add_solid([(xa + 6, y0 + 42.8), (xa + 6, y0 + 41.2), (xa + 8, y0 + 42)],
+                      dxfattribs={"layer": L})
+    cl.text(psp, "LOSA DE ENTREPISO", (x + 2, y0 + 58), 2.0, L, "BOTTOM_LEFT")
+    cl.text(psp, "CIELO RASO", (x + 2, y0 + 36.5), 2.0, L, "TOP_LEFT")
+    cl.text(psp, "MURO EXTERIOR", (x + 113, y0 + 2), 2.0, L, "TOP_CENTER")
+    cl.mtext(psp, "EXTRACTOR MECÁNICO EN CIELO RASO\\PCAUDAL Y MODELO POR DEFINIR [PR]",
+             (x + 2, y0 + 24), 2.0, 70, attach=1)
+    leader((x + 20, y0 + 25), (x + 37, y0 + 36.5))
+    cl.mtext(psp, "DUCTO HACIA EL EXTERIOR (FACHADA O PATIO)", (x + 50, y0 + 32), 2.0, 60,
+             attach=1)
+    leader((x + 70, y0 + 32.5), (x + 75, y0 + 40))
+    cl.mtext(psp, "REJILLA EXTERIOR CON\\PCOMPUERTA ANTIRRETORNO", (x + 75, y0 + 18), 2.0, 45,
+             attach=1)
+    leader((x + 100, y0 + 18.5), (x + 119, y0 + 39))
+    cl.mtext(psp, "ENCENDIDO CON LA LUZ DEL BAÑO O TEMPORIZADOR (VER ELÉCTRICOS).",
+             (x + 2, y0 + 10), 2.0, 100, attach=1)
     return y0 - 4

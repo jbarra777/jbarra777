@@ -192,7 +192,7 @@ L_PAS = Y5a - Y2b
 A_PAS = (XB0 - E) * L_PAS
 A_GRA = (X1 - X0) * (Y5a - Y4b)
 pl.room_label(msp, "SUITE 1\\PDORMITORIO Y ESTAR", 1.95, 5.25, None, None, 0.15)
-pl.room_label(msp, "BAÑO", 4.12, 3.75, None, A_BA, 0.10)
+pl.room_label(msp, "BAÑO", 4.12, 4.05, None, A_BA, 0.10)
 pl.room_label(msp, "WALK-IN CLOSET", 7.10, 3.85, "3.46 x 3.25", A_WI, 0.12)
 pl.room_label(msp, "COCINA - COMEDOR", 2.90, 14.90, "7.38 x 6.42", A_COC, 0.15)
 pl.room_label(msp, "SALA FAMILIAR", 6.20, 20.70, "8.70 x 5.40", A_SAL, 0.15)
@@ -205,7 +205,7 @@ pl.text(msp, "GRADAS EN U: 17 CH = 0.176 / H = 0.28", 0.75, Y4b + 0.05, 0.085, "
 pl.text(msp, "CALLE PÚBLICA", 4.5, -2.15, 0.22, "A-ESPACIOS", rot=90)
 pl.mtext(msp, "COLINDANCIA - FACHADA CIEGA", -0.35, 14.0, 0.10, 6.0, "A-TXT-50")
 pl.mtext(msp, "COLINDANCIA - FACHADA CIEGA", W + 0.35, 14.0, 0.10, 6.0, "A-TXT-50")
-for (x, y) in ((2.6, 3.6 - 0.8), (0.45, 11.0), (2.0, 15.9), (5.2, 24.4)):
+for (x, y) in ((2.6, 2.8), (0.45, 11.0), (5.6, 13.7), (5.2, 24.4)):
     pl.level(msp, x, y, NPT)
 
 # ---------------------------------------------------------------- ejes y cotas
@@ -216,7 +216,7 @@ for ya, yb in zip(chain[:-1], chain[1:]):
     pl.dim(msp, (W - E, ya), (W - E, yb), (W + 0.95, 0), False)
 for xa, xb in ((XBA0 - I, XBA0), (XBA0, XBA1), (XBA1, XWI0), (XWI0, W - E)):
     pl.dim(msp, (xa, YF1), (xb, YF1), (0, 5.02), True)
-pl.dim(msp, (XBA0, YF1), (XBA0, YBA1), (XBA0 + 0.25, 0), False)
+pl.dim(msp, (XBA0, YF1), (XBA0, YBA1), (XBA0 + 0.30, 0), False)
 pl.dim(msp, (6.10, YF1), (6.10, YWI1), (6.10, 0), False)
 for xa, xb in ((E, XB0), (XB0, XB1), (XB1, W - E)):
     pl.dim(msp, (xa, 13.65), (xb, 13.65), (0, 13.65), True)
@@ -273,8 +273,8 @@ extra = [
     "COLUMNAS SOBRE EL EJE C SEGÚN LÁMINA A2; SECCIONES Y REFUERZO SEGÚN PLANOS ESTRUCTURALES.",
     "DIMENSIONES Y TIPOS DE PUERTAS Y VENTANAS EN LÁMINA A8.",
 ]
-cl.mtext(psp, "\\P".join(cl.notas(extra)), (X3, y - 6), 2.1, 250, attach=1)
-H.extractor_detail(psp, X3, 160.0)
+y = cl.notes_block(psp, X3, y - 6, cl.notas(extra), 2.1, 250)
+H.extractor_detail(psp, X3, min(y - 6, 165.0))
 
 H.titleblock(doc, psp, "A3", "PLANTA NIVEL 2",
              ["SUITE 1, COCINA-COMEDOR, SALA.", "DERROTERO.", "CUADRO DE ÁREAS.",

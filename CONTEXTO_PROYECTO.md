@@ -1,7 +1,7 @@
 # CONTEXTO DEL PROYECTO: Vivienda unifamiliar de 3 niveles, San Rafael de Heredia
 
 > Archivo de traspaso. Si se abre una sesión nueva de Claude, leer este archivo primero.
-> Última actualización: 06-10-2026. Lámina en curso: **A2 rev1 (en revisión)**. A1 en rev1 (cambios pedidos aplicados; el ingeniero indicó continuar).
+> Última actualización: 06-10-2026. Lámina en curso: **A3 rev0 (en revisión)**. A2 rev1 aprobada ("De acuerdo, continuar con la siguiente"). A1 en rev1 (cambios pedidos aplicados; el ingeniero indicó continuar).
 
 ## 1. Encargo vigente (sustituye al de anteproyecto del 05-10-2026)
 - Juego completo de planos constructivos para el CFIA de una **vivienda unifamiliar de 3 niveles**. Solo uso unifamiliar: sin apartamentos ni notas de conversión.
@@ -70,7 +70,14 @@
 | Lámina | Contenido | Estado |
 |---|---|---|
 | A1 | Lote: ubicación, poligonal, retiros y huella, derrotero, coordenadas, áreas, notas | rev1 (cambios aplicados; se indicó continuar) |
-| A2 | Planta nivel 1 (1:50): parqueos, acceso, gradas, jardín seco, derrotero, áreas, cobertura, notas | rev1 entregada, en revisión |
+| A2 | Planta nivel 1 (1:50): parqueos, acceso, gradas, jardín seco, derrotero, áreas, cobertura, notas | **rev1 aprobada** |
+| A3 | Planta nivel 2 (1:50): suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle extractor, notas | rev0 entregada, en revisión |
+
+### Nivel 2 (A3 rev0)
+- Suite 1 en el módulo frontal (8.70 × 5.40): baño en x 3.72–5.27, y 2.21–4.41 (1.55 × 2.20, piezas en línea, puerta de 0.80 hacia el dormitorio) y walk-in en x 5.39–8.85, y 2.21–5.46.
+- Cocina-comedor de 7.38 × 6.42: cocina en L (muro este y muro del eje 4 hacia P2) con isla de 2.30 × 0.90 y mesa para 8.
+- Sala familiar de 8.70 × 5.40. Pasillo de 1.20 cerrado con vidrio hacia P1. Puertas de la suite y la sala en los ejes 2 y 5, al final del pasillo.
+- Área del nivel 2: 179.53 m². Total de construcción: 66.57 + 179.53 + 179.53 = 425.63 m² (el nivel 3 es preliminar).
 
 ### Nivel 1 (A2 rev1, según indicaciones del 06-10-2026)
 - **Solo 3 estacionamientos** E-1 a E-3 (2.50 × 5.00) en x 1.35–8.85, y 2.21–7.21. Pasillo peatonal de 1.20 al oeste hasta y 19.48. Gradas en U.
@@ -86,7 +93,7 @@
 
 ## 9. Herramientas
 - `scripts/cadlib.py`: capas, estilos de cota, cajetín, tablas, escala gráfica, render a PDF (ezdxf + PyMuPDF).
-- `scripts/a1_lote.py`, `scripts/a2_nivel1.py`: generan las láminas. Requieren `pip install ezdxf pymupdf pillow`.
+- `scripts/a1_lote.py`, `a2_nivel1.py`, `a3_nivel2.py`: generan las láminas. `hoja.py` reúne las partes comunes de las láminas de planta (A3 en adelante). Requieren `pip install ezdxf pymupdf pillow`.
 - `scripts/planta.py`: muros, puertas, ventanas, ejes, niveles, cortes y vehículos en el marco de planta.
 - Notas generales y derrotero comunes en `cadlib.NOTAS_GENERALES` / `cadlib.derrotero_rows`.
 - Datos en `datos/lote_catastro.json` y `datos/proyecto.json`.

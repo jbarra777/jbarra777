@@ -13,7 +13,7 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "A4_nivel3"
 NAME = f"SR-A4_NIVEL3_{REV}"
 E, I, W = H.E, H.I, H.W
@@ -282,7 +282,7 @@ extra = [
     "ALINEADAS ENTRE LOS NIVELES 2 Y 3 Y OPERABLES EN TODA SU ÁREA (VER A5).",
     "TODAS LAS VENTANAS SON DE VENTILACIÓN: VENTILA ABATIBLE HACIA AFUERA (BISAGRA "
     "SUPERIOR); DONDE INTERFIERA CON UN PASILLO, CORREDIZA DE DOS PAÑOS MÓVIL-MÓVIL.",
-    "DIMENSIONES Y TIPOS DE PUERTAS Y VENTANAS EN LÁMINA A9.",
+    "DIMENSIONES Y TIPOS DE PUERTAS, VENTANAS Y ACABADOS EN LÁMINA A7.",
 ]
 y = cl.notes_block(psp, X3, y - 6, cl.notas(extra), 2.1, 250)
 H.extractor_detail(psp, X3, min(y - 6, 165.0))
@@ -290,9 +290,9 @@ H.extractor_detail(psp, X3, min(y - 6, 165.0))
 H.titleblock(doc, psp, "A4", "PLANTA NIVEL 3",
              ["SUITES 1, 2 Y 3.", "DERROTERO.", "CUADRO DE ÁREAS.",
               "PORCENTAJE DE COBERTURA.", "DETALLE EXTRACTOR DE AIRE.", "NOTAS."],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "VENTANAS POSTERIORES; BAÑO S3 LIBRA C6"),
-              ("2", "06-10-2026", "VENTANAS DE VENTILACIÓN (VENTILAS)")])
+             [("1", "06-10-2026", "VENTANAS POSTERIORES; BAÑO S3 LIBRA C6"),
+              ("2", "06-10-2026", "VENTANAS DE VENTILACIÓN (VENTILAS)"),
+              ("3", "06-10-2026", "REFERENCIA A LÁMINA A7")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

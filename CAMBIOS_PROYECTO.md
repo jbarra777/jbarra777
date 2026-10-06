@@ -82,3 +82,4 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
 - **06-10-2026 — C03 aprobada; entrepisos en una sola lámina.**
   - Entrepisos: C03 (nivel 2) y C04 (nivel 3) → **una sola C03, "PLANTA DE ENTREPISO 1 Y 2"** (entrepiso 1 = nivel 2; entrepiso 2 = nivel 3; armado idéntico). Solo cambia la leyenda (C03 rev1).
   - Numeración (usuario): **C04 techo, C05–C06 pórticos, C07 especificaciones**. Las referencias "C08" de C01–C03 se corrigen al terminar los estructurales.
+- **06-10-2026 — C04 aprobada (opción a).** Niveles de la lámina: +9,00 alero / +10,50 cumbrera → **+9,20 / +10,70**, por el peralte de la cercha y el clavador. **Láminas aprobadas afectadas: A5 y A6** (se corrigen al terminar los estructurales).

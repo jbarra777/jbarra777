@@ -220,3 +220,4 @@
   - **Vigas de corona:** V1 4x8" a +9,00 en los ejes 1 a 6 y en A, C y D, igual que en los entrepisos y sobre las C1. Las cerchas apoyan en esas vigas.
   - **La cercha del eje C pasa continua sobre el patio P1.**
   - **El detalle de canoa va en la lámina pluvial**, no en la C04. [U]
+- **Niveles de la lámina de cubierta (C04 aprobada, opción a): +9,20 en el alero y +10,70 en la cumbrera.** Cordón inferior y cara superior de la V1 de corona: +9,00. Sustituye a +9,00/+10,50 de la A5/A6, que se corregirán al final. [U]

@@ -24,10 +24,10 @@
 | C01 | APROBADA | rev0 (VA1 bajo la tapia posterior y F2 hacia los retiros: aprobados) |
 | C02 | APROBADA | rev0 (detalles F1/F2, pedestal y pletina [PR]) |
 | C03 | APROBADA | rev1 (entrepiso 1 y 2 en una sola lámina) |
-| C04 | EN REVISIÓN | rev0 (techo: cerchas, clavadores, V1 de corona) |
+| C04 | APROBADA | rev0 (techo; niveles de lámina +9,20/+10,70, opción a) |
 
-- **Última entrega:** C04 rev0 (techo).
-- **Siguiente paso:** visto bueno de C04 y decisión sobre los niveles de la lámina (+9,20/+10,70 frente a +9,00/+10,50 de A5/A6). Luego C05–C06 pórticos y C07 especificaciones. **Al terminar los estructurales: corregir en C01–C03 las referencias "C08" → "C07"** (indicación del usuario).
+- **Última entrega:** C04 rev0 (techo), aprobada.
+- **Siguiente paso:** C05–C06 pórticos y C07 especificaciones. **Al terminar los estructurales:** corregir en C01–C03 las referencias "C08" → "C07", y en la A5 y la A6 los niveles de la lámina (+9,00/+10,50 → **+9,20 alero / +10,70 cumbrera**), por indicación del usuario.
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

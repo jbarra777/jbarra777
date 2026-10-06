@@ -19,7 +19,7 @@
 | A2 | Planta nivel 1 | 3 parqueos, pasillo, vestíbulo de escalera con P-01, jardín seco, columnas en el eje C, portón abatible, derrotero, áreas y cobertura, notas | APROBADA | `planos/A2_nivel1/SR-A2_NIVEL1_rev3.*` | rev3 aprobada (06-10-2026): vestíbulo y puerta principal. |
 | A3 | Planta nivel 2 | Suite 1, cocina-comedor y sala abiertas al pasillo, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A3_nivel2/SR-A3_NIVEL2_rev3.*` | rev3 aprobada (06-10-2026). |
 | A4 | Planta nivel 3 | Suites 1, 2 y 3, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A4_nivel3/SR-A4_NIVEL3_rev3.*` | rev3 aprobada (06-10-2026). |
-| A5 | Fachadas y acabados de fachada | Principal 1:50, posterior 1:75, laterales 1:100, cubierta a dos aguas, cuadro y etiquetas de acabados (integra la A10), notas | EN REVISIÓN | `planos/A5_fachadas/SR-A5_FACHADAS_rev5.*` | rev5: integra la A10. Falta el visto bueno. |
+| A5 | Fachadas y acabados de fachada | Principal 1:50, posterior 1:75, laterales 1:100, cubierta a dos aguas, cuadro y etiquetas de acabados (integra la A10), notas | APROBADA | `planos/A5_fachadas/SR-A5_FACHADAS_rev5.*` | rev5: integra la A10. Aprobada (06-10-2026). |
 | A6 | Cortes | Corte A-A (x = 3.00) y corte B-B (y = 18.25) a 1:75, sistema constructivo, cerchas, materiales, vestíbulo del N1, notas | APROBADA | `planos/A6_cortes/SR-A6_CORTES_rev3.*` | rev3: vestíbulo del N1, vano de la sala y referencia a la A7. Aprobada (06-10-2026). |
 | A7 | Puertas, ventanas y acabados | Plantas N1–N3 a 1:100 con etiquetas, cuadros de puertas y ventanas, acabados de paredes, pisos y cielos, detalles de puertas y ventanas, notas | APROBADA | `planos/A7_puertas_ventanas/SR-A7_PUERTAS_VENTANAS_rev1.*` | rev1 aprobada (06-10-2026). Lámina única; las A8 y A9 no se hacen. |
 | A11 | Escalera | Planta 1:25, corte 1:25 con barandas, detalle de escalón, anclaje y detalle de baranda y pasamanos, notas | APROBADA | `planos/A11_escalera/SR-A11_ESCALERA_rev1.*` | rev1 aprobada (06-10-2026). La A7 se deja como está, por indicación del usuario. |
@@ -29,7 +29,7 @@ Las justifica una referencia cruzada desde las láminas ya desarrolladas o un re
 
 | Código tentativo | Lámina | Por qué se necesita en este proyecto | Estado |
 |---|---|---|---|
-| C01–C08 | Estructurales: C01 cimentaciones, C02 detalles de cimentación, C03–C04 entrepisos N2 y N3, C05 techo, C06–C07 pórticos, C08 especificaciones | Juego aprobado por el usuario. Secciones de la referencia [PR] por su indicación. | C01 rev0 EN REVISIÓN (`planos/C01_cimentaciones/SR-C01_CIMENTACIONES_rev0.*`); C02–C08 PENDIENTES |
+| C01–C08 | Estructurales: C01 cimentaciones, C02 detalles de cimentación, C03–C04 entrepisos N2 y N3, C05 techo, C06–C07 pórticos, C08 especificaciones | Juego aprobado por el usuario. Secciones de la referencia [PR] por su indicación. | C01 rev0 APROBADA (`planos/C01_cimentaciones/SR-C01_CIMENTACIONES_rev0.*`); C02 rev0 EN REVISIÓN (`planos/C02_cimentacion_detalles/SR-C02_CIMENTACION_DETALLES_rev0.*`); C03–C08 PENDIENTES |
 | Eléctrica (número por definir) | Iluminación, tomacorrientes, diagrama unifilar, tableros, simbología y notas | Requisito de trámite. El N1 es reducido, así que se puede evaluar combinar. | PENDIENTE |
 | Sanitaria: agua potable (número por definir) | Acometida de la ESPH y distribución por nivel | Requisito de trámite. | PENDIENTE |
 | Sanitaria: aguas residuales (número por definir) | Distribución por nivel, ductos de las suites 2 y 3, tanque séptico y drenaje | No hay alcantarillado. Hay ductos pendientes. | PENDIENTE |

@@ -17,14 +17,15 @@
 | A2 | APROBADA | rev3 |
 | A3 | APROBADA | rev3 |
 | A4 | APROBADA | rev3 |
-| A5 | EN REVISIÓN | rev5: acabados de fachada (integra la A10) |
+| A5 | APROBADA | rev5 |
 | A6 | APROBADA | rev3 |
 | A7 | APROBADA | rev1 |
 | A11 | APROBADA | rev1 |
-| C01 | EN REVISIÓN | rev0: cimentaciones (secciones de la referencia [PR]) |
+| C01 | APROBADA | rev0 (VA1 bajo la tapia posterior y F2 hacia los retiros: aprobados) |
+| C02 | EN REVISIÓN | rev0 (detalles F1/F2, pedestal y pletina [PR]) |
 
-- **Última entrega:** A5 rev5 (acabados de fachada, integra la A10) y C01 rev0 (cimentaciones).
-- **Siguiente paso:** visto bueno de A5 rev5 y C01. Luego C02 (detalles de cimentación), C03–C04 (entrepisos), C05 (techo), C06–C07 (pórticos) y C08 (especificaciones).
+- **Última entrega:** C02 rev0 (detalles de cimentación).
+- **Siguiente paso:** visto bueno de C02. Luego C03–C04 (entrepisos), C05 (techo), C06–C07 (pórticos) y C08 (especificaciones).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

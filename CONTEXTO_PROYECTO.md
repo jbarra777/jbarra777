@@ -1,3 +1,5 @@
+> **HISTÓRICO, REEMPLAZADO el 06-10-2026.** La memoria vigente está en `CLAUDE.md`, `ESTADO_PROYECTO.md`, `DECISIONES_TECNICAS.md`, `INDICE_PLANOS.md` y `CAMBIOS_PROYECTO.md`. Si hay diferencias, mandan esos archivos.
+
 # CONTEXTO DEL PROYECTO: Vivienda unifamiliar de 3 niveles, San Rafael de Heredia
 
 > Archivo de traspaso. Si se abre una sesión nueva de Claude, leer este archivo primero.

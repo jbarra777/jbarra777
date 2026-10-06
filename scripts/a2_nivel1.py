@@ -152,12 +152,12 @@ msp.add_line(a, b, dxfattribs={"layer": "A-ESCALERA"})
 msp.add_solid([b + Vec2(0.0, 0.0), b + Vec2(-0.12, -0.20), b + Vec2(0.12, -0.20)],
               dxfattribs={"layer": "A-ESCALERA"})
 pl.text(msp, "SUBE", X0 + 0.55, (yA0 + yA1) / 2 + 0.18, 0.13, "A-ESCALERA")
-pl.mtext(msp, "ESCALERA EN U\\P17 CH = 0.176 / H = 0.28", (X0 + X1) / 2,
-         (yB0 + yB1) / 2, 0.11, 2.6, "A-ESPACIOS")
+pl.text(msp, "ESCALERA EN U: 17 CH = 0.176 / H = 0.28", 0.75, Y4b + 0.05, 0.085, "A-TXT-50",
+        "MIDDLE_LEFT")
 
 # ---------------------------------------------------------------- textos de espacios
 pl.mtext(msp, "PASILLO PEATONAL", 0.75, 6.0, 0.13, 2.0, "A-ESPACIOS")
-pl.text(msp, "PASILLO PEATONAL", 0.75, 6.0, 0.13, "A-ESPACIOS", rot=0)
+pl.text(msp, "PASILLO PEATONAL", 0.75, 4.6, 0.13, "A-ESPACIOS", rot=0)
 for e in list(msp.query("MTEXT")):
     if e.text == "PASILLO PEATONAL":
         msp.delete_entity(e)
@@ -176,7 +176,7 @@ pl.text(msp, "PROYECCIÓN PATIO P1 (ABIERTO A CIELO)", 8.67, Y_P1a + 0.1, 0.085,
 pl.mtext(msp, "PATIO POSTERIOR\\PTANQUE SÉPTICO Y DRENAJE\\P(UBICACIÓN Y DIMENSIONES POR DISEÑAR)",
          4.5, 26.85, 0.13, 6.5, "A-ESPACIOS")
 pl.text(msp, "CALLE PÚBLICA", 4.5, -2.15, 0.22, "A-ESPACIOS", rot=90)
-pl.text(msp, "RETIRO FRONTAL", 3.0, 1.55, 0.12, "A-ESPACIOS", rot=90)
+pl.text(msp, "RETIRO FRONTAL", 7.0, 1.55, 0.12, "A-ESPACIOS", rot=90)
 pl.text(msp, "ACCESO VEHICULAR - PORTÓN (TIPO POR DEFINIR)", 5.2, 0.95, 0.10, "A-TXT-50", rot=90)
 pl.text(msp, "ACCESO PEATONAL", 0.70, 0.95, 0.08, "A-TXT-50", rot=90)
 pl.mtext(msp, "COLINDANCIA - FACHADA CIEGA", 0.0 - 0.35, 14.0, 0.10, 6.0, "A-TXT-50")
@@ -232,7 +232,7 @@ for xa, xb in zip(xs[:-1], xs[1:]):
 
 # cortes
 pl.section_mark(msp, "A", "A6", (3.0, -1.6), (3.0, 29.4), (1, 0))
-pl.section_mark(msp, "B", "A6", (-2.0, 18.25), (10.6, 18.25), (0, 1))
+pl.section_mark(msp, "B", "A6", (-2.0, 18.25), (11.05, 18.25), (0, 1))
 
 # ---------------------------------------------------------------- hoja
 psp = doc.layouts.new("A2-NIVEL1")

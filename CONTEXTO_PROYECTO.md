@@ -1,7 +1,7 @@
 # CONTEXTO DEL PROYECTO: Vivienda unifamiliar de 3 niveles, San Rafael de Heredia
 
 > Archivo de traspaso. Si se abre una sesión nueva de Claude, leer este archivo primero.
-> Última actualización: 06-10-2026. Lámina en curso: **A1 rev0 (en revisión)**.
+> Última actualización: 06-10-2026. Lámina en curso: **A2 rev0 (en revisión)**. A1 en rev1 (cambios pedidos aplicados; el ingeniero indicó continuar).
 
 ## 1. Encargo vigente (sustituye al de anteproyecto del 05-10-2026)
 - Juego completo de planos constructivos para el CFIA de una **vivienda unifamiliar de 3 niveles**. Solo uso unifamiliar: sin apartamentos ni notas de conversión.
@@ -42,6 +42,9 @@
 | Cajetín | Profesionales de la referencia: Steven Viales (Civil) IC-40759 y David Barrantes (Electricidad) IE-27499. Folio real y plano catastrado del catastro. |
 | Ubicación geográfica | La misma imagen del catastro |
 | Formato | A1 (841 × 594 mm); códigos de lámina como la referencia (A1, A2…) |
+| Patios P1/P2 | 2.50 m: **aceptados por la municipalidad** (altura medida desde N1) |
+| Empresa del cajetín | CivilCon Diseño y Construcción SRLTDA, céd. 3-102-762712 (confirmada) |
+| Nota de tapia | Se incluye la nota 2 de la referencia (prolongar tapia hasta viga corona) |
 
 ## 5. Geometría base (marco local: x hacia el este desde el lindero oeste; y hacia el sur desde el frente en el vértice 1)
 - Envolvente: x 0.00–9.00 · y 2.06–25.18 (9.00 × 23.12 = 208.08 m²).
@@ -59,19 +62,27 @@
 7. Los walk-in de 3.46 × 3.25 m son holgados; se mantienen salvo indicación.
 
 ## 7. Pendientes abiertos
-- **Patios P1 y P2 de 2.50 m:** con la altura medida desde N1 (9.5 m), el texto del reglamento de 1983 pide 3.00 m y 9.00 m² para piezas habitables. **No cumpliría.** Falta la decisión del ingeniero (ver nota 11 de A1).
 - Verificar el reglamento vigente (INVU 2018/2022) y el plan regulador de San Rafael.
-- Confirmar la empresa del cajetín (CivilCon SRLTDA, tomada de la referencia).
 - Definir el índice y el total de láminas del juego.
 - Estructura, instalaciones y prueba de infiltración: pendientes de los criterios del profesional responsable.
-- La nota 2 de la referencia (tapia hasta la viga corona) no se trasladó; falta su decisión.
 
 ## 8. Estado de láminas
 | Lámina | Contenido | Estado |
 |---|---|---|
-| A1 | Lote: ubicación, poligonal, retiros y huella, derrotero, coordenadas, áreas, notas | rev0 entregada, en revisión |
+| A1 | Lote: ubicación, poligonal, retiros y huella, derrotero, coordenadas, áreas, notas | rev1 (cambios aplicados; se indicó continuar) |
+| A2 | Planta nivel 1 (1:50): parqueos, acceso, escalera, derrotero, áreas, cobertura, notas | rev0 entregada, en revisión |
+
+### Nivel 1 propuesto (A2 rev0)
+- 6 espacios de 2.50 × 5.00 (E-1 a E-3 independientes, E-4 a E-6 en tándem) entre x 1.35 y 8.85, y 2.21 y 12.21.
+- Pasillo peatonal de 1.20 al oeste, separado de los carros por un bordillo. Fachada: peatonal 1.11, pilastra en el eje B (x 1.26–1.56), portón de 7.29.
+- Bodega 7.38 × 4.50 (y 12.33–16.83), uso por definir. Espacio cubierto posterior 8.70 × 5.40, uso por definir.
+- Ejes: A 0.075 · B 1.41 · C 4.75 · D 8.925 / 1 2.135 · 2 7.685 · 3 10.335 · 4 16.905 · 5 19.555 · 6 25.105.
+- Marco de las plantas (`planta.py`): X = fondo y local (calle a la izquierda), Y = x local. En la A1 el marco tiene el norte arriba.
+- Escalera en U: tramo 1 en y 16.98–18.08 que sube hacia el este hasta x 3.59; descanso en x 3.59–4.69; tramo 2 en y 18.38–19.48 de regreso al oeste.
 
 ## 9. Herramientas
 - `scripts/cadlib.py`: capas, estilos de cota, cajetín, tablas, escala gráfica, render a PDF (ezdxf + PyMuPDF).
-- `scripts/a1_lote.py`: genera la lámina A1. Requiere `pip install ezdxf pymupdf pillow`.
+- `scripts/a1_lote.py`, `scripts/a2_nivel1.py`: generan las láminas. Requieren `pip install ezdxf pymupdf pillow`.
+- `scripts/planta.py`: muros, puertas, ventanas, ejes, niveles, cortes y vehículos en el marco de planta.
+- Notas generales y derrotero comunes en `cadlib.NOTAS_GENERALES` / `cadlib.derrotero_rows`.
 - Datos en `datos/lote_catastro.json` y `datos/proyecto.json`.

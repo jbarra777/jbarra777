@@ -63,7 +63,7 @@ def wall(msp, x0, x1, y0, y1, hatch=True):
     if hatch:
         h = msp.add_hatch(dxfattribs={"layer": "A-MURO-TRAMA"})
         h.paths.add_polyline_path(pts)
-        h.set_pattern_fill("ANSI31", scale=0.02)
+        h.set_pattern_fill("ANSI31", scale=0.03)
 
 
 def line(msp, a, b, layer, ltscale=None):

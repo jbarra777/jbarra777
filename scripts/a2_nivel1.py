@@ -156,8 +156,6 @@ pl.mtext(msp, "ESCALERA EN U\\P17 CH = 0.176 / H = 0.28", (X0 + X1) / 2,
          (yB0 + yB1) / 2, 0.11, 2.6, "A-ESPACIOS")
 
 # ---------------------------------------------------------------- textos de espacios
-pl.mtext(msp, "ESTACIONAMIENTOS\\P6 ESPACIOS DE 2.50 x 5.00\\P(3 INDEPENDIENTES + 3 EN TÁNDEM)",
-         5.1, Y_ROW + 5.0, 0.15, 4.5, "A-ESPACIOS")
 pl.mtext(msp, "PASILLO PEATONAL", 0.75, 6.0, 0.13, 2.0, "A-ESPACIOS")
 pl.text(msp, "PASILLO PEATONAL", 0.75, 6.0, 0.13, "A-ESPACIOS", rot=0)
 for e in list(msp.query("MTEXT")):
@@ -173,33 +171,31 @@ pl.mtext(msp, f"ESPACIO CUBIERTO\\P(USO POR DEFINIR)\\P{A_esp:.2f} m²", 4.5, 22
          "A-ESPACIOS")
 pl.mtext(msp, "PATIO P2\\P(ABIERTO)", (P2["x"][0] + P2["x"][1]) / 2, 18.0, 0.15, 2.5,
          "A-ESPACIOS")
-pl.mtext(msp, "PROYECCIÓN PATIO DE LUZ P1\\P(ABIERTO A CIELO)",
-         (P1["x"][0] + P1["x"][1]) / 2, 9.0, 0.11, 4.0, "A-TXT-50")
+pl.text(msp, "PROYECCIÓN PATIO P1 (ABIERTO A CIELO)", 8.67, Y_P1a + 0.1, 0.085, "A-TXT-50",
+        "MIDDLE_LEFT")
 pl.mtext(msp, "PATIO POSTERIOR\\PTANQUE SÉPTICO Y DRENAJE\\P(UBICACIÓN Y DIMENSIONES POR DISEÑAR)",
          4.5, 26.85, 0.13, 6.5, "A-ESPACIOS")
-pl.mtext(msp, "RETIRO FRONTAL\\PACCESO", 4.5, 1.05, 0.12, 3.0, "A-ESPACIOS")
-pl.mtext(msp, "CALLE PÚBLICA", 4.5, -2.6, 0.22, 4.0, "A-ESPACIOS")
-pl.mtext(msp, "ACCESO\\PPEATONAL", 0.70, -0.75, 0.10, 1.2, "A-TXT-50")
-pl.mtext(msp, "ACCESO VEHICULAR\\PPORTÓN (TIPO POR DEFINIR)", 5.2, -0.75, 0.10, 4.0,
-         "A-TXT-50")
+pl.text(msp, "CALLE PÚBLICA", 4.5, -2.15, 0.22, "A-ESPACIOS", rot=90)
+pl.text(msp, "RETIRO FRONTAL", 3.0, 1.55, 0.12, "A-ESPACIOS", rot=90)
+pl.text(msp, "ACCESO VEHICULAR - PORTÓN (TIPO POR DEFINIR)", 5.2, 0.95, 0.10, "A-TXT-50", rot=90)
+pl.text(msp, "ACCESO PEATONAL", 0.70, 0.95, 0.08, "A-TXT-50", rot=90)
 pl.mtext(msp, "COLINDANCIA - FACHADA CIEGA", 0.0 - 0.35, 14.0, 0.10, 6.0, "A-TXT-50")
 pl.mtext(msp, "COLINDANCIA - FACHADA CIEGA", W + 0.35, 14.0, 0.10, 6.0, "A-TXT-50")
-pl.mtext(msp, "PILASTRA\\P(EJE B)", 1.41, 1.55, 0.08, 1.0, "A-TXT-50")
 
 # niveles
-pl.level(msp, 3.0, 5.6, "NPT ±0.00")
+pl.level(msp, 0.45, 8.3, "NPT ±0.00")
 pl.level(msp, 2.4, 22.6, "NPT ±0.00")
 pl.level(msp, 6.4, 13.6, "NPT ±0.00")
-pl.level(msp, 2.4, 0.6, "NIVEL DE ACERA ±0.00 (REF.)")
+pl.level(msp, 7.6, 0.25, "ACERA ±0.00 (REF.)")
 
 # ---------------------------------------------------------------- ejes
 ejes_x = {"A": E / 2, "B": (XB0 + XB1) / 2, "C": (XC0 + XC1) / 2, "D": W - E / 2}
 ejes_y = {"1": ey0 + E / 2, "2": Y_P1a - E / 2, "3": Y_P1b + E / 2, "4": (Y4a + Y4b) / 2,
           "5": (Y5a + Y5b) / 2, "6": ey1 - E / 2}
 for k, x in ejes_x.items():
-    pl.axis(msp, k, "x", x, -0.2, 30.0, "end")
+    pl.axis(msp, k, "x", x, -0.2, 29.85, "end")
 for k, y in ejes_y.items():
-    pl.axis(msp, k, "y", y, -3.0, 12.0, "both")
+    pl.axis(msp, k, "y", y, -2.35, 10.2, "start")
 
 # ---------------------------------------------------------------- cotas
 # oeste (abajo en planta): retiro / envolvente / retiro
@@ -235,8 +231,8 @@ for xa, xb in zip(xs[:-1], xs[1:]):
     pl.dim(msp, (xa, ey1), (xb, ey1), (0, 29.25), True)
 
 # cortes
-pl.section_mark(msp, "A", "A6", (3.0, -2.2), (3.0, 29.0), (1, 0))
-pl.section_mark(msp, "B", "A6", (-2.2, 18.2), (11.2, 18.2), (0, 1))
+pl.section_mark(msp, "A", "A6", (3.0, -1.6), (3.0, 29.4), (1, 0))
+pl.section_mark(msp, "B", "A6", (-2.0, 18.25), (10.6, 18.25), (0, 1))
 
 # ---------------------------------------------------------------- hoja
 psp = doc.layouts.new("A2-NIVEL1")
@@ -246,7 +242,7 @@ cl.frame(psp)
 
 VP_C = (368.0, 430.0)
 VP_S = (668.0, 296.0)
-vp = psp.add_viewport(center=VP_C, size=VP_S, view_center_point=(13.6, 4.4),
+vp = psp.add_viewport(center=VP_C, size=VP_S, view_center_point=(14.05, 4.05),
                       view_height=VP_S[1] * 50 / 1000.0, dxfattribs={"layer": "A-VIEWPORT"})
 vp.dxf.flags = vp.dxf.flags | 16384
 vp.frozen_layers = ["T-TXT-100", "T-TXT-200", "T-COTA-100", "T-COTA-200"]

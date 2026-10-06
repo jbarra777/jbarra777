@@ -22,7 +22,8 @@
 | A7 | APROBADA | rev2 |
 | A11 | APROBADA | rev1 |
 | E01 | APROBADA | rev1 (sin mención a secadora) |
-| E02 | EN REVISIÓN | rev0 (planta eléctrica N2) |
+| E02 | APROBADA | rev0 |
+| E03 | EN REVISIÓN | rev0 (planta eléctrica N3) |
 | C01 | APROBADA | rev1 |
 | C02 | APROBADA | rev1 |
 | C03 | APROBADA | rev2 |
@@ -30,8 +31,8 @@
 | C05 | APROBADA | rev2 |
 | C06 | APROBADA | rev1 |
 
-- **Última entrega:** E02 rev0 (planta eléctrica del nivel 2) y E01 rev1.
-- **Siguiente paso:** visto bueno de E02. Luego E03 (N3) y E04 (unifilar, tableros, detalles). Después, sanitarias y pluviales.
+- **Última entrega:** E03 rev0 (planta eléctrica del nivel 3).
+- **Siguiente paso:** visto bueno de E03. Luego E04 (unifilar, tableros, detalles y notas). Después, sanitarias y pluviales.
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

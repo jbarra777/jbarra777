@@ -23,10 +23,10 @@
 | A11 | APROBADA | rev1 |
 | C01 | APROBADA | rev0 (VA1 bajo la tapia posterior y F2 hacia los retiros: aprobados) |
 | C02 | APROBADA | rev0 (detalles F1/F2, pedestal y pletina [PR]) |
-| C03 | APROBADA (rev1 en visto bueno de leyenda) | rev0 aprobada; rev1 = entrepiso 1 y 2 en una sola lámina |
+| C03 | APROBADA | rev1 (entrepiso 1 y 2 en una sola lámina) |
 
 - **Última entrega:** C03 rev1 (planta de entrepiso 1 y 2).
-- **Siguiente paso:** visto bueno de la leyenda de C03 rev1 y confirmar la numeración. Luego techo, pórticos (2) y especificaciones.
+- **Siguiente paso:** C04 techo (datos de cerchas y clavadores por definir con el usuario), C05–C06 pórticos y C07 especificaciones. **Al terminar los estructurales: corregir en C01–C03 las referencias "C08" → "C07"** (indicación del usuario).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

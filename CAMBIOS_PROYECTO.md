@@ -81,4 +81,4 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
 - **06-10-2026 — A11 aprobada.** Gradas con PI-A antideslizante con nariz. Sin citas normativas en los planos; marcas comerciales reemplazadas por "o similar". La A7 queda como está: PI-B todavía menciona las gradas del N1; el usuario decidió no revisarla.
 - **06-10-2026 — C03 aprobada; entrepisos en una sola lámina.**
   - Entrepisos: C03 (nivel 2) y C04 (nivel 3) → **una sola C03, "PLANTA DE ENTREPISO 1 Y 2"** (entrepiso 1 = nivel 2; entrepiso 2 = nivel 3; armado idéntico). Solo cambia la leyenda (C03 rev1).
-  - La numeración de las siguientes láminas estructurales queda por confirmar. C01–C03 remiten a la "C08" para las especificaciones.
+  - Numeración (usuario): **C04 techo, C05–C06 pórticos, C07 especificaciones**. Las referencias "C08" de C01–C03 se corrigen al terminar los estructurales.

@@ -235,4 +235,9 @@
 - **Tableros (esquema de la referencia):** medidor e interruptor principal en el frente (N1), **tablero principal TP en el N1** y **subtableros TN2 y TN3** en cada nivel. Monofásico 120/240 V. [U]
 - **Cargas especiales:** **un calentador de paso por baño** (240 V), **cocina eléctrica** (N2, 240 V) y **secadora** (240 V; su ubicación depende de la lavandería, que está pospuesta). [U]
 - **Conductores, disyuntores, acometida y formato de cuadros: valores de la referencia [PR]**, con la lista de circuitos ajustada a esta vivienda, para revisión del profesional eléctrico. [U]
+- **E01 aprobada (06-10-2026):**
+  - ubicación de salidas aprobada;
+  - tubería expuesta del N1 en EMT;
+  - medidor según la empresa distribuidora (PD);
+  - **la salida de la secadora (240 V) no se dibuja ni se menciona en la planta del N1.** [U]
 

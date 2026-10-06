@@ -12,7 +12,7 @@ import elec as EL
 import hoja as H
 import planta as pl
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "E01_nivel1"
 NAME = f"SR-E01_NIVEL1_{REV}"
 LAYOUT = "E01-NIVEL1"
@@ -117,7 +117,7 @@ rows = [["CIRC.", "DESCRIPCIÓN", "DISYUNTOR", "CONDUCTORES THHN [PR]"],
 y = cl.table(psp, X2, y - 6.0, [18, 92, 26, 44], rows, row_h=6.5, h=2.1,
              aligns=["MIDDLE_CENTER", "MIDDLE_LEFT", "MIDDLE_CENTER", "MIDDLE_CENTER"])
 cl.text(psp, "LETRAS a-g: AGRUPACIÓN DE LUMINARIAS POR APAGADOR. ALIMENTADORES DE TN2 Y TN3, "
-        "SECADORA Y DEMÁS CIRCUITOS DEL TP: VER E04.", (X2, y - 2.5), 1.9, "A-TEXTO", "TOP_LEFT")
+        "DEMÁS CIRCUITOS DEL TP: VER E04.", (X2, y - 2.5), 1.9, "A-TEXTO", "TOP_LEFT")
 
 X3, y = 400.0, 262.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
@@ -141,7 +141,8 @@ cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + 
 H.titleblock(doc, psp, "E01", "ELECTRICIDAD",
              ["PLANTA ELÉCTRICA NIVEL 1.", "ILUMINACIÓN Y TOMACORRIENTES.", "VOZ Y DATOS.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="1:50")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "06-10-2026", "SIN MENCIÓN A SECADORA")], escalas="1:50")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

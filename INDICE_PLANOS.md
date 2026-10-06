@@ -30,7 +30,7 @@ Las justifica una referencia cruzada desde las láminas ya desarrolladas o un re
 | Código tentativo | Lámina | Por qué se necesita en este proyecto | Estado |
 |---|---|---|---|
 | C01–C06 | Estructurales: C01 cimentaciones, C02 detalles de cimentación, C03 entrepisos 1 y 2 (niveles 2 y 3, una sola lámina), C04 techo, C05 pórticos (longitudinales y transversales), C06 especificaciones | Juego aprobado por el usuario. Secciones de la referencia [PR] por su indicación. | C01 rev1, C02 rev1, C03 rev2, C04 rev1, C05 rev2 y C06 rev1 APROBADAS (correcciones del 06-10-2026: referencias a C06, C1 del eje C-1 sobre VT-1, notas 8 y 9 de C06 eliminadas). Revisiones anteriores aprobadas. |
-| Eléctrica (número por definir) | Iluminación, tomacorrientes, diagrama unifilar, tableros, simbología y notas | Requisito de trámite. El N1 es reducido, así que se puede evaluar combinar. | PENDIENTE |
+| E01–E04 | Eléctricas: E01 N1, E02 N2, E03 N3 (iluminación, tomas y voz/datos); E04 unifilar, tableros, detalles, simbología y notas | Definido por el usuario el 06-10-2026. Valores de la referencia [PR]. | E01 rev0 EN REVISIÓN (`planos/E01_nivel1/SR-E01_NIVEL1_rev0.*`); E02–E04 PENDIENTES |
 | Sanitaria: agua potable (número por definir) | Acometida de la ESPH y distribución por nivel | Requisito de trámite. | PENDIENTE |
 | Sanitaria: aguas residuales (número por definir) | Distribución por nivel, ductos de las suites 2 y 3, tanque séptico y drenaje | No hay alcantarillado. Hay ductos pendientes. | PENDIENTE |
 | Sanitaria: aguas pluviales (por confirmar si es lámina propia) | Bajantes y conducción a la cuneta | La referencia no la tiene. **Confirmar con el usuario** si es lámina propia o se integra en otra. | PENDIENTE |

@@ -227,3 +227,12 @@
   - **Eje C en el eje 1:** lleva **columna C1 en los niveles 2 y 3**, apoyada en una **viga de transferencia VT-1** en el eje 1 a nivel del entrepiso 1 (N2), de **diseño especial** según el cálculo. **Sin columna en el nivel 1** (portón). [U]
 - **C06 especificaciones aprobada; se eliminan las notas de materiales 8 y 9 (prefabricados).** [U]
 - **Ventana V-03 (baño de la suite frontal, N2 y N3): 0,90 × 2,20 en x 3,76–4,66**, para librar la columna C1 del eje C en el eje 1 (x 4,69–4,99, al ras de la fachada frontal). [U]
+
+## 15. Instalación eléctrica (06-10-2026)
+- **Láminas:**
+  - **E01 N1, E02 N2, E03 N3:** iluminación, tomacorrientes y voz/datos en la misma planta, a 1:50.
+  - **E04:** diagrama unifilar, cuadros de tableros, detalles, simbología y notas. [U]
+- **Tableros (esquema de la referencia):** medidor e interruptor principal en el frente (N1), **tablero principal TP en el N1** y **subtableros TN2 y TN3** en cada nivel. Monofásico 120/240 V. [U]
+- **Cargas especiales:** **un calentador de paso por baño** (240 V), **cocina eléctrica** (N2, 240 V) y **secadora** (240 V; su ubicación depende de la lavandería, que está pospuesta). [U]
+- **Conductores, disyuntores, acometida y formato de cuadros: valores de la referencia [PR]**, con la lista de circuitos ajustada a esta vivienda, para revisión del profesional eléctrico. [U]
+

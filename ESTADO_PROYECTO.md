@@ -21,6 +21,7 @@
 | A6 | APROBADA | rev4 |
 | A7 | APROBADA | rev2 |
 | A11 | APROBADA | rev1 |
+| E01 | EN REVISIÓN | rev0 (planta eléctrica N1) |
 | C01 | APROBADA | rev1 |
 | C02 | APROBADA | rev1 |
 | C03 | APROBADA | rev2 |
@@ -28,8 +29,8 @@
 | C05 | APROBADA | rev2 |
 | C06 | APROBADA | rev1 |
 
-- **Última entrega:** correcciones aprobadas (A3–A7, C01–C06).
-- **Siguiente paso:** láminas eléctricas (E). Luego sanitarias y pluviales (incluido el detalle de canoa).
+- **Última entrega:** E01 rev0 (planta eléctrica del nivel 1).
+- **Siguiente paso:** visto bueno de E01. Luego E02 (N2), E03 (N3) y E04 (unifilar, tableros, detalles). Después, sanitarias y pluviales.
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).
@@ -39,7 +40,7 @@
 - **Notas [PR]** 1 (medidas) y 7 (canoas con malla): esperan la revisión del usuario. Ya hay canoas confirmadas.
 - **Estructura:** sistema estructural, cimentación, entrepisos, secciones (las columnas de 0.30 son PD) y la viga del eje 1 sin C1.
 - **Sanitarios:** tanque séptico (prueba de infiltración), ductos de las suites 2 y 3 y modelo del extractor.
-- **Eléctricos:** sin datos todavía.
+- **Eléctricos:** definidos los criterios (DECISIONES §15); en desarrollo.
 - **Acabados.**
 - **Relación de la A1 rev1** (solo existe la rev0): pendiente de redactar.
 - **Confirmaciones municipales:** retiros con alineamiento y uso de suelo; normativa vigente no verificada.

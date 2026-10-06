@@ -38,3 +38,6 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
 
 ## Registro de cambios posteriores
 *(Agregar aquí, con fecha, cada cambio relevante que apruebe el usuario.)*
+
+- **06-10-2026 — Criterio del índice de láminas.** Al crear la memoria se había propuesto una lista de 38 láminas basada en la referencia. → **El usuario indicó** que la referencia no define el número de láminas. → **Vigente:** índice en tres partes (A desarrolladas, B previstas, C referencia por evaluar); el número definitivo queda pendiente.
+- **06-10-2026 — Estados de las láminas.** A1 y A4 figuraban como APROBADAS. → Por indicación del usuario ("ante duda, EN REVISIÓN") → **Vigente:** A1 EN REVISIÓN (falta confirmar la rev1) y A4 EN REVISIÓN (conflicto con C6).

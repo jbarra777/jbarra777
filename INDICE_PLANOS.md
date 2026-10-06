@@ -1,61 +1,62 @@
-# ÍNDICE DE PLANOS — Lista maestra
+# ÍNDICE DE PLANOS
 
-**Base:** la organización del proyecto de referencia (37 láminas: A1–A11, C01–C10, EL1–EL10, IS1–IS6), adaptada a este proyecto.
+> **El proyecto de referencia (RIVERGRAND, 37 láminas) NO define el número ni la lista de láminas de este proyecto.**
+> - Cada lámina debe justificarse por las necesidades reales de esta vivienda.
+> - Se pueden **combinar** láminas cuando convenga técnica y gráficamente.
+> - Se pueden **eliminar** las que no apliquen.
+> - Se pueden **agregar** láminas que no estén en la referencia si el proyecto las necesita.
+> - **Ninguna lámina se incorpora solo porque aparezca en la referencia.**
+>
+> El número definitivo de láminas está **PENDIENTE DE DEFINIR**. Se decidirá con el usuario a medida que avancemos.
 
-El usuario estima unas 30 láminas; esta lista propone **38**. **El número final está PENDIENTE DE DEFINIR**: confirmar con el usuario qué láminas se combinan o no aplican. El contenido de las láminas pendientes es tentativo.
+**Estados:** APROBADA · EN REVISIÓN · EN DESARROLLO · PENDIENTE · NO APLICA.
+**Criterio:** una lámina es APROBADA solo si el usuario la aceptó y no le quedan correcciones pendientes. Ante cualquier duda, se marca EN REVISIÓN.
 
-**Estados:** APROBADA · EN REVISIÓN · EN DESARROLLO · PENDIENTE · NO APLICA
-
-## Arquitectura
-| Código | Nombre | Contenido principal | Estado | Archivo | Observaciones |
+## A) Láminas del proyecto actual ya desarrolladas
+| Código | Nombre | Contenido principal | Estado | Archivo vigente | Observaciones |
 |---|---|---|---|---|---|
-| A1 | Lote de terreno | Ubicación geográfica (imagen del catastro), poligonal 1:200, retiros y huella 1:100, derrotero, coordenadas CRTM05, áreas y cobertura, notas | APROBADA | `planos/A1_lote/SR-A1_LOTE_rev1.*` | El usuario pidió 3 cambios y luego "continuar con la lámina 2". La rev1 los aplica; no hubo confirmación explícita de la rev1. No existe relación rev1, solo la rev0. |
-| A2 | Planta nivel 1 | Parqueos E-1 a E-3, pasillo, gradas, jardín seco, columnas eje C, portón abatible, derrotero, áreas y cobertura, notas | APROBADA | `planos/A2_nivel1/SR-A2_NIVEL1_rev1.*` | Aprobada: "De acuerdo, continuar con la siguiente". |
-| A3 | Planta nivel 2 | Suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A3_nivel2/SR-A3_NIVEL2_rev0.*` | "Está perfecto". Puede necesitar una revisión si se realinean las ventanas posteriores (sala). |
-| A4 | Planta nivel 3 | Suites 1, 2 y 3, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A4_nivel3/SR-A4_NIVEL3_rev0.*` | Aprobada ("ok baño de suite 2…"). **Requiere corrección:** la ventana posterior del baño de la suite 3 choca con la columna C6. |
-| A5 | Fachadas | Principal 1:50, posterior 1:75, laterales 1:100, notas | EN REVISIÓN | `planos/A5_fachadas/SR-A5_FACHADAS_rev0.*` | Pendientes: ventanas posteriores, conflicto con C6 y supuestos PD (ver ESTADO). |
-| A6 | Cortes | Corte A-A (longitudinal, x = 3.0) y B-B (transversal, y = 18.25), ya referenciados en las plantas | PENDIENTE | — | Depende de la cubierta, el pretil y el sistema de entrepiso. |
-| A7 | Nivel 1: puertas, ventanas y acabados | Planta con códigos, cuadro de puertas y ventanas, acabados de pisos y paredes | PENDIENTE | — | |
-| A8 | Nivel 2: puertas, ventanas y acabados | Ídem | PENDIENTE | — | La A3 remite a la A8. |
-| A9 | Nivel 3: puertas, ventanas y acabados | Ídem | PENDIENTE | — | La A4 remite a la A9. |
-| A10 | Acabados de fachadas | Fachadas con materiales y acabados | PENDIENTE | — | La A5 remite a la A10. |
-| A11 | Escalera y detalles | Planta, corte, barandas y pasamanos | PENDIENTE | — | Las plantas remiten a la A11 para las barandas. |
+| A1 | Lote de terreno | Ubicación geográfica (imagen del catastro), poligonal 1:200, retiros y huella 1:100, derrotero, coordenadas CRTM05, áreas y cobertura, notas | EN REVISIÓN | `planos/A1_lote/SR-A1_LOTE_rev1.*` | El usuario pidió 3 cambios y "continuar con la lámina 2". La rev1 los aplica, pero **no hubo confirmación explícita de la rev1**. Falta la relación rev1 (solo existe la rev0). |
+| A2 | Planta nivel 1 | 3 parqueos, pasillo, gradas, jardín seco, columnas en el eje C, portón abatible, derrotero, áreas y cobertura, notas | APROBADA | `planos/A2_nivel1/SR-A2_NIVEL1_rev1.*` | Aprobación expresa de la rev1: "De acuerdo, continuar con la siguiente". |
+| A3 | Planta nivel 2 | Suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A3_nivel2/SR-A3_NIVEL2_rev0.*` | "Está perfecto". **Aviso:** si se realinean las ventanas posteriores (pendiente A5), cambiaría la sala y habría que hacer una rev1, con aprobación. |
+| A4 | Planta nivel 3 | Suites 1, 2 y 3, áreas, cobertura, detalle del extractor, notas | EN REVISIÓN | `planos/A4_nivel3/SR-A4_NIVEL3_rev0.*` | El usuario la aceptó ("ok… pasar con siguiente lámina"), pero después se detectó un **error pendiente de corregir**: la ventana posterior del baño de la suite 3 choca con la columna C6. |
+| A5 | Fachadas | Principal 1:50, posterior 1:75, laterales 1:100, notas | EN REVISIÓN | `planos/A5_fachadas/SR-A5_FACHADAS_rev0.*` | Pendiente: ventanas posteriores, conflicto con C6 y supuestos PD (ver ESTADO). |
 
-## Civil / estructural (contenido según el sistema estructural, PENDIENTE DE DEFINIR)
-| Código | Nombre | Contenido principal | Estado | Archivo | Observaciones |
-|---|---|---|---|---|---|
-| C01 | Planta de fundaciones | Placas, cimientos y ejes | PENDIENTE | — | Requiere el criterio estructural del usuario. |
-| C02 | Detalles de fundaciones | Secciones y refuerzo | PENDIENTE | — | |
-| C03 | Losa de piso nivel 1 | Contrapiso de estacionamientos, pasillo y gradas | PENDIENTE | — | En la referencia era "entrepiso PB"; confirmar si aplica. |
-| C04 | Entrepiso nivel 2 | Planta estructural y detalle | PENDIENTE | — | Incluye la viga del eje 1 (sin C1). |
-| C05 | Entrepiso nivel 3 | Planta estructural y detalle | PENDIENTE | — | |
-| C06 | Planta de techos | Cubierta y pendientes | PENDIENTE | — | Falta definir el tipo de techo. |
-| C07 | Detalles de techo y caja pluvial | Secciones y caja pluvial | PENDIENTE | — | |
-| C08 | Pórticos longitudinales | Ejes A–D | PENDIENTE | — | |
-| C09 | Pórticos transversales | Ejes 1–6 | PENDIENTE | — | |
-| C10 | Especificaciones constructivas | Materiales y notas técnicas | PENDIENTE | — | No copiar las de la referencia sin aprobación. |
+## B) Láminas previstas o necesarias del proyecto actual
+Las justifica una referencia cruzada desde las láminas ya desarrolladas o un requisito propio de esta vivienda. **El código, el nombre definitivo y la posible combinación están por confirmar.**
 
-## Eléctrica
-| Código | Nombre | Contenido principal | Estado | Archivo | Observaciones |
-|---|---|---|---|---|---|
-| EL1 | Iluminación nivel 1 | Salidas, apagadores, circuitos | PENDIENTE | — | Por confirmar si se combina con EL4 (el N1 es reducido). |
-| EL2 | Iluminación nivel 2 | Ídem | PENDIENTE | — | |
-| EL3 | Iluminación nivel 3 | Ídem | PENDIENTE | — | |
-| EL4 | Tomacorrientes nivel 1 | Tomas y circuitos | PENDIENTE | — | |
-| EL5 | Tomacorrientes nivel 2 | Ídem | PENDIENTE | — | |
-| EL6 | Tomacorrientes nivel 3 | Ídem | PENDIENTE | — | |
-| EL7 | Detalles constructivos eléctricos | Acometida, medidor, puesta a tierra | PENDIENTE | — | |
-| EL8 | Voz y datos, simbología, notas | Diagrama y simbología | PENDIENTE | — | |
-| EL9 | Diagrama unifilar | | PENDIENTE | — | Requiere cargas y criterios del profesional eléctrico. |
-| EL10 | Tableros | Cuadros de cargas | PENDIENTE | — | |
+| Código tentativo | Lámina | Por qué se necesita en este proyecto | Estado |
+|---|---|---|---|
+| A6 | Cortes A-A y B-B | Las plantas A2–A4 ya remiten a la "A6". El trazo está definido: A-A en x = 3.0 y B-B en y = 18.25. | PENDIENTE |
+| A7–A9 (o combinadas) | Puertas, ventanas y acabados por nivel | Las A3 y A4 remiten a A8 y A9, y la A5 a A7–A9. Hacen falta los cuadros de puertas y ventanas y los acabados. Se puede evaluar combinar los niveles. | PENDIENTE |
+| A10 (o combinada con A5) | Acabados de fachada | La A5 remite a la A10. Depende del diseño moderno de la fachada principal. | PENDIENTE |
+| A11 | Escalera y detalles (barandas, pasamanos) | Las plantas remiten a la A11 para las barandas. Escalera en U de 3 niveles. | PENDIENTE |
+| Estructural (número por definir) | Cimentación, entrepisos de N2 y N3, cubierta, pórticos o detalles, especificaciones | Requisito de trámite. Contenido según el sistema estructural, **PENDIENTE DE DEFINIR**. | PENDIENTE |
+| Eléctrica (número por definir) | Iluminación, tomacorrientes, diagrama unifilar, tableros, simbología y notas | Requisito de trámite. El N1 es reducido, así que se puede evaluar combinar. | PENDIENTE |
+| Sanitaria: agua potable (número por definir) | Acometida de la ESPH y distribución por nivel | Requisito de trámite. | PENDIENTE |
+| Sanitaria: aguas residuales (número por definir) | Distribución por nivel, ductos de las suites 2 y 3, tanque séptico y drenaje | No hay alcantarillado. Hay ductos pendientes. | PENDIENTE |
+| Sanitaria: aguas pluviales (por confirmar si es lámina propia) | Bajantes y conducción a la cuneta | La referencia no la tiene. **Confirmar con el usuario** si es lámina propia o se integra en otra. | PENDIENTE |
 
-## Sanitaria
-| Código | Nombre | Contenido principal | Estado | Archivo | Observaciones |
-|---|---|---|---|---|---|
-| IS1 | Agua potable nivel 1 | Acometida ESPH y montantes | PENDIENTE | — | |
-| IS2 | Agua potable nivel 2 | | PENDIENTE | — | |
-| IS3 | Agua potable nivel 3 | | PENDIENTE | — | |
-| IS4 | Aguas residuales nivel 1 | Cajas de registro, tanque séptico y drenaje | PENDIENTE | — | Falta la prueba de infiltración. |
-| IS5 | Aguas residuales nivel 2 | Ductos, incluido el de la suite 3 | PENDIENTE | — | |
-| IS6 | Aguas residuales nivel 3 | Baños de las suites 1, 2 y 3 | PENDIENTE | — | |
-| IS7 | Aguas pluviales | Bajantes y conducción a la cuneta | PENDIENTE | — | **Lámina agregada**: la referencia no la tenía. Confirmar con el usuario. |
+## C) Láminas de la referencia por evaluar (aplica / se combina / se descarta)
+Esta lista es solo un inventario de lo que contiene la referencia para comparar el alcance. **No son entregables de este proyecto.**
+
+| Referencia | Contenido en la referencia | Evaluación para este proyecto |
+|---|---|---|
+| ARQ_01 Ubicación | Ubicación, poligonal, retiros, derrotero | Cubierta por la A1 |
+| ARQ_02 a 04 Plantas | Plantas por nivel con derrotero, áreas, cobertura, extractor | Cubiertas por A2–A4 |
+| ARQ_05 Fachadas | 4 fachadas a 1:75 | Cubierta por la A5 |
+| ARQ_06 Cortes | Cortes A-A y B-B | Prevista (A6) |
+| ARQ_07 a 09 Puertas, ventanas y acabados | Una lámina por nivel | Por evaluar: ¿una por nivel o combinadas? |
+| ARQ_10 Acabados de fachadas | Fachadas con materiales | Por evaluar: ¿propia o combinada con la A5? |
+| ARQ_11 Escalera y detalles | Escalera, baranda, pasamanos | Prevista (A11) |
+| CIVIL_01 y 02 Fundaciones y detalles | Planta y detalles | Por evaluar según el sistema estructural |
+| CIVIL_03 Entrepiso PB | Entrepiso de planta baja | Por evaluar: el N1 está sobre el terreno, quizá solo haga falta un contrapiso |
+| CIVIL_04 y 05 Entrepisos N2 y N3 | Plantas y detalles | Por evaluar según el sistema |
+| CIVIL_06 y 07 Techos | Planta de techo, losa, caja pluvial | Por evaluar: el tipo de techo está pendiente |
+| CIVIL_08 y 09 Pórticos | Ejes longitudinales y transversales | Por evaluar según el sistema |
+| CIVIL_10 Especificaciones | Especificaciones constructivas | Por evaluar; no copiar su contenido |
+| ELECT_01 a 06 Iluminación y tomas por nivel | 6 plantas | Por evaluar: combinar en el N1 u otras combinaciones |
+| ELECT_07 Detalles constructivos | Detalles | Por evaluar |
+| ELECT_08 Voz y datos, simbología, notas | Diagrama y simbología | Por evaluar |
+| ELECT_09 y 10 Unifilar y tableros | Diagrama y cuadros | Por evaluar; requieren datos del profesional eléctrico |
+| SANIT_01 a 03 Agua potable por nivel | 3 plantas | Por evaluar |
+| SANIT_04 a 06 Aguas servidas por nivel | Incluye tanque séptico, FAFA y drenaje en PB | Por evaluar; no copiar su solución de tratamiento |

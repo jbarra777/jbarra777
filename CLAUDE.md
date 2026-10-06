@@ -28,6 +28,7 @@ Desarrollar el juego completo de planos constructivos para trámite ante el CFIA
 7. **Proyecto de referencia (RIVERGRAND, 37 láminas, otro proyecto en Alajuelita):** úsalo solo para alcance, contenido, organización, nivel de detalle, tablas y presentación. No copies su geometría, áreas, niveles, estructura, instalaciones, cálculos, datos registrales ni profesionales.
    - Excepción autorizada por el usuario: los profesionales y la empresa del cajetín (ver DECISIONES_TECNICAS §1).
    - Las notas tomadas de la referencia llevan **[PR]** hasta que el usuario las revise.
+   - La referencia **no define el número ni la lista de láminas**. Cada lámina se justifica por las necesidades de esta vivienda y se puede combinar, eliminar o agregar con el usuario. Ninguna se incorpora solo porque exista en la referencia (ver `INDICE_PLANOS.md`, secciones A/B/C).
 8. Normativa: cita solo fuentes verificadas. Si no está verificada, decirlo y no afirmar cumplimiento.
 9. No declarar los planos aptos para construcción o trámite mientras haya pendientes. Cajetín: "VERSIÓN DE TRABAJO – NO APTA PARA CONSTRUCCIÓN NI TRÁMITE".
 10. No hacer renders ni imágenes 3D: solo planos. Generar el PDF a partir del DXF es parte del plano, no un render.
@@ -36,7 +37,7 @@ Desarrollar el juego completo de planos constructivos para trámite ante el CFIA
 ## FUENTES DE VERDAD (prioridad de mayor a menor)
 1. Instrucciones y correcciones más recientes del usuario.
 2. Información aprobada del proyecto actual: catastro, plantas A-201/A-202 como base y datos que dio el usuario.
-3. Láminas aprobadas (ver `INDICE_PLANOS.md`).
+3. Láminas APROBADAS, sin correcciones pendientes (ver `INDICE_PLANOS.md`). Una lámina EN REVISIÓN no es fuente de verdad para lo que esté en discusión.
 4. `DECISIONES_TECNICAS.md`.
 5. `ESTADO_PROYECTO.md`.
 6. Archivos fuente del proyecto: `datos/*.json`, `scripts/`.
@@ -46,7 +47,7 @@ Desarrollar el juego completo de planos constructivos para trámite ante el CFIA
 
 ## FLUJO DE TRABAJO PARA CADA LÁMINA
 **Antes**
-- Identificar la lámina en `INDICE_PLANOS.md`.
+- Identificar la lámina en `INDICE_PLANOS.md` (secciones A o B). Si solo aparece en la C (referencia), confirmar primero con el usuario si aplica.
 - Revisar la lámina equivalente de la referencia: alcance y componentes.
 - Consultar `DECISIONES_TECNICAS.md` y las láminas relacionadas.
 - Pedir solo los datos indispensables.
@@ -80,4 +81,4 @@ Después hacer commit y push a la rama de trabajo.
   - Los viewports girados no se dibujan, por eso las plantas usan el marco girado de `planta.py`.
   - El MTEXT de varios párrafos puede unirse en el PDF: usar `cl.notes_block`.
   - Una lámina tarda unos minutos en generarse.
-- **Archivos de entrada que no están en el repositorio:** PDF de referencia, plantas A-200/A-201/A-202, imagen del catastro y resumen de la sesión anterior (`CLAUDE.pdf`). Estaban en la carpeta de cargas de la sesión inicial. En una sesión nueva hay que pedir al usuario que los vuelva a subir si se necesitan (ver ESTADO).
+- **Archivos de entrada que no están en el repositorio:** PDF de referencia, plantas A-200/A-201/A-202, imagen del catastro y resumen de la sesión anterior (`CLAUDE.pdf`). Estaban en la carpeta de cargas de la sesión inicial. En una sesión nueva hay que pedir al usuario que los vuelva a subir si se necesitan. El detalle y el riesgo de cada uno están en `ESTADO_PROYECTO.md` → ARCHIVOS FUENTE CRÍTICOS. No subirlos ni publicarlos sin autorización.

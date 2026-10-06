@@ -4,7 +4,7 @@
 - **[U]** indicado o aprobado por el usuario.
 - **[CAT]** plano catastrado.
 - **[A-20x]** planta base del anteproyecto (A-201 nivel 2, A-202 nivel 3).
-- **[Ax]** establecido en la lámina indicada y aprobado con ella.
+- **[Ax]** establecido en la lámina indicada. Su vigencia depende del estado de esa lámina en `INDICE_PLANOS.md`: si está EN REVISIÓN, la decisión puede cambiar, salvo que también lleve [U].
 
 **PENDIENTE DE DEFINIR** = no decidido. **PD** = valor preliminar dibujado, pendiente de confirmar.
 

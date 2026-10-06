@@ -78,3 +78,4 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - **Nivel 2:** se quitan las puertas de la cocina y de la sala y el muro de la cocina hacia el pasillo. La sala se abre 1.20 hacia el pasillo.
   - **Puertas, ventanas y acabados:** previstos en A7–A9 → **una sola lámina A7**.
   - **Láminas aprobadas afectadas:** A2, A3 y A6 (geometría); A4, A5 y A6 (referencia a "A7–A9").
+- **06-10-2026 — A11 aprobada.** Gradas con PI-A antideslizante con nariz. Sin citas normativas en los planos; marcas comerciales reemplazadas por "o similar". La A7 queda como está: PI-B todavía menciona las gradas del N1; el usuario decidió no revisarla.

@@ -24,7 +24,8 @@
 | E01 | APROBADA | rev1 (sin mención a secadora) |
 | E02 | APROBADA | rev0 |
 | E03 | APROBADA | rev0 |
-| E04 | EN REVISIÓN | rev0 (unifilar, tableros, notas [PR]) |
+| E04 | APROBADA | rev0 |
+| E05 | EN REVISIÓN | rev0 (detalles eléctricos [PR]) |
 | C01 | APROBADA | rev1 |
 | C02 | APROBADA | rev1 |
 | C03 | APROBADA | rev2 |
@@ -32,8 +33,8 @@
 | C05 | APROBADA | rev2 |
 | C06 | APROBADA | rev1 |
 
-- **Última entrega:** E04 rev0 (unifilar, cuadros de tableros, notas eléctricas).
-- **Siguiente paso:** visto bueno de E04. Después, láminas sanitarias (agua potable, aguas servidas) y pluviales (incluido el detalle de canoa).
+- **Última entrega:** E05 rev0 (detalles eléctricos).
+- **Siguiente paso:** visto bueno de E05. Después, láminas sanitarias (agua potable, aguas servidas) y pluviales (incluido el detalle de canoa).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

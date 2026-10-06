@@ -94,3 +94,5 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - C1 del eje C en el eje 1 (N2–N3, sobre VT-1): C03 rev2, C04 rev1, A3 rev4, A4 rev4.
   - **V-03: 1,00 → 0,90** (x 3,76–4,66) en A3, A4, A5 y A7 rev2.
   - C06 rev1: notas de materiales 8 y 9 eliminadas.
+- **06-10-2026 — E04 aprobada.** El usuario agrega la **E05 (detalles eléctricos)**: el juego eléctrico pasa de E01–E04 a E01–E05.
+

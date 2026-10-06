@@ -249,4 +249,10 @@
 - **Tanque séptico y drenaje:** esquema y dimensiones de la referencia **[PR]**, sujetos a la prueba de infiltración y al cálculo. [U]
 - **Agua caliente: solo en las duchas**, con el calentador de paso de cada baño. Lavatorios y fregadero solo con agua fría. [U]
 - **Agua potable:** conexión directa a la ESPH, **sin tanque ni bomba**. Diámetros, materiales, medidor y llaves **según la referencia [PR]**. [U]
+- **S01 rev0 aprobada (06-10-2026):**
+  - **Montante AF 3/4":** embebido en el muro del eje C, junto a la escalera y el patio P2 (x 4.75, y 17.30), del N1 al N3.
+  - **Medidor y llave 3/4":** en el frente. El tramo principal va bajo el contrapiso.
+  - **Ramales de los N2 y N3:** por el entrepiso, con una llave de paso en cada baño y en la cocina. Hay dos puntos de jardín en el N1.
+  - **La S01 no es un isométrico:** muestra un diagrama vertical esquemático.
+  - **Siguen pendientes (PD):** caja del medidor según la ESPH, clase o SDR de la tubería y prueba de presión.
 

@@ -20,7 +20,7 @@
 | A3 | Planta nivel 2 | Suite 1, cocina-comedor, sala familiar, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A3_nivel2/SR-A3_NIVEL2_rev2.*` | rev2 (patrón posterior y notas de ventilas). Visto bueno del 06-10-2026. La galería a P1 queda con vidrio fijo. |
 | A4 | Planta nivel 3 | Suites 1, 2 y 3, áreas, cobertura, detalle del extractor, notas | APROBADA | `planos/A4_nivel3/SR-A4_NIVEL3_rev2.*` | rev2 (C6 corregido, patrón posterior y notas de ventilas). Visto bueno del 06-10-2026. |
 | A5 | Fachadas | Principal 1:50, posterior 1:75, laterales 1:100, cubierta a dos aguas, notas | APROBADA | `planos/A5_fachadas/SR-A5_FACHADAS_rev3.*` | rev3. "Lámina aprobada, continuar" (06-10-2026). |
-| A6 | Cortes | Corte A-A (x = 3.00) y corte B-B (y = 18.25) a 1:75, niveles, cielos, entrepiso metálico, cubierta al 13 %, escalera, tapia posterior, notas | EN REVISIÓN | `planos/A6_cortes/SR-A6_CORTES_rev0.*` | rev0 entregada. Supuestos PD: espesores del entrepiso, puertas de 2.10 y ventanas a patios 0.90/2.20. |
+| A6 | Cortes | Corte A-A (x = 3.00) y corte B-B (y = 18.25) a 1:75, niveles, cielos, entrepiso metálico, cubierta al 13 %, escalera, tapia posterior, notas | EN REVISIÓN | `planos/A6_cortes/SR-A6_CORTES_rev1.*` | La **rev1** agrega el sistema constructivo: marcos de acero, columnas continuas, cerchas, mampostería y Steel Tech, contrapiso y grava, y cielos de gypsum. Faltan por confirmar el retiro frontal y el sistema de las paredes interiores. |
 
 ## B) Láminas previstas o necesarias del proyecto actual
 Las justifica una referencia cruzada desde las láminas ya desarrolladas o un requisito propio de esta vivienda. **El código, el nombre definitivo y la posible combinación están por confirmar.**

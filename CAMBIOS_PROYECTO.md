@@ -60,3 +60,10 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - **Símbolo de ventila:** Claude lo dibujó con el vértice arriba (rev2). → **Vigente:** con la bisagra arriba el triángulo va **invertido** (A5 rev3). **No repetir** en cortes ni en los cuadros de ventanas.
   - **Galería del pasillo hacia P1:** se mantiene en vidrio fijo.
   - **Aprobadas:** A2 rev2, A3 rev2 y A4 rev2.
+- **06-10-2026 — A6 sistema constructivo.**
+  - Cubierta: de línea simple → **cerchas metálicas con clavadores**.
+  - Columnas: dibujadas solo en el N1 (parecían desfasadas) → **continuas N1–N3**.
+  - Muros: sin material → **mampostería** (linderos, tapia, frente N1) y **forro Steel Tech**.
+  - Nivel 1: "contrapiso según estructural" → **contrapiso solo en estacionamientos, pasillo y gradas; grava en el resto**.
+  - Cielos: gypsum en N2/N3; acero expuesto en el N1.
+  - Láminas aprobadas: **no se modifican** (indicación del usuario).

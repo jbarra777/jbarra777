@@ -18,9 +18,9 @@
 | A3 | APROBADA | rev2 |
 | A4 | APROBADA | rev2 |
 | A5 | APROBADA | rev3 |
-| A6 | EN REVISIÓN | rev0: cortes A-A y B-B |
+| A6 | EN REVISIÓN | rev1: sistema constructivo y cerchas |
 
-- **Última entrega:** A6 Cortes rev0.
+- **Última entrega:** A6 Cortes rev1.
 - **Siguiente paso:** visto bueno de la A6 y de sus supuestos PD. Luego, la siguiente lámina que indique el usuario (por evaluar: A7–A9 puertas, ventanas y acabados, o A11 escalera). Debe incluir la cubierta al 13 %, la cumbrera +10.50, la tapia posterior a +9.00, las ventilas con triángulo invertido y la galería con vidrio fijo.
 
 ## Decisiones que necesitan respuesta del usuario

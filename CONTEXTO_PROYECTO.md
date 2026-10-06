@@ -81,6 +81,22 @@
 - Cubierta +9.00 y pretil +9.60: por definir con el diseño de techos y la altura municipal.
 - Fachada posterior: antepecho 0.90 (sala y dormitorio) y 1.60 (baño y walk-in).
 
+### PENDIENTE AL CERRAR LA SESIÓN DEL 06-10-2026 (retomar aquí)
+- El ingeniero preguntó por qué las ventanas posteriores de N2 y N3 no están alineadas. Se respondió **sin corregir nada**, porque así lo pidió.
+- Verificado: las ventanas frontales de la A5 coinciden con las plantas A3 y A4 (posición y ancho).
+- **Error detectado:** la ventana del baño de la suite 3 (N3, fachada posterior, x 3.95–4.95) choca con la columna C6 (x 4.69–4.99). Afecta a la A4 y la A5.
+- **Propuesta en espera de decisión:** ventanas posteriores alineadas e iguales en N2 y N3:
+  - 0.70–2.90 (dormitorio / sala);
+  - 3.85–4.60, angosta, libra C6 (baño / sala);
+  - 6.40–8.20 (walk-in / sala).
+
+  Falta definir si van de piso a 2.20 como en el frente o con un antepecho común. Al corregir, actualizar la A3 (sala), la A4 y la A5.
+- Siguen pendientes de la A5:
+  1. paño fijo laminado de 0.90 o baranda interior en las ventanas desde el piso;
+  2. tipo de techo y pretil (+9.00 / +9.60 PD) y altura máxima municipal;
+  3. altura del portón (2.40);
+  4. altura de las tapias en los retiros.
+
 ### Nivel 3 (A4 rev0)
 - Las suites 1 y 3 son iguales a la suite del nivel 2 (la 3 en espejo, con el baño contra la fachada posterior).
 - Suite 2 (módulo central, 7.38 × 6.42): baño en x 7.30–8.85, y 14.63–16.83, sobre la zona húmeda de la cocina del nivel 2. Walk-in de 2.75 × 4.10 junto a P1 (x 6.10–8.85, y 10.41–14.51). Acceso desde el muro B en y 15.55–16.45.

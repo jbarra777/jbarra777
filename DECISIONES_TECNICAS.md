@@ -270,3 +270,7 @@
   - diámetros dibujados de 4" (PD).
   - **Tanque séptico y drenaje en el patio posterior** (opción "todo en el patio"). Dibujado en la S02 rev0 con una sola línea de drenaje de 7.40 m (PD), porque las placas F1/F2 no dejan espacio para dos.
 
+
+## 17. Corrección de referencias (07-10-2026)
+- Aprobadas A1 rev2, A2 rev4, A3 rev5 (con ductos sanitarios dibujados), A4 rev5, A5 rev7, A6 rev5, A7 rev3 y C04 rev2. [U]
+- **Escalera (A11): queda como está**, con la estructura "según planos estructurales"; no se agrega lámina C. [U]

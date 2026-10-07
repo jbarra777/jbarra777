@@ -13,13 +13,13 @@
 ## Situación actual
 | Lámina | Estado | Motivo |
 |---|---|---|
-| A1 | EN REVISIÓN | rev2 (corrección de referencias; anterior aprobada) |
-| A2 | EN REVISIÓN | rev4 (corrección de referencias; anterior aprobada) |
-| A3 | EN REVISIÓN | rev5 (corrección de referencias; anterior aprobada) |
-| A4 | EN REVISIÓN | rev5 (corrección de referencias; anterior aprobada) |
-| A5 | EN REVISIÓN | rev7 (corrección de referencias; anterior aprobada) |
-| A6 | EN REVISIÓN | rev5 (corrección de referencias; anterior aprobada) |
-| A7 | EN REVISIÓN | rev3 (corrección de referencias; anterior aprobada) |
+| A1 | APROBADA | rev2 |
+| A2 | APROBADA | rev4 |
+| A3 | APROBADA | rev5 |
+| A4 | APROBADA | rev5 |
+| A5 | APROBADA | rev7 |
+| A6 | APROBADA | rev5 |
+| A7 | APROBADA | rev3 |
 | A11 | APROBADA | rev1 |
 | E01 | APROBADA | rev1 (sin mención a secadora) |
 | E02 | APROBADA | rev0 |
@@ -29,15 +29,15 @@
 | C01 | APROBADA | rev1 |
 | C02 | APROBADA | rev1 |
 | C03 | APROBADA | rev2 |
-| C04 | EN REVISIÓN | rev2 (corrección de referencias; anterior aprobada) |
+| C04 | APROBADA | rev2 |
 | C05 | APROBADA | rev2 |
 | C06 | APROBADA | rev1 |
 | S01 | APROBADA | rev1 |
 | S02 | APROBADA | rev1 |
 | S03 | APROBADA | rev0 |
 
-- **Última entrega:** corrección de referencias entre láminas (A1 rev2, A2 rev4, A3 rev5, A4 rev5, A5 rev7, A6 rev5, A7 rev3, C04 rev2), en revisión del usuario.
-- **Siguiente paso:** aprobación de las correcciones. Pendiente: detalle estructural de la escalera (A11 remite a planos estructurales y no hay lámina C que la cubra).
+- **Última entrega:** corrección de referencias aprobada (07-10-2026). Juegos A, C, E y S aprobados en versión de trabajo.
+- **Siguiente paso:** a indicación del usuario. Pendientes generales abajo (lista definitiva y total de láminas, PD, privacidad del repositorio).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

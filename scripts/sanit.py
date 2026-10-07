@@ -172,6 +172,16 @@ def leyenda_simbolo(psp, kind, cx, cy, s=1.0):
         psp.add_lwpolyline([(cx - 6, cy - 1.6), (cx + 6, cy - 1.6), (cx + 6, cy + 1.6), (cx - 6, cy + 1.6)],
                            close=True, dxfattribs={"layer": "S-FINO"})
         psp.add_line((cx - 6, cy), (cx + 6, cy), dxfattribs={"layer": "S-AN"})
+    elif kind == "BP":
+        psp.add_circle((cx, cy), 2.0, dxfattribs={"layer": "S-AP"})
+        psp.add_circle((cx, cy), 0.9, dxfattribs={"layer": "S-AP"})
+    elif kind == "CAN":
+        psp.add_lwpolyline([(cx - 6, cy - 1.0), (cx + 6, cy - 1.0), (cx + 6, cy + 1.0), (cx - 6, cy + 1.0)],
+                           close=True, dxfattribs={"layer": "S-AP"})
+    elif kind == "PEND":
+        psp.add_line((cx - 6, cy), (cx + 4, cy), dxfattribs={"layer": "S-TXT"})
+        h = psp.add_hatch(color=7, dxfattribs={"layer": "S-TXT"})
+        h.paths.add_polyline_path([(cx + 6, cy), (cx + 3.5, cy + 1.0), (cx + 3.5, cy - 1.0)])
     elif kind == "CP":
         psp.add_lwpolyline([(cx - 2.2, cy - 2.2), (cx + 2.2, cy - 2.2), (cx + 2.2, cy + 2.2), (cx - 2.2, cy + 2.2)],
                            close=True, dxfattribs={"layer": "S-ACC"})

@@ -34,9 +34,10 @@
 | C06 | APROBADA | rev1 |
 | S01 | EN REVISIÓN | rev1 (punto de jardín posterior trasladado; rev0 aprobada) |
 | S02 | APROBADA | rev1 |
+| S03 | EN REVISIÓN | rev0 entregada el 07-10-2026 |
 
-- **Última entrega:** S01 rev1 (punto de jardín posterior trasladado); S02 rev1 aprobada.
-- **Siguiente paso:** S03 aguas pluviales (indicado por el usuario el 07-10-2026).
+- **Última entrega:** S01 rev1 (punto de jardín posterior trasladado) y S03 rev0 (aguas pluviales); S02 rev1 aprobada.
+- **Siguiente paso:** revisión del usuario de la S01 rev1 y la S03 rev0. Juego sanitario S01–S03 completo en versión de trabajo.
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

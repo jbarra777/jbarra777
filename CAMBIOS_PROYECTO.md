@@ -96,3 +96,4 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
   - C06 rev1: notas de materiales 8 y 9 eliminadas.
 - **06-10-2026 — E04 aprobada.** El usuario agrega la **E05 (detalles eléctricos)**: el juego eléctrico pasa de E01–E04 a E01–E05.
 
+- **07-10-2026 — S02 aprobada; S01 rev1.** El punto de jardín posterior de la S01 (x 4.75, y 25.90) interfería con el tanque séptico de la S02 → **se traslada a (x 1.50, y 25.40)**. Lámina aprobada afectada: **S01 → rev1**.

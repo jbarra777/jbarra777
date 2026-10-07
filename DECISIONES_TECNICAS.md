@@ -261,5 +261,7 @@
     - suite 2 + fregadero en un ducto en la esquina D/4 de la cocina;
     - suite 3 en un ducto junto a C6 en la sala del N2.
     - Afecta a la A3: se agregan dos ductos (PD 0.30 × 0.40), dibujados en la S02.
+  - **S02 rev1 aprobada (07-10-2026):** tanque séptico con FAFA en el patio posterior (y 26.00–27.28) y drenaje de una sola línea de 7.40 m (PD). Trampa de grasa en el colector de aguas grises. Detalle del tanque según la referencia.
+  - **Punto de jardín posterior trasladado a (x 1.50, y 25.40)** (S01 rev1). [U]
   - **Tanque séptico y drenaje en el patio posterior** (opción "todo en el patio"). Dibujado en la S02 rev0 con una sola línea de drenaje de 7.40 m (PD), porque las placas F1/F2 no dejan espacio para dos.
 

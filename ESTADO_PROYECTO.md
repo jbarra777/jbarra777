@@ -32,11 +32,11 @@
 | C04 | APROBADA | rev1 |
 | C05 | APROBADA | rev2 |
 | C06 | APROBADA | rev1 |
-| S01 | APROBADA | rev0 |
-| S02 | EN REVISIÓN | rev1 (detalle de tanque según la referencia) |
+| S01 | EN REVISIÓN | rev1 (punto de jardín posterior trasladado; rev0 aprobada) |
+| S02 | APROBADA | rev1 |
 
-- **Última entrega:** S02 rev1 (aguas residuales, detalle de tanque según la referencia), en revisión del usuario.
-- **Siguiente paso:** esperar la aprobación de la S02 y la decisión sobre el punto de jardín posterior de la S01 (interfiere con el tanque). Después, S03 pluviales.
+- **Última entrega:** S01 rev1 (punto de jardín posterior trasladado); S02 rev1 aprobada.
+- **Siguiente paso:** S03 aguas pluviales (indicado por el usuario el 07-10-2026).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

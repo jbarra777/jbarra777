@@ -9,7 +9,7 @@ import cadlib as cl
 import hoja as H
 import sanit as S
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "S01_agua_potable"
 NAME = f"SR-S01_AGUA_POTABLE_{REV}"
 LAYOUT = "S01-AGUA"
@@ -18,7 +18,7 @@ YM = 2.21 + 25.03                                  # reflejo suite 1 -> suite 3
 
 doc = cl.new_doc()
 msp = doc.modelspace()
-S.base(doc, msp)
+S.base(doc, msp, skip_txt=("TANQUE SÉPTICO",))
 
 
 def bano_fachada(L, mirror, entrada):
@@ -55,9 +55,12 @@ N1.label("MONTANTE AF 3/4\" (N1 A N3)", MX, MY, 0.55, 0.60)
 N1.pipe([(0.75, 1.30), (8.40, 1.30)])
 N1.salida(8.40, 1.30)
 N1.label("PUNTO DE JARDÍN 1/2\"", 8.40, 1.30, -0.45, 0.60)
-N1.pipe([(MX, MY), (MX, 25.90)])
-N1.salida(MX, 25.90)
-N1.label("PUNTO DE JARDÍN 1/2\"", MX, 25.90, 0.80, -0.40)
+JP = (1.50, 25.40)                                 # punto de jardín posterior (rev1: fuera del tanque séptico)
+N1.pipe([(MX, MY), (MX, 25.30), (JP[0], 25.30), JP])
+N1.salida(*JP)
+N1.label("PUNTO DE JARDÍN 1/2\"", *JP, 0.90, -0.45)
+N1.text("PATIO POSTERIOR - JARDÍN SECO", 4.50, 26.50, 0.13, "MIDDLE_CENTER", rot=90.0)
+N1.text("TANQUE SÉPTICO Y DRENAJE: VER S02", 4.50, 26.85, 0.13, "MIDDLE_CENTER", rot=90.0)
 N1.text("AF 1/2\" ENTERRADA", MX + 0.30, 22.40, S.TH)
 
 # ================================================================ nivel 2
@@ -226,7 +229,8 @@ cl.notes_block(psp, X3, yS - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] +
 H.titleblock(doc, psp, "S01", "AGUA POTABLE",
              ["PLANTAS NIVELES 1, 2 Y 3.", "DIAGRAMA VERTICAL.", "DETALLES.", "SIMBOLOGÍA.",
               "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="1:100 / S/E")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "07-10-2026", "PUNTO DE JARDÍN POSTERIOR TRASLADADO (S02)")], escalas="1:100 / S/E")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

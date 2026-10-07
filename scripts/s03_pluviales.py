@@ -6,7 +6,7 @@ con 2 bajantes cada una (uno en cada extremo) conducidos a la cuneta del frente;
 ocultos en el N1; canoas hacia los patios P1 y P2; canoas y bajantes metálicos en negro; detalle de
 canoa en esta lámina. Cubierta de la C04 (lámina cal. 26, dos aguas, 13 %, alero +9,20, cumbrera
 +10,70 en y = 13,62). Caja pluvial, cajas de registro de 30 x 30 y malla protectora de la referencia
-[PR]. Trazado bajo el N1 coordinado con S01 rev1, S02 rev1, E01 y C01 (placas F1/F2 de 1,65 m).
+. Trazado bajo el N1 coordinado con S01 rev1, S02 rev1, E01 y C01 (placas F1/F2 de 1,65 m).
 """
 import ezdxf
 
@@ -14,7 +14,7 @@ import cadlib as cl
 import hoja as H
 import sanit as S
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "S03_pluviales"
 NAME = f"SR-S03_PLUVIALES_{REV}"
 LAYOUT = "S03-PLUVIALES"
@@ -22,7 +22,7 @@ W = 9.0
 EY0, EY1, YC = 2.06, 25.18, 13.62                 # envolvente y cumbrera
 P1x, P1y = (1.47, 8.85), (7.76, 10.26)
 P2x, P2y = (4.81, 8.85), (16.98, 19.48)
-CAN = 0.20                                          # ancho de canoa (PD)
+CAN = 0.20                                          # ancho de canoa
 
 doc = cl.new_doc()
 msp = doc.modelspace()
@@ -108,8 +108,8 @@ for x0, x1, y in ((3.6, 1.2, EY0 - 0.55), (5.4, 7.8, EY0 - 0.55), (3.6, 1.2, EY1
     s = 1 if b[1] > a[1] else -1
     h = msp.add_hatch(color=7, dxfattribs={"layer": "S-FINO"})
     h.paths.add_polyline_path([b, (b[0] - 0.07, b[1] - s * 0.22), (b[0] + 0.07, b[1] - s * 0.22)])
-T.text("CANOA FRONTAL (DET. 1) - PEND. PD", 4.5, EY0 - 0.80, S.TH, "MIDDLE_CENTER", rot=90.0)
-T.text("CANOA POSTERIOR (DET. 1) - PEND. PD", 4.5, EY1 + 0.80, S.TH, "MIDDLE_CENTER", rot=90.0)
+T.text("CANOA FRONTAL (DET. 1) - PEND. HACIA BAJANTES", 4.5, EY0 - 0.80, S.TH, "MIDDLE_CENTER", rot=90.0)
+T.text("CANOA POSTERIOR (DET. 1) - PEND. HACIA BAJANTES", 4.5, EY1 + 0.80, S.TH, "MIDDLE_CENTER", rot=90.0)
 T.text("CANOA HACIA P1", 3.0, P1y[1] - 0.75, 0.14, "MIDDLE_CENTER", rot=90.0)
 T.text("CANOA HACIA P2", 5.9, P2y[0] + 0.75, 0.14, "MIDDLE_CENTER", rot=90.0)
 T.text("LÁMINA CAL. 26 (C04)", 3.2, 5.0, S.TH)
@@ -164,10 +164,10 @@ N.label("CR-P5", 8.55, 8.85, -0.45, -0.40)
 N.label("CR-P2", 8.60, 0.85, -0.55, 0.50)
 N.label("BP-6", 8.72, P2y[0] + 0.10, -0.45, -0.60)
 N.label("BP-5", 8.72, P1y[1] - 0.10, -0.45, 0.50)
-N.label("BP-1 OCULTO EN MURO (PD)", 0.24, EY0 - 0.10, 1.70, 0.35)
-N.label("BP-2 OCULTO EN MURO (PD)", 8.76, EY0 - 0.10, -0.66, 0.64)
-N.text("COLECTOR OESTE Ø 4\" (PD)", 1.05, 8.70, S.TH)
-N.text("COLECTOR ESTE Ø 4\" (PD)", 8.30, 12.00, S.TH)
+N.label("BP-1 OCULTO EN MURO", 0.24, EY0 - 0.10, 1.70, 0.35)
+N.label("BP-2 OCULTO EN MURO", 8.76, EY0 - 0.10, -0.66, 0.64)
+N.text("COLECTOR OESTE Ø 4\", PEND. 2 %", 1.05, 8.70, S.TH)
+N.text("COLECTOR ESTE Ø 4\", PEND. 2 %", 7.95, 11.80, S.TH)
 
 # ================================================================ hoja
 psp = doc.layouts.new(LAYOUT)
@@ -282,22 +282,21 @@ psp.add_lwpolyline([C(0.10, 9.00), C(0.10, 8.70)], dxfattribs={"layer": "S-AP"})
 psp.add_lwpolyline([C(0.16, 9.00), C(0.16, 8.70)], dxfattribs={"layer": "S-AP"})
 Tx("+9.20", (C(0.0, 9.27)[0] - 9.0, C(0.0, 9.27)[1] + 2.4), 1.5)
 Tx("+9.00", (C(-0.60, 9.00)[0] - 1.0, C(-0.60, 9.00)[1]), 1.5, "MIDDLE_RIGHT")
-dim_h(C(0.02, 0)[0], C(0.22, 0)[0], C(0, 8.88)[1] - 3.0, "0.20 (PD)")
-dim_v(C(0.30, 0)[0], C(0, 9.00)[1], C(0, 9.17)[1], "0.15 (PD)")
+dim_h(C(0.02, 0)[0], C(0.22, 0)[0], C(0, 8.88)[1] - 3.0, "0.20")
+dim_v(C(0.30, 0)[0], C(0, 9.00)[1], C(0, 9.17)[1], "0.15")
 leader(C(-0.30, zl(-0.30)), (C(-0.30, 0)[0] - 4, C(0, 9.55)[1]), "LÁMINA CAL. 26 (13 %)")
 leader(C(-0.16, 9.25), (C(-0.16, 0)[0] - 12, C(0, 9.42)[1]), "CLAVADOR RT 2x4\" (C04)")
 leader(C(-0.45, 9.10), (C(-0.60, 0)[0] - 3, C(0, 9.10)[1]), "CERCHA (C04)")
 leader(C(-0.08, 8.90), (C(-0.60, 0)[0] - 3, C(0, 8.88)[1]), "VIGA V1 4x8\" (C04)")
 leader(C(-0.07, 8.65), (C(-0.60, 0)[0] - 3, C(0, 8.66)[1]), "MURO / FORRO")
-leader(C(0.13, 9.20), (C(0.40, 0)[0], C(0, 9.45)[1]), "MALLA PROTECTORA [PR]")
+leader(C(0.13, 9.20), (C(0.40, 0)[0], C(0, 9.45)[1]), "MALLA PROTECTORA")
 leader(C(0.22, 9.10), (C(0.40, 0)[0], C(0, 9.28)[1]), "CANOA METÁLICA, NEGRA")
-leader(C(0.23, 8.99), (C(0.40, 0)[0], C(0, 8.95)[1]), "SOPORTE @ PD")
-leader(C(0.13, 8.75), (C(0.40, 0)[0], C(0, 8.75)[1]), "BAJANTE METÁLICO Ø PD")
-Tx("CALIBRE, DESARROLLO Y SOPORTES DE LA CANOA: PD", (30.0, 148.0), 1.6)
+leader(C(0.23, 8.99), (C(0.40, 0)[0], C(0, 8.95)[1]), "SOPORTE")
+leader(C(0.13, 8.75), (C(0.40, 0)[0], C(0, 8.75)[1]), "BAJANTE METÁLICO Ø 4\"")
 
-# ---------------------------------------------------------------- detalle 2: caja pluvial [PR]
-cl.text(psp, "DETALLE 2 - CAJA PLUVIAL [PR]", (362.0, 445.0), 3.2, "A-TITULOS", "TOP_LEFT")
-cl.text(psp, "S/E - INTERIOR 0.30 x 0.30 [PR]", (362.0, 440.0), 2.0, "A-TEXTO", "TOP_LEFT")
+# ---------------------------------------------------------------- detalle 2: caja pluvial
+cl.text(psp, "DETALLE 2 - CAJA PLUVIAL", (362.0, 445.0), 3.2, "A-TITULOS", "TOP_LEFT")
+cl.text(psp, "S/E - INTERIOR 0.30 x 0.30", (362.0, 440.0), 2.0, "A-TEXTO", "TOP_LEFT")
 xa, ya = 400.0, 385.0                               # sección
 L((xa - 30, ya + 22), (xa + 30, ya + 22), "S-DET")
 for xx in range(-29, 30, 4):
@@ -362,8 +361,8 @@ Tx("RETIRO FRONTAL (ZACATE BLOCK)", (X6 + 95, yg + 3), 1.5)
 Tx("ACERA", (X6 + 195, yg + 5), 1.5, "MIDDLE_CENTER")
 Tx("CUNETA", (X6 + 241, yg - 18), 1.5, "MIDDLE_CENTER")
 Tx("CR-P1 / CR-P2 (DET. 2)", (X6 + 62.5, yg - 27), 1.5, "MIDDLE_CENTER")
-leader((X6 + 140, yg - 15.3), (X6 + 140, yg - 32), "TUBO PVC Ø 4\" (PD), PENDIENTE PD")
-Tx("SALIDA AL CORDÓN Y CUNETA SEGÚN DISPOSICIÓN MUNICIPAL (PD).", (X6 + 40, yg - 40), 1.6)
+leader((X6 + 140, yg - 15.3), (X6 + 140, yg - 32), "TUBO PVC Ø 4\", PENDIENTE 2 %")
+Tx("SALIDA AL CORDÓN Y A LA CUNETA.", (X6 + 40, yg - 40), 1.6)
 
 # ---------------------------------------------------------------- áreas tributarias
 X3 = 362.0
@@ -390,34 +389,33 @@ y = S.cuadro_simbologia(psp, 530.0, 580.0, [
     ("CAN", "CANOA METÁLICA (DET. 1)"),
     ("BP", "BAJANTE PLUVIAL (BP-n)"),
     ("AP", "COLECTOR PLUVIAL ENTERRADO (PVC)"),
-    ("CR", "CAJA PLUVIAL 0.30 x 0.30 (DET. 2) [PR]"),
+    ("CR", "CAJA PLUVIAL 0.30 x 0.30 (DET. 2)"),
     ("PEND", "PENDIENTE DE CUBIERTA / CANOA")], w_txt=78.0, row_h=6.0, title="SIMBOLOGÍA")
 
 # ---------------------------------------------------------------- notas
 yS = 520.0
 cl.text(psp, "NOTAS:", (X3, yS), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
-    "LAS AGUAS PLUVIALES SE DIRIGEN HACIA LA CUNETA PÚBLICA DEL FRENTE. [PR] NO SE CONECTAN AL TANQUE "
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA.",
+    "LAS AGUAS PLUVIALES SE DIRIGEN HACIA LA CUNETA PÚBLICA DEL FRENTE. NO SE CONECTAN AL TANQUE "
     "SÉPTICO NI AL DRENAJE (S02).",
     "CUBIERTA SEGÚN LA C04: LÁMINA CAL. 26 A DOS AGUAS, PENDIENTE 13 %, ALERO +9.20 Y CUMBRERA +10.70.",
     "CANOAS FRONTAL Y POSTERIOR CON DOS BAJANTES CADA UNA, UNO EN CADA EXTREMO; CANOAS HACIA LOS PATIOS "
     "P1 Y P2 CON UN BAJANTE CADA UNA, EN EL EXTREMO ESTE.",
     "CANOAS Y BAJANTES VISIBLES METÁLICOS, ACABADO NEGRO (A5). BAJANTES FRONTALES BP-1 Y BP-2 OCULTOS "
-    "EN EL MURO FRONTAL DEL NIVEL 1 (PD).",
-    "LAS CANOAS TENDRÁN MALLA PROTECTORA PARA EVITAR EL ACCESO DE BASURA. [PR]",
-    "DIRIGIR LAS PENDIENTES HACIA BAJANTES O CANOAS; EVITAR DEPRESIONES QUE PROVOQUEN EMPOZAMIENTOS. [PR]",
-    "DIÁMETROS DE BAJANTES Y COLECTORES, PENDIENTES DE CANOAS Y COLECTORES, CALIBRE Y DESARROLLO DE LAS "
-    "CANOAS: PD, SEGÚN CÁLCULO HIDRÁULICO.",
+    "EN EL MURO FRONTAL DEL NIVEL 1.",
+    "LAS CANOAS TENDRÁN MALLA PROTECTORA PARA EVITAR EL ACCESO DE BASURA.",
+    "DIRIGIR LAS PENDIENTES HACIA BAJANTES O CANOAS; EVITAR DEPRESIONES QUE PROVOQUEN EMPOZAMIENTOS.",
+    "BAJANTES Y COLECTORES PLUVIALES DE 4\"; COLECTORES ENTERRADOS CON PENDIENTE DEL 2 %. CANOAS CON "
+    "PENDIENTE HACIA LOS BAJANTES.",
     "COLECTORES ENTERRADOS DE PVC CON CAJAS PLUVIALES DE 0.30 x 0.30 (DETALLE 2) AL PIE DE CADA BAJANTE Y "
-    "EN LOS CAMBIOS DE DIRECCIÓN. [PR]",
+    "EN LOS CAMBIOS DE DIRECCIÓN.",
     "COLECTOR OESTE POR EL PASILLO PEATONAL, ENTRE LOS ALIMENTADORES ELÉCTRICOS (E01) Y LA TUBERÍA DE AGUA "
-    "POTABLE (S01); CRUZA BAJO LOS DUCTOS ELÉCTRICOS FRENTE A CR-P9 (PD).",
-    "COLECTOR ESTE JUNTO AL MURO D; CRUZA LOS RAMALES SANITARIOS DE LA SUITE 2 (S02) ENTRE CR-P6 Y CR-P5 "
-    "(PROFUNDIDADES RELATIVAS PD).",
+    "POTABLE (S01); CRUZA BAJO LOS DUCTOS ELÉCTRICOS FRENTE A CR-P9.",
+    "COLECTOR ESTE JUNTO AL MURO D; CRUZA LOS RAMALES SANITARIOS DE LA SUITE 2 (S02) ENTRE CR-P6 Y CR-P5.",
     "LAS TUBERÍAS PASAN SOBRE LAS PLACAS DE CIMENTACIÓN SIN ATRAVESAR PEDESTALES; CRUCES CON VIGAS RIOSTRA "
-    "CON CAMISA (PD). LAS CAJAS SE UBICAN FUERA DE LAS PLACAS (C01).",
-    "DESCARGA A LA CUNETA (DETALLE 3): UBICACIÓN, FORMA DE CONEXIÓN Y PERMISO SEGÚN LA MUNICIPALIDAD (PD).",
+    "CON CAMISA. LAS CAJAS SE UBICAN FUERA DE LAS PLACAS (C01).",
+    "DESCARGA A LA CUNETA SEGÚN EL DETALLE 3.",
     "LIMPIAR CANOAS, MALLAS Y CAJAS PLUVIALES PERIÓDICAMENTE.",
 ]
 cl.notes_block(psp, X3, yS - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 1.9, 335)
@@ -425,7 +423,8 @@ cl.notes_block(psp, X3, yS - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] +
 H.titleblock(doc, psp, "S03", "AGUAS PLUVIALES",
              ["PLANTA DE TECHO.", "PLANTA DEL NIVEL 1.", "DETALLE DE CANOA.", "CAJA PLUVIAL Y DESCARGA",
               "A CUNETA. ÁREAS TRIBUTARIAS.", "SIMBOLOGÍA Y NOTAS."],
-             [("0", "07-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="1:100 / INDICADAS")
+             [("0", "07-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:100 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

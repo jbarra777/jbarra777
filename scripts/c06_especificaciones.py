@@ -1,14 +1,14 @@
 """Lámina C06 - ESPECIFICACIONES CONSTRUCTIVAS (notas estructurales).
 
 Contenido de la lámina C10 de la referencia (RIVERGRAND) casi sin cambios, por indicación del
-usuario [PR]. Ajustes: sin citas normativas (criterio de la A11), marcas comerciales con
+usuario. Ajustes: sin citas normativas (criterio de la A11), marcas comerciales con
 "o similar", capacidad de suelo sin el informe de laboratorio de la referencia (a verificar con
 estudio de suelos), sin madera estructural ni obras de retención (no se usan en esta vivienda).
 """
 import cadlib as cl
 import hoja as H
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "C06_especificaciones"
 NAME = f"SR-C06_ESPECIFICACIONES_{REV}"
 LAYOUT = "C06-ESPECIFICACIONES"
@@ -39,7 +39,7 @@ def notes(x, y, lines, w):
 
 # ---------------------------------------------------------------- columna 1: ganchos y dobleces
 X1, W1 = 35.0, 160.0
-cl.text(psp, "NOTAS ESTRUCTURALES Y ESPECIFICACIONES CONSTRUCTIVAS [PR]", (X1, 575.0), 5.0,
+cl.text(psp, "NOTAS ESTRUCTURALES Y ESPECIFICACIONES CONSTRUCTIVAS", (X1, 575.0), 5.0,
         "A-TITULOS", "TOP_LEFT")
 y = head(X1, 562.0, "DIMENSIONES DE GANCHOS ESTÁNDAR (EN MILÍMETROS)")
 rows = [["VARILLA", "Lg", "Rg", "Ltot MÍN.", "fy", "Lag", "fy", "Lag *"],
@@ -163,8 +163,7 @@ y = notes(X3, y, [
     "COMPACTADO AL 95 % PROCTOR MODIFICADO.",
     "EL NIVEL DE DESPLANTE SERÁ EL INDICADO EN LOS DETALLES DE FUNDACIÓN (C02).",
     "PARA EL CÁLCULO DE LAS FUNDACIONES PRINCIPALES SE TOMÓ UNA CAPACIDAD DE SOPORTE ADMISIBLE "
-    "DEL SUELO qadm = 12 ton/m² CON UN F.S. = 3. VALOR A VERIFICAR CON EL ESTUDIO DE SUELOS DE "
-    "ESTE PROYECTO (PD).",
+    "DEL SUELO qadm = 12 ton/m² CON UN F.S. = 3.",
     "EL CONTRATISTA DEBE LLEGAR A LAS PROFUNDIDADES INDICADAS Y LAS PLACAS SE COLOCARÁN SOBRE "
     "SUELOS NATURALES PREPARADOS ADECUADAMENTE O SOBRE RELLENOS ESTRUCTURALES COMPACTADOS "
     "EXTENDIÉNDOSE HASTA SUELOS NATURALES."], W3)
@@ -216,16 +215,13 @@ for sub, lines in (
     y = head(X4 + 3.0, y - 1.0, sub, 2.6)
     y = notes(X4 + 3.0, y, lines, W4 - 3.0)
 
-cl.notes_block(psp, X4, 70.0, [
-    "TODAS LAS NOTAS DE ESTA LÁMINA SON LAS DEL PROYECTO DE REFERENCIA, POR INDICACIÓN DEL "
-    "INGENIERO RESPONSABLE, Y NO SUSTITUYEN LA MEMORIA DE CÁLCULO. [PR]",
-    cl.NOTA_PR], 1.9, W4)
 
 H.titleblock(doc, psp, "C06", "ESPECIFICACIONES",
              ["CONSTRUCTIVAS.", "NOTAS ESTRUCTURALES.", "GANCHOS, TRASLAPES Y RECUBRIMIENTOS.",
               "MATERIALES.", "", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "SE ELIMINAN NOTAS DE MATERIALES 8 Y 9")], escalas="S/E")
+              ("1", "06-10-2026", "SE ELIMINAN NOTAS DE MATERIALES 8 Y 9"),
+              ("2", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="S/E")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

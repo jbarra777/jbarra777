@@ -17,7 +17,7 @@ import cadlib as cl
 import hoja as H
 from planta import P
 
-REV = "rev3"
+REV = "rev4"
 OUT = cl.ROOT / "planos" / "A7_puertas_ventanas"
 NAME = f"SR-A7_PUERTAS_VENTANAS_{REV}"
 SRC = {"N1": cl.ROOT / "planos/A2_nivel1/SR-A2_NIVEL1_rev3.dxf",
@@ -453,10 +453,10 @@ cl.text(psp, "Esc. 1:50 - VISTA DESDE EL LADO DE APERTURA", (XR, yd - 86.5), 2.5
 y = yd - 96.0
 cl.text(psp, "NOTAS:", (XR, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS.",
     "EL NIVEL ±0.00 ES EL NIVEL DE ACERA (NPT DEL NIVEL 1); N2 +3.00 Y N3 +6.00.",
-    "LAS MEDIDAS DEBEN SER VERIFICADAS EN SITIO. [PR]",
-    "LOS MARCOS DE LAS VENTANAS SERÁN DE ALUMINIO COLOR NEGRO. [PR]",
+    "LAS MEDIDAS DEBEN SER VERIFICADAS EN SITIO.",
+    "LOS MARCOS DE LAS VENTANAS SERÁN DE ALUMINIO COLOR NEGRO.",
     "VENTANAS: VENTILA ABATIBLE HACIA AFUERA (BISAGRA SUPERIOR, TRIÁNGULO INVERTIDO); F = PAÑO "
     "FIJO. FACHADA PRINCIPAL DE 0.00 A 2.20 m CON PAÑO FIJO INFERIOR DE SEGURIDAD HASTA 0.90 m; "
     "LAS DEMÁS CON ANTEPECHO DE 0.90 m Y DINTEL A 2.20 m. VIDRIO ARENADO EN BAÑOS.",
@@ -469,9 +469,9 @@ y = cl.notes_block(psp, XR, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)
 H.titleblock(doc, psp, "A7", "PUERTAS Y VENTANAS",
              ["PLANTAS NIVELES 1, 2 Y 3.", "CUADROS DE PUERTAS Y VENTANAS.",
               "ACABADOS EN PAREDES, PISOS Y CIELOS.", "DETALLE DE PUERTAS Y VENTANAS.", "NOTAS.", ""],
-             [("1", "06-10-2026", "V-05 CON VIDRIO ARENADO"),
-              ("2", "06-10-2026", "V-03 DE 0,90 (COLUMNA EJE C-1)"),
-              ("3", "07-10-2026", "REFERENCIA A C06 (ESTRUCTURA EXPUESTA)")],
+             [("2", "06-10-2026", "V-03 DE 0,90 (COLUMNA EJE C-1)"),
+              ("3", "07-10-2026", "REFERENCIA A C06 (ESTRUCTURA EXPUESTA)"),
+              ("4", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")],
              escalas="1:100 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)

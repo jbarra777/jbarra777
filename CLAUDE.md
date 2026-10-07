@@ -30,7 +30,7 @@ Desarrollar el juego completo de planos constructivos para trámite ante el CFIA
    - Las notas tomadas de la referencia llevan **[PR]** hasta que el usuario las revise.
    - La referencia **no define el número ni la lista de láminas**. Cada lámina se justifica por las necesidades de esta vivienda y se puede combinar, eliminar o agregar con el usuario. Ninguna se incorpora solo porque exista en la referencia (ver `INDICE_PLANOS.md`, secciones A/B/C).
 8. Normativa: cita solo fuentes verificadas. Si no está verificada, decirlo y no afirmar cumplimiento.
-9. No declarar los planos aptos para construcción o trámite mientras haya pendientes. Cajetín: "VERSIÓN DE TRABAJO – NO APTA PARA CONSTRUCCIÓN NI TRÁMITE".
+9. No declarar los planos aptos para construcción o trámite mientras haya pendientes. Desde el 07-10-2026, con todo verificado por el usuario, el cajetín indica "PARA TRÁMITE – CFIA Y MUNICIPALIDAD" (DECISIONES §18). Si aparece un pendiente nuevo, avisar antes de mantener ese estado.
 10. No hacer renders ni imágenes 3D: solo planos. Generar el PDF a partir del DXF es parte del plano, no un render.
 11. Antes de cada respuesta al usuario sobre una lámina, revisar visualmente el PDF por zonas: textos superpuestos, elementos recortados, cotas legibles.
 
@@ -70,7 +70,7 @@ Desarrollar el juego completo de planos constructivos para trámite ante el CFIA
 Después hacer commit y push a la rama de trabajo.
 
 ## CONVENCIONES DE ARCHIVOS Y HERRAMIENTAS
-- **Rama:** `claude/planos-vivienda-tres-plantas-cdy6qs` (repositorio `jbarra777/jbarra777`, **público**; ver pendiente de privacidad en ESTADO).
+- **Rama:** `claude/planos-vivienda-tres-plantas-cdy6qs` (repositorio `jbarra777/jbarra777`; el usuario pidió hacerlo **privado** el 07-10-2026, cambio que hace él en GitHub).
 - **Láminas:** `planos/<Código>_<tema>/SR-<Código>_<TEMA>_revN.{dxf,pdf}` más `SR-<Código>_relacion_revN.md`. Para cambiar una lámina se crea la revisión siguiente (revN+1); nunca se sobrescribe una revisión entregada.
 - **Generadores:** `scripts/aN_*.py`, más los módulos comunes:
   - `cadlib.py`: capas, cotas, cajetín, notas, PDF;

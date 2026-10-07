@@ -136,7 +136,7 @@ def titleblock(doc, psp, lamina, cont_tit, cont, revs, escalas="1:50 / INDICADAS
         "UBIC_2": prj["ubicacion"][1], "UBIC_3": "",
         "REG_1": prj["registro"][0], "REG_2": prj["registro"][1], "REG_3": prj["registro"][2],
         "CONT_TIT": cont_tit, "ESCALAS": escalas,
-        "ESTADO_1": "VERSIÓN DE TRABAJO", "ESTADO_2": "NO APTA PARA CONSTRUCCIÓN NI TRÁMITE",
+        "ESTADO_1": "PARA TRÁMITE", "ESTADO_2": "CFIA Y MUNICIPALIDAD",
         "LUGAR": "COSTA RICA", "LAMINA": lamina, "FECHA": prj["fecha"],
         "TOTAL": prj["total_laminas"],
     }
@@ -182,7 +182,7 @@ def extractor_detail(psp, x, y):
     cl.text(psp, "LOSA DE ENTREPISO", (x + 2, y0 + 58), 2.0, L, "BOTTOM_LEFT")
     cl.text(psp, "CIELO RASO", (x + 2, y0 + 36.5), 2.0, L, "TOP_LEFT")
     cl.text(psp, "MURO EXTERIOR", (x + 113, y0 + 2), 2.0, L, "TOP_CENTER")
-    cl.mtext(psp, "EXTRACTOR MECÁNICO EN CIELO RASO\\PCAUDAL Y MODELO POR DEFINIR [PR]",
+    cl.mtext(psp, "EXTRACTOR MECÁNICO TÍPICO\\PEN CIELO RASO",
              (x + 2, y0 + 24), 2.0, 70, attach=1)
     leader((x + 20, y0 + 25), (x + 37, y0 + 36.5))
     cl.mtext(psp, "DUCTO HACIA EL EXTERIOR (FACHADA O PATIO)", (x + 50, y0 + 32), 2.0, 60,

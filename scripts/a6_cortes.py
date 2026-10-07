@@ -20,7 +20,7 @@ import math
 import cadlib as cl
 import hoja as H
 
-REV = "rev5"
+REV = "rev6"
 OUT = cl.ROOT / "planos" / "A6_cortes"
 NAME = f"SR-A6_CORTES_{REV}"
 
@@ -42,7 +42,7 @@ CLAV = 0.10                                     # clavador (representación)
 SILL, HEAD, PUERTA = 0.90, 2.20, 2.10           # usuario
 XA = 3.0                                        # trazo corte A-A
 YB = 18.25                                      # trazo corte B-B
-X_CERCHAS = (0.30, H.EJES_X["B"], H.EJES_X["C"], W - 0.30)   # cerchas en la pendiente (PD)
+X_CERCHAS = (0.30, H.EJES_X["B"], H.EJES_X["C"], W - 0.30)   # cerchas en la pendiente
 K = 0.075                                       # m de modelo por mm de papel (1:75)
 
 
@@ -355,7 +355,7 @@ A.label(["LINDERO", "FRONTAL"], -0.45, 3.70, 1.6)
 A.callout(["ZACATE BLOCK", "(PERMEABLE)"], 0.35, 0.80, (0.6, -0.05), align="MIDDLE_LEFT")
 # rótulos de sistemas (con línea guía)
 A.callout(["LÁMINA ESTRUCTURAL CAL. 26 SOBRE CLAVADORES"], 14.4, CUM + 0.75, (13.0, roof_h(13.0)))
-A.callout(["CERCHA METÁLICA EN VISTA (PD)"], 17.6, 10.55, (17.0, CUB + 0.30))
+A.callout(["CERCHA METÁLICA EN VISTA"], 17.6, 10.55, (17.0, CUB + 0.30))
 A.callout(["CIELO GYPSUM REGULAR PLANO +8.70"], 20.0, 8.45, (19.9, 8.70))
 A.callout(["FORRO STEEL", "TECH 0.15"], 1.75, 6.0 + 1.55, (EY0 + 0.075, 6.0 + 1.30), align="MIDDLE_RIGHT")
 A.callout(["SOBRELOSA 0.10 / LÁMINA COLABORANTE"], 11.2, 6.0 - 0.55, (10.9, 6.0 - 0.05))
@@ -461,11 +461,11 @@ for txt, h, v in ((["VESTÍBULO"], hx(0.75), 1.40), (["GRADAS"], hx(2.60), 0.40)
                   (["PASILLO"], hx(0.75), 8.45), (["LLEGADA GRADAS"], hx(2.85), 7.40),
                   (["PATIO P2", "(ABIERTO)"], hx(6.83), 6.60)):
     B.label(txt, h, v, 1.9)
-B.label(["BARANDA (VER A11)"], hx(X0) - 1.05, 6.00 + 0.55, 1.6)
+B.label(["BARANDA (VER A8)"], hx(X0) - 1.05, 6.00 + 0.55, 1.6)
 B.callout(["MURO DE LINDERO", "MAMPOSTERÍA"], hx(W - 0.15) + 0.35, 2.45,
           (hx(W - 0.075), 2.25), align="MIDDLE_LEFT")
 B.callout(["FORRO STEEL TECH"], hx(XC0) - 0.35, 8.50, (hx(4.75), 8.35), align="MIDDLE_RIGHT")
-B.callout(["CERCHAS CORTADAS (PD)"], hx(2.2), RB + 0.55, (hx(X_CERCHAS[1]), RB - 0.3),
+B.callout(["CERCHAS CORTADAS"], hx(2.2), RB + 0.55, (hx(X_CERCHAS[1]), RB - 0.3),
           align="MIDDLE_LEFT")
 B.callout(["COLUMNA C5 (EN VISTA)"], hx(4.84) - 0.25, 1.90, (hx(4.90), 1.70),
           align="MIDDLE_RIGHT")
@@ -508,7 +508,7 @@ X3 = 320.0
 y = 300.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA.",
     "LA TAPIA COLINDANTE DE MAMPOSTERÍA DEBERÁ PROLONGARSE HASTA EL NIVEL DE LA VIGA CORONA "
     "DEL ÚLTIMO NIVEL, GARANTIZANDO EL APANTALLAMIENTO VISUAL PERMANENTE HACIA LA PROPIEDAD "
     "COLINDANTE.",
@@ -532,7 +532,7 @@ notas = [
     "NIVEL 1: CONTRAPISO DE 0.10 m EN ESTACIONAMIENTOS, PASILLO Y GRADAS; RETIRO FRONTAL EN "
     "ZACATE BLOCK (PERMEABLE); EL RESTO EN GRAVA (JARDÍN SECO).",
     "ESCALERA EN U: 17 CONTRAHUELLAS DE 0.176 m Y HUELLA DE 0.28 m POR NIVEL; DESCANSOS A "
-    "+1.59 Y +4.59. BARANDAS Y PASAMANOS EN LÁMINA A11.",
+    "+1.59 Y +4.59. BARANDAS Y PASAMANOS EN LÁMINA A8.",
     "ALTURAS: PUERTAS 2.10 m; VENTANAS HACIA LOS PATIOS CON ANTEPECHO 0.90 m "
     "Y DINTEL 2.20 m. TIPOS EN LÁMINA A7.",
     "CIMENTACIÓN EN C01 Y C02 (NO SE DIBUJA EN ESTA LÁMINA).",
@@ -576,9 +576,9 @@ for i, (kind, lab) in enumerate(items):
     cl.text(psp, lab, (xx + 18, yy), 2.2, "A-TEXTO", "MIDDLE_LEFT")
 
 H.titleblock(doc, psp, "A6", "CORTES", ["CORTE A-A.", "CORTE B-B.", "NOTAS.", "SIMBOLOGÍA.", "", ""],
-             [("3", "06-10-2026", "VESTÍBULO N1, VANO SALA, REFERENCIA A7"),
-              ("4", "06-10-2026", "LÁMINA +9.20 ALERO / +10.70 CUMBRERA (C04)"),
-              ("5", "07-10-2026", "REFERENCIAS A C01-C04 Y S03")], escalas="1:75")
+             [("4", "06-10-2026", "LÁMINA +9.20 ALERO / +10.70 CUMBRERA (C04)"),
+              ("5", "07-10-2026", "REFERENCIAS A C01-C04 Y S03"),
+              ("6", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:75")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

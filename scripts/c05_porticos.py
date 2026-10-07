@@ -5,7 +5,7 @@ referencia (no se usan); columna C1 del eje C en el eje 1 en los niveles 2 y 3, 
 viga de transferencia VT-1 (diseño especial) en el entrepiso del eje 1; sin columna en el N1
 (portón).
 
-Presentación de la referencia (RIVERGRAND C08/C09) [PR]: elevaciones esquemáticas de columnas,
+Presentación de la referencia (RIVERGRAND C08/C09): elevaciones esquemáticas de columnas,
 vigas por nivel, vigas riostra y placas. Geometría según C01-C04 aprobadas: V1 de entrepiso
 (cara superior a -0,10 del NPT; paquete 0,30), V1 de corona a +9,00, VA1 0,20 x 0,40, placas
 F1/F2 con pedestal 0,80.
@@ -14,7 +14,7 @@ import cadlib as cl
 import hoja as H
 
 SHEET = "C05"
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "C05_porticos"
 NAME = f"SR-{SHEET}_PORTICOS_{REV}"
 LAYOUT = f"{SHEET}-PORTICOS"
@@ -167,7 +167,7 @@ f1 = Frame(60.0, 0.0)
 f1.draw(axT, [XA, XD, (XC, NIV[0] - LOSA)], {"N2": [(XA, XD, "VT-1")], "N3": sp, "COR": sp},
         [(XA, XD)], [foot[0], foot[2]], truss=TR,
         notes=[(XC, 1.6, "SIN COLUMNA EN EL N1 (PORTÓN)"),
-               (XC, 1.15, "VT-1: DISEÑO ESPECIAL (PD)")])
+               (XC, 1.15, "VT-1: DISEÑO ESPECIAL")])
 FR.append(("PÓRTICO 1", "EJES A, C Y D (FACHADA FRONTAL)", f1, SPAN_T))
 
 # ================================================================ hoja
@@ -194,30 +194,28 @@ cl.view_title(psp, XT, YT - 6.0, "DETALLE DE PÓRTICOS", "EJES LONGITUDINALES Y 
               f"Esc. 1:{SC}", 170)
 y = YT - 34.0
 cl.text(psp, "SIMBOLOGÍA ELEMENTOS PORTANTES", (XT, y), 3.5, "A-TITULOS", "TOP_LEFT")
-rows = [["C1", "COLUMNA - TUBO DE ACERO 6x6\" EN 3,17 mm [PR]"],
-        ["V1", "VIGA - TUBO DE ACERO 4x8\" EN 3,17 mm [PR]"],
-        ["VT-1", "VIGA DE TRANSFERENCIA, EJE 1 EN N2 - DISEÑO ESPECIAL (PD)"],
-        ["VA1", "VIGA RIOSTRA 0,20 x 0,40, 6 #4, AROS #3 @20 cm [PR]"],
-        ["F1 / F2", "PLACA 1,65 x 1,65 x 0,25 CENTRADA / EXCÉNTRICA (C02) [PR]"]]
+rows = [["C1", "COLUMNA - TUBO DE ACERO 6x6\" EN 3,17 mm"],
+        ["V1", "VIGA - TUBO DE ACERO 4x8\" EN 3,17 mm"],
+        ["VT-1", "VIGA DE TRANSFERENCIA, EJE 1 EN N2 - DISEÑO ESPECIAL"],
+        ["VA1", "VIGA RIOSTRA 0,20 x 0,40, 6 #4, AROS #3 @20 cm"],
+        ["F1 / F2", "PLACA 1,65 x 1,65 x 0,25 CENTRADA / EXCÉNTRICA (C02)"]]
 y = cl.table(psp, XT, y - 6.0, [20, 165], rows, row_h=6.5, h=2.2,
              aligns=["MIDDLE_CENTER", "MIDDLE_LEFT"])
 y -= 10.0
 cl.text(psp, "NOTAS:", (XT, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA.",
     "ELEVACIONES ESQUEMÁTICAS. UBICACIÓN DE COLUMNAS Y VIGAS SEGÚN C01, C03 Y C04; PLACAS, "
     "PEDESTALES Y VIGAS RIOSTRA SEGÚN C01 Y C02.",
     "COLUMNAS C1 CONTINUAS DESDE LA PLACA HASTA LA VIGA DE CORONA (+9,00). LAS DEL EJE C VAN "
     "FORRADAS A 0,30 x 0,30 (A2-A4).",
     "EJE C EN EL EJE 1: SIN COLUMNA EN EL NIVEL 1 (PORTÓN). LA C1 DE LOS NIVELES 2 Y 3 ARRANCA "
     "SOBRE LA VIGA DE TRANSFERENCIA VT-1 DEL EJE 1 (ENTREPISO DEL NIVEL 2), DE DISEÑO ESPECIAL "
-    "SEGÚN LA MEMORIA DE CÁLCULO (PD).",
+    "SEGÚN LA MEMORIA DE CÁLCULO.",
     "VIGAS V1 DE ENTREPISO CON LA CARA SUPERIOR A 0,10 BAJO EL NPT (PAQUETE 0,30 = V1 0,20 + "
     "LOSA 0,10, VER C03); V1 DE CORONA CON LA CARA SUPERIOR A +9,00 (VER C04).",
-    "UNIONES VIGA-COLUMNA SOLDADAS Y VERIFICACIÓN DE PERFILES SEGÚN MEMORIA DE CÁLCULO (PD).",
+    "UNIONES VIGA-COLUMNA SOLDADAS Y VERIFICACIÓN DE PERFILES SEGÚN MEMORIA DE CÁLCULO.",
     "MATERIALES, PROTECCIÓN ANTICORROSIVA Y ESPECIFICACIONES SEGÚN LÁMINA C06.",
-    "LAS SECCIONES SON LAS DEL PROYECTO DE REFERENCIA, POR INDICACIÓN DEL INGENIERO "
-    "RESPONSABLE; NO SUSTITUYEN LA MEMORIA DE CÁLCULO.",
 ]
 cl.notes_block(psp, XT, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.1,
                705.0 - XT)
@@ -225,9 +223,9 @@ cl.notes_block(psp, XT, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + 
 H.titleblock(doc, psp, SHEET, "PÓRTICOS",
              ["PÓRTICOS A Y D.", "PÓRTICO C.", "PÓRTICOS 2 A 6.", "PÓRTICO 1.",
               "SIMBOLOGÍA Y NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "C05 Y C06 UNIFICADAS; C1 EJE C-1 EN N2-N3 SOBRE VT-1"),
-              ("2", "06-10-2026", "REFERENCIA A LÁMINA C06")],
+             [("1", "06-10-2026", "C05 Y C06 UNIFICADAS; C1 EJE C-1 EN N2-N3 SOBRE VT-1"),
+              ("2", "06-10-2026", "REFERENCIA A LÁMINA C06"),
+              ("3", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")],
              escalas=f"1:{SC}")
 
 OUT.mkdir(parents=True, exist_ok=True)

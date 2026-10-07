@@ -7,9 +7,9 @@ import ezdxf
 import cadlib as cl
 from planta import P
 
-SRC = {"N1": cl.ROOT / "planos/A2_nivel1/SR-A2_NIVEL1_rev3.dxf",
-       "N2": cl.ROOT / "planos/A3_nivel2/SR-A3_NIVEL2_rev4.dxf",
-       "N3": cl.ROOT / "planos/A4_nivel3/SR-A4_NIVEL3_rev4.dxf"}
+SRC = {"N1": cl.ROOT / "planos/A2_nivel1/SR-A2_NIVEL1_rev5.dxf",
+       "N2": cl.ROOT / "planos/A3_nivel2/SR-A3_NIVEL2_rev6.dxf",
+       "N3": cl.ROOT / "planos/A4_nivel3/SR-A4_NIVEL3_rev6.dxf"}
 OFF = {"N1": 0.0, "N2": -20.0, "N3": -40.0}            # desplazamiento en Y del marco de planta
 KEEP = {"A-MURO", "A-MURO-TRAMA", "A-PUERTA", "A-VENTANA", "A-ESCALERA", "A-ESPACIOS",
         "E-COLUMNA", "A-EJES", "A-EJES-TXT", "T-LINDERO", "A-PROYECCION", "A-MOBILIARIO"}

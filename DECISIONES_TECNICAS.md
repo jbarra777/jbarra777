@@ -274,3 +274,16 @@
 ## 17. Corrección de referencias (07-10-2026)
 - Aprobadas A1 rev2, A2 rev4, A3 rev5 (con ductos sanitarios dibujados), A4 rev5, A5 rev7, A6 rev5, A7 rev3 y C04 rev2. [U]
 - **Escalera (A11): queda como está**, con la estructura "según planos estructurales"; no se agrega lámina C. [U]
+
+## 18. Lista definitiva y cierre de pendientes (07-10-2026) [U]
+- **Lista definitiva: 22 láminas.** A1 lote · A2 planta N1 · A3 planta N2 · A4 planta N3 · A5 fachadas · A6 cortes · A7 puertas, ventanas y acabados · **A8 escalera (antes A11)** · C01 cimentaciones · C02 detalles de cimentación · C03 entrepisos 1 y 2 · C04 techo · C05 pórticos · C06 especificaciones · E01–E03 plantas eléctricas · E04 tableros · E05 detalles eléctricos · S01 agua potable · S02 aguas residuales · S03 aguas pluviales. Cajetín: TOTAL 22.
+- **Verificados por el usuario (se quitan las marcas PD y las notas de verificación):**
+  - prueba de infiltración y cálculo del tanque séptico: hechos; el diseño del tanque es adecuado;
+  - aguas pluviales: todas las tuberías de 4"; tuberías con pendiente del 2 %; canoas solo con "pendiente hacia los bajantes";
+  - caja del medidor de agua: no se dibuja;
+  - perfiles estructurales: se quedan como están;
+  - extractor: "extractor mecánico típico";
+  - retiros, uso de suelo y descarga a la cuneta: confirmados con la municipalidad.
+- **Notas [PR] aceptadas:** se elimina la marca [PR] y su leyenda en todas las láminas; se eliminan las notas que remitían al proyecto de referencia.
+- **Cajetín: "PARA TRÁMITE – CFIA Y MUNICIPALIDAD"** en lugar de "versión de trabajo".
+- **Repositorio:** pasar a privado (lo hace el usuario en GitHub; Claude no tiene permiso para cambiar la visibilidad).

@@ -1,8 +1,8 @@
-"""Lámina A11 - ESCALERA: planta, corte y detalles de escalera, baranda y pasamanos.
+"""Lámina A8 (antes A11) - ESCALERA: planta, corte y detalles de escalera, baranda y pasamanos.
 
 Organización y textos de baranda/pasamanos tomados de la lámina ARQ_11 de la referencia
 por indicación del usuario ("usar la misma lámina del proyecto de referencia"): se marcan
-[PR]. La geometría es la de esta vivienda: escalera en U de 17 contrahuellas de 0.176 y
+. La geometría es la de esta vivienda: escalera en U de 17 contrahuellas de 0.176 y
 huella de 0.28, tramos de 1.10, ojo de 0.30, descanso de 1.10 x 2.50, vestíbulo cerrado en
 N1 (A2 rev3), piso a piso 3.00, entrepiso de 0.30 (A6).
 Model Space en metros. Planta en marco local (x a la derecha, y hacia abajo).
@@ -10,9 +10,9 @@ Model Space en metros. Planta en marco local (x a la derecha, y hacia abajo).
 import cadlib as cl
 import hoja as H
 
-REV = "rev1"
-OUT = cl.ROOT / "planos" / "A11_escalera"
-NAME = f"SR-A11_ESCALERA_{REV}"
+REV = "rev2"
+OUT = cl.ROOT / "planos" / "A8_escalera"
+NAME = f"SR-A8_ESCALERA_{REV}"
 
 E = H.E
 ESC = H.ESC
@@ -26,7 +26,7 @@ yB0 = Y1 - 1.10                         # 18.38
 XC1 = H.P2["x"][0]                      # 4.81
 TV = 0.12
 LOSA, VIGA = 0.10, 0.20
-BAR, PAS, BARRAS = 1.07, 0.90, 0.92     # alturas [PR]
+BAR, PAS, BARRAS = 1.07, 0.90, 0.92     # alturas
 
 doc = cl.new_doc()
 msp = doc.modelspace()
@@ -244,9 +244,9 @@ BD.dim(0.0, PAS, -0.12, False, "COTA-10")
 BD.dim(0.0, 0.10, 1.32, False, "COTA-10")
 
 # ================================================================ hoja
-psp = doc.layouts.new("A11-ESCALERA")
+psp = doc.layouts.new("A8-ESCALERA")
 psp.page_setup(size=(cl.A1_W, cl.A1_H), margins=(0, 0, 0, 0), units="mm")
-doc.layouts.set_active_layout("A11-ESCALERA")
+doc.layouts.set_active_layout("A8-ESCALERA")
 cl.frame(psp)
 VPS = {}
 
@@ -278,16 +278,16 @@ cl.view_title(psp, 35.0, 395.0, "PLANTA DE ESCALERA", "NIVEL 1 (VESTÍBULO); NIV
 vp("CO", CO, (165.0, 262.0), (270.0, 215.0), (10.0 + 2.50, 1.75))
 cl.view_title(psp, 35.0, 143.0, "CORTE DE ESCALERA (EN EL OJO, VISTA HACIA EL EJE 4)",
               "TRAMO NIVEL 1 A NIVEL 2; TRAMO NIVEL 2 A NIVEL 3 IGUAL", "Esc. 1:25", 190)
-# rótulos de baranda y pasamanos [PR] (textos de la referencia)
+# rótulos de baranda y pasamanos (textos de la referencia)
 TXT = [
-    ((X0 + 2.00, NOS(X0 + 2.0) + BAR), "BARANDAL A 1,07m DE ALTURA CON RESPECTO AL NIVEL DE PISO TERMINADO. [PR]"),
-    ((X0 + 1.40, NOS(X0 + 1.40) + PAS), "PASAMANOS A 90cm DE ALTURA CON RESPECTO AL NIVEL DE PISO TERMINADO. [PR]"),
+    ((X0 + 2.00, NOS(X0 + 2.0) + BAR), "BARANDAL A 1,07m DE ALTURA CON RESPECTO AL NIVEL DE PISO TERMINADO."),
+    ((X0 + 1.40, NOS(X0 + 1.40) + PAS), "PASAMANOS A 90cm DE ALTURA CON RESPECTO AL NIVEL DE PISO TERMINADO."),
     ((X0 + 1.70, NOS(X0 + 1.70) + 0.50), "BARRAS INTERMEDIAS A CADA 10cm, HASTA UNA ALTURA DE 92cm CON RESPECTO "
-     "AL NIVEL DE PISO TERMINADO, EN TUBO REDONDO DE 12,7mm DE DIÁMETRO X 1,5mm DE ESPESOR. [PR]"),
+     "AL NIVEL DE PISO TERMINADO, EN TUBO REDONDO DE 12,7mm DE DIÁMETRO X 1,5mm DE ESPESOR."),
     ((X0 + 1.05, NOS(X0 + 1.05) + 0.30), "TUBO PEDESTAL DE 50,8mm DE DIÁMETRO X 2mm DE ESPESOR, CON SOPORTE "
-     "DE PASAMANOS Y FLANGER INFERIOR O SIMILAR. [PR]"),
-    ((X0 - 0.08, NOS(X0) + PAS - 0.12), "EL EXTREMO INFERIOR DEL PASAMANOS REMATA HACIA EL PISO. [PR]"),
-    ((X1 - 0.30, 9 * R + PAS), "PASAMANOS CONTINUO EN TODO SU RECORRIDO, INCLUIDO EL DESCANSO. [PR]"),
+     "DE PASAMANOS Y FLANGER INFERIOR O SIMILAR."),
+    ((X0 - 0.08, NOS(X0) + PAS - 0.12), "EL EXTREMO INFERIOR DEL PASAMANOS REMATA HACIA EL PISO."),
+    ((X1 - 0.30, 9 * R + PAS), "PASAMANOS CONTINUO EN TODO SU RECORRIDO, INCLUIDO EL DESCANSO."),
 ]
 ys = [366.0, 352.0, 336.0, 318.0, 302.0, 288.0]
 for (target, s), yy in zip(TXT, ys):
@@ -295,41 +295,41 @@ for (target, s), yy in zip(TXT, ys):
 cl.mtext(psp, "SISTEMA DE PASAMANOS EN ACERO INOXIDABLE SS 304 ACABADO INOXIDABLE O SIMILAR. DEBE INCLUIR TODOS LOS ACCESORIOS "
          "(CONECTORES, TUBOS, TAPAS, SOPORTES, ETC.) DEL SISTEMA, ASÍ COMO TODOS LOS COMPONENTES "
          "NECESARIOS PARA SU ADECUADA INSTALACIÓN. EL PASAMANOS PERIMETRAL DE FIJACIÓN A PARED DEBE "
-         "SER CONTINUO EN TODO SU RECORRIDO, INCLUIDO EL DESCANSO. [PR]",
+         "SER CONTINUO EN TODO SU RECORRIDO, INCLUIDO EL DESCANSO.",
          (302.0, 274.0), 1.9, 128.0, layer="A-TEXTO", attach=1)
 cl.mtext(psp, "PASAMANOS A PARED: TUBO DE 42,4mm DE DIÁMETRO X 1,5mm DE ESPESOR O SIMILAR, SEPARADO "
-         "8cm DE LA PARED, CON SOPORTES ANCLADOS A PARED DE 1,5mm DE ESPESOR O SIMILAR. [PR]",
+         "8cm DE LA PARED, CON SOPORTES ANCLADOS A PARED DE 1,5mm DE ESPESOR O SIMILAR.",
          (302.0, 246.0), 1.9, 128.0, layer="A-TEXTO", attach=1)
 # detalles
 vp("DE", DE, (520.0, 520.0), (170.0, 100.0), (20.0 + 0.70, 0.42))
 cl.text(psp, "DETALLE DE ESCALÓN", (440.0, 470.0), 4.0, "A-TITULOS", "TOP_LEFT")
 cl.text(psp, "Esc. 1:10", (440.0, 464.0), 2.5, "A-TEXTO", "TOP_LEFT")
 cl.mtext(psp, "LOSA DE ESCALERA DE CONCRETO ARMADO; ESPESOR Y REFUERZO SEGÚN PLANOS ESTRUCTURALES "
-         "(PD). CONTRAHUELLA 0,176 m Y HUELLA 0,28 m. ACABADO DE GRADAS: PORCELANATO PI-A "
+         ". CONTRAHUELLA 0,176 m Y HUELLA 0,28 m. ACABADO DE GRADAS: PORCELANATO PI-A "
          "ANTIDESLIZANTE CON NARIZ (VER A7).",
          (440.0, 456.0), 1.9, 140.0, layer="A-TEXTO", attach=1)
 vp("AN", AN, (640.0, 520.0), (60.0, 60.0), AN.p(0, 0))
 cl.text(psp, "ANCLAJE DE PASAMANOS", (612.0, 486.0), 3.0, "A-TITULOS", "TOP_LEFT")
 cl.text(psp, "Esc. 1:10", (612.0, 481.0), 2.2, "A-TEXTO", "TOP_LEFT")
-for tgt, pos, s in (((0.0, 0.05), (655.0, 555.0), "ANCLAJE SUPERIOR APROBADO PARA LA FIJACIÓN DEL PASAMANOS [PR]"),
-                    ((0.0, 0.0), (668.0, 528.0), "VARILLA [PR]"),
-                    ((0.035, -0.035), (655.0, 500.0), "PLACA DE HIERRO NEGRO BISELADO DE 4,8mm DE ESPESOR [PR]")):
+for tgt, pos, s in (((0.0, 0.05), (655.0, 555.0), "ANCLAJE SUPERIOR APROBADO PARA LA FIJACIÓN DEL PASAMANOS"),
+                    ((0.0, 0.0), (668.0, 528.0), "VARILLA"),
+                    ((0.035, -0.035), (655.0, 500.0), "PLACA DE HIERRO NEGRO BISELADO DE 4,8mm DE ESPESOR")):
     callout("AN", tgt, pos, s, 1.6, 40.0)
 vp("BD", BD, (560.0, 330.0), (230.0, 150.0), (26.0 + 0.65, 0.55))
 cl.text(psp, "DETALLE DE BARANDA Y PASAMANOS", (445.0, 250.0), 4.0, "A-TITULOS", "TOP_LEFT")
 cl.text(psp, "Esc. 1:10", (445.0, 244.0), 2.5, "A-TEXTO", "TOP_LEFT")
-for tgt, pos, s in (((0.60, BAR), (600.0, 405.0), "BARANDAL A 1,07m (PASAMANOS CONTINUO DE SECCIÓN CIRCULAR DE 4cm) [PR]"),
-                    ((1.30, PAS), (640.0, 392.0), "PASAMANOS A 0,90m, SEPARADO DE LA BARANDA 5cm [PR]"),
-                    ((0.60, 0.50), (640.0, 360.0), "BARRAS INTERMEDIAS A CADA 10cm HASTA 0,92m [PR]"),
-                    ((0.10, 0.30), (600.0, 280.0), "TUBO PEDESTAL Ø 50,8mm [PR]")):
+for tgt, pos, s in (((0.60, BAR), (600.0, 405.0), "BARANDAL A 1,07m (PASAMANOS CONTINUO DE SECCIÓN CIRCULAR DE 4cm)"),
+                    ((1.30, PAS), (640.0, 392.0), "PASAMANOS A 0,90m, SEPARADO DE LA BARANDA 5cm"),
+                    ((0.60, 0.50), (640.0, 360.0), "BARRAS INTERMEDIAS A CADA 10cm HASTA 0,92m"),
+                    ((0.10, 0.30), (600.0, 280.0), "TUBO PEDESTAL Ø 50,8mm")):
     callout("BD", tgt, pos, s, 1.8, 60.0)
 cl.mtext(psp, "DISEÑO DE LAS BARANDAS Y PASAMANOS DE FORMA TAL QUE NO HAYA PROYECCIONES QUE PUEDAN "
-         "ENGANCHARSE A LAS ROPAS SUELTAS. [PR]", (445.0, 236.0), 1.9, 240.0, layer="A-TEXTO", attach=1)
+         "ENGANCHARSE A LAS ROPAS SUELTAS.", (445.0, 236.0), 1.9, 240.0, layer="A-TEXTO", attach=1)
 # notas
 X3, y = 445.0, 222.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA.",
     "ESCALERA EN U ENTRE EL NIVEL 1 Y EL NIVEL 3: 17 CONTRAHUELLAS DE 0,176 m Y HUELLA DE 0,28 m POR "
     "NIVEL (TRAMO 1: 9 CH; TRAMO 2: 8 CH); ANCHO DE TRAMO 1,10 m; OJO 0,30 m; DESCANSO 1,10 x 2,50 m "
     "A +1,59 (N1-N2) Y +4,59 (N2-N3).",
@@ -341,12 +341,13 @@ notas = [
 ]
 cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.0, 250)
 
-H.titleblock(doc, psp, "A11", "ESCALERA",
+H.titleblock(doc, psp, "A8", "ESCALERA",
              ["PLANTA.", "CORTE.", "DETALLES DE ESCALÓN, BARANDA", "Y PASAMANOS.", "NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "ACABADO DE GRADAS; SIN CITAS NI MARCAS")], escalas="INDICADAS")
+              ("1", "06-10-2026", "ACABADO DE GRADAS; SIN CITAS NI MARCAS"),
+              ("2", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")
-cl.render_pdf(doc, "A11-ESCALERA", OUT / f"{NAME}.pdf")
+cl.render_pdf(doc, "A8-ESCALERA", OUT / f"{NAME}.pdf")
 print("DXF:", OUT / f"{NAME}.dxf")

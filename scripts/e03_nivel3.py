@@ -1,7 +1,7 @@
 """Lámina E03 - PLANTA ELÉCTRICA NIVEL 3: iluminación, tomacorrientes y voz/datos.
 
 Base: planta A4 rev4 aprobada (con mobiliario en gris). Simbología común (elec.py) y notas de
-la referencia [PR]. Subtablero TN3 en el pasillo junto a la escalera (sobre TN2 y TP).
+la referencia. Subtablero TN3 en el pasillo junto a la escalera (sobre TN2 y TP).
 Cargas especiales del usuario: un calentador de paso por baño (3 baños, 240 V).
 Criterios de ubicación aprobados en E01 y E02 (suites con el mismo esquema que la suite 1 del N2).
 """
@@ -12,11 +12,11 @@ import elec as EL
 import hoja as H
 import planta as pl
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "E03_nivel3"
 NAME = f"SR-E03_NIVEL3_{REV}"
 LAYOUT = "E03-NIVEL3"
-SRC = cl.ROOT / "planos/A4_nivel3/SR-A4_NIVEL3_rev4.dxf"
+SRC = cl.ROOT / "planos/A4_nivel3/SR-A4_NIVEL3_rev6.dxf"
 KEEP = {"A-MURO", "A-MURO-TRAMA", "A-PUERTA", "A-VENTANA", "A-ESCALERA", "A-ESPACIOS",
         "E-COLUMNA", "A-EJES", "A-EJES-TXT", "T-LINDERO", "T-VERTICE", "A-PROYECCION",
         "A-MOBILIARIO", "A-TXT-50"}
@@ -127,7 +127,7 @@ EL.simbologia(psp, 35.0, 222.0, w_txt=128.0, row_h=6.6)
 
 X2, y = 205.0, 262.0
 cl.text(psp, "CIRCUITOS DEL NIVEL 3 (SUBTABLERO TN3)", (X2, y), 3.5, "A-TITULOS", "TOP_LEFT")
-rows = [["CIRC.", "DESCRIPCIÓN", "DISYUNTOR", "CONDUCTORES THHN [PR]"],
+rows = [["CIRC.", "DESCRIPCIÓN", "DISYUNTOR", "CONDUCTORES THHN"],
         ["TN3-1", "ILUMINACIÓN NIVEL 3 (a-p)", "1P-20 A", "2 #12 + #12 T"],
         ["TN3-3", "TOMAS GENERALES SUITE 1 Y PASILLO", "1P-20 A", "2 #12 + #12 T"],
         ["TN3-5", "TOMAS GENERALES SUITES 2 Y 3", "1P-20 A", "2 #12 + #12 T"],
@@ -143,14 +143,14 @@ cl.text(psp, "LETRAS a-p: AGRUPACIÓN DE LUMINARIAS POR APAGADOR. CARGAS, CAÍDA
 X3, y = 400.0, 262.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS. [PR]",
-    "LAS MEDIDAS DEBEN SER VERIFICADAS EN SITIO. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS.",
+    "LAS MEDIDAS DEBEN SER VERIFICADAS EN SITIO.",
     "TODA LA INSTALACIÓN SE REALIZARÁ EN TUBERÍA SEGÚN SE INDICA EN EL TABLERO; EN NINGÚN CASO "
-    "SE USARÁ TUBERÍA EXPUESTA (TUBERÍA SOBRE CIELO DE GYPSUM Y EN PAREDES). [PR]",
+    "SE USARÁ TUBERÍA EXPUESTA (TUBERÍA SOBRE CIELO DE GYPSUM Y EN PAREDES).",
     "TODAS LAS SALIDAS, TANTO ELÉCTRICAS COMO DE TV Y DATOS, SERÁN POR MEDIO DE CAJAS DE CONEXIÓN "
-    "RECTANGULARES U OCTOGONALES CON SUS RESPECTIVAS TAPAS. [PR]",
+    "RECTANGULARES U OCTOGONALES CON SUS RESPECTIVAS TAPAS.",
     "SE IDENTIFICARÁN EN EL TABLERO LOS DIFERENTES CIRCUITOS Y SE DEJARÁN AL MENOS DOS TUBOS "
-    "PREVISTOS COMO ADICIONALES. [PR]",
+    "PREVISTOS COMO ADICIONALES.",
     "TOMACORRIENTES DE BAÑO CON PROTECCIÓN GFCI.",
     "SALIDAS ESPECIALES 240 V: UN CALENTADOR DE PASO POR BAÑO; ALTURA Y CONEXIÓN SEGÚN EL "
     "FABRICANTE DEL EQUIPO.",
@@ -165,7 +165,8 @@ cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + 
 H.titleblock(doc, psp, "E03", "ELECTRICIDAD",
              ["PLANTA ELÉCTRICA NIVEL 3.", "ILUMINACIÓN Y TOMACORRIENTES.", "VOZ Y DATOS.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="1:50")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:50")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

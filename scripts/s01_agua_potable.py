@@ -2,14 +2,14 @@
 
 Decisiones del usuario (06-10-2026): conexión directa a la red de la ESPH sin tanque ni bomba;
 agua caliente solo en duchas desde el calentador de paso de cada baño (E02/E03); diámetros,
-llaves y notas de la referencia (RIVERGRAND IS1-IS3) [PR]: acometida y montante 3/4",
+llaves y notas de la referencia (RIVERGRAND IS1-IS3): acometida y montante 3/4",
 ramales y salidas 1/2", llave de paso por baño. Base: A2 rev3, A3 rev4 y A4 rev4 aprobadas.
 """
 import cadlib as cl
 import hoja as H
 import sanit as S
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "S01_agua_potable"
 NAME = f"SR-S01_AGUA_POTABLE_{REV}"
 LAYOUT = "S01-AGUA"
@@ -162,17 +162,14 @@ T("CP: CALENTADOR DE PASO ELÉCTRICO (240 V, VER E02 Y E03); AGUA CALIENTE SOLO 
 
 # ---------------------------------------------------------------- detalles
 Y1 = 425.0
-cl.text(psp, "DETALLE 1 - ACOMETIDA Y MEDIDOR [PR]", (X0, Y1), 3.0, "A-TITULOS", "TOP_LEFT")
+cl.text(psp, "DETALLE 1 - ACOMETIDA Y MEDIDOR", (X0, Y1), 3.0, "A-TITULOS", "TOP_LEFT")
 cl.text(psp, "S/E", (X0, Y1 - 5), 2.0, "A-TEXTO", "TOP_LEFT")
 yd = Y1 - 35
 L((X0 + 5, yd), (X0 + 150, yd), "S-DET")                 # terreno
-psp.add_lwpolyline([(X0 + 40, yd), (X0 + 40, yd - 14), (X0 + 80, yd - 14), (X0 + 80, yd)],
-                   dxfattribs={"layer": "S-DET"})
 L((X0 + 10, yd - 10), (X0 + 140, yd - 10))
 S.leyenda_simbolo(psp, "MED", X0 + 52, yd - 10)
 S.leyenda_simbolo(psp, "LL", X0 + 68, yd - 10)
 T("RED ESPH", (X0 + 8, yd - 6), 1.7)
-T("CAJA DE MEDIDOR SEGÚN ESPH (PD)", (X0 + 40, yd + 4), 1.7)
 T("LLAVE DE PASO 3/4\"", (X0 + 84, yd - 6), 1.7)
 T("AF 3/4\" A LA VIVIENDA", (X0 + 108, yd - 14), 1.7)
 
@@ -199,7 +196,7 @@ cl.mtext(psp, "ALTURA, CONEXIÓN HIDRÁULICA Y ELÉCTRICA SEGÚN EL FABRICANTE D
 # ---------------------------------------------------------------- simbología y notas
 yS = 290.0
 y = S.cuadro_simbologia(psp, X0, yS, [
-    ("AF", "TUBERÍA DE AGUA FRÍA (PVC A PRESIÓN) [PR]"),
+    ("AF", "TUBERÍA DE AGUA FRÍA (PVC A PRESIÓN)"),
     ("AC", "TUBERÍA DE AGUA CALIENTE (CPVC), SOLO DUCHAS"),
     ("LL", "LLAVE DE PASO"),
     ("SAL", "SALIDA A APARATO (DIÁMETRO INDICADO)"),
@@ -211,18 +208,17 @@ cl.text(psp, "LM: LAVATORIO; WC: INODORO; LP: FREGADERO; AF / AC: AGUA FRÍA / C
 X3 = X0 + 155
 cl.text(psp, "NOTAS:", (X3, yS), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO ALGUNA EXCEPCIÓN INDICADA. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO ALGUNA EXCEPCIÓN INDICADA.",
     "EL AGUA POTABLE PROVIENE DEL SISTEMA PÚBLICO (ESPH), DIRECTAMENTE DE LA CONEXIÓN DE LA "
-    "CALLE, SIN TANQUE DE ALMACENAMIENTO NI EQUIPO DE BOMBEO. [PR]",
-    "UBICACIÓN Y CARACTERÍSTICAS DEL MEDIDOR Y DE LA CAJA SEGÚN LA ESPH (PD).",
-    "DIÁMETROS DE LA REFERENCIA [PR]: ACOMETIDA, TRAMO PRINCIPAL Y MONTANTE 3/4\"; RAMALES Y "
+    "CALLE, SIN TANQUE DE ALMACENAMIENTO NI EQUIPO DE BOMBEO.",
+    "DIÁMETROS: ACOMETIDA, TRAMO PRINCIPAL Y MONTANTE 3/4\"; RAMALES Y "
     "SALIDAS 1/2\". LLAVE DE PASO EN CADA BAÑO Y EN LA COCINA.",
     "AGUA CALIENTE ÚNICAMENTE EN LAS DUCHAS, MEDIANTE UN CALENTADOR DE PASO ELÉCTRICO POR BAÑO "
     "(CIRCUITOS EN E02 Y E03).",
-    "TUBERÍA DE AGUA FRÍA PVC A PRESIÓN Y DE AGUA CALIENTE CPVC; CLASE O SDR SEGÚN CÁLCULO (PD).",
+    "TUBERÍA DE AGUA FRÍA PVC A PRESIÓN Y DE AGUA CALIENTE CPVC.",
     "EL MONTANTE SUBE EMBEBIDO EN EL MURO DEL EJE C (ESCALERA / PATIO P2); LOS RAMALES DE LOS "
     "NIVELES 2 Y 3 VIAJAN POR EL ENTREPISO.",
-    "PROBAR LA RED A PRESIÓN ANTES DE CERRAR PAREDES Y CIELOS (PD).",
+    "PROBAR LA RED A PRESIÓN ANTES DE CERRAR PAREDES Y CIELOS.",
 ]
 cl.notes_block(psp, X3, yS - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 1.9, 190)
 
@@ -230,7 +226,8 @@ H.titleblock(doc, psp, "S01", "AGUA POTABLE",
              ["PLANTAS NIVELES 1, 2 Y 3.", "DIAGRAMA VERTICAL.", "DETALLES.", "SIMBOLOGÍA.",
               "NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "07-10-2026", "PUNTO DE JARDÍN POSTERIOR TRASLADADO (S02)")], escalas="1:100 / S/E")
+              ("1", "07-10-2026", "PUNTO DE JARDÍN POSTERIOR TRASLADADO (S02)"),
+              ("2", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:100 / S/E")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

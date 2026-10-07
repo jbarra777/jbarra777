@@ -2,11 +2,11 @@
 
 rev1 (usuario): una sola lámina para ambos entrepisos; solo cambia la leyenda.
 
-Secciones de la referencia (RIVERGRAND C03-C05) por indicación expresa del usuario [PR]:
+Secciones de la referencia (RIVERGRAND C03-C05) por indicación expresa del usuario:
 viguetas de tubo rectangular 2x6" en 2,38 mm @0,60 m, lámina ondulada de hierro galvanizado,
 losa colada en sitio con malla #3 electrosoldada, vigas V1 4x8" en 3,17 mm, columnas C1 6x6".
 Geometría propia: marcos transversales en los ejes 1 a 6 (A-C-D), vigas V1 longitudinales en
-A, C y D, bordes de vacío en el eje B; vacíos de patios P1 y P2 y de escalera (A2-A4, A11).
+A, C y D, bordes de vacío en el eje B; vacíos de patios P1 y P2 y de escalera (A2-A4, A8).
 Paquete de entrepiso 0,30 = V1 0,20 + losa 0,10 (A6). Marco de planta de planta.py.
 """
 import math
@@ -18,7 +18,7 @@ from planta import P
 
 SHEET = "C03"
 NIVEL = "ENTREPISO 1: NIVEL 2 (NPT +3.00) / ENTREPISO 2: NIVEL 3 (NPT +6.00)"
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "C03_entrepiso_n2"
 NAME = f"SR-{SHEET}_ENTREPISOS_{REV}"
 LAYOUT = f"{SHEET}-ENTREPISO"
@@ -27,9 +27,9 @@ W = H.W
 EY0, EY1 = H.EY0, H.EY1
 YA = H.EJES_Y
 XA, XB, XC, XD = (H.EJES_X[k] for k in "ABCD")
-TUBO = 0.15                    # C1 6x6" [PR]
-BV = 0.10                      # V1 4x8" (ancho 0,10; peralte 0,20) [PR]
-SEP = 0.60                     # viguetas @0,60 m [PR]
+TUBO = 0.15                    # C1 6x6"
+BV = 0.10                      # V1 4x8" (ancho 0,10; peralte 0,20)
+SEP = 0.60                     # viguetas @0,60 m
 P1x, P1y = H.P1["x"], H.P1["y"]
 P2x, P2y = H.P2["x"], H.P2["y"]
 ESx, ESy = H.ESC["x"], H.ESC["y"]
@@ -57,7 +57,7 @@ def rect(x0, y0, x1, y1, layer):
 # ---------------------------------------------------------------- borde de losa y vacíos
 rect(0.0, EY0, W, EY1, "E-LOSA")
 VOIDS = [((P1x[0], P1y[0], P1x[1], P1y[1]), "VACÍO PATIO P1"),
-         ((ESx[0], ESy[0], ESx[1], ESy[1]), "VACÍO DE ESCALERA (VER A11)"),
+         ((ESx[0], ESy[0], ESx[1], ESy[1]), "VACÍO DE ESCALERA (VER A8)"),
          ((P2x[0], P2y[0], P2x[1], P2y[1]), "VACÍO PATIO P2")]
 for (x0, y0, x1, y1), lab in VOIDS:
     rect(x0, y0, x1, y1, "E-LOSA")
@@ -139,7 +139,7 @@ def span_arrow(xa, xb, y, label=True):
     for xe, s in ((xa + 0.20, 1), (xb - 0.20, -1)):
         pl.poly(msp, [(xe, y), (xe + s * 0.25, y - 0.07), (xe + s * 0.25, y + 0.07)], "E-TXT")
     if label:
-        pl.mtext(msp, "TUBO RECTANGULAR DE\\PACERO 2x6\" EN 2,38 mm\\P@0,60 m [PR]",
+        pl.mtext(msp, "TUBO RECTANGULAR DE\\PACERO 2x6\" EN 2,38 mm\\P@0,60 m",
                  (xa + xb) / 2, y - 1.65, 0.12, 2.6, "E-TXT", attach=5)
 
 
@@ -249,11 +249,11 @@ cl.scale_bar(psp, 35.0, 236.0, 50, 5, 1)
 
 y = 214.0
 cl.text(psp, "SIMBOLOGÍA ELEMENTOS PORTANTES", (35.0, y), 3.5, "A-TITULOS", "TOP_LEFT")
-rows = [["C1", "COLUMNA - TUBO DE ACERO 6x6\" EN 3,17 mm [PR]"],
+rows = [["C1", "COLUMNA - TUBO DE ACERO 6x6\" EN 3,17 mm"],
         ["", "(EJE C FORRADA A 0,30 x 0,30)"],
-        ["V1", "VIGA - TUBO DE ACERO 4x8\" EN 3,17 mm [PR]"],
-        ["VT-1", "VIGA DE TRANSFERENCIA EJE 1, ENTREPISO 1 (PD)"],
-        ["VG", "VIGUETA - TUBO 2x6\" EN 2,38 mm @0,60 m [PR]"],
+        ["V1", "VIGA - TUBO DE ACERO 4x8\" EN 3,17 mm"],
+        ["VT-1", "VIGA DE TRANSFERENCIA EJE 1, ENTREPISO 1"],
+        ["VG", "VIGUETA - TUBO 2x6\" EN 2,38 mm @0,60 m"],
         ["", "VACÍO (PATIO O ESCALERA)"]]
 yb = cl.table(psp, 35.0, y - 6.0, [18, 140], rows, row_h=6.5, h=2.2,
               aligns=["MIDDLE_CENTER", "MIDDLE_LEFT"])
@@ -296,45 +296,43 @@ cl.text(psp, "A LO LARGO DE LA VIGUETA - Esc. 1:10", (215.0, 101.5), 2.5, "A-TEX
 
 XR = 395.0
 callout("D1", (D1X + 0.45, D1Y + 0.085), (XR, 246.0), "LOSA COLADA EN SITIO e = 0,10 m")
-callout("D1", (D1X + 1.05, D1Y + 0.055), (XR, 238.0), "MALLA #3 ELECTROSOLDADA [PR]; SEPARACIÓN SEGÚN CÁLCULO (PD)")
-callout("D1", (D1X + 1.20, D1Y + 0.004), (XR, 226.0), "LÁMINA ONDULADA DE HIERRO GALVANIZADO [PR]")
-callout("D1", (D1X + 1.35, D1Y - 0.10), (XR, 216.0), "TUBO RECTANGULAR DE ACERO 2x6\" EN 2,38 mm @0,60 m [PR]")
-callout("D1", (D1X + 1.05, D1Y - 0.19), (XR, 204.0), "VIGA V1 4x8\" EN 3,17 mm (EN VISTA) [PR]")
+callout("D1", (D1X + 1.05, D1Y + 0.055), (XR, 238.0), "MALLA #3 ELECTROSOLDADA; SEPARACIÓN SEGÚN MEMORIA DE CÁLCULO")
+callout("D1", (D1X + 1.20, D1Y + 0.004), (XR, 226.0), "LÁMINA ONDULADA DE HIERRO GALVANIZADO")
+callout("D1", (D1X + 1.35, D1Y - 0.10), (XR, 216.0), "TUBO RECTANGULAR DE ACERO 2x6\" EN 2,38 mm @0,60 m")
+callout("D1", (D1X + 1.05, D1Y - 0.19), (XR, 204.0), "VIGA V1 4x8\" EN 3,17 mm (EN VISTA)")
 callout("D2", (D2X + 0.60, D2Y + 0.085), (XR, 164.0), "LOSA COLADA EN SITIO e = 0,10 m")
-callout("D2", (D2X + 0.70, D2Y + 0.012), (XR, 154.0), "LÁMINA ONDULADA DE HIERRO GALVANIZADO [PR]")
+callout("D2", (D2X + 0.70, D2Y + 0.012), (XR, 154.0), "LÁMINA ONDULADA DE HIERRO GALVANIZADO")
 callout("D2", (D2X + 0.50, D2Y - 0.075), (XR, 130.0), "VIGUETA 2x6\" EN 2,38 mm, A RAS DEL BORDE SUPERIOR DE LA V1")
-callout("D2", (D2X + BV + 0.01, D2Y - 0.03), (XR, 142.0), "UNIÓN SOLDADA VIGUETA - VIGA SEGÚN CÁLCULO (PD)")
-callout("D2", (D2X + 0.05, D2Y - 0.15), (XR, 118.0), "VIGA V1 4x8\" EN 3,17 mm [PR]")
+callout("D2", (D2X + BV + 0.01, D2Y - 0.03), (XR, 142.0), "UNIÓN SOLDADA VIGUETA - VIGA SEGÚN CÁLCULO")
+callout("D2", (D2X + 0.05, D2Y - 0.15), (XR, 118.0), "VIGA V1 4x8\" EN 3,17 mm")
 
 X3 = 482.0
 y = 262.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA.",
     "ENTREPISO: LOSA COLADA EN SITIO DE 0,10 m CON MALLA #3 ELECTROSOLDADA SOBRE LÁMINA ONDULADA "
-    "DE HIERRO GALVANIZADO, APOYADA EN VIGUETAS DE TUBO 2x6\" EN 2,38 mm. [PR]",
+    "DE HIERRO GALVANIZADO, APOYADA EN VIGUETAS DE TUBO 2x6\" EN 2,38 mm.",
     "VIGUETAS EN SENTIDO TRANSVERSAL (ENTRE LAS VIGAS DE LOS EJES A, C Y D, Y A Y B EN LA FRANJA "
     "DEL PASILLO), SEPARACIÓN MÁXIMA 0,60 m REPARTIDA EN CADA PAÑO.",
     "VIGAS V1 4x8\" EN 3,17 mm EN LOS EJES 1 A 6 (MARCOS A-C-D) Y EN LOS EJES A, C Y D; EN EL EJE B "
-    "COMO BORDE DE LOS VACÍOS DEL PATIO P1 Y DE LA ESCALERA. [PR]",
+    "COMO BORDE DE LOS VACÍOS DEL PATIO P1 Y DE LA ESCALERA.",
     "PAQUETE DE ENTREPISO 0,30 m = VIGA 0,20 + LOSA 0,10 (VER A6). LAS VIGUETAS QUEDAN A RAS DEL "
     "BORDE SUPERIOR DE LAS VIGAS.",
     "COLUMNAS C1 CONTINUAS DEL NIVEL 1 AL NIVEL 3 (VER C01 Y C05). EN EL EJE C DEL EJE 1 LA C1 "
-    "ARRANCA EN EL NIVEL 2 SOBRE LA VIGA DE TRANSFERENCIA VT-1 DEL ENTREPISO 1 (DISEÑO ESPECIAL, "
-    "PD); SIN COLUMNA EN EL NIVEL 1 (PORTÓN).",
-    "UNIONES SOLDADAS, PERFILES DEFINITIVOS Y SEPARACIÓN DE LA MALLA SEGÚN MEMORIA DE CÁLCULO (PD).",
-    "MATERIALES, PROTECCIÓN ANTICORROSIVA Y ESPECIFICACIONES SEGÚN LÁMINA C06. [PR]",
-    "LAS SECCIONES DE ESTA LÁMINA SON LAS DEL PROYECTO DE REFERENCIA, POR INDICACIÓN DEL "
-    "INGENIERO RESPONSABLE; NO SUSTITUYEN LA MEMORIA DE CÁLCULO.",
+    "ARRANCA EN EL NIVEL 2 SOBRE LA VIGA DE TRANSFERENCIA VT-1 DEL ENTREPISO 1 (DISEÑO ESPECIAL); "
+    "SIN COLUMNA EN EL NIVEL 1 (PORTÓN).",
+    "UNIONES SOLDADAS, PERFILES DEFINITIVOS Y SEPARACIÓN DE LA MALLA SEGÚN MEMORIA DE CÁLCULO.",
+    "MATERIALES, PROTECCIÓN ANTICORROSIVA Y ESPECIFICACIONES SEGÚN LÁMINA C06.",
 ]
 cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.1, 222)
 
 H.titleblock(doc, psp, SHEET, "ENTREPISO",
              ["PLANTA DE ENTREPISO 1 Y 2.", "DETALLE DE ENTREPISO.", "SECCIÓN A-A.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "ENTREPISOS 1 Y 2 EN UNA SOLA LÁMINA"),
-              ("2", "06-10-2026", "C1 EJE C-1 SOBRE VT-1; REFERENCIA A C06")], escalas="1:50 / INDICADAS")
+             [("1", "06-10-2026", "ENTREPISOS 1 Y 2 EN UNA SOLA LÁMINA"),
+              ("2", "06-10-2026", "C1 EJE C-1 SOBRE VT-1; REFERENCIA A C06"),
+              ("3", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:50 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

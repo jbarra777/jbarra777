@@ -12,6 +12,34 @@
 **Estados:** APROBADA · EN REVISIÓN · EN DESARROLLO · PENDIENTE · NO APLICA.
 **Criterio:** una lámina es APROBADA solo si el usuario la aceptó y no le quedan correcciones pendientes. Ante cualquier duda, se marca EN REVISIÓN.
 
+## LISTA DEFINITIVA — 22 LÁMINAS (07-10-2026, DECISIONES §18)
+| N.º | Código | Lámina | Revisión vigente | Archivo | Estado |
+|---|---|---|---|---|---|
+| 1 | A1 | Lote de terreno | rev3 | `planos/A1_lote/SR-A1_LOTE_rev3.*` | PARA TRÁMITE (por aprobar) |
+| 2 | A2 | Planta nivel 1 | rev5 | `planos/A2_nivel1/SR-A2_NIVEL1_rev5.*` | PARA TRÁMITE (por aprobar) |
+| 3 | A3 | Planta nivel 2 | rev6 | `planos/A3_nivel2/SR-A3_NIVEL2_rev6.*` | PARA TRÁMITE (por aprobar) |
+| 4 | A4 | Planta nivel 3 | rev6 | `planos/A4_nivel3/SR-A4_NIVEL3_rev6.*` | PARA TRÁMITE (por aprobar) |
+| 5 | A5 | Fachadas y acabados de fachada | rev8 | `planos/A5_fachadas/SR-A5_FACHADAS_rev8.*` | PARA TRÁMITE (por aprobar) |
+| 6 | A6 | Cortes | rev6 | `planos/A6_cortes/SR-A6_CORTES_rev6.*` | PARA TRÁMITE (por aprobar) |
+| 7 | A7 | Puertas, ventanas y acabados | rev4 | `planos/A7_puertas_ventanas/SR-A7_PUERTAS_VENTANAS_rev4.*` | PARA TRÁMITE (por aprobar) |
+| 8 | A8 | Escalera (antes A11) | rev2 | `planos/A8_escalera/SR-A8_ESCALERA_rev2.*` | PARA TRÁMITE (por aprobar) |
+| 9 | C01 | Cimentaciones | rev2 | `planos/C01_cimentaciones/SR-C01_CIMENTACIONES_rev2.*` | PARA TRÁMITE (por aprobar) |
+| 10 | C02 | Detalles de cimentación | rev2 | `planos/C02_cimentacion_detalles/SR-C02_CIMENTACION_DETALLES_rev2.*` | PARA TRÁMITE (por aprobar) |
+| 11 | C03 | Entrepisos 1 y 2 | rev3 | `planos/C03_entrepiso_n2/SR-C03_ENTREPISOS_rev3.*` | PARA TRÁMITE (por aprobar) |
+| 12 | C04 | Techo | rev3 | `planos/C04_techo/SR-C04_TECHO_rev3.*` | PARA TRÁMITE (por aprobar) |
+| 13 | C05 | Pórticos | rev3 | `planos/C05_porticos/SR-C05_PORTICOS_rev3.*` | PARA TRÁMITE (por aprobar) |
+| 14 | C06 | Especificaciones | rev2 | `planos/C06_especificaciones/SR-C06_ESPECIFICACIONES_rev2.*` | PARA TRÁMITE (por aprobar) |
+| 15 | E01 | Planta eléctrica nivel 1 | rev2 | `planos/E01_nivel1/SR-E01_NIVEL1_rev2.*` | PARA TRÁMITE (por aprobar) |
+| 16 | E02 | Planta eléctrica nivel 2 | rev1 | `planos/E02_nivel2/SR-E02_NIVEL2_rev1.*` | PARA TRÁMITE (por aprobar) |
+| 17 | E03 | Planta eléctrica nivel 3 | rev1 | `planos/E03_nivel3/SR-E03_NIVEL3_rev1.*` | PARA TRÁMITE (por aprobar) |
+| 18 | E04 | Unifilar y tableros | rev1 | `planos/E04_tableros/SR-E04_TABLEROS_rev1.*` | PARA TRÁMITE (por aprobar) |
+| 19 | E05 | Detalles eléctricos | rev1 | `planos/E05_detalles/SR-E05_DETALLES_rev1.*` | PARA TRÁMITE (por aprobar) |
+| 20 | S01 | Agua potable | rev2 | `planos/S01_agua_potable/SR-S01_AGUA_POTABLE_rev2.*` | PARA TRÁMITE (por aprobar) |
+| 21 | S02 | Aguas residuales | rev2 | `planos/S02_aguas_residuales/SR-S02_AGUAS_RESIDUALES_rev2.*` | PARA TRÁMITE (por aprobar) |
+| 22 | S03 | Aguas pluviales | rev1 | `planos/S03_pluviales/SR-S03_PLUVIALES_rev1.*` | PARA TRÁMITE (por aprobar) |
+
+Las secciones A y B siguientes son el historial de desarrollo; la lista vigente es la de arriba.
+
 ## A) Láminas del proyecto actual ya desarrolladas
 | Código | Nombre | Contenido principal | Estado | Archivo vigente | Observaciones |
 |---|---|---|---|---|---|

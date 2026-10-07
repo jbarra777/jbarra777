@@ -1,8 +1,8 @@
 """Lámina E05 - DETALLES ELÉCTRICOS (agregada por el usuario).
 
-Detalles constructivos de la referencia (RIVERGRAND EL07) [PR], sin marcas comerciales:
+Detalles constructivos de la referencia (RIVERGRAND EL07), sin marcas comerciales:
 conexión de apagador, de tomacorriente y de caja octogonal de paso; ubicación de accesorios en
-pared; previstas para TV en pared. Detalles propios con datos ya aprobados en E01-E04 [PR]:
+pared; previstas para TV en pared. Detalles propios con datos ya aprobados en E01-E04:
 alturas de montaje (simbología), zanja de acometida subterránea (notas de canalizaciones y
 unifilar) y puesta a tierra (unifilar). Dibujos esquemáticos, sin escala.
 """
@@ -10,7 +10,7 @@ import cadlib as cl
 import elec as EL
 import hoja as H
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "E05_detalles"
 NAME = f"SR-E05_DETALLES_{REV}"
 LAYOUT = "E05-DETALLES"
@@ -71,7 +71,7 @@ ROWS = [305.0, 28.0]
 
 # ================================================================ 1. alturas de montaje
 def det_alturas(x, y):
-    cell(x, y, W_, H_, "DET. 1 - ALTURAS DE MONTAJE [PR]", "ELEVACIÓN DE PARED - S/E")
+    cell(x, y, W_, H_, "DET. 1 - ALTURAS DE MONTAJE", "ELEVACIÓN DE PARED - S/E")
     k = 40.0                                              # mm por metro
     x0, y0 = x + 22, y + 40
     L((x0, y0), (x0 + 120, y0), "D-COND")                 # piso
@@ -102,7 +102,7 @@ def caja_rect(x, y, w=26.0, h=40.0):
 
 
 def det_conexion(x, y, kind):
-    tit = "DET. 2 - CONEXIÓN DE APAGADOR [PR]" if kind == "S" else "DET. 3 - CONEXIÓN DE TOMACORRIENTE [PR]"
+    tit = "DET. 2 - CONEXIÓN DE APAGADOR" if kind == "S" else "DET. 3 - CONEXIÓN DE TOMACORRIENTE"
     cell(x, y, W_, H_, tit, "VISTA FRONTAL - S/E")
     bx, by = x + 45, y + 120
     caja_rect(bx, by)
@@ -133,13 +133,13 @@ def det_conexion(x, y, kind):
          "APAGADOR" if kind == "S" else "TOMACORRIENTE DOBLE POLARIZADO")
     cl.mtext(psp, "NOTAS: DEJAR COLAS DE CABLE DE 15 cm. EL BORDE FRONTAL DE LA CAJA RECTANGULAR "
              "DEBERÁ QUEDAR A MÁXIMO 6 mm DEL REPELLO TERMINADO EN MATERIALES NO INFLAMABLES, Y A RAS "
-             "DE PARED TERMINADA EN MATERIALES INFLAMABLES. [PR]", (x + 6, y + 75), 1.8, W_ - 12,
+             "DE PARED TERMINADA EN MATERIALES INFLAMABLES.", (x + 6, y + 75), 1.8, W_ - 12,
              layer="A-TEXTO", attach=7)
 
 
 # ================================================================ 4. caja octogonal de paso
 def det_octogonal(x, y):
-    cell(x, y, W_, H_, "DET. 4 - CAJA OCTOGONAL DE PASO [PR]", "CONEXIÓN DE LUMINARIA - S/E")
+    cell(x, y, W_, H_, "DET. 4 - CAJA OCTOGONAL DE PASO", "CONEXIÓN DE LUMINARIA - S/E")
     import math
     cx, cy, r = x + 60, y + 150, 24.0
     pts = [(cx + r * math.cos(math.radians(22.5 + 45 * i)), cy + r * math.sin(math.radians(22.5 + 45 * i)))
@@ -154,7 +154,7 @@ def det_octogonal(x, y):
                        dxfattribs={"layer": "D-COND"})
     psp.add_lwpolyline([(cx - r - 18, cy - 3), (cx, cy - 14), (cx + r + 18, cy - 3)],
                        dxfattribs={"layer": "D-FINO"})
-    call((cx, cy + r + 16), (x + 100, cy + 70), "COLA PARA LUMINARIA, CABLE 3 x 14 AWG [PR]", 44)
+    call((cx, cy + r + 16), (x + 100, cy + 70), "COLA PARA LUMINARIA, CABLE 3 x 14 AWG", 44)
     call((cx - r - 12, cy + 4), (x + 45, cy + 45), "TUBERÍA ELÉCTRICA", 30)
     call((cx - 2, cy + 6), (x + 45, cy + 33), "FASE (ROJO)", 30)
     call((cx + 10, cy - 3), (x + 110, cy + 30), "NEUTRO (BLANCO)", 40)
@@ -162,13 +162,13 @@ def det_octogonal(x, y):
     call((cx + r + 10, cy + 4), (x + 110, cy + 12), "CONECTOR DE PRESIÓN", 40)
     call((cx + r * 0.7, cy - r * 0.7), (x + 110, cy - 40), "CAJA OCTOGONAL CERTIFICADA", 40)
     cl.mtext(psp, "EMPALMES ÚNICAMENTE DENTRO DE CAJAS, CON CONECTORES DE EMPALME. LOS CONDUCTORES "
-             "VIAJAN CONTINUOS ENTRE CAJA Y CAJA. [PR]", (x + 6, y + 50), 1.8, W_ - 12,
+             "VIAJAN CONTINUOS ENTRE CAJA Y CAJA.", (x + 6, y + 50), 1.8, W_ - 12,
              layer="A-TEXTO", attach=7)
 
 
 # ================================================================ 5. ubicación de accesorios en pared
 def det_ubicacion(x, y):
-    cell(x, y, W_, H_, "DET. 5 - UBICACIÓN DE ACCESORIOS EN PARED [PR]", "ELEVACIONES - S/E")
+    cell(x, y, W_, H_, "DET. 5 - UBICACIÓN DE ACCESORIOS EN PARED", "ELEVACIONES - S/E")
     ys = y + 40
     subs = [("EN PARED", x + 10), ("EN MOCHETA", x + 62), ("ACCESORIOS ADYACENTES", x + 114)]
     for lab, sx in subs:
@@ -196,12 +196,12 @@ def det_ubicacion(x, y):
     for i in range(3):
         R(sx + 10 + i * 12, ys + 15, sx + 18 + i * 12, ys + 21)
     call((sx + 30, ys + 125), (sx + 34, ys + 150), "APAGADORES ADYACENTES EN CAJA DE MÚLTIPLES GANGS", 16, 1.6)
-    cl.mtext(psp, "ALTURAS SEGÚN DET. 1. [PR]", (x + 6, y + 22), 1.8, W_ - 12, layer="A-TEXTO", attach=7)
+    cl.mtext(psp, "ALTURAS SEGÚN DET. 1.", (x + 6, y + 22), 1.8, W_ - 12, layer="A-TEXTO", attach=7)
 
 
 # ================================================================ 6. previstas para TV en pared
 def det_tv(x, y):
-    cell(x, y, W_, H_, "DET. 6 - PREVISTAS PARA TV EN PARED [PR]", "ELEVACIÓN - S/E")
+    cell(x, y, W_, H_, "DET. 6 - PREVISTAS PARA TV EN PARED", "ELEVACIÓN - S/E")
     x0, y0 = x + 12, y + 50
     L((x0, y0), (x0 + 100, y0), "D-COND")
     R(x0 + 5, y0 + 120, x0 + 95, y0 + 185, "D-LINEAS")                   # TV
@@ -220,7 +220,7 @@ def det_tv(x, y):
 
 # ================================================================ 7. zanja de acometida subterránea
 def det_zanja(x, y):
-    cell(x, y, W_, H_, "DET. 7 - ZANJA DE ACOMETIDA SUBTERRÁNEA [PR]", "CORTE - S/E")
+    cell(x, y, W_, H_, "DET. 7 - ZANJA DE ACOMETIDA SUBTERRÁNEA", "CORTE - S/E")
     k = 160.0                                         # mm por metro (esquemático)
     x0, y0 = x + 15, y + 200
     L((x0 - 8, y0), (x0 + 95, y0), "D-COND")           # terreno
@@ -249,12 +249,12 @@ def det_zanja(x, y):
     call((x0 + 60, ye + 12), (x + 105, ye + 12), "ARENA LIMPIA 10 cm SOBRE EL TUBO", 52, 1.6)
     cl.mtext(psp, "CANALIZACIONES ELÉCTRICAS A 50 cm MÍNIMO CUBIERTAS CON 10 cm DE ARENA LIMPIA; "
              "TELEFÓNICAS A 25 cm MÍNIMO CON 5 cm DE ARENA; SEPARACIÓN ENTRE DUCTOS 15 cm MÍNIMO "
-             "(E04). [PR]", (x + 6, y + 50), 1.8, W_ - 12, layer="A-TEXTO", attach=7)
+             "(E04).", (x + 6, y + 50), 1.8, W_ - 12, layer="A-TEXTO", attach=7)
 
 
 # ================================================================ 8. puesta a tierra
 def det_tierra(x, y):
-    cell(x, y, W_, H_, "DET. 8 - SISTEMA DE PUESTA A TIERRA [PR]", "CORTE ESQUEMÁTICO - S/E")
+    cell(x, y, W_, H_, "DET. 8 - SISTEMA DE PUESTA A TIERRA", "CORTE ESQUEMÁTICO - S/E")
     x0, y0 = x + 25, y + 215
     L((x0 - 10, y0), (x0 + 125, y0), "D-COND")
     for ex in (x0 + 20, x0 + 95):
@@ -274,7 +274,7 @@ def det_tierra(x, y):
     call((x0 + 103, y0 - 5), (x0 + 118, y0 + 14), "REGISTRO", 20, 1.6)
     cl.mtext(psp, "DOS ELECTRODOS SEPARADOS 3 m ENTRE SÍ, INTERCONECTADOS CON CABLE #6 AWG DESNUDO, "
              "ENTERRADOS A NO MENOS DE 3,05 m EN POSICIÓN VERTICAL; UNO A 50 cm DEL BORDE DEL "
-             "PEDESTAL. RESISTENCIA DE LA MALLA ≤ 25 OHM (E04). [PR]", (x + 6, y + 50), 1.8, W_ - 12,
+             "PEDESTAL. RESISTENCIA DE LA MALLA ≤ 25 OHM (E04).", (x + 6, y + 50), 1.8, W_ - 12,
              layer="A-TEXTO", attach=7)
 
 
@@ -290,7 +290,8 @@ det_tierra(COLS[3], ROWS[1])
 H.titleblock(doc, psp, "E05", "ELECTRICIDAD",
              ["DETALLES ELÉCTRICOS.", "CONEXIONES Y ACCESORIOS.", "ALTURAS DE MONTAJE.",
               "ZANJA DE ACOMETIDA.", "PUESTA A TIERRA.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="S/E")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="S/E")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

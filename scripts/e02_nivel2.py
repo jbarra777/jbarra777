@@ -1,7 +1,7 @@
 """Lámina E02 - PLANTA ELÉCTRICA NIVEL 2: iluminación, tomacorrientes y voz/datos.
 
 Base: planta A3 rev4 aprobada (con mobiliario en gris). Simbología común (elec.py) y notas de
-la referencia [PR]. Subtablero TN2 en el pasillo junto a la escalera (sobre el TP del N1).
+la referencia. Subtablero TN2 en el pasillo junto a la escalera (sobre el TP del N1).
 Cargas especiales del usuario: cocina eléctrica y calentador de paso del baño (240 V).
 """
 import ezdxf
@@ -11,11 +11,11 @@ import elec as EL
 import hoja as H
 import planta as pl
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "E02_nivel2"
 NAME = f"SR-E02_NIVEL2_{REV}"
 LAYOUT = "E02-NIVEL2"
-SRC = cl.ROOT / "planos/A3_nivel2/SR-A3_NIVEL2_rev4.dxf"
+SRC = cl.ROOT / "planos/A3_nivel2/SR-A3_NIVEL2_rev6.dxf"
 KEEP = {"A-MURO", "A-MURO-TRAMA", "A-PUERTA", "A-VENTANA", "A-ESCALERA", "A-ESPACIOS",
         "E-COLUMNA", "A-EJES", "A-EJES-TXT", "T-LINDERO", "T-VERTICE", "A-PROYECCION",
         "A-MOBILIARIO", "A-TXT-50"}
@@ -137,7 +137,7 @@ EL.simbologia(psp, 35.0, 222.0, w_txt=128.0, row_h=6.6)
 
 X2, y = 205.0, 262.0
 cl.text(psp, "CIRCUITOS DEL NIVEL 2 (SUBTABLERO TN2)", (X2, y), 3.5, "A-TITULOS", "TOP_LEFT")
-rows = [["CIRC.", "DESCRIPCIÓN", "DISYUNTOR", "CONDUCTORES THHN [PR]"],
+rows = [["CIRC.", "DESCRIPCIÓN", "DISYUNTOR", "CONDUCTORES THHN"],
         ["TN2-1", "ILUMINACIÓN NIVEL 2 (a-i)", "1P-20 A", "2 #12 + #12 T"],
         ["TN2-3", "TOMACORRIENTES GENERALES NIVEL 2", "1P-20 A", "2 #12 + #12 T"],
         ["TN2-5", "TOMAS DE COCINA 1 (GFCI)", "1P-20 A", "2 #12 + #12 T"],
@@ -153,17 +153,17 @@ cl.text(psp, "LETRAS a-i: AGRUPACIÓN DE LUMINARIAS POR APAGADOR. CARGAS, CAÍDA
 X3, y = 400.0, 262.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS. [PR]",
-    "LAS MEDIDAS DEBEN SER VERIFICADAS EN SITIO. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS.",
+    "LAS MEDIDAS DEBEN SER VERIFICADAS EN SITIO.",
     "TODA LA INSTALACIÓN SE REALIZARÁ EN TUBERÍA SEGÚN SE INDICA EN EL TABLERO; EN NINGÚN CASO "
-    "SE USARÁ TUBERÍA EXPUESTA (TUBERÍA SOBRE CIELO DE GYPSUM Y EN PAREDES). [PR]",
+    "SE USARÁ TUBERÍA EXPUESTA (TUBERÍA SOBRE CIELO DE GYPSUM Y EN PAREDES).",
     "TODAS LAS SALIDAS, TANTO ELÉCTRICAS COMO DE TV Y DATOS, SERÁN POR MEDIO DE CAJAS DE CONEXIÓN "
-    "RECTANGULARES U OCTOGONALES CON SUS RESPECTIVAS TAPAS. [PR]",
+    "RECTANGULARES U OCTOGONALES CON SUS RESPECTIVAS TAPAS.",
     "SE IDENTIFICARÁN EN EL TABLERO LOS DIFERENTES CIRCUITOS Y SE DEJARÁN AL MENOS DOS TUBOS "
-    "PREVISTOS COMO ADICIONALES. [PR]",
+    "PREVISTOS COMO ADICIONALES.",
     "TOMACORRIENTES DE COCINA SOBRE MUEBLE Y DE BAÑO CON PROTECCIÓN GFCI.",
     "SALIDAS ESPECIALES 240 V: COCINA ELÉCTRICA Y CALENTADOR DE PASO DEL BAÑO; ALTURA Y "
-    "CONEXIÓN SEGÚN EL FABRICANTE DEL EQUIPO (PD).",
+    "CONEXIÓN SEGÚN EL FABRICANTE DEL EQUIPO.",
     "GRADAS: EL S3 'e' CONTROLA, CON EL DEL VESTÍBULO, LA LUZ DE GRADAS DEL NIVEL 1 (E01); EL "
     "S3 'i' CONTROLA, CON EL DEL NIVEL 3, LA LUZ DE GRADAS DEL NIVEL 2 (E03).",
     "SALIDAS DE TV Y DATOS CON TUBERÍA INDEPENDIENTE DESDE EL PVD DEL NIVEL 1.",
@@ -175,7 +175,8 @@ cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + 
 H.titleblock(doc, psp, "E02", "ELECTRICIDAD",
              ["PLANTA ELÉCTRICA NIVEL 2.", "ILUMINACIÓN Y TOMACORRIENTES.", "VOZ Y DATOS.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="1:50")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:50")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

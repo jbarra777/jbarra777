@@ -18,7 +18,7 @@ from ezdxf.math import Vec2
 
 import cadlib as cl
 
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "A1_lote"
 NAME = f"SR-A1_LOTE_{REV}"
 
@@ -367,11 +367,11 @@ vals = {
     "CONT_5": "CUADRO DE ÁREAS Y COBERTURA.",
     "CONT_6": "NOTAS.",
     "ESCALAS": "INDICADAS",
-    "REV0_N": "0", "REV0_F": "06-10-2026", "REV0_D": "VERSIÓN DE TRABAJO PARA REVISIÓN",
-    "REV1_N": "1", "REV1_F": "06-10-2026", "REV1_D": "NOTA 2 TAPIA; PATIOS ACEPTADOS (NOTA 12)",
-    "REV2_N": "2", "REV2_F": "07-10-2026", "REV2_D": "REFERENCIA AL TANQUE SÉPTICO (S02)",
-    "ESTADO_1": "VERSIÓN DE TRABAJO",
-    "ESTADO_2": "NO APTA PARA CONSTRUCCIÓN NI TRÁMITE",
+    "REV0_N": "1", "REV0_F": "06-10-2026", "REV0_D": "NOTA 2 TAPIA; PATIOS ACEPTADOS (NOTA 12)",
+    "REV1_N": "2", "REV1_F": "07-10-2026", "REV1_D": "REFERENCIA AL TANQUE SÉPTICO (S02)",
+    "REV2_N": "3", "REV2_F": "07-10-2026", "REV2_D": "LISTA DEFINITIVA (22); PARA TRÁMITE",
+    "ESTADO_1": "PARA TRÁMITE",
+    "ESTADO_2": "CFIA Y MUNICIPALIDAD",
     "LUGAR": "COSTA RICA",
     "LAMINA": "A1",
     "FECHA": prj["fecha"],

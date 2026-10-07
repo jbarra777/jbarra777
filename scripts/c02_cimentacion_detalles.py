@@ -1,6 +1,6 @@
 """Lámina C02 - DETALLES DE CIMENTACIÓN: placas F1 y F2 (corte y planta), pedestal y pletina.
 
-Secciones de la referencia (RIVERGRAND C02) por indicación del usuario [PR]:
+Secciones de la referencia (RIVERGRAND C02) por indicación del usuario:
 placa 1,65 x 1,65 x 0,25 con malla #4 @20 cm; pedestal 0,30 x 0,30 x 0,80 con 4 #4 y
 estribos #3 @10 cm; tubo estructural 150 x 150 mm en 3,17 mm; pletina de unión 270 x 270 mm.
 F2 (lindero): pedestal y tubo a paño del lindero, como en la C01 (tubo en el muro de 0,15).
@@ -10,7 +10,7 @@ import math
 import cadlib as cl
 import hoja as H
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "C02_cimentacion_detalles"
 NAME = f"SR-C02_CIMENTACION_DETALLES_{REV}"
 
@@ -193,34 +193,33 @@ title(612.0, 466.0, "PLETINA DE UNIÓN", "Esc. 1:5")
 for key, ox, xp0 in (("S1", 0.0, (FB - PED) / 2), ("S2", 4.0, 0.0)):
     xc = ox + xp0 + PED / 2
     xr = tp(key, ox + FB, 0)[0] + 6.0
-    callout(key, (xc + 0.02, 0.20), (xr, None), "TUBO ESTRUCTURAL 150 x 150 mm EN 3,17 mm [PR]")
-    callout(key, (xc + 0.10, 0.006), (xr, None), "PLETINA PARA UNIÓN 270 x 270 mm [PR]", dy=4.0)
-    callout(key, (ox + xp0 + PED - 0.01, -0.30), (xr, None), "PEDESTAL 30 x 30 cm [PR]")
-    callout(key, (ox + xp0 + PED - 0.05, -0.50), (xr, None), "4 VARILLAS #4 [PR]")
-    callout(key, (ox + xp0 + 0.15, -0.66), (xr, None), "ESTRIBOS VARILLA #3 @10 cm [PR]")
-    callout(key, (ox + FB - 0.30, -(HP + TP) + RC), (xr, None), "MALLA CON VARILLAS #4 @20 cm [PR]", dy=-8.0)
+    callout(key, (xc + 0.02, 0.20), (xr, None), "TUBO ESTRUCTURAL 150 x 150 mm EN 3,17 mm")
+    callout(key, (xc + 0.10, 0.006), (xr, None), "PLETINA PARA UNIÓN 270 x 270 mm", dy=4.0)
+    callout(key, (ox + xp0 + PED - 0.01, -0.30), (xr, None), "PEDESTAL 30 x 30 cm")
+    callout(key, (ox + xp0 + PED - 0.05, -0.50), (xr, None), "4 VARILLAS #4")
+    callout(key, (ox + xp0 + 0.15, -0.66), (xr, None), "ESTRIBOS VARILLA #3 @10 cm")
+    callout(key, (ox + FB - 0.30, -(HP + TP) + RC), (xr, None), "MALLA CON VARILLAS #4 @20 cm", dy=-8.0)
 for key in ("P1", "P2"):
     xr = tp(key, 4.0 * (key == "P2") + FB, 0)[0] + 6.0
-    callout(key, (4.0 * (key == "P2") + 0.30, -4.0 + 0.30), (xr, 280.0), "MALLA CON VARILLAS #4 @20 cm [PR]")
+    callout(key, (4.0 * (key == "P2") + 0.30, -4.0 + 0.30), (xr, 280.0), "MALLA CON VARILLAS #4 @20 cm")
     callout(key, (4.0 * (key == "P2") + (FB / 2 if key == "P1" else 0.10), -4.0 + FB / 2 + 0.05),
-            (xr, 295.0), "TUBO 150 x 150 mm, PLETINA 270 x 270 mm Y PEDESTAL 30 x 30 cm [PR]")
-callout("PL", (QX + 0.03, QY + 0.03), (612.0, 557.0), "PERFORACIONES PARA PERNOS DE ANCLAJE (DIÁMETRO SEGÚN CÁLCULO, PD)", 1.8, 55.0)
+            (xr, 295.0), "TUBO 150 x 150 mm, PLETINA 270 x 270 mm Y PEDESTAL 30 x 30 cm")
+callout("PL", (QX + 0.03, QY + 0.03), (612.0, 557.0), "PERFORACIONES PARA PERNOS DE ANCLAJE (DIÁMETRO SEGÚN MEMORIA DE CÁLCULO)", 1.8, 55.0)
 
 X3, y = 510.0, 440.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA.",
     "UBICACIÓN DE LAS FUNDACIONES F1 Y F2 SEGÚN LÁMINA C01.",
     "F1: PLACA CENTRADA BAJO LAS COLUMNAS DEL EJE C. F2: PLACA EXCÉNTRICA EN LOS LINDEROS (EJES A "
     "Y D), CON PEDESTAL Y TUBO A PAÑO DEL LINDERO; NO INVADE EL PREDIO VECINO.",
     "PLACAS DE 1,65 x 1,65 x 0,25 m CON MALLA DE VARILLAS #4 @20 cm EN AMBAS DIRECCIONES Y GANCHOS "
-    "EN LOS EXTREMOS. RECUBRIMIENTO DE 5 cm EN ELEMENTOS COLADOS CONTRA EL TERRENO. [PR]",
-    "PEDESTAL DE 30 x 30 cm Y 0,80 m DE ALTO, 4 VARILLAS #4 CON PATA DE 25 cm Y ESTRIBOS #3 @10 cm. [PR]",
+    "EN LOS EXTREMOS. RECUBRIMIENTO DE 5 cm EN ELEMENTOS COLADOS CONTRA EL TERRENO.",
+    "PEDESTAL DE 30 x 30 cm Y 0,80 m DE ALTO, 4 VARILLAS #4 CON PATA DE 25 cm Y ESTRIBOS #3 @10 cm.",
     "COLUMNA: TUBO ESTRUCTURAL DE 150 x 150 mm EN 3,17 mm SOLDADO A PLETINA DE 270 x 270 mm ANCLADA "
-    "AL PEDESTAL. PERNOS Y SOLDADURA SEGÚN CÁLCULO (PD). [PR]",
-    "CAPACIDAD SOPORTANTE CONSIDERADA qadm = 12 t/m² [PR]; VERIFICAR CON ESTUDIO DE SUELOS.",
-    "MATERIALES Y ESPECIFICACIONES SEGÚN LÁMINA C06. LAS SECCIONES SON LAS DEL PROYECTO DE "
-    "REFERENCIA, POR INDICACIÓN DEL INGENIERO RESPONSABLE; NO SUSTITUYEN LA MEMORIA DE CÁLCULO.",
+    "AL PEDESTAL. PERNOS Y SOLDADURA SEGÚN MEMORIA DE CÁLCULO.",
+    "CAPACIDAD SOPORTANTE CONSIDERADA qadm = 12 t/m².",
+    "MATERIALES Y ESPECIFICACIONES SEGÚN LÁMINA C06.",
 ]
 cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.0, 190)
 
@@ -228,7 +227,8 @@ H.titleblock(doc, psp, "C02", "FUNDACIONES",
              ["DETALLES.", "CORTE Y PLANTA F1 Y F2.", "SECCIÓN DE PEDESTAL.", "PLETINA DE UNIÓN.",
               "NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "REFERENCIA A LÁMINA C06")], escalas="INDICADAS")
+              ("1", "06-10-2026", "REFERENCIA A LÁMINA C06"),
+              ("2", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

@@ -1,6 +1,6 @@
 """Lámina E04 - DIAGRAMA UNIFILAR, CUADROS DE TABLEROS, NOTAS ELÉCTRICAS Y SIMBOLOGÍA.
 
-Valores de la referencia (RIVERGRAND EL08-EL10) por indicación del usuario [PR]: cargas por
+Valores de la referencia (RIVERGRAND EL08-EL10) por indicación del usuario: cargas por
 tipo de circuito, disyuntores, conductores THHN, distancias, tuberías, alimentadores (TP->TN2
 como PB->TN1; TP->TN3 como PB->TN2), acometida (200 A, 3/0), factores de demanda y de potencia.
 Lista de circuitos de esta vivienda según E01-E03 aprobadas. Caída de tensión con el mismo
@@ -11,13 +11,13 @@ import cadlib as cl
 import elec as EL
 import hoja as H
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "E04_tableros"
 NAME = f"SR-E04_TABLEROS_{REV}"
 LAYOUT = "E04-TABLEROS"
 
 R = {"12": 0.00624, "10": 0.00381, "8": 0.00240, "4": 0.00094, "2": 0.000596, "3/0": 0.00025}
-FD = {"TP": 0.70, "TN2": 0.80, "TN3": 0.80}                     # factor de demanda [PR]
+FD = {"TP": 0.70, "TN2": 0.80, "TN3": 0.80}                     # factor de demanda
 FP = 0.95
 
 
@@ -115,33 +115,33 @@ L((X0, Y0), (X0, 540.0))
 L((X0 - 4, Y0 + 3), (X0, Y0))
 L((X0 + 4, Y0 + 3), (X0, Y0))
 M("VIENE DE LA RED DE SUMINISTRO ELÉCTRICO (EMPRESA DISTRIBUIDORA)", (X0 - 58, Y0 + 4), 52)
-M("CU 3 #3/0 AWG THHN\\PC: 2\" IMC [PR]", (X0 + 4, 552.0), 45)
+M("CU 3 #3/0 AWG THHN\\PC: 2\" IMC", (X0 + 4, 552.0), 45)
 box(X0 - 10, 500.0, X0 + 10, 540.0)
 EL.sym(psp, "M", X0, 528.0, 3.0)
 psp.add_arc((X0, 510.0), 3.0, 270, 90, dxfattribs={"layer": "E-CIRC"})
 L((X0, 516.0), (X0, 513.0))
 L((X0, 507.0), (X0, 503.0))
-M("BASE PARA MEDIDOR Y MEDIDOR (SEGÚN EMPRESA DISTRIBUIDORA, PD)", (X0 - 62, 534.0), 50)
-M("INTERRUPTOR PRINCIPAL 200 A, CI 18 kA [PR]", (X0 + 13, 512.0), 48)
+M("BASE PARA MEDIDOR Y MEDIDOR (SEGÚN EMPRESA DISTRIBUIDORA)", (X0 - 62, 534.0), 50)
+M("INTERRUPTOR PRINCIPAL 200 A, CI 18 kA", (X0 + 13, 512.0), 48)
 # tierra
 L((X0 - 6, 500.0), (X0 - 6, 470.0))
 for i, w in enumerate((8, 5.5, 3)):
     L((X0 - 6 - w / 2, 470.0 - i * 1.5), (X0 - 6 + w / 2, 470.0 - i * 1.5))
 M("PUESTA A TIERRA: CU 1 #6 AWG THHN, C: 1/2\" PVC. DOS ELECTRODOS DE PUESTA A TIERRA SEPARADOS "
   "3 m ENTRE SÍ, INTERCONECTADOS CON CABLE #6 AWG DESNUDO, ENTERRADOS A UNA PROFUNDIDAD NO "
-  "MENOR A 3,05 m EN POSICIÓN VERTICAL. [PR]", (35.0, 492.0), 52, 1.7)
+  "MENOR A 3,05 m EN POSICIÓN VERTICAL.", (35.0, 492.0), 52, 1.7)
 # acometida subterránea al TP
 L((X0 + 2, 500.0), (X0 + 2, 478.0))
 box(X0 - 2, 474.0, X0 + 6, 478.0, "E-CIRC")
 L((X0 + 6, 476.0), (205.0, 476.0))
 L((205.0, 476.0), (205.0, 500.0))
-M("TRANSICIÓN AERO-SUBTERRÁNEA [PR]", (X0 + 8, 472.0), 40, 1.7)
+M("TRANSICIÓN AERO-SUBTERRÁNEA", (X0 + 8, 472.0), 40, 1.7)
 M("CU 2 #3/0 (F) + 1 #3/0 (N) + 1 #6 (T) AWG THHN\\PC: 2\" PVC, TRAMO SUBTERRÁNEO A 45 cm "
-  "MÍNIMO SOBRE CAMA DE LASTRE DE 5 cm [PR]", (X0 + 40, 486.0), 62, 1.7)
+  "MÍNIMO SOBRE CAMA DE LASTRE DE 5 cm", (X0 + 40, 486.0), 62, 1.7)
 EL.sym(psp, "TAB", 205.0, 505.0, 2.4)
 T("TP (NIVEL 1)", (215.0, 505.0), 2.2)
-for xs, lab, txt in ((255.0, "TN2 (NIVEL 2)", "CU 2 #2 (F) + 1 #2 (N) + 1 #6 (T)\\PC: 1 1/4\" PVC [PR]"),
-                     (300.0, "TN3 (NIVEL 3)", "CU 2 #4 (F) + 1 #4 (N) + 1 #8 (T)\\PC: 1 1/4\" PVC [PR]")):
+for xs, lab, txt in ((255.0, "TN2 (NIVEL 2)", "CU 2 #2 (F) + 1 #2 (N) + 1 #6 (T)\\PC: 1 1/4\" PVC"),
+                     (300.0, "TN3 (NIVEL 3)", "CU 2 #4 (F) + 1 #4 (N) + 1 #8 (T)\\PC: 1 1/4\" PVC")):
     L((205.0, 508.0), (205.0, 515.0 if xs == 255.0 else 520.0))
     L((205.0, 515.0 if xs == 255.0 else 520.0), (xs, 515.0 if xs == 255.0 else 520.0))
     L((xs, 515.0 if xs == 255.0 else 520.0), (xs, 535.0 if xs == 255.0 else 550.0))
@@ -160,13 +160,13 @@ L((373.0, 518.0), (430.0, 518.0))
 L((430.0, 518.0), (430.0, 535.0))
 EL.sym(psp, "TVD", 430.0, 538.0, 2.4)
 T("PVD (NIVEL 1)", (424.0, 543.0), 2.0)
-M("PREVISTA LÍNEA TELEFÓNICA, CATV / FIBRA ÓPTICA: 2 C 1\" PVC [PR]", (376.0, 512.0), 62, 1.7)
+M("PREVISTA LÍNEA TELEFÓNICA, CATV / FIBRA ÓPTICA: 2 C 1\" PVC", (376.0, 512.0), 62, 1.7)
 M("DEL PVD A LAS SALIDAS DE TV Y DATOS DE CADA NIVEL (E01-E03) EN TUBERÍA INDEPENDIENTE DE LA "
   "ELÉCTRICA.", (360.0, 500.0), 95, 1.7)
 
 # ================================================================ tabla resumen
 XR, YR = 500.0, 575.0
-cl.text(psp, "TABLA RESUMEN DEL PROYECTO [PR]", (XR, YR), 3.5, "A-TITULOS", "TOP_LEFT")
+cl.text(psp, "TABLA RESUMEN DEL PROYECTO", (XR, YR), 3.5, "A-TITULOS", "TOP_LEFT")
 v_tp = ct(TP_dem, 240, ACOM["L"], "3/0")
 c2, c3 = TP[3], TP[4]
 v_t2 = ct(c2[9], 240, c2[7], "2")
@@ -220,26 +220,25 @@ def cuadro(x, y, key, titulo, circs, info):
 
 XT = 35.0
 y = 420.0
-y = cuadro(XT, y, "TP", "TABLERO PRINCIPAL TP (NIVEL 1, VESTÍBULO) [PR]", TP,
+y = cuadro(XT, y, "TP", "TABLERO PRINCIPAL TP (NIVEL 1, VESTÍBULO)", TP,
            "TABLERO MONOFÁSICO 120/240 V, BARRAS DE TIERRA, NEUTRO SÓLIDO AL 100 %, BARRAS PRINCIPALES "
            "DE COBRE. EMPOTRADO. BARRAS 225 A, 24 POLOS, INTERRUPTOR PRINCIPAL 200 A, CI 200 A. "
            f"CARGA TOTAL {fmt(TP_tot / 1000)} kVA; DEMANDADA {fmt(TP_dem / 1000)} kVA.")
-y = cuadro(XT, y - 6.0, "TN2", "SUBTABLERO TN2 (NIVEL 2) [PR]", TN2,
+y = cuadro(XT, y - 6.0, "TN2", "SUBTABLERO TN2 (NIVEL 2)", TN2,
            "TABLERO MONOFÁSICO 120/240 V, BARRAS DE TIERRA, NEUTRO SÓLIDO AL 100 %. EMPOTRADO. BARRAS "
            "125 A, 18 POLOS, PRINCIPAL 100 A (SUBALIMENTADO). "
            f"CARGA TOTAL {fmt(T2_tot / 1000)} kVA; DEMANDADA {fmt(T2_dem / 1000)} kVA.")
-y = cuadro(XT, y - 6.0, "TN3", "SUBTABLERO TN3 (NIVEL 3) [PR]", TN3,
+y = cuadro(XT, y - 6.0, "TN3", "SUBTABLERO TN3 (NIVEL 3)", TN3,
            "TABLERO MONOFÁSICO 120/240 V, BARRAS DE TIERRA, NEUTRO SÓLIDO AL 100 %. EMPOTRADO. BARRAS "
            "125 A, 18 POLOS, PRINCIPAL 100 A (SUBALIMENTADO). "
            f"CARGA TOTAL {fmt(T3_tot / 1000)} kVA; DEMANDADA {fmt(T3_dem / 1000)} kVA.")
 M("CONDUCTORES THHN DE COBRE (AWG). CAÍDA DE TENSIÓN %CT = 2 L I R / V CON LA RESISTENCIA POR "
-  "CONDUCTOR DEL CRITERIO DE LA REFERENCIA. CARGAS POR TIPO DE CIRCUITO, DISYUNTORES, DISTANCIAS Y "
-  "TUBERÍAS DE LA REFERENCIA [PR]: A VERIFICAR POR EL PROFESIONAL ELÉCTRICO.", (XT, y - 3.0), 245, 1.7)
+  "CONDUCTOR DE CADA CALIBRE.", (XT, y - 3.0), 245, 1.7)
 
 # ================================================================ notas y simbología
 XN, W2 = 300.0, 200.0
 y = 420.0
-cl.text(psp, "NOTAS ELÉCTRICAS [PR]", (XN, y), 3.5, "A-TITULOS", "TOP_LEFT")
+cl.text(psp, "NOTAS ELÉCTRICAS", (XN, y), 3.5, "A-TITULOS", "TOP_LEFT")
 y -= 7.0
 
 
@@ -302,14 +301,13 @@ yS = min(y, y2) - 2.0
 EL.simbologia(psp, XN, yS, w_txt=150.0, row_h=5.6)
 cl.notes_block(psp, XN + 180.0, yS, [
     "LÁMINAS RELACIONADAS: E01 (NIVEL 1), E02 (NIVEL 2) Y E03 (NIVEL 3).",
-    "VALORES DE CARGA, PROTECCIONES Y CONDUCTORES TOMADOS DEL PROYECTO DE REFERENCIA POR "
-    "INDICACIÓN DEL INGENIERO RESPONSABLE; DEBEN SER VERIFICADOS POR EL PROFESIONAL ELÉCTRICO.",
     cl.NOTA_PR], 1.9, 225.0)
 
 H.titleblock(doc, psp, "E04", "ELECTRICIDAD",
              ["DIAGRAMA UNIFILAR.", "VOZ Y DATOS.", "CUADROS DE TABLEROS.", "NOTAS ELÉCTRICAS.",
               "SIMBOLOGÍA.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="S/E")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="S/E")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

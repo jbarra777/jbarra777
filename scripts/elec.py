@@ -1,6 +1,6 @@
 """Simbología eléctrica común (láminas E01-E04).
 
-Símbolos según la simbología de la referencia (RIVERGRAND EL08) [PR]. Cada símbolo se dibuja
+Símbolos según la simbología de la referencia (RIVERGRAND EL08). Cada símbolo se dibuja
 alrededor de su centro (cx, cy) en coordenadas de dibujo con tamaño u (radio base):
 u = 0.13 m en model space de las plantas 1:50, u = 2.6 mm en paper space (cuadros).
 """
@@ -125,17 +125,17 @@ class Plan:
 
 
 # ---------------------------------------------------------------- cuadro de simbología (paper)
-SIMB = [("M", "MEDIDOR ELÉCTRICO A 1,90 m S.N.P.T. [PR]"),
+SIMB = [("M", "MEDIDOR ELÉCTRICO A 1,90 m S.N.P.T."),
         ("TAB", "TABLERO DE DISTRIBUCIÓN ELÉCTRICA"),
         ("TVD", "TABLERO DE DISTRIBUCIÓN DE VOZ Y DATOS"),
         ("LUZ", "LUMINARIA EN SUPERFICIE DE CIELO"),
         ("LUZE", "LUMINARIA EMPOTRADA EN CIELO DE GYPSUM"),
         ("APL", "LUMINARIA EN PARED (APLIQUE)"),
-        ("S", "APAGADOR SENCILLO 15 A, 120 V, A 1,30 m S.N.P.T. [PR]"),
-        ("S3", "APAGADOR DE TRES VÍAS 20 A, 120 V, A 1,30 m S.N.P.T. [PR]"),
-        ("TC", "TOMACORRIENTE DOBLE POLARIZADO 120 V, 20 A, A 0,30 m S.N.P.T. [PR]"),
-        ("TC150", "TOMACORRIENTE DOBLE POLARIZADO 120 V, 20 A, A 1,50 m S.N.P.T. [PR]"),
-        ("GFCI", "TOMACORRIENTE DOBLE 120 V, 20 A, CON PROTECCIÓN GFCI [PR]"),
+        ("S", "APAGADOR SENCILLO 15 A, 120 V, A 1,30 m S.N.P.T."),
+        ("S3", "APAGADOR DE TRES VÍAS 20 A, 120 V, A 1,30 m S.N.P.T."),
+        ("TC", "TOMACORRIENTE DOBLE POLARIZADO 120 V, 20 A, A 0,30 m S.N.P.T."),
+        ("TC150", "TOMACORRIENTE DOBLE POLARIZADO 120 V, 20 A, A 1,50 m S.N.P.T."),
+        ("GFCI", "TOMACORRIENTE DOBLE 120 V, 20 A, CON PROTECCIÓN GFCI"),
         ("T240", "SALIDA ESPECIAL 240 V (VER CUADRO DE TABLEROS, E04)"),
         ("TV", "SALIDA DE TELEVISIÓN"),
         ("DAT", "SALIDA DE VOZ Y DATOS")]

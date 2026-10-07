@@ -12,7 +12,7 @@ import cadlib as cl
 import planta as pl
 from planta import P
 
-REV = "rev4"
+REV = "rev5"
 OUT = cl.ROOT / "planos" / "A2_nivel1"
 NAME = f"SR-A2_NIVEL1_{REV}"
 
@@ -320,10 +320,10 @@ vals = {
     "CONT_3": "CUADRO DE ÁREAS.", "CONT_4": "PORCENTAJE DE COBERTURA.", "CONT_5": "NOTAS.",
     "CONT_6": "",
     "ESCALAS": "1:50 / INDICADAS",
-    "REV0_N": "2", "REV0_F": "06-10-2026", "REV0_D": "SIN TAPIAS LATERALES; MUROS DE COLINDANCIA N1",
-    "REV1_N": "3", "REV1_F": "06-10-2026", "REV1_D": "VESTÍBULO DE ESCALERA Y PUERTA PRINCIPAL",
-    "REV2_N": "4", "REV2_F": "07-10-2026", "REV2_D": "REFERENCIAS A C01-C06 Y S01-S03",
-    "ESTADO_1": "VERSIÓN DE TRABAJO", "ESTADO_2": "NO APTA PARA CONSTRUCCIÓN NI TRÁMITE",
+    "REV0_N": "3", "REV0_F": "06-10-2026", "REV0_D": "VESTÍBULO DE ESCALERA Y PUERTA PRINCIPAL",
+    "REV1_N": "4", "REV1_F": "07-10-2026", "REV1_D": "REFERENCIAS A C01-C06 Y S01-S03",
+    "REV2_N": "5", "REV2_F": "07-10-2026", "REV2_D": "LISTA DEFINITIVA (22); PARA TRÁMITE",
+    "ESTADO_1": "PARA TRÁMITE", "ESTADO_2": "CFIA Y MUNICIPALIDAD",
     "LUGAR": "COSTA RICA", "LAMINA": "A2", "FECHA": prj["fecha"], "TOTAL": prj["total_laminas"],
 }
 cl.insert_titleblock(doc, psp, vals)

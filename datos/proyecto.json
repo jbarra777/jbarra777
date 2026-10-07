@@ -1,22 +1,77 @@
 {
   "proyecto": "VIVIENDA UNIFAMILIAR",
-  "ubicacion": ["DISTRITO 03 SANTIAGO, CANTÓN 05 SAN RAFAEL,", "PROVINCIA 04 HEREDIA, COSTA RICA."],
+  "ubicacion": [
+    "DISTRITO 03 SANTIAGO, CANTÓN 05 SAN RAFAEL,",
+    "PROVINCIA 04 HEREDIA, COSTA RICA."
+  ],
   "empresa": "CivilCon Diseño y Construcción SRLTDA",
   "empresa_ced": "Céd. Jurídica: 3-102-762712",
-  "profesionales": ["DIRECTOR TÉCNICO:", "Steven Viales (Civil) IC-40759", "David Barrantes (Electricidad) IE-27499"],
-  "registro": ["FOLIO REAL: 4-041200-000", "PLANO CATASTRADO: 4-57389-2023", "ÁREA SEGÚN CATASTRO: 256 m²"],
+  "profesionales": [
+    "DIRECTOR TÉCNICO:",
+    "Steven Viales (Civil) IC-40759",
+    "David Barrantes (Electricidad) IE-27499"
+  ],
+  "registro": [
+    "FOLIO REAL: 4-041200-000",
+    "PLANO CATASTRADO: 4-57389-2023",
+    "ÁREA SEGÚN CATASTRO: 256 m²"
+  ],
   "fecha": "OCT 2026",
-  "total_laminas": "--",
+  "total_laminas": "22",
   "geometria_m": {
     "comentario": "Marco local: x hacia el este a lo largo del frente (V1->V3), y hacia el sur a lo largo del lindero V1-V5. Origen en V1.",
-    "envolvente_x": [0.0, 9.0],
-    "envolvente_y": [2.06, 25.18],
-    "cadena_y": {"f0": 2.06, "p1a": 7.76, "p1b": 10.26, "sba": 16.98, "sbb": 19.48, "r0": 25.18},
-    "muro_ext": 0.15, "muro_int": 0.12,
-    "pasillo_x": [0.15, 1.35],
-    "patio_P1": {"x": [1.47, 8.85], "y": [7.76, 10.26]},
-    "patio_P2": {"x": [4.81, 8.85], "y": [16.98, 19.48]},
-    "escalera": {"x": [1.35, 4.69], "y": [16.98, 19.48]},
-    "piso_a_piso": 3.00
+    "envolvente_x": [
+      0.0,
+      9.0
+    ],
+    "envolvente_y": [
+      2.06,
+      25.18
+    ],
+    "cadena_y": {
+      "f0": 2.06,
+      "p1a": 7.76,
+      "p1b": 10.26,
+      "sba": 16.98,
+      "sbb": 19.48,
+      "r0": 25.18
+    },
+    "muro_ext": 0.15,
+    "muro_int": 0.12,
+    "pasillo_x": [
+      0.15,
+      1.35
+    ],
+    "patio_P1": {
+      "x": [
+        1.47,
+        8.85
+      ],
+      "y": [
+        7.76,
+        10.26
+      ]
+    },
+    "patio_P2": {
+      "x": [
+        4.81,
+        8.85
+      ],
+      "y": [
+        16.98,
+        19.48
+      ]
+    },
+    "escalera": {
+      "x": [
+        1.35,
+        4.69
+      ],
+      "y": [
+        16.98,
+        19.48
+      ]
+    },
+    "piso_a_piso": 3.0
   }
 }

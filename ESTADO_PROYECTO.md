@@ -1,57 +1,46 @@
 # ESTADO DEL PROYECTO — dónde estamos y qué sigue
 
-*Actualizado: 06-10-2026.*
+*Actualizado: 07-10-2026.*
 
 ## Resumen
 - **Proyecto:** vivienda unifamiliar de 3 niveles en un lote de 9.00 × 28.5 m (256 m²) en San Rafael de Heredia.
-  - Nivel 1: 3 estacionamientos y jardín seco.
-  - Nivel 2: suite, cocina-comedor y sala familiar.
-  - Nivel 3: tres suites.
-- **Etapa:** juego de planos para el CFIA, en la parte de arquitectura.
-- **Avance:** 5 láminas desarrolladas, A1 a A5. El número total de láminas está **PENDIENTE DE DEFINIR**; la referencia no lo define (ver `INDICE_PLANOS.md`).
+- **Etapa:** juego completo de **22 láminas** (lista definitiva, DECISIONES §18), emitido **PARA TRÁMITE** el 07-10-2026.
 
 ## Situación actual
-| Lámina | Estado | Motivo |
+| Lámina | Estado | Revisión vigente |
 |---|---|---|
-| A1 | APROBADA | rev2 |
-| A2 | APROBADA | rev4 |
-| A3 | APROBADA | rev5 |
-| A4 | APROBADA | rev5 |
-| A5 | APROBADA | rev7 |
-| A6 | APROBADA | rev5 |
-| A7 | APROBADA | rev3 |
-| A11 | APROBADA | rev1 |
-| E01 | APROBADA | rev1 (sin mención a secadora) |
-| E02 | APROBADA | rev0 |
-| E03 | APROBADA | rev0 |
-| E04 | APROBADA | rev0 |
-| E05 | APROBADA | rev0 |
-| C01 | APROBADA | rev1 |
-| C02 | APROBADA | rev1 |
-| C03 | APROBADA | rev2 |
-| C04 | APROBADA | rev2 |
-| C05 | APROBADA | rev2 |
-| C06 | APROBADA | rev1 |
-| S01 | APROBADA | rev1 |
-| S02 | APROBADA | rev1 |
-| S03 | APROBADA | rev0 |
+| A1 | PARA TRÁMITE (por aprobar) | rev3 |
+| A2 | PARA TRÁMITE (por aprobar) | rev5 |
+| A3 | PARA TRÁMITE (por aprobar) | rev6 |
+| A4 | PARA TRÁMITE (por aprobar) | rev6 |
+| A5 | PARA TRÁMITE (por aprobar) | rev8 |
+| A6 | PARA TRÁMITE (por aprobar) | rev6 |
+| A7 | PARA TRÁMITE (por aprobar) | rev4 |
+| A8 | PARA TRÁMITE (por aprobar) | rev2 |
+| C01 | PARA TRÁMITE (por aprobar) | rev2 |
+| C02 | PARA TRÁMITE (por aprobar) | rev2 |
+| C03 | PARA TRÁMITE (por aprobar) | rev3 |
+| C04 | PARA TRÁMITE (por aprobar) | rev3 |
+| C05 | PARA TRÁMITE (por aprobar) | rev3 |
+| C06 | PARA TRÁMITE (por aprobar) | rev2 |
+| E01 | PARA TRÁMITE (por aprobar) | rev2 |
+| E02 | PARA TRÁMITE (por aprobar) | rev1 |
+| E03 | PARA TRÁMITE (por aprobar) | rev1 |
+| E04 | PARA TRÁMITE (por aprobar) | rev1 |
+| E05 | PARA TRÁMITE (por aprobar) | rev1 |
+| S01 | PARA TRÁMITE (por aprobar) | rev2 |
+| S02 | PARA TRÁMITE (por aprobar) | rev2 |
+| S03 | PARA TRÁMITE (por aprobar) | rev1 |
 
-- **Última entrega:** corrección de referencias aprobada (07-10-2026). Juegos A, C, E y S aprobados en versión de trabajo.
-- **Siguiente paso:** a indicación del usuario. Pendientes generales abajo (lista definitiva y total de láminas, PD, privacidad del repositorio).
+- **Última entrega:** emisión para trámite de las 22 láminas (lista definitiva, sin [PR] ni PD).
+- **Siguiente paso:** aprobación del usuario de la emisión.
 
 ## Decisiones que necesitan respuesta del usuario
-- Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).
+- Ninguna.
 
 ## Otros pendientes
-- **Lista y número definitivo de láminas.** Evaluar las combinaciones y si las aguas pluviales llevan lámina propia.
-- **Notas [PR]** 1 (medidas) y 7 (canoas con malla): esperan la revisión del usuario. Ya hay canoas confirmadas.
-- **Estructura:** sistema estructural, cimentación, entrepisos, secciones (las columnas de 0.30 son PD) y la viga del eje 1 sin C1.
-- **Sanitarios:** prueba de infiltración y cálculo del tanque; diámetros pluviales (PD); modelo del extractor.
-- **Eléctricos:** definidos los criterios (DECISIONES §15); en desarrollo.
-- **Acabados.**
-- **Confirmaciones municipales:** retiros con alineamiento y uso de suelo; normativa vigente no verificada.
-- **Lavandería:** pospuesta.
-- **Privacidad del repositorio:** `jbarra777/jbarra777` es **público** y contiene el folio real, las coordenadas y los profesionales. Sin respuesta del usuario.
+- **Privacidad del repositorio:** el usuario pidió hacerlo privado (07-10-2026). Claude no tiene permiso para cambiar la visibilidad; lo hace el usuario en GitHub (Settings → General → Danger Zone → Change visibility).
+- **Lavandería:** pospuesta (sin lámina).
 
 ## ARCHIVOS FUENTE CRÍTICOS
 **Almacenamiento temporal:** carpeta de cargas de la sesión inicial (`/root/.claude/uploads/86a7047e-…/`) y su copia de trabajo (`/tmp/claude-0/…/scratchpad/`, `/tmp/claude-0/…/images/`). **Se pierde al cerrar o reiniciar el contenedor.**

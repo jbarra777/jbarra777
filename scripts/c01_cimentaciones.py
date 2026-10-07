@@ -1,7 +1,7 @@
 """Lámina C01 - PLANTA DE CIMENTACIONES y detalle de viga riostra.
 
 Secciones tomadas de la referencia (RIVERGRAND C01/C02/C03) por indicación expresa del usuario
-(ingeniero responsable): se marcan [PR]. Ubicación propia de esta vivienda: columnas C1 en
+(ingeniero responsable): se marcan. Ubicación propia de esta vivienda: columnas C1 en
 los ejes A y D (ejes 1 a 6) y en el eje C (ejes 2 a 6; sin C1 en el eje 1); placas F1
 centradas (eje C) y F2 excéntricas (linderos A y D); vigas riostra VA1 en ejes longitudinales
 y transversales. Columnas del eje C: tubo forrado a 0.30 x 0.30 (plantas aprobadas).
@@ -12,14 +12,14 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "C01_cimentaciones"
 NAME = f"SR-C01_CIMENTACIONES_{REV}"
 
 W = H.W
-FB = 1.65                      # placa 1,65 x 1,65 [PR]
-TUBO, PED = 0.15, 0.30         # tubo 6x6" y pedestal 0,30 [PR]
-VA = 0.20                      # viga riostra 0,20 x 0,40 [PR]
+FB = 1.65                      # placa 1,65 x 1,65
+TUBO, PED = 0.15, 0.30         # tubo 6x6" y pedestal 0,30
+VA = 0.20                      # viga riostra 0,20 x 0,40
 Y_LP = H.Y_LP
 YA = H.EJES_Y                  # ejes 1..6
 XA, XC, XD = H.EJES_X["A"], H.EJES_X["C"], H.EJES_X["D"]
@@ -67,12 +67,12 @@ for x0, x1, ya, yb in ((0.0, VA, ys[0], ys[-1]), (W - VA, W, ys[0], ys[-1]),
     rect(x0, ya, x1, yb, "E-RIOSTRA")
 for k, y in YA.items():
     rect(0.0, y - VA / 2, W, y + VA / 2, "E-RIOSTRA")
-rect(0.0, Y_LP - VA, W, Y_LP, "E-RIOSTRA")                                    # tapia posterior (PD)
+rect(0.0, Y_LP - VA, W, Y_LP, "E-RIOSTRA")                                    # tapia posterior
 for y in (5.0, 13.6, 22.3):
     pl.text(msp, "VA1", 0.42, y, 0.13, "E-TXT", rot=0)
     pl.text(msp, "VA1", W - 0.42, y, 0.13, "E-TXT", rot=0)
 pl.text(msp, "VA1", XC + 0.35, 13.6, 0.13, "E-TXT")
-pl.text(msp, "VA1 (CIMIENTO DE TAPIA POSTERIOR, PD)", 4.5, Y_LP - 0.40, 0.12, "E-TXT", rot=90)
+pl.text(msp, "VA1 (CIMIENTO DE TAPIA POSTERIOR)", 4.5, Y_LP - 0.40, 0.12, "E-TXT", rot=90)
 pl.text(msp, "SIN COLUMNA EN EL EJE C (PORTÓN)", XC, YA["1"] + 0.55, 0.11, "E-TXT")
 
 # ---------------------------------------------------------------- ejes, cotas y rótulos
@@ -123,7 +123,7 @@ v = psp.add_viewport(center=(80.0, 150.0), size=(70.0, 75.0), view_center_point=
 v.dxf.flags = v.dxf.flags | 16384
 cl.text(psp, "DETALLE DE VIGA RIOSTRA VA1", (35.0, 105.0), 4.0, "A-TITULOS", "TOP_LEFT")
 cl.text(psp, "Esc. 1:10", (35.0, 99.0), 2.5, "A-TEXTO", "TOP_LEFT")
-cl.mtext(psp, "VIGA VA1: 0,20 x 0,40\\P6 VARILLAS #4\\PAROS VARILLA #3 @20cm\\PRECUBRIMIENTO 4cm [PR]",
+cl.mtext(psp, "VIGA VA1: 0,20 x 0,40\\P6 VARILLAS #4\\PAROS VARILLA #3 @20cm\\PRECUBRIMIENTO 4cm",
          (120.0, 175.0), 2.2, 60.0, layer="A-TEXTO", attach=1)
 
 X2 = 240.0
@@ -136,33 +136,30 @@ rows = [["TIPO", "PLACA (m)", "ESPESOR", "REFUERZO", "PEDESTAL", "CANT."],
         ["F2", "1,65 x 1,65 EXCÉNTRICA", "0,25", "MALLA #4 @20cm", "0,30x0,30x0,80", str(nF2)]]
 y = cl.table(psp, X2, y - 8, [14, 52, 20, 40, 42, 16], rows, row_h=6.0, h=2.2)
 cl.text(psp, "PEDESTAL: 4 VARILLAS #4, ESTRIBOS #3 @10cm; PLETINA DE UNIÓN 270 x 270 mm. "
-        "DETALLES EN LÁMINA C02. [PR]", (X2, y - 2.0), 2.0, "A-TEXTO", "TOP_LEFT")
+        "DETALLES EN LÁMINA C02.", (X2, y - 2.0), 2.0, "A-TEXTO", "TOP_LEFT")
 y -= 12
 cl.text(psp, "SIMBOLOGÍA ELEMENTOS PORTANTES", (X2 + 100, y), 4.0, "A-TITULOS", "TOP_CENTER")
-rows = [["C1", "COLUMNA - TUBO DE ACERO 6x6\" EN 3,17mm (EJE C FORRADA A 0,30 x 0,30) [PR]"],
-        ["VA1", "VIGA RIOSTRA DE CONCRETO 0,20 x 0,40, 6 #4, AROS #3 @20cm [PR]"],
-        ["F1 / F2", "PLACA AISLADA CENTRADA / EXCÉNTRICA (VER C02) [PR]"]]
+rows = [["C1", "COLUMNA - TUBO DE ACERO 6x6\" EN 3,17mm (EJE C FORRADA A 0,30 x 0,30)"],
+        ["VA1", "VIGA RIOSTRA DE CONCRETO 0,20 x 0,40, 6 #4, AROS #3 @20cm"],
+        ["F1 / F2", "PLACA AISLADA CENTRADA / EXCÉNTRICA (VER C02)"]]
 y = cl.table(psp, X2, y - 8, [24, 160], rows, row_h=6.5, h=2.2, aligns=["MIDDLE_CENTER", "MIDDLE_LEFT"])
 
 X3 = 455.0
 y = 262.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
-    "CAPACIDAD SOPORTANTE ADMISIBLE DEL SUELO CONSIDERADA: qadm = 12 t/m² [PR]. DEBE "
-    "VERIFICARSE CON ESTUDIO DE SUELOS ANTES DE CONSTRUIR.",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA.",
+    "CAPACIDAD SOPORTANTE ADMISIBLE DEL SUELO CONSIDERADA: qadm = 12 t/m².",
     "LAS PLACAS DEBEN APOYARSE SOBRE SUELO NATURAL PREPARADO ADECUADAMENTE. NIVEL DE DESPLANTE "
-    "SEGÚN DETALLE C02 (PEDESTAL 0,80 m + PLACA 0,25 m). [PR]",
+    "SEGÚN DETALLE C02 (PEDESTAL 0,80 m + PLACA 0,25 m).",
     "COLUMNAS C1 EN LOS EJES A Y D (EJES 1 A 6) Y EN EL EJE C (EJES 2 A 6). SIN COLUMNA EN EL EJE C "
     "DEL EJE 1 PARA NO OBSTRUIR EL PORTÓN (LA C1 DE LOS NIVELES 2 Y 3 EN ESE PUNTO APOYA EN LA VIGA "
     "DE TRANSFERENCIA VT-1, VER C05). LAS PLACAS DE LINDERO (F2) SON EXCÉNTRICAS Y NO "
     "INVADEN EL PREDIO VECINO.",
     "VIGAS RIOSTRA VA1 EN LOS EJES A, C Y D Y EN LOS EJES 1 A 6. LOS MUROS DE LINDERO Y EL FRENTE "
-    "DEL NIVEL 1 (MAMPOSTERÍA) APOYAN SOBRE LAS VA1. CIMIENTO DE LA TAPIA POSTERIOR: VA1 (PD).",
+    "DEL NIVEL 1 (MAMPOSTERÍA) APOYAN SOBRE LAS VA1. CIMIENTO DE LA TAPIA POSTERIOR: VA1.",
     "CONTRAPISO DE 0,10 m EN ESTACIONAMIENTOS, PASILLO, VESTÍBULO Y GRADAS (VER A2 Y A6).",
-    "MATERIALES, RECUBRIMIENTOS Y ESPECIFICACIONES SEGÚN LÁMINA C06. [PR]",
-    "LAS SECCIONES DE ESTA LÁMINA SON LAS DEL PROYECTO DE REFERENCIA, POR INDICACIÓN DEL "
-    "INGENIERO RESPONSABLE; NO SUSTITUYEN LA MEMORIA DE CÁLCULO.",
+    "MATERIALES, RECUBRIMIENTOS Y ESPECIFICACIONES SEGÚN LÁMINA C06.",
 ]
 cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.1, 250)
 
@@ -170,7 +167,8 @@ H.titleblock(doc, psp, "C01", "FUNDACIONES",
              ["PLANTA DE CIMENTACIONES.", "DETALLE DE VIGA RIOSTRA.", "CUADRO DE CIMENTACIONES.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "REFERENCIA A C06; NOTA C1 EJE C-1 SOBRE VT-1")], escalas="1:50 / INDICADAS")
+              ("1", "06-10-2026", "REFERENCIA A C06; NOTA C1 EJE C-1 SOBRE VT-1"),
+              ("2", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:50 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

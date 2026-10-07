@@ -1,9 +1,9 @@
 """Lámina E01 - PLANTA ELÉCTRICA NIVEL 1: iluminación, tomacorrientes y voz/datos.
 
 Base: planta A2 rev3 aprobada (muros, puertas, escalera, ejes, columnas). Simbología, alturas
-de montaje y notas de la referencia (RIVERGRAND EL01-EL08) [PR]. Esquema de tableros del
+de montaje y notas de la referencia (RIVERGRAND EL01-EL08). Esquema de tableros del
 usuario: medidor en el frente, tablero principal TP en el vestíbulo del N1 y subtableros TN2 y
-TN3. Circuitos del N1 en el TP. Conductores y disyuntores de la referencia [PR] (ver E04).
+TN3. Circuitos del N1 en el TP. Conductores y disyuntores de la referencia (ver E04).
 """
 import ezdxf
 
@@ -12,11 +12,11 @@ import elec as EL
 import hoja as H
 import planta as pl
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "E01_nivel1"
 NAME = f"SR-E01_NIVEL1_{REV}"
 LAYOUT = "E01-NIVEL1"
-SRC = cl.ROOT / "planos/A2_nivel1/SR-A2_NIVEL1_rev3.dxf"
+SRC = cl.ROOT / "planos/A2_nivel1/SR-A2_NIVEL1_rev5.dxf"
 KEEP = {"A-MURO", "A-MURO-TRAMA", "A-PUERTA", "A-VENTANA", "A-ESCALERA", "A-ESPACIOS",
         "E-COLUMNA", "A-EJES", "A-EJES-TXT", "T-LINDERO", "T-VERTICE", "A-PROYECCION",
         "A-DEMARCACION"}
@@ -111,7 +111,7 @@ EL.simbologia(psp, 35.0, 222.0, w_txt=128.0, row_h=6.6)
 
 X2, y = 205.0, 262.0
 cl.text(psp, "CIRCUITOS DEL NIVEL 1 (TABLERO TP)", (X2, y), 3.5, "A-TITULOS", "TOP_LEFT")
-rows = [["CIRC.", "DESCRIPCIÓN", "DISYUNTOR", "CONDUCTORES THHN [PR]"],
+rows = [["CIRC.", "DESCRIPCIÓN", "DISYUNTOR", "CONDUCTORES THHN"],
         ["TP-1", "ILUMINACIÓN NIVEL 1 (a-g)", "1P-20 A", "2 #12 + #12 T"],
         ["TP-3", "TOMACORRIENTES NIVEL 1 (GFCI EN EXTERIOR)", "1P-20 A", "2 #12 + #12 T"]]
 y = cl.table(psp, X2, y - 6.0, [18, 92, 26, 44], rows, row_h=6.5, h=2.1,
@@ -122,18 +122,18 @@ cl.text(psp, "LETRAS a-g: AGRUPACIÓN DE LUMINARIAS POR APAGADOR. ALIMENTADORES 
 X3, y = 400.0, 262.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS. [PR]",
-    "LAS MEDIDAS DEBEN SER VERIFICADAS EN SITIO. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS.",
+    "LAS MEDIDAS DEBEN SER VERIFICADAS EN SITIO.",
     "TODA LA INSTALACIÓN SE REALIZARÁ EN TUBERÍA SEGÚN SE INDICA EN EL TABLERO. EN EL NIVEL 1 "
     "(ESTRUCTURA EXPUESTA, SIN CIELO) LA TUBERÍA EXPUESTA A MENOS DE 2,5 m DE ALTURA SERÁ "
-    "METÁLICA (EMT). [PR]",
+    "METÁLICA (EMT).",
     "TODAS LAS SALIDAS, TANTO ELÉCTRICAS COMO DE TV Y DATOS, SERÁN POR MEDIO DE CAJAS DE CONEXIÓN "
-    "RECTANGULARES U OCTOGONALES CON SUS RESPECTIVAS TAPAS. [PR]",
+    "RECTANGULARES U OCTOGONALES CON SUS RESPECTIVAS TAPAS.",
     "SE IDENTIFICARÁN EN EL TABLERO LOS DIFERENTES CIRCUITOS Y SE DEJARÁN AL MENOS DOS TUBOS "
-    "PREVISTOS COMO ADICIONALES. [PR]",
+    "PREVISTOS COMO ADICIONALES.",
     "TOMACORRIENTES EN ESTACIONAMIENTOS Y EXTERIORES CON PROTECCIÓN GFCI Y TAPA A PRUEBA DE "
     "INTEMPERIE.",
-    "UBICACIÓN EXACTA DEL MEDIDOR SEGÚN LA EMPRESA DISTRIBUIDORA (PD). DIAGRAMA UNIFILAR, "
+    "DIAGRAMA UNIFILAR, "
     "CUADROS DE TABLEROS, NOTAS GENERALES Y DETALLES EN LA LÁMINA E04.",
 ]
 cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.1, 300)
@@ -142,7 +142,8 @@ H.titleblock(doc, psp, "E01", "ELECTRICIDAD",
              ["PLANTA ELÉCTRICA NIVEL 1.", "ILUMINACIÓN Y TOMACORRIENTES.", "VOZ Y DATOS.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "SIN MENCIÓN A SECADORA")], escalas="1:50")
+              ("1", "06-10-2026", "SIN MENCIÓN A SECADORA"),
+              ("2", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:50")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

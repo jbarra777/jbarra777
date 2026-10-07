@@ -5,7 +5,7 @@ cordones 2x6" en 2,38 mm (planos) y diagonales/montantes 2x2" en 1,50 mm, peralt
 alero a ~1,60 en la cumbrera, montantes @~1,0 m; vigas de corona V1 4x8" a +9,00 en los ejes
 1 a 6 y A, C y D (como entrepisos); cercha del eje C continua sobre el patio P1; detalle de
 canoa en la lámina pluvial. Cubierta: lámina cal. 26 a dos aguas, 13 % (A5/A6).
-Cerchas en x 0,30 / eje B / eje C / x 8,70 (A6). C1 y V1: secciones de la referencia [PR].
+Cerchas en x 0,30 / eje B / eje C / x 8,70 (A6). C1 y V1: secciones de la referencia.
 """
 import math
 
@@ -14,7 +14,7 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "C04_techo"
 NAME = f"SR-C04_TECHO_{REV}"
 LAYOUT = "C04-TECHO"
@@ -268,8 +268,8 @@ cl.scale_bar(psp, 35.0, 236.0, 50, 5, 1)
 
 y = 214.0
 cl.text(psp, "SIMBOLOGÍA ELEMENTOS PORTANTES", (35.0, y), 3.5, "A-TITULOS", "TOP_LEFT")
-rows = [["C1", "COLUMNA - TUBO DE ACERO 6x6\" EN 3,17 mm [PR]"],
-        ["V1", "VIGA DE CORONA - TUBO 4x8\" EN 3,17 mm, +9,00 [PR]"],
+rows = [["C1", "COLUMNA - TUBO DE ACERO 6x6\" EN 3,17 mm"],
+        ["V1", "VIGA DE CORONA - TUBO 4x8\" EN 3,17 mm, +9,00"],
         ["CE-1", "CERCHA - CORDONES 2x6\" EN 2,38 mm"],
         ["", "DIAGONALES Y MONTANTES 2x2\" EN 1,50 mm"],
         ["CL", "CLAVADOR - TUBO RT 2x4\" EN 1,50 mm @0,90 m MÁX."],
@@ -320,26 +320,26 @@ callout("ST", (0.33, ZM + 0.05), (XR, 158.0), "CLAVADOR TUBO RT 2x4\" EN 1,50 mm
 callout("ST", (0.05, ZM - 0.025), (XR, 148.0), "CORDÓN SUPERIOR TUBO 2x6\" EN 2,38 mm (PLANO)")
 callout("ST", (0.0, 0.33), (XR, 138.0), "MONTANTES Y DIAGONALES TUBO 2x2\" EN 1,50 mm; PERALTE VARIABLE 0,10 A 1,60 m")
 callout("ST", (0.05, 0.025), (XR, 124.0), "CORDÓN INFERIOR TUBO 2x6\" EN 2,38 mm (PLANO)")
-callout("ST", (0.30, -0.10), (XR, 112.0), "VIGA DE CORONA V1 TUBO 4x8\" EN 3,17 mm, CARA SUPERIOR +9,00 [PR]")
+callout("ST", (0.30, -0.10), (XR, 112.0), "VIGA DE CORONA V1 TUBO 4x8\" EN 3,17 mm, CARA SUPERIOR +9,00")
 cl.mtext(psp, "UNIONES SOLDADAS (CORDONES, MONTANTES, DIAGONALES, CLAVADORES Y APOYO SOBRE V1) "
-         "SEGÚN MEMORIA DE CÁLCULO (PD).", (XR, 102.0), 2.0, 80.0, layer="A-TEXTO", attach=1)
+         "SEGÚN MEMORIA DE CÁLCULO.", (XR, 102.0), 2.0, 80.0, layer="A-TEXTO", attach=1)
 
 X3 = 556.0
 y = 262.0
 cl.text(psp, "NOTAS:", (X3, y), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
-    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA. [PR]",
+    "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS, SALVO INDICACIÓN CONTRARIA.",
     "CUBIERTA DE LÁMINA ESTRUCTURAL CAL. 26 A DOS AGUAS (FRENTE Y FONDO), PENDIENTE 13 %, "
     "SOBRE CLAVADORES Y CERCHAS METÁLICAS EN LA DIRECCIÓN DE LA PENDIENTE (A5, A6).",
     "CERCHAS CE-1 EN x 0,30, EJE B, EJE C Y x 8,70, APOYADAS EN LAS VIGAS DE CORONA V1 DE LOS "
     "EJES 1 A 6. LA CERCHA DEL EJE C ES CONTINUA SOBRE EL PATIO P1.",
     "VIGAS DE CORONA V1 A +9,00 EN LOS EJES 1 A 6 Y EN A, C Y D, SOBRE LAS COLUMNAS C1, IGUAL "
-    "QUE EN LOS ENTREPISOS (C03). [PR]",
+    "QUE EN LOS ENTREPISOS (C03).",
     "PATIOS P1 Y P2 ABIERTOS, SIN CUBIERTA. CANOAS AL FRENTE, AL FONDO Y HACIA LOS PATIOS; "
     "BAJANTES Y DETALLE DE CANOA EN S03.",
     "NIVELES DE LÁMINA RESULTANTES DE LA CERCHA: +9,20 EN EL ALERO Y +10,70 EN LA CUMBRERA "
     "(IGUAL QUE EN A5 Y A6).",
-    "UNIONES SOLDADAS Y VERIFICACIÓN DE PERFILES SEGÚN MEMORIA DE CÁLCULO (PD).",
+    "UNIONES SOLDADAS Y VERIFICACIÓN DE PERFILES SEGÚN MEMORIA DE CÁLCULO.",
     "MATERIALES, PROTECCIÓN ANTICORROSIVA Y ESPECIFICACIONES SEGÚN LÁMINA C06.",
 ]
 cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 2.0, 148)
@@ -347,9 +347,9 @@ cl.notes_block(psp, X3, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + 
 H.titleblock(doc, psp, "C04", "TECHO",
              ["PLANTA DE TECHO.", "CERCHA TÍPICA CE-1.", "SECCIÓN TÍPICA DE CUBIERTA.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "C1 EJE C-1 HASTA CORONA; REFERENCIA A C06"),
-              ("2", "07-10-2026", "REFERENCIAS A S03; NIVELES CONFIRMADOS")], escalas="1:50 / INDICADAS")
+             [("1", "06-10-2026", "C1 EJE C-1 HASTA CORONA; REFERENCIA A C06"),
+              ("2", "07-10-2026", "REFERENCIAS A S03; NIVELES CONFIRMADOS"),
+              ("3", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:50 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

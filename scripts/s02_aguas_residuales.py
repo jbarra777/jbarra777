@@ -2,17 +2,17 @@
 caja de registro, trampa de grasa, baño típico, simbología y notas.
 
 Decisiones del usuario (06-10-2026): no hay alcantarillado; tanque séptico y drenaje en el patio
-posterior, esquema y dimensiones de la referencia (RIVERGRAND IS4-IS6) [PR], sujetos a la prueba de
+posterior, esquema y dimensiones de la referencia (RIVERGRAND IS4-IS6), sujetos a la prueba de
 infiltración y al cálculo. Bajantes según la propuesta aprobada: suite 1 en el muro baño/walk-in con
 colector colgado bajo la losa del N2 hasta C2; suite 2 y fregadero en un ducto en la esquina D/4 de la
-cocina; suite 3 en un ducto junto a C6 en la sala. Aguas negras 4" y grises 2" separadas [PR].
+cocina; suite 3 en un ducto junto a C6 en la sala. Aguas negras 4" y grises 2" separadas.
 Base: A2 rev3, A3 rev4 y A4 rev4 aprobadas. Placas F1/F2 de 1,65 m y VA1 según C01 (se evitan).
 """
 import cadlib as cl
 import hoja as H
 import sanit as S
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "S02_aguas_residuales"
 NAME = f"SR-S02_AGUAS_RESIDUALES_{REV}"
 LAYOUT = "S02-AGUAS-RESIDUALES"
@@ -86,12 +86,12 @@ fr = (6.80, 16.55)
 N2.pipe([fr, (8.40, 16.55), (8.55, 16.73), BG2], "S-AJ")
 N2.salida(*fr)
 N2.label("LP 2\"", *fr, -0.40, 0.85)
-N2.label("DUCTO (PD)", 8.55, 16.50, -0.75, -0.80)
+N2.label("DUCTO 0.30 x 0.40", 8.55, 16.50, -0.75, -0.80)
 # ducto de la sala (suite 3)
 N2.rect(4.99, 24.63, 5.29, 25.03, "S-ACC")
 N2.bajante(*BN3, "S-AN")
 N2.bajante(*BG3, "S-AJ")
-N2.label("DUCTO (PD)", 5.14, 24.63, -0.30, -1.40)
+N2.label("DUCTO 0.30 x 0.40", 5.14, 24.63, -0.30, -1.40)
 
 # ================================================================ nivel 1
 N1 = S.Lv(msp, "N1")
@@ -104,7 +104,7 @@ N1.bajante(*BG1, "S-AJ")
 N1.bajante(*D1N, "S-AN")
 N1.bajante(*D1G, "S-AJ")
 N1.text("COLECTORES AN / AG COLGADOS", 6.40, 2.55, S.TH)
-N1.text("BAJO LA LOSA DEL N2, CON FORRO (PD)", 6.15, 2.55, S.TH)
+N1.text("BAJO LA LOSA DEL N2, CON FORRO", 6.15, 2.55, S.TH)
 N1.label("BAJAN JUNTO A C2", 5.10, 7.45, -0.75, -0.55)
 CR1G, CR1N = (XG, 8.10), (XN, 8.10)
 N1.pipe([D1N, (XN, 7.45), (XN, 7.875)], "S-AN")
@@ -137,8 +137,8 @@ N1.pipe([(XG, 8.325), (XG, 17.40), (XG, TG[1] - 0.42)], "S-AJ")
 N1.pipe([(XG, TG[1] + 0.42), (XG, 24.175)], "S-AJ")
 for c in (CR1G, CR1N, CR2N, CR2G, CR3G, CR3N):
     N1.caja(*c)
-N1.text("COLECTOR AN 4\" (PVC SDR-26) [PR]", XN + 0.20, 9.00, S.TH)
-N1.text("COLECTOR AG 4\" (PVC SDR-26) [PR]", XG - 0.25, 9.00, S.TH)
+N1.text("COLECTOR AN 4\" (PVC SDR-26)", XN + 0.20, 9.00, S.TH)
+N1.text("COLECTOR AG 4\" (PVC SDR-26)", XG - 0.25, 9.00, S.TH)
 # patio posterior: CR de entrada, tanque, cilindro, FAFA, CR de distribución y drenaje
 CRU, CRD = (7.80, TY), (0.80, 27.85)
 N1.pipe([(XN, 24.625), (XN, 25.30), (7.90, 25.55), (7.90, TY - 0.225)], "S-AN")
@@ -162,7 +162,7 @@ N1.text("CI", 4.65, TY, 0.12, "MIDDLE_CENTER")
 N1.pipe([(3.20, TY), (CRD[0], TY), (CRD[0], CRD[1] - 0.225)], "S-AN")
 N1.rect(CRD[0] + 0.225, 27.60, 8.40, 28.10, "S-FINO")           # zanja de drenaje
 N1.pipe([(CRD[0] + 0.225, CRD[1]), (8.40, CRD[1])], "S-AN")
-N1.text("DRENAJE: TUBO PERFORADO 4\" EN ZANJA 0.50, L = 7.40 (PD) - DET. 2", 1.25, 27.44, 0.12,
+N1.text("DRENAJE: TUBO PERFORADO 4\" EN ZANJA 0.50, L = 7.40 - DET. 2", 1.25, 27.44, 0.12,
         rot=90.0)
 N1.text("PATIO POSTERIOR - JARDÍN SECO", 0.35, 25.45, 0.13, rot=90.0)
 
@@ -229,10 +229,10 @@ def leader(a, b, s, h=1.6):
 
 # ---------------------------------------------------------------- detalle 1: tanque séptico + FAFA
 # Presentación según la referencia (IS4): vista superior y vista lateral con trampa de grasa, tanque de
-# dos cámaras en bloque, cilindro de inspección y FAFA. Niveles según las notas 11 y 12 [PR].
+# dos cámaras en bloque, cilindro de inspección y FAFA. Niveles según las notas 11 y 12.
 k = 100.0 / 3.0                                    # 1:30
 X0 = 384.0
-cl.text(psp, "DETALLE 1 - TANQUE SÉPTICO [PR]", (362.0, 580.0), 3.0, "A-TITULOS", "TOP_LEFT")
+cl.text(psp, "DETALLE 1 - TANQUE SÉPTICO", (362.0, 580.0), 3.0, "A-TITULOS", "TOP_LEFT")
 cl.text(psp, "Esc. 1:30 - COTAS EN METROS", (362.0, 575.5), 2.0, "A-TEXTO", "TOP_LEFT")
 
 
@@ -467,7 +467,7 @@ T("ESQUEMA: LA TRAMPA DE GRASA SE UBICA EN EL COLECTOR AG Y LAS AGUAS NEGRAS ENT
 
 # ---------------------------------------------------------------- detalle 2: sección de drenaje
 X5, Y5, k5 = 630.0, 563.0, 100.0                    # 1:10
-cl.text(psp, "DETALLE 2 - SECCIÓN DE DRENAJE [PR]", (600.0, 580.0), 3.0, "A-TITULOS", "TOP_LEFT")
+cl.text(psp, "DETALLE 2 - SECCIÓN DE DRENAJE", (600.0, 580.0), 3.0, "A-TITULOS", "TOP_LEFT")
 cl.text(psp, "Esc. 1:10", (600.0, 575.0), 2.0, "A-TEXTO", "TOP_LEFT")
 w5 = 0.50 * k5
 capas = [(0.00, -0.10, "TIERRA", "EARTH"), (-0.10, -0.15, "GRAVA FINA, ARENA O ARROCILLO", "AR-SAND"),
@@ -487,11 +487,10 @@ dim_h(X5, X5 + w5, Y5 - 0.60 * k5 - 7, "0.50")
 dim_v(X5 + w5 + 6, Y5 + -0.20 * k5, Y5, "0.30-0.60")
 dim_v(X5 + w5 + 6, Y5 - 0.60 * k5, Y5 - 0.20 * k5, "")
 T("0.60-0.90", (X5 + w5 + 7.3, Y5 - 0.42 * k5), 1.6)
-T("PROFUNDIDADES MÍN.-MÁX.; ZANJA SEGÚN PRUEBA DE INFILTRACIÓN (PD)", (X5 - 30, Y5 - 0.60 * k5 - 13), 1.4)
 
 # ---------------------------------------------------------------- detalle 3: caja de registro y trampa
 Y6 = 405.0
-cl.text(psp, "DETALLE 3 - CAJA DE REGISTRO Y TRAMPA DE GRASA [PR]", (362.0, Y6), 3.0, "A-TITULOS", "TOP_LEFT")
+cl.text(psp, "DETALLE 3 - CAJA DE REGISTRO Y TRAMPA DE GRASA", (362.0, Y6), 3.0, "A-TITULOS", "TOP_LEFT")
 cl.text(psp, "SECCIONES - S/E", (362.0, Y6 - 5), 2.0, "A-TEXTO", "TOP_LEFT")
 xa, ya = 394.0, 352.0                                # caja de registro
 R(xa - 22, ya - 28, xa + 22, ya + 6)
@@ -512,7 +511,6 @@ leader((xa, ya - 18), (xa + 26, ya - 22), "MEDIA CAÑA (FONDO)")
 leader((xa + 10, ya - 26), (xa + 26, ya - 30), "LOSA CON MALLA #3 @0.15")
 T("TUBERÍA PVC", (xa - 34, ya - 12.5), 1.4)
 T("CAJA DE REGISTRO (CR)", (xa, ya - 34), 1.8, "MIDDLE_CENTER")
-T("INTERIOR Y PROFUNDIDAD: PD", (xa, ya - 37.5), 1.5, "MIDDLE_CENTER")
 xb, yb = 487.0, 352.0                                # trampa de grasa
 R(xb - 17, yb - 28, xb + 17, yb + 6)
 R(xb - 12, yb - 23, xb + 12, yb + 6, "S-FINO")
@@ -528,7 +526,7 @@ e.dxf.ltscale = 0.4
 T("ENTRADA AG", (xb - 28, yb - 3.5), 1.4)
 T("SALIDA", (xb + 18, yb - 6.5), 1.4)
 T("TRAMPA DE GRASA (TG)", (xb, yb - 34), 1.8, "MIDDLE_CENTER")
-T("INTERIOR 0.60 x 0.60 [PR]; PROF.: PD", (xb, yb - 37.5), 1.5, "MIDDLE_CENTER")
+T("INTERIOR 0.60 x 0.60", (xb, yb - 37.5), 1.5, "MIDDLE_CENTER")
 
 # ---------------------------------------------------------------- detalle 4: baño típico (suite 1)
 Y7, X7, k7 = 405.0, 520.0, 25.0                      # 1:40
@@ -566,8 +564,8 @@ T("FACHADA", B(3.60, 2.06)[0:1] + (B(3.60, 2.06)[1] - 2.5,), 1.4)
 
 # ---------------------------------------------------------------- simbología
 y = S.cuadro_simbologia(psp, 610.0, 405.0, [
-    ("AN", "AGUAS NEGRAS (PVC) [PR]"),
-    ("AJ", "AGUAS GRISES (PVC) [PR]"),
+    ("AN", "AGUAS NEGRAS (PVC)"),
+    ("AJ", "AGUAS GRISES (PVC)"),
     ("BN", "BAJANTE DE AGUAS NEGRAS 4\""),
     ("BG", "BAJANTE DE AGUAS GRISES 2\""),
     ("SP", "SIFÓN DE PISO (DUCHA) 2\""),
@@ -583,45 +581,45 @@ X3, yS = 362.0, 278.0
 cl.text(psp, "NOTAS:", (X3, yS), 3.5, "A-TITULOS", "TOP_LEFT")
 notas = [
     "TODAS LAS MEDIDAS ESTÁN DADAS EN METROS; LAS DIMENSIONES DEL TANQUE Y DEL FAFA SON INTERIORES, SALVO "
-    "INDICACIÓN CONTRARIA. [PR]",
+    "INDICACIÓN CONTRARIA.",
     "VERIFICAR EN SITIO LA UBICACIÓN, LOS NIVELES Y LAS CONDICIONES DEL TERRENO ANTES DE INICIAR LA "
-    "CONSTRUCCIÓN. [PR]",
+    "CONSTRUCCIÓN.",
     "NO HAY ALCANTARILLADO SANITARIO: LAS AGUAS RESIDUALES SE TRATAN EN TANQUE SÉPTICO CON FAFA Y SE "
     "DISPONEN EN EL DRENAJE DEL PATIO POSTERIOR.",
     "AGUAS NEGRAS (INODOROS) EN 4\" Y AGUAS GRISES (LAVATORIOS, DUCHAS Y FREGADERO) EN 2\", CON "
-    "BAJANTES Y CAJAS DE REGISTRO SEPARADAS. [PR]",
+    "BAJANTES Y CAJAS DE REGISTRO SEPARADAS.",
     "TUBERÍA ENTERRADA EN PVC SDR-26 O SUPERIOR, DIÁMETRO MÍNIMO 100 MM (4\"); ACCESORIOS SANITARIOS EN "
-    "TODOS LOS CAMBIOS DE DIRECCIÓN. [PR] PENDIENTES DE COLECTORES Y RAMALES: PD.",
+    "TODOS LOS CAMBIOS DE DIRECCIÓN.",
     "LAS AGUAS GRISES PASAN POR LA TRAMPA DE GRASA Y SE UNEN A LAS AGUAS NEGRAS EN LA CAJA DE REGISTRO "
     "DE ENTRADA AL TANQUE.",
     "BAJANTES: SUITE 1 EN FORRO DEL MURO BAÑO / WALK-IN, CON COLECTORES COLGADOS BAJO LA LOSA DEL N2 "
     "HASTA C2; SUITE 2 Y FREGADERO EN DUCTO DE LA COCINA (ESQUINA D/4); SUITE 3 EN DUCTO JUNTO A C6 EN "
-    "LA SALA. DIMENSIONES DE DUCTOS Y FORROS: PD.",
-    "CADA BAJANTE SE PROLONGA COMO VENTILACIÓN DE 2\" SOBRE LA CUBIERTA. [PR]",
+    "LA SALA. DUCTOS DE 0.30 x 0.40 Y FORRO DE 0.20.",
+    "CADA BAJANTE SE PROLONGA COMO VENTILACIÓN DE 2\" SOBRE LA CUBIERTA.",
     "LAS TUBERÍAS PASAN SOBRE LAS PLACAS DE CIMENTACIÓN SIN ATRAVESAR PEDESTALES; CRUCES CON VIGAS "
-    "RIOSTRA CON CAMISA (PD). EL TANQUE Y LAS CAJAS SE UBICAN FUERA DE LAS PLACAS (VER C01).",
+    "RIOSTRA CON CAMISA. EL TANQUE Y LAS CAJAS SE UBICAN FUERA DE LAS PLACAS (VER C01).",
     "TANQUE Y FAFA: CONCRETO DE 210 KG/CM2; LOSAS INFERIOR Y SUPERIOR DE 0.10 M MÍNIMO CON MALLA #3 "
     "@20 CM; MUROS DE BLOQUE 12x20x40 CON JUNTAS LLENAS Y REPELLO IMPERMEABLE INTERIOR; REFUERZO "
-    "VERTICAL #3 @40 CM Y HORIZONTAL #3 CADA DOS HILADAS; RECUBRIMIENTO 4 CM; CURADO 7 DÍAS. [PR]",
+    "VERTICAL #3 @40 CM Y HORIZONTAL #3 CADA DOS HILADAS; RECUBRIMIENTO 4 CM; CURADO 7 DÍAS.",
     "CÁMARA 1 (DIGESTIÓN) = 2/3 Y CÁMARA 2 (CLARIFICACIÓN) = 1/3 DEL LARGO. TEES SANITARIAS DE PVC "
     "100 MM, 0.30 M SOBRE Y 0.40 M BAJO EL NIVEL DE LÍQUIDOS. BORDE LIBRE 0.30 M Y PROFUNDIDAD ÚTIL "
-    "1.20 M. [PR]",
+    "1.20 M.",
     "FAFA: 1.04 x 0.80 M INTERIOR, PROFUNDIDAD ÚTIL 1.20 M, FALSO FONDO A 0.20 M CON LOSA PERFORADA, "
     "MEDIO FILTRANTE DE PIEDRA CUARTA LAVADA (5-7 CM) DE 0.80 M SIN COMPACTAR Y ESPACIO LIBRE SUPERIOR "
-    "DE 0.20 M. [PR]",
+    "DE 0.20 M.",
     "RESPIRADEROS DE PVC 100 MM, 0.30 M SOBRE EL TERRENO, CON SOMBRERETE. CILINDRO DE INSPECCIÓN DE "
     "CONCRETO, DIÁMETRO INTERIOR MÍNIMO 0.30 M. TAPAS DE CONCRETO REFORZADO DE 0.60 x 0.60 M MÍNIMO, "
-    "CON AGARRADERAS. [PR]",
-    "DRENAJE: TUBO PERFORADO DE 100 MM EN ZANJA DE 0.50 M (DETALLE 2). LONGITUD (7.40 M DIBUJADOS) Y "
-    "PROFUNDIDAD SUJETAS A LA PRUEBA DE INFILTRACIÓN Y AL CÁLCULO (PD).",
+    "CON AGARRADERAS.",
+    "DRENAJE: TUBO PERFORADO DE 100 MM EN ZANJA DE 0.50 M (DETALLE 2). LONGITUD 7.40 M."
+    "",
     "NO RELLENAR HASTA QUE EL CONCRETO ALCANCE SU RESISTENCIA; COMPACTAR EN CAPAS DE 20 CM MÁXIMO Y "
-    "EVITAR EL PASO DE VEHÍCULOS SOBRE EL SISTEMA. [PR]",
+    "EVITAR EL PASO DE VEHÍCULOS SOBRE EL SISTEMA.",
     "ANTES DEL RELLENO, VERIFICAR LA ESTANQUEIDAD DEL TANQUE Y DEL FAFA; LIMPIAR EL SISTEMA ANTES DE "
-    "COLOCAR EL MEDIO FILTRANTE Y LLENAR EL FAFA CON AGUA ANTES DE INICIAR LA OPERACIÓN. [PR]",
+    "COLOCAR EL MEDIO FILTRANTE Y LLENAR EL FAFA CON AGUA ANTES DE INICIAR LA OPERACIÓN.",
     "MANTENIMIENTO: RETIRAR LOS LODOS DEL TANQUE CUANDO OCUPEN APROXIMADAMENTE 1/3 DEL VOLUMEN DE LA "
-    "PRIMERA CÁMARA. [PR]",
+    "PRIMERA CÁMARA.",
     "NO SE PERMITE MODIFICAR DIMENSIONES, NIVELES, DIÁMETROS NI MATERIALES SIN AUTORIZACIÓN DEL "
-    "PROFESIONAL RESPONSABLE. [PR]",
+    "PROFESIONAL RESPONSABLE.",
 ]
 cl.notes_block(psp, X3, yS - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] + [cl.NOTA_PR], 1.8, 340)
 
@@ -629,7 +627,8 @@ H.titleblock(doc, psp, "S02", "AGUAS RESIDUALES",
              ["PLANTAS NIVELES 1, 2 Y 3.", "TANQUE SÉPTICO, FAFA Y DRENAJE.", "CAJA DE REGISTRO,",
               "TRAMPA DE GRASA Y BAÑO TÍPICO.", "SIMBOLOGÍA Y NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "07-10-2026", "DETALLE DE TANQUE SEGÚN LA REFERENCIA")], escalas="1:100 / INDICADAS")
+              ("1", "07-10-2026", "DETALLE DE TANQUE SEGÚN LA REFERENCIA"),
+              ("2", "07-10-2026", "LISTA DEFINITIVA (22); PARA TRÁMITE")], escalas="1:100 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

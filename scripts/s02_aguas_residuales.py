@@ -12,7 +12,7 @@ import cadlib as cl
 import hoja as H
 import sanit as S
 
-REV = "rev0"
+REV = "rev1"
 OUT = cl.ROOT / "planos" / "S02_aguas_residuales"
 NAME = f"SR-S02_AGUAS_RESIDUALES_{REV}"
 LAYOUT = "S02-AGUAS-RESIDUALES"
@@ -130,7 +130,7 @@ TG = (XG, 23.20)
 N1.rect(TG[0] - 0.42, TG[1] - 0.42, TG[0] + 0.42, TG[1] + 0.42, "S-ACC")
 N1.rect(TG[0] - 0.30, TG[1] - 0.30, TG[0] + 0.30, TG[1] + 0.30, "S-FINO")
 N1.text("TG", TG[0], TG[1], 0.12, "MIDDLE_CENTER")
-N1.label("TG (DET. 3)", TG[0] - 0.42, TG[1] - 0.20, -0.58, -0.70)
+N1.label("TG (DET. 1 Y 3)", TG[0] - 0.42, TG[1] - 0.20, -0.58, -0.70)
 # colectores principales
 N1.pipe([(XN, 8.325), (XN, 16.30), (XN, 24.175)], "S-AN")
 N1.pipe([(XG, 8.325), (XG, 17.40), (XG, TG[1] - 0.42)], "S-AJ")
@@ -228,95 +228,242 @@ def leader(a, b, s, h=1.6):
 
 
 # ---------------------------------------------------------------- detalle 1: tanque séptico + FAFA
-X0, k = 372.0, 40.0                                # 1:25 -> 40 mm por metro
-cl.text(psp, "DETALLE 1 - TANQUE SÉPTICO CON FAFA [PR]", (362.0, 580.0), 3.0, "A-TITULOS", "TOP_LEFT")
-cl.text(psp, "Esc. 1:25 - DIMENSIONES INTERIORES", (362.0, 575.0), 2.0, "A-TEXTO", "TOP_LEFT")
+# Presentación según la referencia (IS4): vista superior y vista lateral con trampa de grasa, tanque de
+# dos cámaras en bloque, cilindro de inspección y FAFA. Niveles según las notas 11 y 12 [PR].
+k = 100.0 / 3.0                                    # 1:30
+X0 = 384.0
+cl.text(psp, "DETALLE 1 - TANQUE SÉPTICO [PR]", (362.0, 580.0), 3.0, "A-TITULOS", "TOP_LEFT")
+cl.text(psp, "Esc. 1:30 - COTAS EN METROS", (362.0, 575.5), 2.0, "A-TEXTO", "TOP_LEFT")
 
 
 def U(u):
-    return X0 + 20.0 + u * k
+    return X0 + u * k
 
 
-# vista superior (v = 0..1.28)
-V0 = 512.0
-cl.text(psp, "VISTA SUPERIOR", (362.0, 568.0), 2.2, "A-TEXTO", "TOP_LEFT")
+def arrow(p, d, size=1.6, layer="S-DET"):
+    """Flecha de flujo: punta en p, dirección d = (dx, dy) unitaria."""
+    dx, dy = d
+    b = (p[0] - dx * size, p[1] - dy * size)
+    h = psp.add_hatch(color=7, dxfattribs={"layer": layer})
+    h.paths.add_polyline_path([p, (b[0] - dy * size * 0.3, b[1] + dx * size * 0.3),
+                               (b[0] + dy * size * 0.3, b[1] - dx * size * 0.3)])
+
+
+def tubo(x0, y0, x1, y1, layer="S-DET"):
+    """Tubería dibujada a doble línea (rectángulo)."""
+    R(min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1), layer)
+
+
+def bloques_h(x0, x1, y0, y1, paso=0.40):
+    """Muro de bloque visto en planta: tramado y juntas cada 'paso' (m)."""
+    hatch([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], "ANSI37", 0.35)
+    R(x0, y0, x1, y1)
+    n = int(round(abs(x1 - x0) / (paso * k)))
+    for i in range(1, max(n, 1)):
+        L((x0 + (x1 - x0) * i / n, y0), (x0 + (x1 - x0) * i / n, y1), "S-FINO")
+
+
+def bloques_v(x0, x1, y0, y1, paso=0.20):
+    """Muro de bloque en elevación/planta vertical: tramado y juntas cada 'paso' (m)."""
+    hatch([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], "ANSI37", 0.35)
+    R(x0, y0, x1, y1)
+    n = int(round(abs(y1 - y0) / (paso * k)))
+    for i in range(1, max(n, 1)):
+        L((x0, y0 + (y1 - y0) * i / n), (x1, y0 + (y1 - y0) * i / n), "S-FINO")
+
+
+def tapa_planta(uc, vc, a=0.36):
+    x0, x1, y0, y1 = U(uc - a / 2), U(uc + a / 2), Vt(vc - a / 2), Vt(vc + a / 2)
+    hatch([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], "ANSI31", 0.8)
+    R(x0, y0, x1, y1, "S-FINO")
+    psp.add_lwpolyline([(U(uc - 0.11), Vt(vc + 0.04)), (U(uc + 0.11), Vt(vc + 0.04)),
+                        (U(uc + 0.11), Vt(vc + 0.07)), (U(uc - 0.11), Vt(vc + 0.07))], close=True,
+                       dxfattribs={"layer": "S-DET", "const_width": 0.0})
+    h = psp.add_hatch(color=7, dxfattribs={"layer": "S-DET"})
+    h.paths.add_polyline_path([(U(uc - 0.11), Vt(vc + 0.04)), (U(uc + 0.11), Vt(vc + 0.04)),
+                               (U(uc + 0.11), Vt(vc + 0.07)), (U(uc - 0.11), Vt(vc + 0.07))])
+
+
+# geometría a lo largo del flujo (u, m): trampa, tanque, cilindro y FAFA
+TG0, TG1 = 0.00, 0.76                              # trampa (0.60 interior + bordes)
+TQ0, TQ1 = 1.05, 3.29                              # tanque: interior 2.00 + muros 0.12
+DV0, DV1 = TQ0 + 0.12 + 1.33, TQ0 + 0.12 + 1.45    # división 2/3 - 1/3
+CI = 3.62                                          # cilindro de inspección (eje)
+FA0, FA1 = 3.95, 4.99                              # FAFA: interior 0.80 + muros 0.12
+
+# ------------------------------------------------ vista superior
+V0 = 516.0
 
 
 def Vt(v):
     return V0 + v * k
 
 
-R(U(0), Vt(0), U(2.24), Vt(1.28))
-R(U(0.12), Vt(0.12), U(2.12), Vt(1.16))
-R(U(1.45), Vt(0.12), U(1.57), Vt(1.16))
-hatch([(U(0), Vt(0)), (U(2.24), Vt(0)), (U(2.24), Vt(1.28)), (U(0), Vt(1.28)), (U(0), Vt(0)),
-       (U(0.12), Vt(0.12)), (U(0.12), Vt(1.16)), (U(2.12), Vt(1.16)), (U(2.12), Vt(0.12)), (U(0.12), Vt(0.12))])
-for uc, w in ((0.785, 0.60), (1.845, 0.50)):                       # tapas
-    e = R(U(uc - w / 2), Vt(0.64 - w / 2), U(uc + w / 2), Vt(0.64 + w / 2), "S-FINO")
-psp.add_circle((U(2.59), Vt(0.64)), 0.25 * k, dxfattribs={"layer": "S-DET"})
-psp.add_circle((U(2.59), Vt(0.64)), 0.17 * k, dxfattribs={"layer": "S-DET"})
-R(U(2.94), Vt(0), U(3.98), Vt(1.28))
-R(U(3.06), Vt(0.12), U(3.86), Vt(1.16))
-hatch([(U(2.94), Vt(0)), (U(3.98), Vt(0)), (U(3.98), Vt(1.28)), (U(2.94), Vt(1.28)), (U(2.94), Vt(0)),
-       (U(3.06), Vt(0.12)), (U(3.06), Vt(1.16)), (U(3.86), Vt(1.16)), (U(3.86), Vt(0.12)), (U(3.06), Vt(0.12))])
-for a, b in ((-0.45, 0.0), (2.24, 2.34), (2.84, 2.94), (3.98, 4.40)):
-    L((U(a), Vt(0.64)), (U(b), Vt(0.64)), "S-AN")
-T("ENTRADA", (U(-0.42), Vt(0.64) - 2.4), 1.6)
-T("A DRENAJE", (U(3.98) + 1.0, Vt(0.64) + 2.2), 1.6)
-T("CÁMARA 1", (U(0.785), Vt(0.30)), 1.6, "MIDDLE_CENTER")
-T("DIGESTIÓN (2/3)", (U(0.785), Vt(0.20)), 1.4, "MIDDLE_CENTER")
-T("CÁM. 2", (U(1.845), Vt(0.30)), 1.4, "MIDDLE_CENTER")
-T("(1/3)", (U(1.845), Vt(0.20)), 1.4, "MIDDLE_CENTER")
-T("FAFA", (U(3.46), Vt(0.30)), 1.6, "MIDDLE_CENTER")
-T("CILINDRO DE", (U(2.59), Vt(1.28) + 3.5), 1.4, "MIDDLE_CENTER")
-T("INSPECCIÓN", (U(2.59), Vt(1.28) + 1.7), 1.4, "MIDDLE_CENTER")
-dim_h(U(0.12), U(2.12), Vt(1.28) + 6.0, "2.00")
-dim_h(U(3.06), U(3.86), Vt(1.28) + 6.0, "0.80")
-dim_v(U(-0.52), Vt(0.12), Vt(1.16), "1.04", side=-1)
-T("TAPAS 0.60 x 0.60", (U(0.785), Vt(0.64) - 0.0), 1.4, "MIDDLE_CENTER")
+cl.text(psp, "VISTA SUPERIOR", (362.0, 569.0), 2.2, "A-TEXTO", "TOP_LEFT")
+R(U(-0.22), Vt(-0.10), U(5.12), Vt(1.38), "S-FINO")                  # área de instalación
+T("ÁREA DE INSTALACIÓN", (U(-0.15), Vt(1.38) + 1.4), 1.3)
+# trampa de grasa
+R(U(TG0), Vt(0.26), U(TG1), Vt(1.02))
+tapa_planta((TG0 + TG1) / 2, 0.64, 0.68)
+T("TRAMPA DE", (U(0.38), Vt(0.86)), 1.4, "MIDDLE_CENTER")
+T("GRASA", (U(0.38), Vt(0.78)), 1.4, "MIDDLE_CENTER")
+# tanque
+for a, b in ((TQ0, TQ1),):
+    bloques_h(U(a), U(b), Vt(1.16), Vt(1.28))
+    bloques_h(U(a), U(b), Vt(0.00), Vt(0.12))
+bloques_v(U(TQ0), U(TQ0 + 0.12), Vt(0.12), Vt(1.16), 0.26)
+bloques_v(U(TQ1 - 0.12), U(TQ1), Vt(0.12), Vt(1.16), 0.26)
+bloques_v(U(DV0), U(DV1), Vt(0.12), Vt(1.16), 0.26)
+tapa_planta(1.83, 0.92)
+tapa_planta(2.89, 0.92)
+for ut in (1.30, 2.36, 2.73, 3.06):                                    # tees
+    psp.add_circle((U(ut), Vt(0.64)), 0.06 * k, dxfattribs={"layer": "S-DET"})
+T("CÁMARA 1", (U(1.83), Vt(0.46)), 1.5, "MIDDLE_CENTER")
+T("DIGESTIÓN", (U(1.83), Vt(0.36)), 1.5, "MIDDLE_CENTER")
+T("(2/3 DEL LARGO)", (U(1.83), Vt(0.26)), 1.3, "MIDDLE_CENTER")
+T("CÁMARA 2", (U(2.89), Vt(0.46)), 1.3, "MIDDLE_CENTER")
+T("CLARIFICACIÓN", (U(2.89), Vt(0.36)), 1.1, "MIDDLE_CENTER")
+T("(1/3 DEL LARGO)", (U(2.89), Vt(0.26)), 1.1, "MIDDLE_CENTER")
+# cilindro y FAFA
+psp.add_circle((U(CI), Vt(0.64)), 0.25 * k, dxfattribs={"layer": "S-DET"})
+psp.add_circle((U(CI), Vt(0.64)), 0.22 * k, dxfattribs={"layer": "S-FINO"})
+T("CILINDRO DE", (U(CI), Vt(1.08)), 1.3, "MIDDLE_CENTER")
+T("INSPECCIÓN", (U(CI), Vt(1.00)), 1.3, "MIDDLE_CENTER")
+bloques_h(U(FA0), U(FA1), Vt(1.16), Vt(1.28))
+bloques_h(U(FA0), U(FA1), Vt(0.00), Vt(0.12))
+bloques_v(U(FA0), U(FA0 + 0.12), Vt(0.12), Vt(1.16), 0.26)
+bloques_v(U(FA1 - 0.12), U(FA1), Vt(0.12), Vt(1.16), 0.26)
+tapa_planta(4.47, 0.92)
+psp.add_circle((U(4.72), Vt(0.34)), 0.07 * k, dxfattribs={"layer": "S-DET"})    # respiradero
+T("FAFA", (U(4.47), Vt(0.52)), 1.5, "MIDDLE_CENTER")
+# tuberías (doble línea) y flechas
+for a, b in ((-0.55, 0.12), (0.64, TQ0 + 0.20), (TQ1 - 0.20, CI - 0.25), (CI + 0.25, FA0 + 0.18),
+             (FA1 - 0.18, 5.45)):
+    tubo(U(a), Vt(0.60), U(b), Vt(0.68))
+arrow((U(-0.02), Vt(0.64)), (1, 0))
+arrow((U(5.45) + 4, Vt(0.64)), (1, 0))
+T("ENTRADA", (U(-0.55), Vt(0.64) + 2.4), 1.5)
+T("SALIDA", (U(5.18), Vt(0.64) + 2.4), 1.5)
+dim_h(U(TQ0 + 0.12), U(TQ1 - 0.12), Vt(1.38) + 3.5, "2.00")
+dim_h(U(FA0 + 0.12), U(FA1 - 0.12), Vt(1.38) + 3.5, "0.80")
+dim_h(U(TG0 + 0.08), U(TG1 - 0.08), Vt(1.02) + 2.0, "0.60")
+dim_v(U(0.92), Vt(0.12), Vt(1.16), "")
+cl.text(psp, "1.04", (U(0.92) - 1.4, Vt(0.92)), 1.6, "A-TEXTO", "MIDDLE_CENTER", 90.0)
 
-# vista lateral (w = 0 terreno; interior de -0.10 a -1.60)
-W0 = 488.0
-cl.text(psp, "VISTA LATERAL", (362.0, 500.0), 2.2, "A-TEXTO", "TOP_LEFT")
+# ------------------------------------------------ vista lateral (w = 0 terreno)
+W0 = 474.0
 
 
 def Wz(w):
     return W0 + w * k
 
 
-L((U(-0.55), Wz(0)), (U(4.45), Wz(0)), "S-DET")
-T("NIVEL DE TERRENO", (U(-0.55), Wz(0) + 1.8), 1.4)
-for a, b in ((0.0, 2.24), (2.94, 3.98)):
-    outer = [(U(a), Wz(0)), (U(b), Wz(0)), (U(b), Wz(-1.70)), (U(a), Wz(-1.70))]
-    R(*outer[0], *outer[2])
-    R(U(a + 0.12), Wz(-0.10), U(b - 0.12), Wz(-1.60))
-    hatch(outer + [outer[0], (U(a + 0.12), Wz(-0.10)), (U(a + 0.12), Wz(-1.60)), (U(b - 0.12), Wz(-1.60)),
-                   (U(b - 0.12), Wz(-0.10)), (U(a + 0.12), Wz(-0.10))])
-R(U(1.45), Wz(-0.10), U(1.57), Wz(-1.60))
-hatch([(U(1.45), Wz(-0.10)), (U(1.57), Wz(-0.10)), (U(1.57), Wz(-1.60)), (U(1.45), Wz(-1.60))])
-e = L((U(0.12), Wz(-0.40)), (U(2.12), Wz(-0.40)), "S-AJ")          # nivel de líquidos
-e.dxf.ltscale = 0.4
-T("NIVEL DE LÍQUIDOS", (U(0.40), Wz(-0.40) + 1.5), 1.4)
-for ut in (0.30, 1.32, 1.70, 1.98):                                 # tees sanitarias
-    L((U(ut), Wz(-0.10)), (U(ut), Wz(-0.80)), "S-AN")
-L((U(-0.45), Wz(-0.35)), (U(0.30), Wz(-0.35)), "S-AN")
-L((U(1.32), Wz(-0.45)), (U(1.70), Wz(-0.45)), "S-AN")
-L((U(1.98), Wz(-0.45)), (U(2.34), Wz(-0.45)), "S-AN")
-R(U(2.34), Wz(-1.60), U(2.84), Wz(0.05))                            # cilindro
-L((U(2.84), Wz(-1.45)), (U(3.06), Wz(-1.45)), "S-AN")
-e = L((U(3.06), Wz(-1.40)), (U(3.86), Wz(-1.40)), "S-FINO")         # falso fondo
-hatch([(U(3.06), Wz(-1.40)), (U(3.86), Wz(-1.40)), (U(3.86), Wz(-0.60)), (U(3.06), Wz(-0.60))], "GRAVEL", 0.5)
-L((U(3.86), Wz(-0.50)), (U(4.40), Wz(-0.50)), "S-AN")
-L((U(3.70), Wz(0)), (U(3.70), Wz(0.30)), "S-AN")                    # respiradero
-L((U(3.62), Wz(0.30)), (U(3.78), Wz(0.30)), "S-AN")
-T("CÁMARA 1", (U(0.80), Wz(-1.00)), 1.6, "MIDDLE_CENTER")
-T("CÁM. 2", (U(1.85), Wz(-1.10)), 1.4, "MIDDLE_CENTER")
-leader((U(3.46), Wz(-0.95)), (U(4.55), Wz(-0.95)), "PIEDRA CUARTA 0.80")
-leader((U(3.46), Wz(-1.40)), (U(4.55), Wz(-1.40)), "FALSO FONDO A 0.20")
-leader((U(3.70), Wz(0.30)), (U(4.55), Wz(0.35)), "RESPIRADERO 4\" (+0.30)")
-leader((U(2.59), Wz(0.05)), (U(2.59) - 3.0, Wz(0.40)), "CILINDRO DE INSPECCIÓN")
-dim_v(U(-0.52), Wz(-0.10), Wz(-0.40), "0.30", side=-1)
-dim_v(U(-0.52), Wz(-0.40), Wz(-1.60), "1.20", side=-1)
+cl.text(psp, "VISTA LATERAL", (362.0, 506.0), 2.2, "A-TEXTO", "TOP_LEFT")
+L((U(-0.60), Wz(0)), (U(5.45), Wz(0)), "S-DET")
+T("NIVEL DEL TERRENO", (U(-0.60), Wz(0) + 1.6), 1.3)
+# relleno junto al tanque (excavación)
+exc = [(U(-0.30), Wz(0)), (U(-0.25), Wz(-0.40)), (U(-0.15), Wz(-0.80)), (U(0.20), Wz(-0.95)),
+       (U(0.45), Wz(-1.10)), (U(0.55), Wz(-1.35)), (U(0.85), Wz(-1.55)), (U(TQ0), Wz(-1.70))]
+sp = psp.add_spline(exc, dxfattribs={"layer": "S-FINO"})
+curva = [(p[0], p[1]) for p in sp.flattening(0.2)]
+fill = [(U(-0.30), Wz(0)), (U(TG0), Wz(0)), (U(TG0), Wz(-0.75)), (U(TG1), Wz(-0.75)), (U(TG1), Wz(0)),
+        (U(TQ0), Wz(0))] + curva[::-1]
+hatch(fill, "CROSS", 0.9)
+for a, b in ((TQ1, CI - 0.25), (CI + 0.25, FA0)):                      # relleno entre unidades
+    hatch([(U(a), Wz(0)), (U(b), Wz(0)), (U(b), Wz(-1.70)), (U(a), Wz(-1.70))], "CROSS", 0.9)
+# trampa de grasa
+R(U(TG0), Wz(-0.75), U(TG1), Wz(0))
+R(U(TG0 + 0.04), Wz(-0.71), U(TG1 - 0.04), Wz(-0.04), "S-FINO")
+T("TRAMPA DE", (U(0.38), Wz(-0.13)), 1.4, "MIDDLE_CENTER")
+T("GRASA", (U(0.38), Wz(-0.21)), 1.4, "MIDDLE_CENTER")
+
+
+def tapa_alzado(uc, a=0.40):
+    x0, x1 = U(uc - a / 2), U(uc + a / 2)
+    hatch([(x0, Wz(0)), (x1, Wz(0)), (x1, Wz(0.05)), (x0, Wz(0.05))], "ANSI31", 0.8)
+    R(x0, Wz(0), x1, Wz(0.05), "S-FINO")
+    psp.add_lwpolyline([(U(uc - 0.11), Wz(0.05)), (U(uc - 0.11), Wz(0.13)), (U(uc + 0.11), Wz(0.13)),
+                        (U(uc + 0.11), Wz(0.05))], dxfattribs={"layer": "S-DET", "const_width": 0.5})
+
+
+for uc in (0.38, 1.83, 2.89, 4.47):
+    tapa_alzado(uc, 0.70 if uc == 0.38 else 0.40)
+# tanque: losa superior, muros de bloque y losa inferior
+R(U(TQ0), Wz(-0.10), U(TQ1), Wz(0))
+for a, b in ((TQ0, TQ0 + 0.12), (DV0, DV1), (TQ1 - 0.12, TQ1)):
+    bloques_v(U(a), U(b), Wz(-1.60), Wz(-0.10))
+h = psp.add_hatch(color=7, dxfattribs={"layer": "S-DET"})
+h.paths.add_polyline_path([(U(TQ0), Wz(-1.70)), (U(TQ1), Wz(-1.70)), (U(TQ1), Wz(-1.60)), (U(TQ0), Wz(-1.60))])
+e = L((U(TQ0 + 0.12), Wz(-0.40)), (U(TQ1 - 0.12), Wz(-0.40)), "S-FINO")
+T("NIVEL DE LÍQUIDOS", (U(1.95), Wz(-0.40) + 1.3), 1.3, "MIDDLE_CENTER")
+
+
+def tee(uc, lado, w_ent):
+    """Tee sanitaria: tubo vertical de -0.10 a -0.80 y ramal horizontal hacia 'lado' (-1/+1)."""
+    tubo(U(uc - 0.05), Wz(-0.80), U(uc + 0.05), Wz(-0.10))
+    x_end = uc + lado * 0.22
+    tubo(U(min(uc, x_end)), Wz(w_ent - 0.05), U(max(uc, x_end)), Wz(w_ent + 0.05))
+
+
+tee(1.30, -1, -0.35)                                                  # entrada
+tee(2.36, +1, -0.45)                                                  # paso a cámara 2
+tee(2.73, -1, -0.45)
+tee(3.06, +1, -0.45)                                                  # salida al cilindro
+for ut, sgn in ((1.30, -1), (2.36, +1), (2.73, -1), (3.06, +1)):     # flujo bajo las tees
+    L((U(ut), Wz(-0.86)), (U(ut), Wz(-1.04)), "S-FINO")
+    arrow((U(ut), Wz(-1.04) if sgn < 0 else Wz(-0.86)), (0, -1) if sgn < 0 else (0, 1), 1.3)
+T("CÁMARA 1", (U(1.83), Wz(-1.02)), 1.5, "MIDDLE_CENTER")
+T("DIGESTIÓN", (U(1.83), Wz(-1.12)), 1.5, "MIDDLE_CENTER")
+T("(2/3 DEL LARGO)", (U(1.83), Wz(-1.22)), 1.3, "MIDDLE_CENTER")
+T("CÁMARA 2", (U(2.89), Wz(-1.18)), 1.3, "MIDDLE_CENTER")
+T("CLARIFICACIÓN", (U(2.89), Wz(-1.28)), 1.1, "MIDDLE_CENTER")
+T("(1/3 DEL LARGO)", (U(2.89), Wz(-1.38)), 1.1, "MIDDLE_CENTER")
+# tuberías entre unidades
+tubo(U(-0.55), Wz(-0.40), U(0.25), Wz(-0.30))                         # entrada a la trampa
+arrow((U(0.25) + 0.2, Wz(-0.35)), (1, 0))
+tubo(U(0.55), Wz(-0.50), U(TQ0 + 0.12), Wz(-0.40))                    # trampa -> tanque (esquema)
+tubo(U(TQ1), Wz(-0.50), U(CI - 0.25), Wz(-0.40))
+arrow((U(CI - 0.25), Wz(-0.45)), (1, 0))
+# cilindro de inspección
+R(U(CI - 0.25), Wz(-1.70), U(CI + 0.25), Wz(0))
+psp.add_lwpolyline([(U(CI - 0.29), Wz(0)), (U(CI - 0.29), Wz(0.08)), (U(CI + 0.29), Wz(0.08)),
+                    (U(CI + 0.29), Wz(0))], dxfattribs={"layer": "S-DET"})
+psp.add_arc((U(CI), Wz(0.08) - 0.29 * k * 1.6), 0.29 * k * 1.65, 80, 100, dxfattribs={"layer": "S-DET"})
+tubo(U(CI + 0.18), Wz(-1.40), U(FA0 + 0.16), Wz(-1.30))               # al fondo del FAFA
+arrow((U(FA0 + 0.16) + 0.2, Wz(-1.35)), (1, 0))
+leader((U(CI), Wz(0.12)), (U(CI) - 6, Wz(0.40)), "CILINDRO DE INSPECCIÓN", 1.4)
+# FAFA
+R(U(FA0), Wz(-0.10), U(FA1), Wz(0))
+for a, b in ((FA0, FA0 + 0.12), (FA1 - 0.12, FA1)):
+    bloques_v(U(a), U(b), Wz(-1.70), Wz(-0.10))
+h = psp.add_hatch(color=7, dxfattribs={"layer": "S-DET"})
+h.paths.add_polyline_path([(U(FA0), Wz(-1.80)), (U(FA1), Wz(-1.80)), (U(FA1), Wz(-1.70)), (U(FA0), Wz(-1.70))])
+hatch([(U(FA0 + 0.12), Wz(-1.50)), (U(FA1 - 0.12), Wz(-1.50)), (U(FA1 - 0.12), Wz(-0.70)),
+       (U(FA0 + 0.12), Wz(-0.70))], "GRAVEL", 0.35)
+L((U(FA0 + 0.12), Wz(-1.50)), (U(FA1 - 0.12), Wz(-1.50)), "S-DET")    # falso fondo
+L((U(FA0 + 0.12), Wz(-0.70)), (U(FA1 - 0.12), Wz(-0.70)), "S-FINO")
+tubo(U(FA1 - 0.30), Wz(-0.55), U(5.45), Wz(-0.45))                    # salida
+arrow((U(5.45) + 4, Wz(-0.50)), (1, 0))
+tubo(U(4.67), Wz(-0.25), U(4.77), Wz(0.30))                           # respiradero
+psp.add_lwpolyline([(U(4.62), Wz(0.30)), (U(4.72), Wz(0.38)), (U(4.82), Wz(0.30))], close=True,
+                   dxfattribs={"layer": "S-DET"})
+leader((U(4.77), Wz(0.34)), (U(5.10), Wz(0.52)), "RESPIRADERO 4\"", 1.4)
+T("SALIDA A DRENAJE", (U(5.45) + 6.0, Wz(-0.50)), 1.4)
+T("FAFA", (U(4.47), Wz(-0.40)), 1.5, "MIDDLE_CENTER")
+T("PIEDRA CUARTA", (U(4.47), Wz(-1.05)), 1.2, "MIDDLE_CENTER")
+T("FALSO FONDO", (U(4.47), Wz(-1.60)), 1.1, "MIDDLE_CENTER")
+# cotas
+dim_v(U(-0.48), Wz(-1.70), Wz(0), "1.70", side=-1)
+T("PROF. TOTAL", (U(-0.48) - 1.3, Wz(-0.85) - 2.6), 1.2, "MIDDLE_RIGHT")
+dim_v(U(2.25), Wz(-0.40), Wz(-0.10), "0.30", side=-1)
+dim_v(U(2.25), Wz(-1.60), Wz(-0.40), "", side=-1)
+T("1.20", (U(2.25) - 1.3, Wz(-0.70)), 1.6, "MIDDLE_RIGHT")
+dim_v(U(FA1 + 0.10), Wz(-1.50), Wz(-0.70), "0.80")
+dim_v(U(FA1 + 0.10), Wz(-1.70), Wz(-1.50), "0.20")
+dim_h(U(TQ0 + 0.12), U(TQ1 - 0.12), Wz(0.20) + 2.0, "2.00")
+dim_h(U(FA0 + 0.12), U(FA1 - 0.12), Wz(0.20) + 2.0, "0.80")
+T("ESQUEMA: LA TRAMPA DE GRASA SE UBICA EN EL COLECTOR AG Y LAS AGUAS NEGRAS ENTRAN POR LA CR DE ENTRADA "
+  "(VER PLANTA N1).", (362.0, Wz(-1.80) - 3.0), 1.3)
 
 # ---------------------------------------------------------------- detalle 2: sección de drenaje
 X5, Y5, k5 = 630.0, 563.0, 100.0                    # 1:10
@@ -481,7 +628,8 @@ cl.notes_block(psp, X3, yS - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)] +
 H.titleblock(doc, psp, "S02", "AGUAS RESIDUALES",
              ["PLANTAS NIVELES 1, 2 Y 3.", "TANQUE SÉPTICO, FAFA Y DRENAJE.", "CAJA DE REGISTRO,",
               "TRAMPA DE GRASA Y BAÑO TÍPICO.", "SIMBOLOGÍA Y NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN")], escalas="1:100 / INDICADAS")
+             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
+              ("1", "07-10-2026", "DETALLE DE TANQUE SEGÚN LA REFERENCIA")], escalas="1:100 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

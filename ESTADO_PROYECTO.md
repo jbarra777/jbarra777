@@ -33,9 +33,10 @@
 | C05 | APROBADA | rev2 |
 | C06 | APROBADA | rev1 |
 | S01 | APROBADA | rev0 |
+| S02 | EN REVISIÓN | rev0 entregada el 07-10-2026 |
 
-- **Última entrega:** S01 rev0 (agua potable), aprobada.
-- **Siguiente paso:** S02 aguas residuales, cuando el usuario lo indique. Después, S03 pluviales (alcance en DECISIONES §16).
+- **Última entrega:** S02 rev0 (aguas residuales), en revisión del usuario.
+- **Siguiente paso:** esperar la aprobación de la S02 y la decisión sobre el punto de jardín posterior de la S01 (interfiere con el tanque). Después, S03 pluviales.
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).

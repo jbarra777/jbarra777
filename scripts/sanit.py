@@ -20,12 +20,17 @@ LAYERS = (("S-AF", 5, 35, "Continuous"), ("S-AC", 1, 35, "DASHED"), ("S-AN", 3, 
 TH = 0.17                                               # texto de planta (1,7 mm a 1:100)
 
 
-def base(doc, msp):
+def base(doc, msp, skip_txt=()):
+    """Copia las plantas aprobadas; skip_txt omite textos de la base que contengan esas cadenas."""
     for name, col, lw, lt in LAYERS:
         if name not in doc.layers:
             doc.layers.add(name, color=col, linetype=lt, lineweight=lw)
     for lv, path in SRC.items():
         for e in ezdxf.readfile(path).modelspace():
+            if e.dxftype() in ("TEXT", "MTEXT") and skip_txt:
+                t = e.dxf.text if e.dxftype() == "TEXT" else e.text
+                if any(k in t for k in skip_txt):
+                    continue
             if e.dxf.layer in KEEP:
                 c = e.copy()
                 c.translate(0, OFF[lv], 0)
@@ -97,6 +102,36 @@ class Lv:
         cl.text(self.msp, "CP", (cx, cy), 0.10, "S-ACC", "MIDDLE_CENTER")
 
 
+    def bajante(self, x, y, layer="S-AN"):
+        """Bajante: círculo con cruz."""
+        cx, cy = self.Q(x, y)
+        r = 0.09
+        self.msp.add_circle((cx, cy), r, dxfattribs={"layer": layer})
+        self.msp.add_line((cx - r, cy - r), (cx + r, cy + r), dxfattribs={"layer": layer})
+        self.msp.add_line((cx - r, cy + r), (cx + r, cy - r), dxfattribs={"layer": layer})
+
+    def coladera(self, x, y):
+        """Sifón de piso (coladera de ducha)."""
+        cx, cy = self.Q(x, y)
+        self.msp.add_circle((cx, cy), 0.08, dxfattribs={"layer": "S-ACC"})
+        self.msp.add_circle((cx, cy), 0.03, dxfattribs={"layer": "S-ACC"})
+
+    def caja(self, x, y, a=0.45, txt="CR"):
+        """Caja de registro cuadrada de lado a (m), centrada en (x, y)."""
+        h = a / 2
+        self.msp.add_lwpolyline([self.Q(x - h, y - h), self.Q(x + h, y - h), self.Q(x + h, y + h),
+                                 self.Q(x - h, y + h)], close=True, dxfattribs={"layer": "S-ACC"})
+        self.msp.add_lwpolyline([self.Q(x - h + 0.05, y - h + 0.05), self.Q(x + h - 0.05, y - h + 0.05),
+                                 self.Q(x + h - 0.05, y + h - 0.05), self.Q(x - h + 0.05, y + h - 0.05)],
+                                close=True, dxfattribs={"layer": "S-FINO"})
+        if txt:
+            cl.text(self.msp, txt, self.Q(x, y), 0.11, "S-TXT", "MIDDLE_CENTER")
+
+    def rect(self, x0, y0, x1, y1, layer="S-ACC"):
+        return self.msp.add_lwpolyline([self.Q(x0, y0), self.Q(x1, y0), self.Q(x1, y1), self.Q(x0, y1)],
+                                       close=True, dxfattribs={"layer": layer})
+
+
 def leyenda_simbolo(psp, kind, cx, cy, s=1.0):
     """Símbolo para cuadros en paper space (tamaño en mm)."""
     if kind in ("AF", "AC", "AN", "AJ", "AP"):
@@ -120,6 +155,23 @@ def leyenda_simbolo(psp, kind, cx, cy, s=1.0):
                            close=True, dxfattribs={"layer": "S-ACC"})
         h = psp.add_hatch(color=7, dxfattribs={"layer": "S-ACC"})
         h.paths.add_polyline_path([(cx - 4, cy - 2.4), (cx, cy - 2.4), (cx, cy + 2.4), (cx - 4, cy + 2.4)])
+    elif kind in ("BN", "BG"):
+        lay = "S-AN" if kind == "BN" else "S-AJ"
+        r = 1.8
+        psp.add_circle((cx, cy), r, dxfattribs={"layer": lay})
+        psp.add_line((cx - r * 0.7, cy - r * 0.7), (cx + r * 0.7, cy + r * 0.7), dxfattribs={"layer": lay})
+        psp.add_line((cx - r * 0.7, cy + r * 0.7), (cx + r * 0.7, cy - r * 0.7), dxfattribs={"layer": lay})
+    elif kind == "CR":
+        psp.add_lwpolyline([(cx - 3, cy - 2.4), (cx + 3, cy - 2.4), (cx + 3, cy + 2.4), (cx - 3, cy + 2.4)],
+                           close=True, dxfattribs={"layer": "S-ACC"})
+        cl.text(psp, "CR", (cx, cy), 1.5, "S-ACC", "MIDDLE_CENTER")
+    elif kind == "SP":
+        psp.add_circle((cx, cy), 1.5, dxfattribs={"layer": "S-ACC"})
+        psp.add_circle((cx, cy), 0.6, dxfattribs={"layer": "S-ACC"})
+    elif kind == "DREN":
+        psp.add_lwpolyline([(cx - 6, cy - 1.6), (cx + 6, cy - 1.6), (cx + 6, cy + 1.6), (cx - 6, cy + 1.6)],
+                           close=True, dxfattribs={"layer": "S-FINO"})
+        psp.add_line((cx - 6, cy), (cx + 6, cy), dxfattribs={"layer": "S-AN"})
     elif kind == "CP":
         psp.add_lwpolyline([(cx - 2.2, cy - 2.2), (cx + 2.2, cy - 2.2), (cx + 2.2, cy + 2.2), (cx - 2.2, cy + 2.2)],
                            close=True, dxfattribs={"layer": "S-ACC"})

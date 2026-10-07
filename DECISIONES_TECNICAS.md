@@ -255,4 +255,11 @@
   - **Ramales de los N2 y N3:** por el entrepiso, con una llave de paso en cada baño y en la cocina. Hay dos puntos de jardín en el N1.
   - **La S01 no es un isométrico:** muestra un diagrama vertical esquemático.
   - **Siguen pendientes (PD):** caja del medidor según la ESPH, clase o SDR de la tubería y prueba de presión.
+- **Aguas residuales (07-10-2026):** [U]
+  - **Bajantes (propuesta de Claude aprobada):**
+    - suite 1 en el forro del muro baño/walk-in, con colector colgado bajo la losa del N2 hasta C2;
+    - suite 2 + fregadero en un ducto en la esquina D/4 de la cocina;
+    - suite 3 en un ducto junto a C6 en la sala del N2.
+    - Afecta a la A3: se agregan dos ductos (PD 0.30 × 0.40), dibujados en la S02.
+  - **Tanque séptico y drenaje en el patio posterior** (opción "todo en el patio"). Dibujado en la S02 rev0 con una sola línea de drenaje de 7.40 m (PD), porque las placas F1/F2 no dejan espacio para dos.
 

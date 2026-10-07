@@ -17,7 +17,7 @@ import cadlib as cl
 import hoja as H
 from planta import P
 
-REV = "rev2"
+REV = "rev3"
 OUT = cl.ROOT / "planos" / "A7_puertas_ventanas"
 NAME = f"SR-A7_PUERTAS_VENTANAS_{REV}"
 SRC = {"N1": cl.ROOT / "planos/A2_nivel1/SR-A2_NIVEL1_rev3.dxf",
@@ -440,7 +440,7 @@ cw2 = [282, 66]
 cl.text(psp, "ACABADO EN CIELOS", (XR + sum(cw2) / 2, y), 3.2, "A-TITULOS", "TOP_CENTER")
 rows = [["TIPO DE ACABADO", "COLOR"],
         ["CIELO RASO TIPO GYPSUM (REGULAR PLANO, SUSPENDIDO A 2,70 m), NIVELES 2 Y 3.", "BLANCO"],
-        ["NIVEL 1: ESTRUCTURA DE ACERO EXPUESTA (SIN CIELO RASO).", "SEGÚN ESTRUCTURAL"]]
+        ["NIVEL 1: ESTRUCTURA DE ACERO EXPUESTA (SIN CIELO RASO).", "SEGÚN C06"]]
 y = table2(XR, y - 5.0, cw2, rows, [5.2, 5.5, 5.5], aligns=["MIDDLE_LEFT", "MIDDLE_CENTER"])
 
 # detalle de puertas
@@ -469,9 +469,9 @@ y = cl.notes_block(psp, XR, y - 6, [f"{i}.- {t}" for i, t in enumerate(notas, 1)
 H.titleblock(doc, psp, "A7", "PUERTAS Y VENTANAS",
              ["PLANTAS NIVELES 1, 2 Y 3.", "CUADROS DE PUERTAS Y VENTANAS.",
               "ACABADOS EN PAREDES, PISOS Y CIELOS.", "DETALLE DE PUERTAS Y VENTANAS.", "NOTAS.", ""],
-             [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "V-05 CON VIDRIO ARENADO"),
-              ("2", "06-10-2026", "V-03 DE 0,90 (COLUMNA EJE C-1)")],
+             [("1", "06-10-2026", "V-05 CON VIDRIO ARENADO"),
+              ("2", "06-10-2026", "V-03 DE 0,90 (COLUMNA EJE C-1)"),
+              ("3", "07-10-2026", "REFERENCIA A C06 (ESTRUCTURA EXPUESTA)")],
              escalas="1:100 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)

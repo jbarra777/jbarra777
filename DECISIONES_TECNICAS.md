@@ -141,8 +141,8 @@
 - **Extractor mecánico** en todos los baños. [U]
   - Detalle esquemático en A3/A4. **Caudal y modelo PENDIENTE DE DEFINIR [PR].**
 - **Ductos sanitarios:**
-  - baño de la suite 2 sobre la cocina: se define en las láminas sanitarias; [U]
-  - **baño de la suite 3 sobre la sala** del N2: requiere un ducto a definir en las láminas IS. [U]
+  - baño de la suite 2 sobre la cocina: ducto en la esquina D/4 de la cocina (S02, A3 rev5); [U]
+  - **baño de la suite 3 sobre la sala** del N2: ducto junto a C6 en la sala (S02, A3 rev5). [U]
 
 ## 10. Ventanas y puertas
 - **Fachada principal, niveles 2 y 3: ventanas de piso a 2.20 m sobre el NPT**, alineadas entre niveles, con franja opaca hasta la losa. [U]
@@ -179,11 +179,11 @@
   - **Canoas** en los bordes frontal y posterior de la cubierta, **2 bajantes en cada una** (uno en cada extremo, 4 en total), conducidos hacia la **cuneta del frente**. [U]
   - **Bajantes frontales ocultos en el N1** (portón y acceso peatonal). [U]
   - **Canoas en los bordes de la cubierta hacia los patios P1 y P2 donde se requiera.** [U]
-  - PENDIENTE (lámina pluvial): diámetros, trazado y tubería de los bajantes posteriores bajo el N1.
+  - **Trazado de bajantes y colectores: S03** (aprobada 07-10-2026). Diámetros y pendientes: PD.
 - **Electricidad y voz/datos:** PENDIENTE DE DEFINIR. No copiar circuitos ni tableros de la referencia.
 
 ## 12. Cubierta, acabados y detalles
-- **Techo: lámina estructural calibre 26, a dos aguas** (hacia el frente y hacia el fondo), **pendiente 13 %**. [U] **Cumbrera al centro de la envolvente (y = 13.62, +10.50).** [U] Estructura de techo según los planos estructurales (PENDIENTE).
+- **Techo: lámina estructural calibre 26, a dos aguas** (hacia el frente y hacia el fondo), **pendiente 13 %**. [U] **Cumbrera al centro de la envolvente (y = 13.62, +10.50).** [U] Estructura de techo en la C04. La cumbrera quedó a +10.70 (C04, opción a).
 - **Acabados de pisos, paredes y fachadas:** PENDIENTE DE DEFINIR (láminas A7–A10).
 - **Tapias laterales en los retiros: no hay.** [U]
 
@@ -205,7 +205,7 @@
 - **Secciones de la referencia [PR] (C03 / C02 de RIVERGRAND):** columna **C1 = tubo de acero 6×6" (150 × 150) en 3,17 mm**; C2 = 4×4" en 3,17 mm; viga **V1 = 4×8" en 3,17 mm**; arriostre **A1 = 4×4" en 3,17 mm**; pedestal 0,30 × 0,30 con 4 #4 y estribos #3 @10 cm; pletina de 270 × 270 mm; placas **F1 (centrada) y F2 (excéntrica, en lindero) de 1,65 × 1,65 × 0,25** con malla #4 @20 cm; viga riostra **VA1 de 0,20 × 0,40 con 6 #4 y aros #3 @20 cm**. [U][PR]
 - **Columnas del eje C:** tubo C1 de 0.15 **forrado a 0.30 × 0.30** (las plantas aprobadas no cambian). [U]
 - **Capacidad del suelo: qadm = 12 t/m² (valor de la referencia) [PR], a verificar con un estudio de suelos.** [U]
-- **Juego estructural:** C01 cimentaciones, C02 detalles de cimentación, C03–C04 entrepisos, C05 techo, C06–C07 pórticos, C08 especificaciones. [U]
+- **Juego estructural vigente:** C01 cimentaciones, C02 detalles de cimentación, C03 entrepisos 1 y 2, C04 techo, C05 pórticos, C06 especificaciones. [U] (La numeración anterior C03–C08 quedó sustituida; ver CAMBIOS.)
 - **Entrepisos (C03 aprobada):**
   - viguetas 2x6" en 2,38 mm @0,60 m (máx.), en sentido transversal;
   - V1 en los ejes 1 a 6, A, C y D, y en el eje B como borde de vacíos;
@@ -263,5 +263,10 @@
     - Afecta a la A3: se agregan dos ductos (PD 0.30 × 0.40), dibujados en la S02.
   - **S02 rev1 aprobada (07-10-2026):** tanque séptico con FAFA en el patio posterior (y 26.00–27.28) y drenaje de una sola línea de 7.40 m (PD). Trampa de grasa en el colector de aguas grises. Detalle del tanque según la referencia.
   - **Punto de jardín posterior trasladado a (x 1.50, y 25.40)** (S01 rev1). [U]
+- **Aguas pluviales (S03 rev0, aprobada el 07-10-2026):** [U]
+  - un bajante por canoa de patio (BP-5 y BP-6), en el extremo este, conectado al colector este;
+  - colector oeste por el pasillo peatonal y colector este junto al muro D, con cajas de 0.30 × 0.30 [PR];
+  - descarga a la cuneta del frente;
+  - diámetros dibujados de 4" (PD).
   - **Tanque séptico y drenaje en el patio posterior** (opción "todo en el patio"). Dibujado en la S02 rev0 con una sola línea de drenaje de 7.40 m (PD), porque las placas F1/F2 no dejan espacio para dos.
 

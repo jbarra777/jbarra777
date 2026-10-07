@@ -97,3 +97,4 @@ Formato: *propuesta o situación anterior → corrección del usuario → **deci
 - **06-10-2026 — E04 aprobada.** El usuario agrega la **E05 (detalles eléctricos)**: el juego eléctrico pasa de E01–E04 a E01–E05.
 
 - **07-10-2026 — S02 aprobada; S01 rev1.** El punto de jardín posterior de la S01 (x 4.75, y 25.90) interfería con el tanque séptico de la S02 → **se traslada a (x 1.50, y 25.40)**. Lámina aprobada afectada: **S01 → rev1**.
+- **07-10-2026 — S01 rev1 y S03 aprobadas; corrección de referencias.** Referencias genéricas ("planos estructurales", "lámina pluvial", "láminas sanitarias/IS", "por diseñar") → láminas vigentes C01–C06, S01–S03, E02–E03. A3 rev5 dibuja los ductos sanitarios aprobados en la S02. C04 rev2 elimina la nota de niveles pendientes. Nuevas revisiones: A1 rev2, A2 rev4, A3 rev5, A4 rev5, A5 rev7, A6 rev5, A7 rev3, C04 rev2. **Sin cambio:** A11 (la estructura de la escalera no está en ninguna lámina C; pendiente).

@@ -14,7 +14,7 @@ Model Space en metros: cada fachada en su propio origen (H horizontal, V = altur
 import cadlib as cl
 import hoja as H
 
-REV = "rev6"
+REV = "rev7"
 OUT = cl.ROOT / "planos" / "A5_fachadas"
 NAME = f"SR-A5_FACHADAS_{REV}"
 
@@ -211,7 +211,7 @@ F.line((PP[0] + 0.85, 1.05), (PP[0] + 0.85, 1.25), "F-VANOS")       # jaladera
 F.line((PV[0], POR_H), (PP[1], POR_H), "F-LINEAS")                # fascia sobre portón
 F.mtext("PORTÓN ABATIBLE\\P4 HOJAS (PLEGABLES)", (PV[0] + PV[1]) / 2, 1.2, 2.2, 45)
 F.mtext("ACCESO\\PPEATONAL", (PP[0] + PP[1]) / 2, 1.8, 1.8, 18)
-F.mtext("VIGA / FASCIA\\P(PERALTE SEGÚN ESTRUCTURAL)", 3.8, 2.70, 1.8, 50)
+F.mtext("VIGA / FASCIA\\P(PERALTE SEGÚN C03 Y C05)", 3.8, 2.70, 1.8, 50)
 # Niveles 2 y 3: ventanas de piso a 2.20 m, alineadas, paño fijo inferior hasta 0.90 m
 VENT = [((0.70, 2.90), "DORM.", 1, False), ((3.76, 4.66), "BAÑO", 0, True),
         ((6.40, 8.20), "WALK-IN", 1, False)]
@@ -221,14 +221,14 @@ for lv in ("N2", "N3"):
         F.window(hx(xb), hx(xa), v0, v0 + HEAD, mullions=mul, transom=PANO, sand=sand)
     F.line((0.15, v0 + HEAD + 0.0), (8.85, v0 + HEAD), "F-LINEAS")   # inicio franja opaca
     F.text("VIDRIO ARENADO", hx(3.76) + 0.20, v0 + 1.10, 1.5, rot=90)
-# bajantes frontales: tramo en N1 oculto (portón y acceso peatonal), ver lámina pluvial
+# bajantes frontales: tramo en N1 oculto (portón y acceso peatonal), ver S03
 for b0, b1 in BAJ:
     F.downspout(hx(b1), hx(b0), NIV["ALE"], 0.0, v_hidden=POR_H)
-F.mtext("BAJANTE PLUVIAL (TRAMO EN NIVEL 1\\PSEGÚN LÁMINA PLUVIAL)", hx(0.24) - 0.25, 5.55,
+F.mtext("BAJANTE PLUVIAL (TRAMO EN NIVEL 1\\POCULTO, VER S03)", hx(0.24) - 0.25, 5.55,
         1.6, 30, attach=6)
 F.line((hx(0.24) - 0.22, 5.55), (hx(0.28), 5.55), "F-TXT")
 F.mtext("FRANJA OPACA (VIGA Y LOSA)", 4.5, NIV["N3"] + 2.60, 1.8, 60)
-F.text("CANOA (SECCIÓN SEGÚN LÁMINA PLUVIAL)", 4.5, NIV["CUB"] + CAN / 2, 1.5)
+F.text("CANOA (SECCIÓN EN S03)", 4.5, NIV["CUB"] + CAN / 2, 1.5)
 F.mtext("CUBIERTA DE LÁMINA ESTRUCTURAL CAL. 26 - PENDIENTE 13 %", 4.5,
         (NIV["CUB"] + CAN + NIV["CUM"]) / 2, 1.8, 95)
 # cotas
@@ -398,11 +398,9 @@ notas = [
     "+9.20 EN EL ALERO (VER C04).",
     "CUBIERTA DE LÁMINA ESTRUCTURAL CALIBRE 26 A DOS AGUAS (HACIA EL FRENTE Y HACIA EL FONDO), "
     "PENDIENTE 13 %, CUMBRERA AL CENTRO DE LA VIVIENDA A +10.70. ESTRUCTURA DE "
-    "TECHO SEGÚN PLANOS ESTRUCTURALES.",
-    "AGUAS PLUVIALES: CANOA FRONTAL Y CANOA POSTERIOR, CADA UNA CON 2 BAJANTES (UNO EN CADA "
-    "EXTREMO), CONDUCIDOS HACIA LA CUNETA DEL FRENTE. DIÁMETROS, UBICACIÓN DEFINITIVA Y "
-    "TRAZADO SEGÚN LÁMINA PLUVIAL. CANOAS TAMBIÉN EN LOS BORDES DE CUBIERTA HACIA LOS PATIOS P1 "
-    "Y P2 DONDE SE REQUIERA.",
+    "TECHO EN C04.",
+    "AGUAS PLUVIALES: CANOAS FRONTAL Y POSTERIOR (2 BAJANTES CADA UNA) Y HACIA LOS PATIOS P1 Y "
+    "P2, CONDUCIDAS A LA CUNETA DEL FRENTE. TRAZADO, DIÁMETROS Y DETALLE DE CANOA EN S03.",
     "FACHADA PRINCIPAL: VENTANAS DE PISO A 2.20 m SOBRE NPT, ALINEADAS ENTRE NIVELES, CON "
     "PAÑO FIJO INFERIOR DE SEGURIDAD HASTA 0.90 m (F) Y FRANJA OPACA HASTA LA LOSA SUPERIOR "
     "(VIGAS). SOBRE EL PAÑO FIJO, VENTILAS ABATIBLES HACIA AFUERA.",
@@ -464,9 +462,9 @@ cl.table(psp, X3, y - 7, [16, 76, 82, 40], rows, row_h=5.5, h=1.8,
 H.titleblock(doc, psp, "A5", "FACHADAS",
              ["FACHADA PRINCIPAL (NORTE).", "FACHADA POSTERIOR (SUR).", "FACHADA LATERAL ESTE.",
               "FACHADA LATERAL OESTE.", "NOTAS.", "ACABADOS DE FACHADA."],
-             [("4", "06-10-2026", "V-05 SALA ARENADO; REFERENCIA A7"),
-              ("5", "06-10-2026", "ACABADOS DE FACHADA (INTEGRA A10)"),
-              ("6", "06-10-2026", "CUBIERTA +9.20/+10.70; V-03 DE 0,90")])
+             [("5", "06-10-2026", "ACABADOS DE FACHADA (INTEGRA A10)"),
+              ("6", "06-10-2026", "CUBIERTA +9.20/+10.70; V-03 DE 0,90"),
+              ("7", "07-10-2026", "REFERENCIAS A C03-C05 Y S03")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

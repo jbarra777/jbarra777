@@ -11,7 +11,7 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev4"
+REV = "rev5"
 OUT = cl.ROOT / "planos" / "A3_nivel2"
 NAME = f"SR-A3_NIVEL2_{REV}"
 E, I, W = H.E, H.I, H.W
@@ -274,7 +274,9 @@ extra = [
     "SALA FAMILIAR NO LLEVAN BAÑO.",
     "VENTANAS HACIA P1 DESFASADAS ENTRE SUITE Y COCINA-COMEDOR PARA REDUCIR VISUALES CRUZADAS.",
     "COLUMNAS SOBRE EL EJE C SEGÚN LÁMINA A2, MÁS LA C1 DEL EJE C EN EL EJE 1 (NIVELES 2 Y 3, "
-    "SOBRE VIGA DE TRANSFERENCIA, VER C05); SECCIONES Y REFUERZO SEGÚN PLANOS ESTRUCTURALES.",
+    "SOBRE VIGA DE TRANSFERENCIA, VER C05); SECCIONES Y REFUERZO EN C01 A C06.",
+    "DUCTOS SANITARIOS (PD) EN LA COCINA (ESQUINA D/4) Y EN LA SALA (JUNTO A C6), Y FORRO EN EL "
+    "WALK-IN DE LA SUITE 1, PARA LAS BAJANTES DE LOS BAÑOS (VER S02).",
     "FACHADA FRONTAL: VENTANAS DE PISO A 2.20 m CON PAÑO FIJO INFERIOR DE SEGURIDAD HASTA "
     "0.90 m Y VENTILAS ABATIBLES HACIA AFUERA EN LA PARTE SUPERIOR; BAÑO CON VIDRIO "
     "ARENADO (VER A5).",
@@ -284,15 +286,23 @@ extra = [
     "SUPERIOR); DONDE INTERFIERA CON UN PASILLO, CORREDIZA DE DOS PAÑOS MÓVIL-MÓVIL.",
     "DIMENSIONES Y TIPOS DE PUERTAS, VENTANAS Y ACABADOS EN LÁMINA A7.",
 ]
+# ductos y forro sanitarios (S02 rev1, propuesta aprobada 07-10-2026)
+for (x0, y0, x1, y1) in ((8.55, 16.43, 8.85, 16.83), (4.99, 24.63, 5.29, 25.03), (5.39, 2.65, 5.60, 3.75)):
+    pl.poly(msp, [(x0, y0), (x1, y0), (x1, y1), (x0, y1)], "A-MURO")
+    msp.add_line(pl.P(x0, y0), pl.P(x1, y1), dxfattribs={"layer": "A-MURO"})
+    msp.add_line(pl.P(x0, y1), pl.P(x1, y0), dxfattribs={"layer": "A-MURO"})
+pl.text(msp, "DUCTO", 8.40, 16.15, 0.09, align="MIDDLE_RIGHT")
+pl.text(msp, "DUCTO", 5.14, 24.45, 0.09, align="MIDDLE_RIGHT")
+pl.text(msp, "FORRO", 5.75, 3.20, 0.09, align="MIDDLE_LEFT")
 y = cl.notes_block(psp, X3, y - 6, cl.notas(extra), 2.1, 250)
 H.extractor_detail(psp, X3, min(y - 6, 165.0))
 
 H.titleblock(doc, psp, "A3", "PLANTA NIVEL 2",
              ["SUITE 1, COCINA-COMEDOR, SALA.", "DERROTERO.", "CUADRO DE ÁREAS.",
               "PORCENTAJE DE COBERTURA.", "DETALLE EXTRACTOR DE AIRE.", "NOTAS."],
-             [("2", "06-10-2026", "VENTANAS DE VENTILACIÓN (VENTILAS)"),
-              ("3", "06-10-2026", "COCINA Y SALA ABIERTAS AL PASILLO"),
-              ("4", "06-10-2026", "COLUMNA C1 EJE C-1; VENTANA BAÑO 0,90")])
+             [("3", "06-10-2026", "COCINA Y SALA ABIERTAS AL PASILLO"),
+              ("4", "06-10-2026", "COLUMNA C1 EJE C-1; VENTANA BAÑO 0,90"),
+              ("5", "07-10-2026", "DUCTOS SANITARIOS (S02); REFERENCIAS")])
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

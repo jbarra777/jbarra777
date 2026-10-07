@@ -14,7 +14,7 @@ import hoja as H
 import planta as pl
 from planta import P
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "C04_techo"
 NAME = f"SR-C04_TECHO_{REV}"
 LAYOUT = "C04-TECHO"
@@ -133,8 +133,8 @@ for y0, y1, x0, x1 in ((EY0 - CAN, EY0, 0.0, W), (EY1, EY1 + CAN, 0.0, W),
 for y in (EY0 - CAN / 2, EY1 + CAN / 2):
     for x in (0.24, W - 0.24):
         msp.add_circle(P(x, y), 0.06, dxfattribs={"layer": "E-PLUVIAL"})
-pl.text(msp, "CANOA Y BAJANTES (VER LÁMINA PLUVIAL)", 4.5, EY0 - 0.55, 0.12, "E-TXT", rot=90)
-pl.text(msp, "CANOA Y BAJANTES (VER LÁMINA PLUVIAL)", 4.5, EY1 + 0.55, 0.12, "E-TXT", rot=90)
+pl.text(msp, "CANOA Y BAJANTES (VER S03)", 4.5, EY0 - 0.55, 0.12, "E-TXT", rot=90)
+pl.text(msp, "CANOA Y BAJANTES (VER S03)", 4.5, EY1 + 0.55, 0.12, "E-TXT", rot=90)
 pl.text(msp, "CANOA HACIA P1", 6.6, P1y[1] - 0.40, 0.11, "E-TXT", rot=90)
 pl.text(msp, "CANOA HACIA P2", 6.65, P2y[0] + 0.40, 0.11, "E-TXT", rot=90)
 pl.mtext(msp, "CLAVADORES RT 2x4\" EN 1,50 mm\\P@0,90 m MÁX.", 2.60, 4.0, 0.12, 3.6, "E-TXT")
@@ -336,9 +336,9 @@ notas = [
     "VIGAS DE CORONA V1 A +9,00 EN LOS EJES 1 A 6 Y EN A, C Y D, SOBRE LAS COLUMNAS C1, IGUAL "
     "QUE EN LOS ENTREPISOS (C03). [PR]",
     "PATIOS P1 Y P2 ABIERTOS, SIN CUBIERTA. CANOAS AL FRENTE, AL FONDO Y HACIA LOS PATIOS; "
-    "BAJANTES Y DETALLE DE CANOA SEGÚN LÁMINA PLUVIAL.",
+    "BAJANTES Y DETALLE DE CANOA EN S03.",
     "NIVELES DE LÁMINA RESULTANTES DE LA CERCHA: +9,20 EN EL ALERO Y +10,70 EN LA CUMBRERA "
-    "(A5 Y A6 INDICAN +9,00 Y +10,50). PENDIENTE DE CONFIRMAR (PD).",
+    "(IGUAL QUE EN A5 Y A6).",
     "UNIONES SOLDADAS Y VERIFICACIÓN DE PERFILES SEGÚN MEMORIA DE CÁLCULO (PD).",
     "MATERIALES, PROTECCIÓN ANTICORROSIVA Y ESPECIFICACIONES SEGÚN LÁMINA C06.",
 ]
@@ -348,7 +348,8 @@ H.titleblock(doc, psp, "C04", "TECHO",
              ["PLANTA DE TECHO.", "CERCHA TÍPICA CE-1.", "SECCIÓN TÍPICA DE CUBIERTA.",
               "SIMBOLOGÍA.", "NOTAS.", ""],
              [("0", "06-10-2026", "VERSIÓN DE TRABAJO PARA REVISIÓN"),
-              ("1", "06-10-2026", "C1 EJE C-1 HASTA CORONA; REFERENCIA A C06")], escalas="1:50 / INDICADAS")
+              ("1", "06-10-2026", "C1 EJE C-1 HASTA CORONA; REFERENCIA A C06"),
+              ("2", "07-10-2026", "REFERENCIAS A S03; NIVELES CONFIRMADOS")], escalas="1:50 / INDICADAS")
 
 OUT.mkdir(parents=True, exist_ok=True)
 doc.saveas(OUT / f"{NAME}.dxf")

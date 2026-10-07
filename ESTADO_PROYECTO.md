@@ -13,13 +13,13 @@
 ## Situación actual
 | Lámina | Estado | Motivo |
 |---|---|---|
-| A1 | APROBADA | rev1, "A1 aprobada" |
-| A2 | APROBADA | rev3 |
-| A3 | APROBADA | rev4 |
-| A4 | APROBADA | rev4 |
-| A5 | APROBADA | rev6 |
-| A6 | APROBADA | rev4 |
-| A7 | APROBADA | rev2 |
+| A1 | EN REVISIÓN | rev2 (corrección de referencias; anterior aprobada) |
+| A2 | EN REVISIÓN | rev4 (corrección de referencias; anterior aprobada) |
+| A3 | EN REVISIÓN | rev5 (corrección de referencias; anterior aprobada) |
+| A4 | EN REVISIÓN | rev5 (corrección de referencias; anterior aprobada) |
+| A5 | EN REVISIÓN | rev7 (corrección de referencias; anterior aprobada) |
+| A6 | EN REVISIÓN | rev5 (corrección de referencias; anterior aprobada) |
+| A7 | EN REVISIÓN | rev3 (corrección de referencias; anterior aprobada) |
 | A11 | APROBADA | rev1 |
 | E01 | APROBADA | rev1 (sin mención a secadora) |
 | E02 | APROBADA | rev0 |
@@ -29,15 +29,15 @@
 | C01 | APROBADA | rev1 |
 | C02 | APROBADA | rev1 |
 | C03 | APROBADA | rev2 |
-| C04 | APROBADA | rev1 |
+| C04 | EN REVISIÓN | rev2 (corrección de referencias; anterior aprobada) |
 | C05 | APROBADA | rev2 |
 | C06 | APROBADA | rev1 |
-| S01 | EN REVISIÓN | rev1 (punto de jardín posterior trasladado; rev0 aprobada) |
+| S01 | APROBADA | rev1 |
 | S02 | APROBADA | rev1 |
-| S03 | EN REVISIÓN | rev0 entregada el 07-10-2026 |
+| S03 | APROBADA | rev0 |
 
-- **Última entrega:** S01 rev1 (punto de jardín posterior trasladado) y S03 rev0 (aguas pluviales); S02 rev1 aprobada.
-- **Siguiente paso:** revisión del usuario de la S01 rev1 y la S03 rev0. Juego sanitario S01–S03 completo en versión de trabajo.
+- **Última entrega:** corrección de referencias entre láminas (A1 rev2, A2 rev4, A3 rev5, A4 rev5, A5 rev7, A6 rev5, A7 rev3, C04 rev2), en revisión del usuario.
+- **Siguiente paso:** aprobación de las correcciones. Pendiente: detalle estructural de la escalera (A11 remite a planos estructurales y no hay lámina C que la cubra).
 
 ## Decisiones que necesitan respuesta del usuario
 - Ninguna abierta para A1–A5 (fuera del visto bueno de la A5 rev3).
@@ -46,10 +46,9 @@
 - **Lista y número definitivo de láminas.** Evaluar las combinaciones y si las aguas pluviales llevan lámina propia.
 - **Notas [PR]** 1 (medidas) y 7 (canoas con malla): esperan la revisión del usuario. Ya hay canoas confirmadas.
 - **Estructura:** sistema estructural, cimentación, entrepisos, secciones (las columnas de 0.30 son PD) y la viga del eje 1 sin C1.
-- **Sanitarios:** tanque séptico (prueba de infiltración), ductos de las suites 2 y 3 y modelo del extractor.
+- **Sanitarios:** prueba de infiltración y cálculo del tanque; diámetros pluviales (PD); modelo del extractor.
 - **Eléctricos:** definidos los criterios (DECISIONES §15); en desarrollo.
 - **Acabados.**
-- **Relación de la A1 rev1** (solo existe la rev0): pendiente de redactar.
 - **Confirmaciones municipales:** retiros con alineamiento y uso de suelo; normativa vigente no verificada.
 - **Lavandería:** pospuesta.
 - **Privacidad del repositorio:** `jbarra777/jbarra777` es **público** y contiene el folio real, las coordenadas y los profesionales. Sin respuesta del usuario.

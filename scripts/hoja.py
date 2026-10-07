@@ -191,6 +191,6 @@ def extractor_detail(psp, x, y):
     cl.mtext(psp, "REJILLA EXTERIOR CON\\PCOMPUERTA ANTIRRETORNO", (x + 75, y0 + 18), 2.0, 45,
              attach=1)
     leader((x + 100, y0 + 18.5), (x + 119, y0 + 39))
-    cl.mtext(psp, "ENCENDIDO CON LA LUZ DEL BAÑO O TEMPORIZADOR (VER ELÉCTRICOS).",
+    cl.mtext(psp, "ENCENDIDO CON LA LUZ DEL BAÑO O TEMPORIZADOR (VER E02 Y E03).",
              (x + 2, y0 + 10), 2.0, 100, attach=1)
     return y0 - 4

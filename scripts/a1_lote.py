@@ -18,7 +18,7 @@ from ezdxf.math import Vec2
 
 import cadlib as cl
 
-REV = "rev1"
+REV = "rev2"
 OUT = cl.ROOT / "planos" / "A1_lote"
 NAME = f"SR-A1_LOTE_{REV}"
 
@@ -198,7 +198,7 @@ lbl(f"PATIO P2 (ABIERTO)\\P"
 lbl("HUELLA CONSTRUCTIVA\\PNIVEL 1", 4.5, 22.3, 0.32)
 lbl(f"HUELLA: {A_huella:.2f} m²\\PCOBERTURA: {cob:.2f} %".replace(".", ","),
     4.5, 9.0 + 4.1 + 2.2, 0.26, 6.0)
-lbl("PATIO POSTERIOR\\PZONA RESERVADA PARA TANQUE SÉPTICO\\PY DRENAJE (POR DISEÑAR)",
+lbl("PATIO POSTERIOR\\PTANQUE SÉPTICO Y DRENAJE\\P(VER S02)",
     4.5, (ey1 + yr_w) / 2 + 0.25, 0.22, 8.0)
 lbl("COLINDANCIA - FACHADA CIEGA", -0.1, 14.0, 0.22, 12, attach=8)
 cl.text(msp, "COLINDANCIA - FACHADA CIEGA", loc(-0.35, 14.0), 0.22, "T-TXT-100",
@@ -369,7 +369,7 @@ vals = {
     "ESCALAS": "INDICADAS",
     "REV0_N": "0", "REV0_F": "06-10-2026", "REV0_D": "VERSIÓN DE TRABAJO PARA REVISIÓN",
     "REV1_N": "1", "REV1_F": "06-10-2026", "REV1_D": "NOTA 2 TAPIA; PATIOS ACEPTADOS (NOTA 12)",
-    "REV2_N": "", "REV2_F": "", "REV2_D": "",
+    "REV2_N": "2", "REV2_F": "07-10-2026", "REV2_D": "REFERENCIA AL TANQUE SÉPTICO (S02)",
     "ESTADO_1": "VERSIÓN DE TRABAJO",
     "ESTADO_2": "NO APTA PARA CONSTRUCCIÓN NI TRÁMITE",
     "LUGAR": "COSTA RICA",
